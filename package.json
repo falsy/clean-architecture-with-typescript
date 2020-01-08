@@ -1,53 +1,39 @@
 {
-  "name": "react-redux-clean-architecture",
+  "name": "transaction-admin",
   "version": "1.0.0",
-  "description": "Sample project of Clean Architecture using React and Redux",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode development"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/falsy/react-redux-clean-architecture.git"
+    "url": "git+https://github.com/TENQUBE/transaction-admin.git"
   },
-  "keywords": [
-    "React",
-    "Redux",
-    "Clean",
-    "Architecture"
-  ],
-  "author": "falsy.me <me@falsy.me>",
-  "license": "WTFPL",
+  "author": "falsy",
   "bugs": {
-    "url": "https://github.com/falsy/react-redux-clean-architecture/issues"
+    "url": "https://github.com/TENQUBE/transaction-admin/issues"
   },
-  "homepage": "https://github.com/falsy/react-redux-clean-architecture#readme",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/polyfill": "^7.6.0",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
-    "autoprefixer": "^9.6.5",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
-    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.12.0",
-    "postcss-loader": "^3.0.0",
-    "sass": "^1.23.1",
-    "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.9.0"
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.6.2",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1",
+    "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-redux": "^7.1.1",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.5",
+    "@types/react-router-dom": "^5.1.3",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
-    "redux": "^4.0.4",
+    "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   }
 }

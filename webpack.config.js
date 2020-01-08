@@ -1,63 +1,34 @@
-const HTMLWeebPackPlugin = require('html-webpack-plugin');
+  
+const HTMLWeebPackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
+  entry: "./index.ts",
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: { minimize: true }
-          }
-        ]
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: [
-          'css-loader', 'postcss-loader', 'sass-loader'
-        ]
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
       }
     ]
   },
-  devServer: {
-    historyApiFallback: true,
-    before(app, server, compiler) {
-      app.get('/list', function(req, res) {
-        res.json({ list: [{
-          id: 0,
-          name: 'Earth'
-        }, {
-          id: 1,
-          name: 'Jupiter'
-        }, {
-          id: 2,
-          name: 'Saturn'
-        }, {
-          id: 3,
-          name: 'Venus'
-        }, {
-          id: 4,
-          name: 'Mercury'
-        }] });
-      });
-    }
-  },
   resolve: {
-    extensions: ['.js', '.scss']
+    extensions: [".tsx", ".ts", ".js"]
+  },
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist")
   },
   plugins: [
     new HTMLWeebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
+      template: "./src/frameworks/react/index.html",
+      filename: "./index.html"
     })
   ]
 };
