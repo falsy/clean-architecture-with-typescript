@@ -9,7 +9,7 @@ React, Redux를 사용한 클린 아키텍처의 구조에 대해 생각해봅�
 위 코드는 Typescript, React, Redux, Webpack을 사용하고 있습니다.  
 Typescript도 Clean architecture도 조금씩 공부하며 진행하고 있기 때문에 아직 미흡하거나 잘못된 부분이 많이 있을 수 있습니다.  
 계속 공부하고 고민하며 제가 생각하는 더 나인 구조로 계속 업데이트해 나갈 예정입니다.  
-혹시 현재의 코드에 대해 다른 생각이나 더 나은 제안은 Pull Request, Issues 남겨주세요 :)
+혹시 현재의 코드에 대하여, 다른 생각이나 제안은 Pull Request, Issues 남겨주세요 :)
 
 ## 1. 클린 아키텍처
 
