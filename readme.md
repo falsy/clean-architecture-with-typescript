@@ -30,6 +30,7 @@ Typescript도 Clean architecture도 조금씩 공부하며 진행하고 있기 �
     /repositories
   /di
   /domains
+    /entities
     /interfaces
       /frameworks
       /infrastructures
