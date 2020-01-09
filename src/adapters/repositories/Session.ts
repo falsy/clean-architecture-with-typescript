@@ -1,7 +1,8 @@
-import { SessionRepositoryImpl } from "../../domains/interfaces/repositories/session";
-import RemoteInfrastructureImpl from "../../domains/interfaces/infrastructures/Remote";
+import { SessionRepositoryImpl } from '../../domains/interfaces/repositories/session';
+import { RemoteInfrastructureImpl } from '../../domains/interfaces/infrastructures/Remote';
 
 class SessionRepository implements SessionRepositoryImpl {
+  
   readonly infrastructure: RemoteInfrastructureImpl;
 
   constructor(infrastructure: RemoteInfrastructureImpl) {
@@ -11,6 +12,7 @@ class SessionRepository implements SessionRepositoryImpl {
   login(id: string, pw: string) {
     return this.infrastructure.login(id, pw);
   }
+
 }
 
 export default SessionRepository;

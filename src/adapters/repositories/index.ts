@@ -1,6 +1,7 @@
+import Infrastructures from '../../domains/interfaces/infrastructures';
 import SessionRepository from './Session';
 
-export default (infrastructure: any) => {
+export default (infrastructure: Infrastructures) => {
   return {
     session: new SessionRepository(infrastructure.remote)
   };

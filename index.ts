@@ -1,3 +1,3 @@
-import App from './src/di';
+import Frameworks from './src/di';
 
-App.render();
+Frameworks.start();

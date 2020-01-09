@@ -1,21 +1,26 @@
-import { PresenterImpl } from "../domains/interfaces/presenters";
-import store from "./redux";
-import App from "./react";
+import Presenters from '../domains/interfaces/presenters';
+import Actions from '../domains/interfaces/frameworks';
+import Web from './web';
+
 
 class Frameworks {
-  readonly presenters: PresenterImpl;
 
-  constructor(presenters: PresenterImpl) {
+  readonly presenters: Presenters;
+  readonly actions: Actions;
+
+  constructor(presenters: Presenters, actions: Actions) {
     this.presenters = presenters;
+    this.actions = actions;
   }
 
   private create() {
-    return new App(this.presenters);
+    return new Web(this.presenters, this.actions)
   }
 
-  render() {
-    return this.create().render(store);
+  start() {
+    return this.create().render();
   }
+
 }
 
 export default Frameworks;

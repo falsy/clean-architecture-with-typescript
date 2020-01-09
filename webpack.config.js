@@ -27,7 +27,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWeebPackPlugin({
-      template: "./src/frameworks/react/index.html",
+      template: "./src/frameworks/web/index.html",
       filename: "./index.html"
     })
   ]

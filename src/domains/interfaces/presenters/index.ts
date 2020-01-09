@@ -1,5 +1,5 @@
-import { SessionPresenterImpl } from "./session";
+import { SessionPresenterImpl } from './session';
 
-export interface PresenterImpl {
-  session: SessionPresenterImpl;
+export default interface Presenters {
+  session: SessionPresenterImpl
 }

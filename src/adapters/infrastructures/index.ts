@@ -1,5 +1,7 @@
-import Remote from "./Remote";
+import Remote from './Remote';
 
-export default {
-  remote: new Remote()
+export default () => {
+  return {
+    remote: new Remote()
+  };
 };

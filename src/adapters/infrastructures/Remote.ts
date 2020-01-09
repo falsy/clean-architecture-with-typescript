@@ -1,6 +1,7 @@
-import remoteInfrastructureImfl from "../../domains/interfaces/infrastructures/Remote";
+import { RemoteInfrastructureImpl } from "../../domains/interfaces/infrastructures/Remote";
 
-class Remote implements remoteInfrastructureImfl {
+class Remote implements RemoteInfrastructureImpl {
+
   login(id: string, pw: string): Promise<string> {
     return new Promise(resolve => {
       setTimeout(() => {
