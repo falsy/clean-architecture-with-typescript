@@ -1,3 +1,5 @@
+import { LoginInformation } from '../../vo/LoginInfo';
+
 export interface SessionUseCaseImpl {
-  login(id: string, pw: string): Promise<string>
+  login(loginInfo: LoginInformation): Promise<string>
 }

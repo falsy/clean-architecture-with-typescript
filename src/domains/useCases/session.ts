@@ -1,5 +1,6 @@
 import { SessionUseCaseImpl } from '../interfaces/useCases/session';
 import { SessionRepositoryImpl } from '../interfaces/repositories/session';
+import { LoginInformation } from '../vo/LoginInfo';
 
 class SessionUseCase implements SessionUseCaseImpl {
 
@@ -9,8 +10,8 @@ class SessionUseCase implements SessionUseCaseImpl {
     this.repository = sessionRepositories;
   }
 
-  login(id: string, pw: string) {
-    return this.repository.login(id, pw);
+  login(LoginInfoVO: LoginInformation) {
+    return this.repository.login(LoginInfoVO);
   }
 
 }

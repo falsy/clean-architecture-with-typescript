@@ -1,3 +1,5 @@
+import { LoginInformation } from '../../vo/LoginInfo';
+
 export interface RemoteInfrastructureImpl {
-  login(id: string, pw: string): Promise<string>
+  login(LoginInfoVO: LoginInformation): Promise<string>
 }
