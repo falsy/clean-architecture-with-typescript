@@ -23,13 +23,9 @@ const Index: React.FC<Props> = (props) => {
   const token = actions.session.useTokenSelector();
 
   useEffect(() => {
-    if (token) {
-      window.sessionStorage.setItem('token', token);
-    } else {
-      const storageToken = window.sessionStorage.getItem('token');
-      if (storageToken) {
-        dispatch(actions.session.setToken(storageToken));
-      }
+    const storageToken = window.sessionStorage.getItem('token');
+    if (storageToken) {
+      dispatch(actions.session.setToken(storageToken));
     }
   }, [token]);
 
