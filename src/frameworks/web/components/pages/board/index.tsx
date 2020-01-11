@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
+import Header from '../../sections/header';
 import BaordList from '../../sections/boardList';
 import * as styles from './board.scss';
 
@@ -20,6 +21,7 @@ const Board: React.FC<Props> = (props) => {
 
   return (
     <div className={cx("board")}>
+      <Header presenters={presenters} actions={actions} />
       <BaordList presenters={presenters} actions={actions} />
     </div>
   );

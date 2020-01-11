@@ -13,7 +13,7 @@ interface Props {
   actions: Actions;
 }
 
-const Board: React.FC<Props> = (props) => {
+const BoardList: React.FC<Props> = (props) => {
   const { presenters, actions } = props;
   const dispatch = useDispatch();
 
@@ -24,4 +24,4 @@ const Board: React.FC<Props> = (props) => {
   );
 };
 
-export default Board;
+export default BoardList;

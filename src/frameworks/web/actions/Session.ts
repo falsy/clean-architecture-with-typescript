@@ -14,6 +14,7 @@ class SessionAction implements SessionActionImpl {
   login(id: string, pw: string) {
     return async (dispatch: DispatchSession) => {
       const token = await this.presenter.login(id, pw);
+      window.sessionStorage.setItem('token', token);
       dispatch({
         type: LOGIN,
         payload: {
@@ -24,6 +25,7 @@ class SessionAction implements SessionActionImpl {
   }
 
   setToken(token: string) {
+    window.sessionStorage.setItem('token', token);
     return {
       type: LOGIN,
       payload: {
@@ -33,6 +35,7 @@ class SessionAction implements SessionActionImpl {
   }
 
   logout() {
+    window.sessionStorage.removeItem('token');
     return {
       type: LOGIN,
       payload: {

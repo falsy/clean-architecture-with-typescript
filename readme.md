@@ -56,9 +56,12 @@ index.ts
 ```
 frameworks / adapters / domain(useCases / entities)  
 ```
-Frameworks는 다양한 환경의 대해 추가 될 수 있습니다.  
+Frameworks는 다양한 환경에 따라 추가 될 수 있습니다.  
 현재는 'web' 하나만 존재하지만, 'mobile', 'native', ... 등 추가 될 수 있습니다. 
 'web' 디렉토리는 초기 목적대로 'React', 'Redux'를 사용하여 구성하였으며, 디렉토리는 'Flux 아키텍처'의 레이어를 기준으로 나누어져 있습니다.  
+```
+actions / reducers / store / components
+```
 그리고 'React'의 컴포넌트는 '[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)'을 참고하여 
 ```
 units > sections > pages
@@ -79,12 +82,3 @@ npm install
 ```
 npm start
 ```
-
-## DEMO - Authentication
-
-## DEMO - Boards
-
-## Opinion-1
-
-## Opinion-2
-
