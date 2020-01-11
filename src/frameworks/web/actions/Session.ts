@@ -13,12 +13,12 @@ class SessionAction implements SessionActionImpl {
 
   login(id: string, pw: string) {
     return async (dispatch: DispatchSession) => {
-      const token = await this.presenter.login(id, pw);
-      window.sessionStorage.setItem('token', token);
+      const { results } = await this.presenter.login(id, pw);
+      window.sessionStorage.setItem('token', results.token);
       dispatch({
         type: LOGIN,
         payload: {
-          token
+          token: results.token
         }
       });
     }
