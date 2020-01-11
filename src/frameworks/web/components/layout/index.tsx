@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Presenters from '../../../domains/interfaces/presenters';
-import Actions from '../../../domains/interfaces/frameworks';
-import Login from './Login';
+import Presenters from '../../../../domains/interfaces/presenters';
+import Actions from '../../../../domains/interfaces/frameworks';
+import Login from '../login';
 
 interface Props {
   presenters: Presenters;
@@ -12,7 +12,7 @@ interface Props {
 
 const Layout: React.FC<Props> = (props) => {
   const { presenters, actions } = props;
-  
+
   const token = actions.session.useTokenSelector();
 
   useEffect(() => {

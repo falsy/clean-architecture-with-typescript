@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Presenters from '../../domains/interfaces/presenters';
 import Actions from '../../domains/interfaces/frameworks';
 import store from './store';
-import Layout from "./components/Layout";
+import Layout from "./components/layout";
 
 
 class App {
