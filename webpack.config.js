@@ -1,5 +1,6 @@
   
 const HTMLWeebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require("path");
 
 module.exports = {
@@ -7,15 +8,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [MiniCssExtractPlugin.loader, {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true
+          }
+        }, 'sass-loader']
       },
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader"
-      }
+      { test: /\.tsx?$/, loader: "babel-loader" },
+      { test: /\.tsx?$/, loader: "ts-loader" },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ]
   },
   resolve: {
@@ -29,6 +34,9 @@ module.exports = {
     new HTMLWeebPackPlugin({
       template: "./src/frameworks/web/index.html",
       filename: "./index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: `style.css`
     })
   ]
 };

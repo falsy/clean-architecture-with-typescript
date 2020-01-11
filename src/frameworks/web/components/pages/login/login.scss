@@ -1,0 +1,26 @@
+.login {
+  width: 400px;
+  margin: 0 auto;
+
+  .login-id, .login-pw, .login-btn {
+    margin: 10px 0;
+
+    button, input {
+      display: inline-block;
+      height: 60px;
+      width: 100%;
+      font-size: 20px;
+    }
+    
+    input {
+      padding: 0 20px;
+    }
+
+    button {
+      border: 0;
+      background: #33c1ab;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}

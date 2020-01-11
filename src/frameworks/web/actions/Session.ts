@@ -4,9 +4,9 @@ import { SessionPresenterImpl } from '../../../domains/interfaces/presenters/ses
 
 
 class SessionAction implements SessionActionImpl {
-  
+
   readonly presenter: SessionPresenterImpl
-  
+
   constructor(presenter: SessionPresenterImpl) {
     this.presenter = presenter;
   }
@@ -23,10 +23,28 @@ class SessionAction implements SessionActionImpl {
     }
   }
 
+  setToken(token: string) {
+    return {
+      type: LOGIN,
+      payload: {
+        token
+      }
+    };
+  }
+
+  logout() {
+    return {
+      type: LOGIN,
+      payload: {
+        token: ''
+      }
+    }
+  }
+
   useTokenSelector() {
     return useSelector((state: SessionStateGroup) => state.session.token);
   }
-  
+
 }
 
 export default SessionAction;
