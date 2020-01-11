@@ -1,0 +1,10 @@
+.board-item {
+  list-style: none;
+  border-bottom: 1px solid #eee;
+  p {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 60px;
+  }
+}

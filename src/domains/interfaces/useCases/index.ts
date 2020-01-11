@@ -1,5 +1,7 @@
 import { SessionUseCaseImpl } from './session';
+import { BoardUseCaseImpl } from './board';
 
 export default interface UseCases {
-  session: SessionUseCaseImpl
+  session: SessionUseCaseImpl;
+  board: BoardUseCaseImpl;
 }

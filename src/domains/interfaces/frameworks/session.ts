@@ -1,16 +1,12 @@
 export const LOGIN = 'LOGIN';
 
-interface Token {
+export interface Token {
   token: string
 }
 
 interface LoginAction {
   type: string;
   payload: Token;
-}
-
-export interface SessionState {
-  token: string
 }
 
 export type SessionActionTypes = LoginAction;
@@ -25,5 +21,5 @@ export interface SessionActionImpl {
 }
 
 export interface SessionStateGroup {
-  session: SessionState
+  session: Token
 }
