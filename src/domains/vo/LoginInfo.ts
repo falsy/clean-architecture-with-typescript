@@ -1,7 +1,4 @@
-export interface LoginInformation {
-  id: string;
-  pw: string;
-}
+import { LoginInformation } from '../interfaces/vo/Session';
 
 export default class LoginInfo {
   readonly id: string;

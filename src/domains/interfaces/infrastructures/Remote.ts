@@ -1,5 +1,5 @@
 import { BoardData } from '../../interfaces/entities/board';
-import { LoginInformation } from '../../vo/LoginInfo';
+import { LoginInformation } from '../vo/session';
 
 export interface TokenDTO {
   results: {

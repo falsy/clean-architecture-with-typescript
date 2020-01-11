@@ -30,11 +30,13 @@ React, Redux를 사용한 클린 아키텍처의 구조에 대하여 생각해�
   /domains
     /entities
     /interfaces
+      /entites
       /frameworks
       /infrastructures
       /presenters
       /repositories
       /useCases
+      /vo
     /useCases
     /vo(Value Object)
   /frameworks
