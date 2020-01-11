@@ -14,6 +14,7 @@ React, Redux를 사용한 클린 아키텍처의 구조에 대하여 생각해�
 ![Alt Clean architecture](https://falsy.me/wp-content/uploads/2020/01/the-clean-architecture.jpg)
 
 클린 아키텍처를 이야기하면 항상 빠지지 않고 나오는 다이어그램입니다.
+(클린 아키텍처 기본 개념 정리...)
 
 ## Version
 'react'의 경우 함수형 컴포넌트와 Hook을 사용합니다. (react v16.8 이상)  
@@ -77,6 +78,9 @@ di 에서는 각각의 레이어의 의존성을 주입하고 최종적으로 ac
 클린 아키텍처의 마지막 레이어는 Framework, DB, Device, UI 등이 위치하며 이는 비즈니스 규칙과 무관하게 도구로서 사용되어야 합니다. 
 처음에는 'React'와 'Redux' 역시 분리하여, 가령 'Redux'를 'MobX'로 변경하더라도 기존 'Redux'의 역할을 대체하는 'MobX'의 역할만 작성해주면 
 'React'는 다른 수정 없이 동작할 수 있도록 하면 좋겠다 생각하였으나... 이 부분은 조금 더 생각해 봐야 할 것 같습니다.
+
+## Communication flow
+(데모 코드 흐름 정리...)
 
 ## DEMO
 #### Install
