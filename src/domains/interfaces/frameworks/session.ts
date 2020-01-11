@@ -5,7 +5,7 @@ interface Token {
 }
 
 interface LoginAction {
-  type: typeof LOGIN;
+  type: string;
   payload: Token;
 }
 
@@ -19,7 +19,9 @@ export type DispatchSession = (arg: LoginAction) => (LoginAction);
 
 export interface SessionActionImpl {
   login(id: string, pw: string): void;
+  setToken(token: string): LoginAction;
   useTokenSelector(): string;
+  logout(): LoginAction;
 }
 
 export interface SessionStateGroup {

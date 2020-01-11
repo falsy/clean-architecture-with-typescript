@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Presenters from '../../domains/interfaces/presenters';
 import Actions from '../../domains/interfaces/frameworks';
 import store from './store';
-import Layout from "./components/layout";
+import Index from "./components/index";
+import './style.scss';
 
 
 class App {
@@ -23,7 +24,7 @@ class App {
       <Provider store={store}>
         <Router>
           <Route path="">
-            <Layout presenters={this.presenters} actions={this.actions} />
+            <Index presenters={this.presenters} actions={this.actions} />
           </Route>
         </Router>
       </Provider>,
