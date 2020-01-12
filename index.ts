@@ -1,3 +1,3 @@
-import Frameworks from './src/di';
+import Frameworks from './src/frameworks/di';
 
 Frameworks.start();
