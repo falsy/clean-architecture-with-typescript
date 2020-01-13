@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Presenters from '../../../../domains/interfaces/presenters';
 import Actions from '../../../../domains/interfaces/frameworks';
 import Login from '../pages/login';
-import Board from '../pages/board';
+import Home from '../pages/home';
 
 import * as styles from './index.scss';
 
@@ -32,12 +32,14 @@ const Index: React.FC<Props> = (props) => {
   return (
     <div className={cx("wrap")}>
       {token === '' && (
-        <Route path="/">
-          <Login presenters={presenters} actions={actions} />
-        </Route>
+        <Login presenters={presenters} actions={actions} />
       )}
       {token && (
-        <Board presenters={presenters} actions={actions} />
+        <Router>
+          <Route path="">
+            <Home presenters={presenters} actions={actions} />
+          </Route>
+        </Router>
       )}
     </div>
   );

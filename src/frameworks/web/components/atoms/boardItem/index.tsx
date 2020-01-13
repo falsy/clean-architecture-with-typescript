@@ -1,10 +1,9 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { memo } from "react";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
 import { BoardData } from '../../../../../domains/interfaces/entities/board';
-import * as styles from './boardItem.scss';
+import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 

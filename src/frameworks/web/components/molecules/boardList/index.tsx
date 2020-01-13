@@ -1,11 +1,11 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
-import BoardItem from '../../units/boardItem';
-import * as styles from './boardList.scss';
+import BoardItem from '../../atoms/boardItem';
+import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
@@ -26,18 +26,13 @@ const BoardList: React.FC<Props> = (props) => {
 
   return (
     <div className={cx("board-list")}>
-      <section>
-        <h2>Board List</h2>
-        <div>
-          {list.length > 0 && (
-            <ul>
-              {list.map(board => (
-                <BoardItem key={board.id} presenters={presenters} actions={actions} board={board} />
-              ))}
-            </ul>
-          )}
-        </div>
-      </section>
+      {list.length > 0 && (
+        <ul>
+          {list.map(board => (
+            <BoardItem key={board.id} presenters={presenters} actions={actions} board={board} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
