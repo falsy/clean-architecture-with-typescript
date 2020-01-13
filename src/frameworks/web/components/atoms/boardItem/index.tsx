@@ -1,6 +1,5 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { memo } from "react";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
 import { BoardData } from '../../../../../domains/interfaces/entities/board';

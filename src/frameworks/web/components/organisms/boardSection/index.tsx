@@ -1,11 +1,10 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
-import Header from '../../organisms/header';
-import BaordSection from '../../organisms/boardSection';
+import BoardList from '../../molecules/boardList';
 import * as styles from './index.scss';
 
 const cx = className.bind(styles);
@@ -15,18 +14,24 @@ interface Props {
   actions: Actions;
 }
 
-const Board: React.FC<Props> = (props) => {
+const BoardSection: React.FC<Props> = (props) => {
   const { presenters, actions } = props;
   const dispatch = useDispatch();
 
+  const list = actions.board.useBoardListSelector();
+
+  useEffect(() => {
+    dispatch(actions.board.getBoard());
+  }, []);
+
   return (
-    <div className={cx("board")}>
-      <Header presenters={presenters} actions={actions} />
-      <div className={cx("board-content")}>
-        <BaordSection presenters={presenters} actions={actions} />
-      </div>
+    <div className={cx("board-list")}>
+      <section>
+        <h2>Board List</h2>
+        <BoardList presenters={presenters} actions={actions} />
+      </section>
     </div>
   );
 };
 
-export default Board;
+export default BoardSection;
