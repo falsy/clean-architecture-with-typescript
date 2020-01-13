@@ -79,7 +79,7 @@ atoms / molecules / organisms / pages / templates
 처음에는 'React'와 'Redux' 역시 분리하여, 가령 'Redux'를 'MobX'로 변경하더라도 기존 'Redux'의 역할을 대체하는 'MobX'의 역할만 작성해주면 
 'React'는 다른 수정 없이 동작할 수 있도록 하면 좋겠다 생각하였으나... 이 부분은 조금 더 생각해 봐야 할 것 같습니다.
 * di(Dependency Injection)에서는 각각의 레이어의 의존성을 주입하고 최종적으로 actions과 presenters를 주입받은 frameworks를 리턴합니다.
-
+* presetner와 actions를 components root에서 주입하여 계속 props로 가지고 다니는데, 더 나은 방법이 있을지 생각해 봐야 할 것 같습니다.
 ## Communication flow
 (데모 코드 흐름 정리...)
 
