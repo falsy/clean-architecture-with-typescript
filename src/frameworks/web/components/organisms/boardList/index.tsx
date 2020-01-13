@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
-import BoardItem from '../../units/boardItem';
-import * as styles from './boardList.scss';
+import BoardItem from '../../molecules/boardItem';
+import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 

@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Presenters from '../../../../domains/interfaces/presenters';
 import Actions from '../../../../domains/interfaces/frameworks';
 import Login from '../pages/login';
-import Board from '../pages/board';
+import Home from '../pages/home';
 
 import * as styles from './index.scss';
 
@@ -37,7 +37,7 @@ const Index: React.FC<Props> = (props) => {
       {token && (
         <Router>
           <Route path="">
-            <Board presenters={presenters} actions={actions} />
+            <Home presenters={presenters} actions={actions} />
           </Route>
         </Router>
       )}

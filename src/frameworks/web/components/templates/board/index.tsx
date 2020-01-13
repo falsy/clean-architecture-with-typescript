@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
-import * as styles from './header.scss';
+import Header from '../../organisms/header';
+import BaordList from '../../organisms/boardList';
+import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
@@ -13,19 +15,18 @@ interface Props {
   actions: Actions;
 }
 
-const Header: React.FC<Props> = (props) => {
+const Board: React.FC<Props> = (props) => {
   const { presenters, actions } = props;
   const dispatch = useDispatch();
 
-  const handleClickLogout = () => {
-    dispatch(actions.session.logout());
-  };
-
   return (
-    <div className={cx("header")}>
-      <button type="button" onClick={handleClickLogout}>Logout</button>
+    <div className={cx("board")}>
+      <Header presenters={presenters} actions={actions} />
+      <div className={cx("board-content")}>
+        <BaordList presenters={presenters} actions={actions} />
+      </div>
     </div>
   );
 };
 
-export default Header;
+export default Board;

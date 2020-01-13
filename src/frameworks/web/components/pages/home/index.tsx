@@ -4,9 +4,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
-import Header from '../../sections/header';
-import BaordList from '../../sections/boardList';
-import * as styles from './board.scss';
+import Board from '../../templates/board';
+import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
@@ -15,16 +14,15 @@ interface Props {
   actions: Actions;
 }
 
-const Board: React.FC<Props> = (props) => {
+const Home: React.FC<Props> = (props) => {
   const { presenters, actions } = props;
   const dispatch = useDispatch();
 
   return (
-    <div className={cx("board")}>
-      <Header presenters={presenters} actions={actions} />
-      <BaordList presenters={presenters} actions={actions} />
+    <div className={cx("home")}>
+      <Board presenters={presenters} actions={actions} />
     </div>
   );
 };
 
-export default Board;
+export default Home;
