@@ -32,12 +32,14 @@ const Index: React.FC<Props> = (props) => {
   return (
     <div className={cx("wrap")}>
       {token === '' && (
-        <Route path="/">
-          <Login presenters={presenters} actions={actions} />
-        </Route>
+        <Login presenters={presenters} actions={actions} />
       )}
       {token && (
-        <Board presenters={presenters} actions={actions} />
+        <Router>
+          <Route path="">
+            <Board presenters={presenters} actions={actions} />
+          </Route>
+        </Router>
       )}
     </div>
   );

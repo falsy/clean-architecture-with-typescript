@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
-import Authorization from '../../templates/authorization';
+import ShortBtn from '../../atoms/shortBtn';
 import * as styles from './index.scss';
 
 const cx = className.bind(styles);
@@ -14,19 +14,22 @@ interface Props {
   actions: Actions;
 }
 
-const Login: React.FC<Props> = (props) => {
+const Header: React.FC<Props> = (props) => {
   const { presenters, actions } = props;
   const dispatch = useDispatch();
 
-  const handleClickAccreditation = (id: string, pw: string) => {
-    dispatch(actions.session.login(id, pw));
+  const handleClickLogout = () => {
+    dispatch(actions.session.logout());
   };
 
   return (
-    <div className={cx("login")}>
-      <Authorization accredit={handleClickAccreditation} btnValue="Login" />
-    </div>
+    <section className={cx("header")}>
+      <h1>React with Clean architecture</h1>
+      <div className={cx("btn-area")}>
+        <ShortBtn type="button" onClick={handleClickLogout} value="Logout" />
+      </div>
+    </section>
   );
 };
 
-export default Login;
+export default Header;

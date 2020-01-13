@@ -1,11 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import Presenters from '../../domains/interfaces/presenters';
 import Actions from '../../domains/interfaces/frameworks';
 import store from './store';
-import Index from "./components/index";
+import Router from "./components/router";
 import './style.scss';
 
 
@@ -22,11 +21,7 @@ class App {
   render() {
     return ReactDOM.render(
       <Provider store={store}>
-        <Router>
-          <Route path="">
-            <Index presenters={this.presenters} actions={this.actions} />
-          </Route>
-        </Router>
+        <Router presenters={this.presenters} actions={this.actions} />
       </Provider>,
       document.getElementById("app")
     )
