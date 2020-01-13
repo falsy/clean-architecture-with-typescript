@@ -43,10 +43,12 @@ React, Redux를 사용한 클린 아키텍처의 구조에 대하여 생각해�
     /web
       /actions
       /components
-        /router
+        /atoms
+        /molecules
+        /organisms
         /pages
-        /sections
-        /units
+        /router
+        /templates
       /reducers
       index.html
       index.tsx
@@ -67,9 +69,9 @@ frameworks / adapters / domain(useCases / entities)
 actions / reducers / store / components
 ```
   
-'React'의 컴포넌트는 '[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)'을 참고하였습니다.
+'React'의 컴포넌트는 '[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)'을 참고 하였습니다.
 ```
-units / sections / pages
+atoms / molecules / organisms / pages / templates
 ```
 
 ### Opinion
