@@ -1,7 +1,5 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
 import Header from '../../organisms/header';
@@ -17,7 +15,6 @@ interface Props {
 
 const Board: React.FC<Props> = (props) => {
   const { presenters, actions } = props;
-  const dispatch = useDispatch();
 
   return (
     <div className={cx("board")}>

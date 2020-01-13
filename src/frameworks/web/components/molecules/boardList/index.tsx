@@ -1,6 +1,6 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';

@@ -15,7 +15,9 @@ const AuthBox: React.FC<Props> = (props) => {
   const { accredit, btnValue } = props;
 
   return (
-    <AuthForm accredit={accredit} btnValue={btnValue} />
+    <div className={cx("authorization-box")}>
+      <AuthForm accredit={accredit} btnValue={btnValue} />
+    </div>
   );
 };
 

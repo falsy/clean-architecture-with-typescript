@@ -1,7 +1,5 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
 import BoardList from '../../molecules/boardList';
@@ -16,13 +14,6 @@ interface Props {
 
 const BoardSection: React.FC<Props> = (props) => {
   const { presenters, actions } = props;
-  const dispatch = useDispatch();
-
-  const list = actions.board.useBoardListSelector();
-
-  useEffect(() => {
-    dispatch(actions.board.getBoard());
-  }, []);
 
   return (
     <div className={cx("board-list")}>
