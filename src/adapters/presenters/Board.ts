@@ -13,6 +13,10 @@ class BoardPresenter implements BoardPresenterImpl {
     return this.useCase.getBoard();
   }
 
+  insertBoard(author: string, content: string) {
+    return this.useCase.insertBoard(author, content);
+  };
+
 }
 
 export default BoardPresenter;

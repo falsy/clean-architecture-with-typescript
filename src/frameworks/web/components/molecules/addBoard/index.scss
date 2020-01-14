@@ -1,0 +1,22 @@
+.add-board-btn-area {
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+
+  .author-box, .content-box, .add-btn {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .author-box {
+    width: 200px;
+  }
+  .content-box {
+    width: 200px;
+  }
+  .add-btn {
+    width: 80px;
+  }
+}
