@@ -72,7 +72,7 @@ actions / reducers / store / components
   
 'React'의 컴포넌트는 '[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)'을 참고 하였습니다.
 ```
-atoms / molecules / organisms / pages / templates
+atoms / molecules / organisms / templates / pages
 ```
 
 ### Opinion
