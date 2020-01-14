@@ -1,0 +1,13 @@
+.board-section {
+  & > section {
+    margin-top: 40px;
+    &:first-child {
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 200;
+    }
+  }
+}

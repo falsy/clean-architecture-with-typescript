@@ -9,13 +9,14 @@ interface Props {
   name: string;
   placeholder: string;
   onChange(evnet: React.ChangeEvent<HTMLInputElement>): void;
+  onKeyDown(event: React.KeyboardEvent): void;
 }
 
 const Input: React.FC<Props> = (props) => {
-  const { type, name, placeholder, onChange } = props;
+  const { type, name, placeholder, onChange, onKeyDown } = props;
 
   return (
-    <input className={cx("input")} type={type} name={name} placeholder={placeholder} onChange={onChange} />
+    <input className={cx("input")} type={type} name={name} placeholder={placeholder} onChange={onChange} onKeyDown={onKeyDown} />
   );
 };
 

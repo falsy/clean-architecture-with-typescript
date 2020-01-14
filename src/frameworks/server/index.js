@@ -42,7 +42,7 @@ const run = async () => {
       createAt: new Date().getTime()
     });
     autoInc += 1;
-    stx.status = 204;
+    ctx.status = 204;
   });
 
   app.use(router.routes());

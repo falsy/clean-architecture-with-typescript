@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import Presenters from '../../../../../domains/interfaces/presenters';
 import Actions from '../../../../../domains/interfaces/frameworks';
 import BoardList from '../../molecules/boardList';
+import AddBoard from '../../molecules/addBoard';
 import * as styles from './index.scss';
 
 const cx = className.bind(styles);
@@ -24,11 +25,22 @@ const BoardSection: React.FC<Props> = (props) => {
     dispatch(actions.board.getBoard());
   }, []);
 
+  const insertFnc = async (author: string, content: string) => {
+    const resStatus = await presenters.board.insertBoard(author, content);
+    if (resStatus === 204) {
+      dispatch(actions.board.getBoard());
+    }
+  };
+
   return (
-    <div className={cx("board-list")}>
+    <div className={cx("board-section")}>
       <section>
         <h2>Board List</h2>
         <BoardList list={list} />
+      </section>
+      <section>
+        <h2>Add Board</h2>
+        <AddBoard insertFnc={insertFnc} />
       </section>
     </div>
   );

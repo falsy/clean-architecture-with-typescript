@@ -28,7 +28,10 @@ class Remote implements RemoteInfrastructureImpl {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify({
+        author, content
+      })
     }).then(res => res.status);
   }
 }

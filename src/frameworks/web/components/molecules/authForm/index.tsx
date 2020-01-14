@@ -27,13 +27,19 @@ const AuthForm: React.FC<Props> = (props) => {
     accredit(id, pw);
   };
 
+  const handleKeyDownAccredit = (event: React.KeyboardEvent) => {
+    if (event.keyCode === 13) {
+      accredit(id, pw);
+    }
+  };
+
   return (
     <section>
       <div className={cx("client-id")}>
-        <Input type="text" name="id" placeholder="ID" onChange={handleChangeClientInfo} />
+        <Input type="text" name="id" placeholder="ID" onChange={handleChangeClientInfo} onKeyDown={null} />
       </div>
       <div className={cx("client-pw")}>
-        <Input type="text" name="pw" placeholder="Password" onChange={handleChangeClientInfo} />
+        <Input type="text" name="pw" placeholder="Password" onChange={handleChangeClientInfo} onKeyDown={handleKeyDownAccredit} />
       </div>
       <div className={cx("client-btn")}>
         <LongBtn type="button" onClick={handleClickAccredit} value={btnValue} />
