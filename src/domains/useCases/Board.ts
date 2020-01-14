@@ -13,6 +13,10 @@ class BaordUseCase implements BoardUseCaseImpl {
     return this.repository.getBoard();
   }
 
+  insertBoard(author: string, content: string) {
+    return this.repository.insertBoard(author, content);
+  };
+
 }
 
 export default BaordUseCase;

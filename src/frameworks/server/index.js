@@ -12,22 +12,37 @@ const run = async () => {
   app.use(logger());
   app.use(koaBody());
 
-  router.get('/boards', (ctx, next) => {
+  let autoInc = 3;
+  const boards = [{
+    id: 1,
+    author: 'falsy',
+    content: 'hello',
+    createAt: new Date().getTime()
+  }, {
+    id: 2,
+    author: 'falsy',
+    content: 'world',
+    createAt: new Date().getTime()
+  }];
+
+  router.get('/boards', ctx => {
     ctx.body = {
       results: {
-        list: [{
-          id: 1,
-          author: 'falsy',
-          content: 'hello',
-          createAt: new Date().getTime()
-        }, {
-          id: 2,
-          author: 'falsy',
-          content: 'world',
-          createAt: new Date().getTime()
-        }]
+        list: boards
       }
     };
+  });
+
+  router.post('/boards', ctx => {
+    const { author, content } = ctx.request.body;
+    boards.push({
+      id: autoInc,
+      author,
+      content,
+      createAt: new Date().getTime()
+    });
+    autoInc += 1;
+    stx.status = 204;
   });
 
   app.use(router.routes());

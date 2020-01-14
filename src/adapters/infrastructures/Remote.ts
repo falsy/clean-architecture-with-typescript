@@ -22,6 +22,15 @@ class Remote implements RemoteInfrastructureImpl {
       method: 'GET',
     }).then(res => res.json());
   }
+
+  insertBoard(author: string, content: string): Promise<number> {
+    return fetch('http://localhost:7777/boards', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.status);
+  }
 }
 
 export default Remote;

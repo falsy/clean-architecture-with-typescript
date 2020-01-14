@@ -13,6 +13,10 @@ class BoardRepository implements BoardRepositoryImpl {
     return this.infrastructure.getBoard();
   }
 
+  insertBoard(author: string, content: string) {
+    return this.infrastructure.insertBoard(author, content);
+  };
+
 }
 
 export default BoardRepository;

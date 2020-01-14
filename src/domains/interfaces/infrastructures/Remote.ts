@@ -14,6 +14,7 @@ export interface BoardDTO {
 }
 
 export interface RemoteInfrastructureImpl {
-  login(LoginInfoVO: LoginInformation): Promise<TokenDTO>
-  getBoard(): Promise<BoardDTO>
+  login(LoginInfoVO: LoginInformation): Promise<TokenDTO>;
+  getBoard(): Promise<BoardDTO>;
+  insertBoard(author: string, content: string): Promise<number>;
 }
