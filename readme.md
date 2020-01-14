@@ -40,6 +40,8 @@ React, Redux를 사용한 클린 아키텍처의 구조에 대하여 생각해�
     /useCases
     /vo
   /frameworks
+    /di
+    /server
     /web
       /actions
       /components
@@ -53,7 +55,6 @@ React, Redux를 사용한 클린 아키텍처의 구조에 대하여 생각해�
       index.html
       index.tsx
       store.ts
-    /di
 index.ts
 ```
 
@@ -78,17 +79,23 @@ atoms / molecules / organisms / pages / templates
 * 클린 아키텍처의 마지막 레이어는 Framework, DB, Device, UI 등이 위치하며 이는 비즈니스 규칙과 무관하게 도구로서 사용되어야 합니다. 
 처음에는 'React'와 'Redux' 역시 분리하여, 가령 'Redux'를 'MobX'로 변경하더라도 기존 'Redux'의 역할을 대체하는 'MobX'의 역할만 작성해주면 
 'React'는 다른 수정 없이 동작할 수 있도록 하면 좋겠다 생각하였으나... 이 부분은 조금 더 생각해 봐야 할 것 같습니다.
-* DI(Dependency Injection)에서는 각각의 레이어의 의존성을 주입하고 최종적으로 Presenters와 Actions을 주입받은 Frameworks를 리턴합니다.
-
+* DI(Dependency Injection)에서는 각각의 레이어의 의존성을 주입하고 최종적으로 'Presenters'와 'Actions'을 주입받은 'Frameworks'를 리턴합니다.
+* 'Presenters'는 'Store'에 영향을 주지 않는 메서드이며, 'Actions'는 'Store'에 'Dispatch'하는 메서드 입니다.
+* 'Presenters'와 'Actions'는 아토믹 디자인에서 'organisms'까지만 주입되며, 'atoms'과 'molecules'는 'Presenters'와 'Actions'를 알지 못합니다.
 ## Communication flow
 (데모 코드 흐름 정리...)
+
 
 ## DEMO
 #### Install
 ```
 npm install
 ```
-#### Start
+#### Start server
+```
+npm run server
+```
+#### Start client
 ```
 npm start
 ```
