@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "server": "node ./src/frameworks/server/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,12 @@
     "typescript": "^3.6.2",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "@koa/cors": "^3.0.0",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",

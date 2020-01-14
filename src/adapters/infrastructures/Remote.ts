@@ -5,7 +5,6 @@ class Remote implements RemoteInfrastructureImpl {
 
   login(LoginInfoVO: LoginInformation): Promise<TokenDTO> {
     const { id, pw } = LoginInfoVO;
-    console.log(`login id: ${id} / pw: ${pw}`);
 
     return new Promise(resolve => {
       setTimeout(() => {
@@ -19,25 +18,9 @@ class Remote implements RemoteInfrastructureImpl {
   }
 
   getBoard(): Promise<BoardDTO> {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({
-          results: {
-            list: [{
-              id: 1,
-              author: 'falsy',
-              content: 'hello',
-              createAt: new Date().getTime()
-            }, {
-              id: 2,
-              author: 'falsy',
-              content: 'world',
-              createAt: new Date().getTime()
-            }]
-          }
-        });
-      }, 500);
-    })
+    return fetch('http://localhost:7777/boards', {
+      method: 'GET',
+    }).then(res => res.json());
   }
 }
 
