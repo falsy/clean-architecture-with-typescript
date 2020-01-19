@@ -1,12 +1,14 @@
 # Base code of React with Clean architecture
 'React'와 'Clean Architecture'로 구성된 코드 베이스 프로젝트
 
+## Use Packages
+* Webpack
+* React
+* Redux
+* Sass
+
 ## Clean architecture
 ![Alt Clean architecture](https://falsy.me/wp-content/uploads/2020/01/the-clean-architecture.jpg)
-
-## Version
-'react'의 경우 함수형 컴포넌트와 Hook을 사용합니다. (react v16.8 이상)  
-'react-redux' 역시 Hook을 사용합니다. (react-redux v7.1 이상)
 
 ## Directory Structure
 ```
@@ -55,11 +57,16 @@ index.ts
 ```
 npm install
 ```
-#### Start server
+#### Mock Server
 ```
 npm run server
 ```
-#### Start client
+#### Frontend
 ```
 npm start
+// or
+// npm run mock
 ```
+
+## Version
+v1.0.0
