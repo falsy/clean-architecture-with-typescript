@@ -1,4 +1,4 @@
-import { BoardDTO } from '../infrastructures/Remote';
+import { BoardDTO } from '../infrastructures/remote';
 
 export interface BoardPresenterImpl {
   getBoard(): Promise<BoardDTO>;
