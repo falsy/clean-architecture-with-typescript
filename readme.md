@@ -1,7 +1,7 @@
 # Base code of React with Clean architecture
-'React'와 'Clean Architecture'로 구성된 코드 베이스 프로젝트
+'React'와 'Clean Architecture'로 구성된 샘플 베이스 코드
 
-## Use Packages
+## Use Stack
 * Webpack
 * React
 * Redux
@@ -12,45 +12,41 @@
 
 ## Directory Structure
 ```
-/src
-  /adapters
-    /infrastructures
-    /presenters
-    /repositories
-  /domains
-    /entities
-    /interfaces
-      /entites
-      /frameworks
-      /infrastructures
-      /presenters
-      /repositories
-      /useCases
-      /vo
-    /useCases
-    /vo
-  /frameworks
-    /di
-    /server
-    /web
-      /actions
-      /components
-        /atoms
-        /molecules
-        /organisms
-        /pages
-        /router
-        /templates
-      /reducers
-      index.html
-      index.tsx
-      store.ts
-index.ts
+./src
+├─ adapters
+│  ├─ presenters
+│  ├─ repositories
+│  └─ infrastructures
+├─ domains
+│  ├─ entities
+│  ├─ vo
+│  ├─ useCases
+│  └─ interfaces
+│     ├─ entites
+│     ├─ frameworks
+│     ├─ infrastructures
+│     ├─ presenters
+│     ├─ repositories
+│     ├─useCases
+│     └─ vo
+└─ frameworks
+   ├─ di
+   ├─ server
+   └─ web
+      ├─ actions
+      ├─ reducers
+      ├─ store
+      └─ components
+         ├─ atoms
+         ├─ molecules
+         ├─ organisms
+         ├─ templates
+         └─ pages
 ```
 
-* 가장 밖은 '클린 아키텍처'의 레이어를 기준으로 나누어져 있습니다.  [frameworks / adapters / domain(useCaes / entities)]
-* 'component` 디렉토리는 'Flux 아키텍처'의 레이어를 기준으로 나누어져 있습니다.  [actios / reducers / store / components]
-* 'React'의 컴포넌트는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다.  [atoms / molecules / organisms / templates / pages]
+* 가장 밖은 '클린 아키텍처'의 레이어를 기준으로 나누어져 있습니다.  [frameworks / adapters / domains(useCaes / entities)]
+* 'web' 디렉토리는 'Flux 아키텍처'의 레이어를 기준으로 나누어져 있습니다.  [actios / reducers / store / components]
+* 'components' 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다.  [atoms / molecules / organisms / templates / pages]
 
 ## DEMO
 #### Install

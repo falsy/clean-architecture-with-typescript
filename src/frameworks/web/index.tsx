@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import Presenters from '../../domains/interfaces/presenters';
 import Actions from '../../domains/interfaces/frameworks';
 import store from './store';
-import Router from "./components/router";
+import Router from "./components/pages/router";
 import './style.scss';
 
 
