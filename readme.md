@@ -3,6 +3,7 @@
 
 ## Use Stack
 * Webpack
+* Typescript
 * React
 * Redux
 * Sass
