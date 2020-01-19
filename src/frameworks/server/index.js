@@ -45,6 +45,19 @@ const run = async () => {
     ctx.status = 204;
   });
 
+  router.post('/login', ctx => {
+    const { id, pw } = ctx.request.body;
+    if(!id || !pw) {
+      ctx.status = 400;
+      return;
+    }
+    ctx.body = {
+      results: {
+        token: 'token...'
+      }
+    };
+  });
+
   app.use(router.routes());
 
   const port = 7777;

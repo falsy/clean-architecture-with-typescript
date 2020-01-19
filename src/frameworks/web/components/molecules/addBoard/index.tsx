@@ -1,7 +1,7 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useState } from 'react';
-import LongBtn from '../../atoms/LongBtn';
+import LongBtn from '../../atoms/longBtn';
 import Input from '../../atoms/input';
 import * as styles from './index.scss';
 

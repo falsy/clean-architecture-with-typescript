@@ -1,31 +1,37 @@
-import { TokenDTO, BoardDTO, RemoteInfrastructureImpl } from "../../domains/interfaces/infrastructures/Remote";
+import { TokenDTO, BoardDTO, RemoteInfrastructureImpl } from "../../domains/interfaces/infrastructures/remote";
 import { LoginInformation } from '../../domains/interfaces/vo/session';
 
 class Remote implements RemoteInfrastructureImpl {
 
+  readonly apiOrigin: string;
+
+  constructor() {
+    this.apiOrigin = process.env.API_ORIGIN;
+  }
+
   login(LoginInfoVO: LoginInformation): Promise<TokenDTO> {
     const { id, pw } = LoginInfoVO;
 
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({
-          results: {
-            token: 'user token ...'
-          }
-        });
-      }, 500);
-    });
+    return fetch(`${this.apiOrigin}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id, pw
+      })
+    }).then(res => res.json());
   }
 
   getBoard(): Promise<BoardDTO> {
-    return fetch('http://localhost:7777/boards', {
+    return fetch(`${this.apiOrigin}/boards`, {
       method: 'GET',
     }).then(res => res.json());
   }
 
   insertBoard(author: string, content: string): Promise<number> {
-    return fetch('http://localhost:7777/boards', {
-      method: 'post',
+    return fetch(`${this.apiOrigin}/boards`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
