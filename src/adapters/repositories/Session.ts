@@ -1,6 +1,6 @@
 import { SessionRepositoryImpl } from '../../domains/interfaces/repositories/session';
 import { RemoteInfrastructureImpl } from '../../domains/interfaces/infrastructures/remote';
-import { LoginInformation } from '../../domains/interfaces/vo/session';
+import { LoginInformation } from '../../domains/interfaces/vos/session';
 
 class SessionRepository implements SessionRepositoryImpl {
 

@@ -1,4 +1,4 @@
-import { LoginInformation } from '../interfaces/vo/session';
+import { LoginInformation } from '../interfaces/vos/session';
 
 export default class LoginInfo {
   readonly id: string;

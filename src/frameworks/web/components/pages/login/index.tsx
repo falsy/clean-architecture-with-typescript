@@ -1,24 +1,19 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import Presenters from '../../../../../domains/interfaces/presenters';
-import Actions from '../../../../../domains/interfaces/frameworks';
+import { setToken } from '../../../redux/session';
+import SessionPresenter from '../../../../../adapters/presenters/Session';
 import Authorization from '../../templates/authorization';
 import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
-interface Props {
-  presenters: Presenters;
-  actions: Actions;
-}
-
-const Login: React.FC<Props> = (props) => {
-  const { presenters, actions } = props;
+const Login: React.FC = () => {
   const dispatch = useDispatch();
 
-  const handleClickAccreditation = (id: string, pw: string) => {
-    dispatch(actions.session.login(id, pw));
+  const handleClickAccreditation = async (id: string, pw: string) => {
+    const { results } = await SessionPresenter.login(id, pw);
+    dispatch(setToken(results.token));
   };
 
   return (

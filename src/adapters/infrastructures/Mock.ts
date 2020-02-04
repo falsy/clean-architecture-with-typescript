@@ -1,5 +1,5 @@
 import { TokenDTO, BoardDTO, MockInfrastructureImpl } from "../../domains/interfaces/infrastructures/Mock";
-import { LoginInformation } from '../../domains/interfaces/vo/session';
+import { LoginInformation } from '../../domains/interfaces/vos/session';
 
 class MockRemote implements MockInfrastructureImpl {
 

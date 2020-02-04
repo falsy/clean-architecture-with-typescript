@@ -1,32 +1,20 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { createStore, combineReducers } from 'redux';
+import reducers from './redux';
 import { Provider } from 'react-redux';
-import Presenters from '../../domains/interfaces/presenters';
-import Actions from '../../domains/interfaces/frameworks';
-import store from './store';
 import Router from "./components/pages/router";
 import './style.scss';
 
 
-class App {
+const store = createStore(combineReducers({ ...reducers }));
 
-  readonly presenters: Presenters;
-  readonly actions: Actions;
-
-  constructor(presenters: Presenters, actions: Actions) {
-    this.presenters = presenters;
-    this.actions = actions
-  }
-
-  render() {
-    return ReactDOM.render(
-      <Provider store={store}>
-        <Router presenters={this.presenters} actions={this.actions} />
-      </Provider>,
-      document.getElementById("app")
-    )
-  }
-
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Router />
+    </Provider>
+  )
 }
 
-export default App;
+ReactDOM.render(<App />, document.getElementById("app"));

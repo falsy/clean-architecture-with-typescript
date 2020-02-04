@@ -1,17 +1,10 @@
-import { SessionPresenterImpl } from '../../domains/interfaces/presenters/session';
-import { SessionUseCaseImpl } from '../../domains/interfaces/useCases/session';
+import useCase from '../../domains/di';
 import LoginInfoVO from '../../domains/vo/LoginInfo';
 
-class SessionPresenter implements SessionPresenterImpl {
+class SessionPresenter {
 
-  readonly useCase: SessionUseCaseImpl;
-
-  constructor(sessionUseCase: SessionUseCaseImpl) {
-    this.useCase = sessionUseCase;
-  }
-
-  login(id: string, pw: string) {
-    return this.useCase.login(new LoginInfoVO({ id, pw }));
+  public static login(id: string, pw: string) {
+    return useCase.session.login(new LoginInfoVO({ id, pw }));
   }
 
 }

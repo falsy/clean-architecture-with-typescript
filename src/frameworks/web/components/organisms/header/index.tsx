@@ -1,24 +1,18 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import Presenters from '../../../../../domains/interfaces/presenters';
-import Actions from '../../../../../domains/interfaces/frameworks';
+import { setToken } from '../../../redux/session';
 import ShortBtn from '../../atoms/shortBtn';
 import * as styles from './index.scss';
 
+
 const cx = className.bind(styles);
 
-interface Props {
-  presenters: Presenters;
-  actions: Actions;
-}
-
-const Header: React.FC<Props> = (props) => {
-  const { presenters, actions } = props;
+const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleClickLogout = () => {
-    dispatch(actions.session.logout());
+    dispatch(setToken(''));
   };
 
   return (
