@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { BoardData } from '../../../domains/interfaces/entities/board';
+import { BoardData } from '@domains/interfaces/entities/board';
 
 // Constants
 const GET_BOARD = 'GET_BOARD';

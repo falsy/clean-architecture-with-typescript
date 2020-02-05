@@ -1,6 +1,6 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { BoardData } from '../../../../../domains/interfaces/entities/board';
+import { BoardData } from '@domains/interfaces/entities/board';
 import BoardItem from '../../atoms/boardItem';
 import * as styles from './index.scss';
 

@@ -17,6 +17,11 @@ module.exports = {
     }
   },
   moduleNameMapper: { 
-    "^.+\\.(scss|css|svg|png|sass)$": "identity-obj-proxy"
+    "^.+\\.(scss|css|svg|png|sass)$": "identity-obj-proxy",
+    "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
+    "^@domains/(.*)$": "<rootDir>/src/domains/$1",
+    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
+    "^@presenters/(.*)$": "<rootDir>/src/presenters/$1",
+    "^@redux/(.*)$": "<rootDir>/src/redux/$1"
   }
 };
