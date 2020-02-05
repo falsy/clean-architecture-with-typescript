@@ -1,5 +1,5 @@
-import useCase from '../../domains/di';
-import LoginInfoVO from '../../domains/vos/LoginInfo';
+import useCase from '@domains/di';
+import LoginInfoVO from '@domains/vos/LoginInfo';
 
 class SessionPresenter {
 

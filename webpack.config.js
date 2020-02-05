@@ -30,7 +30,14 @@ module.exports = (env, options) => {
       ]
     },
     resolve: {
-      extensions: [".tsx", ".ts", ".js"]
+      extensions: [".tsx", ".ts", ".js"],
+      alias: { 
+        "@adapters": path.resolve(__dirname, "src/adapters/"),
+        "@domains": path.resolve(__dirname, "src/domains/"),
+        "@frameworks": path.resolve(__dirname, "src/frameworks/"),
+        "@presenters": path.resolve(__dirname, "src/adapters/presenters/"),
+        "@redux": path.resolve(__dirname, "src/frameworks/web/redux/") 
+      }
     },
     output: {
       filename: "bundle.js",

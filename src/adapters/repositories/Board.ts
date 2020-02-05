@@ -1,5 +1,5 @@
-import { BoardRepositoryImpl } from '../../domains/interfaces/repositories/board';
-import { RemoteInfrastructureImpl } from '../../domains/interfaces/infrastructures/remote';
+import { BoardRepositoryImpl } from '@domains/interfaces/repositories/board';
+import { RemoteInfrastructureImpl } from '@domains/interfaces/infrastructures/remote';
 
 class BoardRepository implements BoardRepositoryImpl {
 
