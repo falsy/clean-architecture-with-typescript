@@ -19,24 +19,19 @@
 │  ├─ repositories
 │  └─ infrastructures
 ├─ domains
+│  ├─ di
 │  ├─ entities
-│  ├─ vo
+│  ├─ vos
 │  ├─ useCases
 │  └─ interfaces
 │     ├─ entites
-│     ├─ frameworks
 │     ├─ infrastructures
-│     ├─ presenters
 │     ├─ repositories
-│     ├─useCases
-│     └─ vo
+│     ├─ useCases
+│     └─ vos
 └─ frameworks
-   ├─ di
-   ├─ server
    └─ web
-      ├─ actions
-      ├─ reducers
-      ├─ store
+      ├─ redux
       └─ components
          ├─ atoms
          ├─ molecules
@@ -45,8 +40,7 @@
          └─ pages
 ```
 
-* 가장 밖은 '클린 아키텍처'의 레이어를 기준으로 나누어져 있습니다.  [frameworks / adapters / domains(useCaes / entities)]
-* 'web' 디렉토리는 'Flux 아키텍처'의 레이어를 기준으로 나누어져 있습니다.  [actios / reducers / store / components]
+* '클린 아키텍처'의 레이어를 기준으로 구성 되어 있습니다.  [frameworks / adapters / domains(useCaes / entities)]
 * 'components' 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다.  [atoms / molecules / organisms / templates / pages]
 
 ## DEMO
@@ -54,11 +48,7 @@
 ```
 npm install
 ```
-#### Mock Server
-```
-npm run server
-```
-#### Frontend
+#### Start
 ```
 npm start
 // or
@@ -66,4 +56,4 @@ npm start
 ```
 
 ## Version
-v1.0.0
+v1.1.0

@@ -1,6 +1,6 @@
 import { SessionUseCaseImpl } from '../interfaces/useCases/session';
 import { SessionRepositoryImpl } from '../interfaces/repositories/session';
-import { LoginInformation } from '../interfaces/vo/session';
+import { LoginInformation } from '../interfaces/vos/session';
 
 class SessionUseCase implements SessionUseCaseImpl {
 

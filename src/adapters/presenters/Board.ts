@@ -1,20 +1,13 @@
-import { BoardPresenterImpl } from '../../domains/interfaces/presenters/board';
-import { BoardUseCaseImpl } from '../../domains/interfaces/useCases/board';
+import useCase from '../../domains/di';
 
-class BoardPresenter implements BoardPresenterImpl {
+class BoardPresenter {
 
-  readonly useCase: BoardUseCaseImpl;
-
-  constructor(sessionUseCase: BoardUseCaseImpl) {
-    this.useCase = sessionUseCase;
+  public static getBoard() {
+    return useCase.board.getBoard();
   }
 
-  getBoard() {
-    return this.useCase.getBoard();
-  }
-
-  insertBoard(author: string, content: string) {
-    return this.useCase.insertBoard(author, content);
+  public static insertBoard(author: string, content: string) {
+    return useCase.board.insertBoard(author, content);
   };
 
 }

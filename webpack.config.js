@@ -11,7 +11,7 @@ module.exports = (env, options) => {
   });
 
   return {
-    entry: "./index.ts",
+    entry: "./src/frameworks/web/index.tsx",
     module: {
       rules: [
         {
@@ -36,6 +36,54 @@ module.exports = (env, options) => {
     output: {
       filename: "bundle.js",
       path: path.resolve(__dirname, "dist")
+    },
+    devServer: {
+      historyApiFallback: true,
+      setup(app) {
+        var bodyParser = require('body-parser');    
+        app.use(bodyParser.json());
+
+        let autoInc = 3;
+        const boards = [{
+          id: 1,
+          author: 'falsy',
+          content: 'hello',
+          createAt: new Date().getTime()
+        }, {
+          id: 2,
+          author: 'falsy',
+          content: 'world',
+          createAt: new Date().getTime()
+        }];
+
+        app.get('/boards', (req, res) => {
+          res.json({
+            results: {
+              list: boards
+            }
+          });
+        });
+
+        app.post('/boards', bodyParser.json(), (req, res) => {
+          const { author, content } = req.body;
+          boards.push({
+            id: autoInc,
+            author,
+            content,
+            createAt: new Date().getTime()
+          });
+          autoInc += 1;
+          res.send(true);
+        });
+      
+        app.post('/login', (req, res) => {
+          res.json({
+            results: {
+              token: 'token...'
+            }
+          });
+        });
+      }
     },
     plugins: [
       new HTMLWeebPackPlugin({

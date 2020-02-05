@@ -1,7 +1,7 @@
 import { MockInfrastructureImpl } from './mock';
 import { RemoteInfrastructureImpl } from './remote';
 
-export default interface Presenters {
+export default interface Infrastructures {
   mock: MockInfrastructureImpl,
   remote: RemoteInfrastructureImpl
 }
