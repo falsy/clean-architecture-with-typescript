@@ -25,18 +25,38 @@ module.exports = (env, options) => {
             }
           }, 'sass-loader']
         },
-        { test: /\.tsx?$/, loader: "babel-loader" },
         { test: /\.tsx?$/, loader: "ts-loader" },
         { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
       ]
     },
     resolve: {
-      extensions: [".tsx", ".ts", ".js"]
+      extensions: [".tsx", ".ts", ".js"],
+      alias: { 
+        "@adapters": path.resolve(__dirname, "src/adapters/"),
+        "@domains": path.resolve(__dirname, "src/domains/"),
+        "@frameworks": path.resolve(__dirname, "src/frameworks/"),
+        "@presenters": path.resolve(__dirname, "src/adapters/presenters/"),
+        "@redux": path.resolve(__dirname, "src/frameworks/web/redux/") 
+      }
     },
     output: {
       filename: "bundle.js",
       path: path.resolve(__dirname, "dist")
     },
+    plugins: [
+      new HTMLWeebPackPlugin({
+        template: "./src/frameworks/web/index.html",
+        filename: "./index.html"
+      }),
+      new MiniCssExtractPlugin({
+        filename: `style.css`
+      }),
+      new webpack.DefinePlugin({
+        'process.env.STAGE': JSON.stringify(process.env.STAGE),
+        'process.env.API_ORIGIN': JSON.stringify(process.env.API_ORIGIN)
+      }),
+      new webpack.EnvironmentPlugin(['STAGE', 'API_ORIGIN'])
+    ],
     devServer: {
       historyApiFallback: true,
       setup(app) {
@@ -84,20 +104,6 @@ module.exports = (env, options) => {
           });
         });
       }
-    },
-    plugins: [
-      new HTMLWeebPackPlugin({
-        template: "./src/frameworks/web/index.html",
-        filename: "./index.html"
-      }),
-      new MiniCssExtractPlugin({
-        filename: `style.css`
-      }),
-      new webpack.DefinePlugin({
-        'process.env.STAGE': JSON.stringify(process.env.STAGE),
-        'process.env.API_ORIGIN': JSON.stringify(process.env.API_ORIGIN)
-      }),
-      new webpack.EnvironmentPlugin(['STAGE', 'API_ORIGIN'])
-    ]
+    }
   }
 };

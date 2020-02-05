@@ -1,5 +1,5 @@
-import { TokenDTO, BoardDTO, RemoteInfrastructureImpl } from "../../domains/interfaces/infrastructures/remote";
-import { LoginInformation } from '../../domains/interfaces/vos/session';
+import { TokenDTO, BoardDTO, RemoteInfrastructureImpl } from "@domains/interfaces/infrastructures/remote";
+import { LoginInformation } from '@domains/interfaces/vos/session';
 
 class Remote implements RemoteInfrastructureImpl {
 

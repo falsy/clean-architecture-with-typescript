@@ -1,4 +1,4 @@
-import useCase from '../../domains/di';
+import useCase from '@domains/di';
 
 class BoardPresenter {
 
