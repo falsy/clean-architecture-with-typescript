@@ -1,5 +1,5 @@
 import { BoardData } from '../entities/board';
-import { LoginInformation } from '../vos/session';
+import { ILoginInfo } from '../vos/session';
 
 export interface TokenDTO {
   results: {
@@ -13,8 +13,8 @@ export interface BoardDTO {
   }
 }
 
-export interface RemoteInfrastructureImpl {
-  login(LoginInfoVO: LoginInformation): Promise<TokenDTO>;
+export interface IHttpRequest {
+  login(LoginInfoVO: ILoginInfo): Promise<TokenDTO>;
   getBoard(): Promise<BoardDTO>;
   insertBoard(author: string, content: string): Promise<number>;
 }

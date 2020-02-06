@@ -1,9 +1,7 @@
-import Mock from './Mock';
-import Remote from './Remote';
+import HttpRequest from './HttpRequest';
 
 export default () => {
   return {
-    mock: new Mock(),
-    remote: new Remote()
+    httpRequest: new HttpRequest()
   };
 };

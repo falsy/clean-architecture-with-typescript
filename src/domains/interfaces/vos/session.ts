@@ -1,4 +1,4 @@
-export interface LoginInformation {
+export interface ILoginInfo {
   id: string;
   pw: string;
 }
