@@ -1,7 +1,7 @@
-import { ISessionRepository } from '@interfaces/repositories/session';
-import IInfrastructure from '@interfaces/infrastructures';
-import { ILoginInfo } from '@interfaces/vos/session';
-import { TokenDTO } from '@interfaces/infrastructures/httpRequest';
+import { ISessionRepository } from '@domains/interfaces/repositories/session';
+import IInfrastructure from '@domains/interfaces/infrastructures';
+import { ILoginInfo } from '@domains/interfaces/vos/session';
+import { TokenDTO } from '@domains/interfaces/infrastructures/httpRequest';
 
 class SessionRepository implements ISessionRepository {
 

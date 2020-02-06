@@ -1,6 +1,6 @@
-import { IBoardRepository } from '@interfaces/repositories/board';
-import { BoardDTO } from "@interfaces/infrastructures/httpRequest";
-import IInfrastructures from '@interfaces/infrastructures';
+import { IBoardRepository } from '@domains/interfaces/repositories/board';
+import { BoardDTO } from "@domains/interfaces/infrastructures/httpRequest";
+import IInfrastructures from '@domains/interfaces/infrastructures';
 
 class BoardRepository implements IBoardRepository {
 
