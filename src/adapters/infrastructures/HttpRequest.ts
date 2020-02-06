@@ -1,5 +1,5 @@
-import { TokenDTO, BoardDTO, IHttpRequest } from "@domains/interfaces/infrastructures/httpRequest";
-import { ILoginInfo } from '@domains/interfaces/vos/session';
+import { TokenDTO, BoardDTO, IHttpRequest } from "@interfaces/infrastructures/httpRequest";
+import { ILoginInfo } from '@interfaces/vos/session';
 
 class HttpRequest implements IHttpRequest {
 

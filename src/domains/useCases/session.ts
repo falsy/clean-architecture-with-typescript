@@ -1,6 +1,6 @@
-import { ISessionUseCase } from '../interfaces/useCases/session';
-import { ISessionRepository } from '../interfaces/repositories/session';
-import { ILoginInfo } from '../interfaces/vos/session';
+import { ISessionUseCase } from '@interfaces/useCases/session';
+import { ISessionRepository } from '@interfaces/repositories/session';
+import { ILoginInfo } from '@interfaces/vos/session';
 
 class SessionUseCase implements ISessionUseCase {
 

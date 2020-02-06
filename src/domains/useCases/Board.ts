@@ -1,5 +1,5 @@
-import { IBoardUseCase } from '../interfaces/useCases/board';
-import { IBoardRepository } from '../interfaces/repositories/board';
+import { IBoardUseCase } from '@interfaces/useCases/board';
+import { IBoardRepository } from '@interfaces/repositories/board';
 
 class BaordUseCase implements IBoardUseCase {
 

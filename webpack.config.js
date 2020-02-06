@@ -35,6 +35,7 @@ module.exports = (env, options) => {
         "@adapters": path.resolve(__dirname, "src/adapters/"),
         "@domains": path.resolve(__dirname, "src/domains/"),
         "@frameworks": path.resolve(__dirname, "src/frameworks/"),
+        "@interfaces": path.resolve(__dirname, "src/domains/interfaces/"),
         "@presenters": path.resolve(__dirname, "src/adapters/presenters/"),
         "@redux": path.resolve(__dirname, "src/frameworks/web/redux/") 
       }

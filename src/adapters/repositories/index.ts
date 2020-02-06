@@ -1,4 +1,4 @@
-import Infrastructures from '@domains/interfaces/infrastructures';
+import Infrastructures from '@interfaces/infrastructures';
 import SessionRepository from './Session';
 import BoardRepository from './Board';
 
