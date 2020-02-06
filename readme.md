@@ -66,7 +66,6 @@
     "@adapters/*": ["src/adapters/*"],
     "@domains/*": ["src/domains/*"],
     "@frameworks/*": ["src/frameworks/*"],
-    "@interfaces/*": ["src/domains/interfaces/*"],
     "@presenters/*": ["src/adapters/presenters/*"],
     "@redux/*": ["src/frameworks/web/redux/*"]
   }
@@ -83,7 +82,6 @@
       "@adapters": path.resolve(__dirname, "src/adapters/"),
       "@domains": path.resolve(__dirname, "src/domains/"),
       "@frameworks": path.resolve(__dirname, "src/frameworks/"),
-      "@interfaces": path.resolve(__dirname, "src/domains/interfaces/"),
       "@presenters": path.resolve(__dirname, "src/adapters/presenters/"),
       "@redux": path.resolve(__dirname, "src/frameworks/web/redux/") 
     }
@@ -100,7 +98,6 @@
     "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
     "^@domains/(.*)$": "<rootDir>/src/domains/$1",
     "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
-    "^@interfaces/(.*)$": "<rootDir>/src/domains/interfaces/$1",
     "^@presenters/(.*)$": "<rootDir>/src/presenters/$1",
     "^@redux/(.*)$": "<rootDir>/src/redux/$1"
   }
