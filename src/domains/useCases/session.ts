@@ -1,16 +1,16 @@
-import { SessionUseCaseImpl } from '../interfaces/useCases/session';
-import { SessionRepositoryImpl } from '../interfaces/repositories/session';
-import { LoginInformation } from '../interfaces/vos/session';
+import { ISessionUseCase } from '@interfaces/useCases/session';
+import { ISessionRepository } from '@interfaces/repositories/session';
+import { ILoginInfo } from '@interfaces/vos/session';
 
-class SessionUseCase implements SessionUseCaseImpl {
+class SessionUseCase implements ISessionUseCase {
 
-  readonly repository: SessionRepositoryImpl;
+  readonly repository: ISessionRepository;
 
-  constructor(sessionRepositories: SessionRepositoryImpl) {
+  constructor(sessionRepositories: ISessionRepository) {
     this.repository = sessionRepositories;
   }
 
-  login(LoginInfoVO: LoginInformation) {
+  login(LoginInfoVO: ILoginInfo) {
     return this.repository.login(LoginInfoVO);
   }
 

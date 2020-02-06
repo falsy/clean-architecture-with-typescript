@@ -1,7 +1,5 @@
-import { MockInfrastructureImpl } from './mock';
-import { RemoteInfrastructureImpl } from './remote';
+import { IHttpRequest } from './httpRequest';
 
-export default interface Infrastructures {
-  mock: MockInfrastructureImpl,
-  remote: RemoteInfrastructureImpl
+export default interface IInfrastructures {
+  httpRequest: IHttpRequest
 }

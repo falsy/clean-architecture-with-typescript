@@ -1,6 +1,6 @@
-import { BoardDTO } from '../infrastructures/remote';
+import { BoardDTO } from '../infrastructures/httpRequest';
 
-export interface BoardUseCaseImpl {
+export interface IBoardUseCase {
   getBoard(): Promise<BoardDTO>;
   insertBoard(author: string, content: string): Promise<number>;
 }
