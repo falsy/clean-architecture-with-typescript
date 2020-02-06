@@ -1,7 +1,7 @@
-import { TokenDTO, BoardDTO, RemoteInfrastructureImpl } from "@domains/interfaces/infrastructures/remote";
-import { LoginInformation } from '@domains/interfaces/vos/session';
+import { TokenDTO, BoardDTO, IHttpRequest } from "@domains/interfaces/infrastructures/httpRequest";
+import { ILoginInfo } from '@domains/interfaces/vos/session';
 
-class Remote implements RemoteInfrastructureImpl {
+class HttpRequest implements IHttpRequest {
 
   readonly apiOrigin: string;
 
@@ -9,7 +9,7 @@ class Remote implements RemoteInfrastructureImpl {
     this.apiOrigin = process.env.API_ORIGIN;
   }
 
-  login(LoginInfoVO: LoginInformation): Promise<TokenDTO> {
+  login(LoginInfoVO: ILoginInfo): Promise<TokenDTO> {
     const { id, pw } = LoginInfoVO;
 
     return fetch(`${this.apiOrigin}/login`, {
@@ -42,4 +42,4 @@ class Remote implements RemoteInfrastructureImpl {
   }
 }
 
-export default Remote;
+export default HttpRequest;

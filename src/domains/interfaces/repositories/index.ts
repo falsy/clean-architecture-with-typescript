@@ -1,7 +1,7 @@
-import { SessionRepositoryImpl } from './session';
-import { BoardRepositoryImpl } from './board';
+import { ISessionRepository } from './session';
+import { IBoardRepository } from './board';
 
 export default interface Repositories {
-  session: SessionRepositoryImpl;
-  board: BoardRepositoryImpl;
+  session: ISessionRepository;
+  board: IBoardRepository;
 }
