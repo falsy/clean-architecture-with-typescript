@@ -1,7 +1,7 @@
-import { ISessionUseCase } from './session';
-import { IBoardUseCase } from './board';
+import { SessionUseCaseImpl } from './session';
+import { BoardUseCaseImpl } from './board';
 
 export default interface UseCases {
-  session: ISessionUseCase;
-  board: IBoardUseCase;
+  session: SessionUseCaseImpl;
+  board: BoardUseCaseImpl;
 }

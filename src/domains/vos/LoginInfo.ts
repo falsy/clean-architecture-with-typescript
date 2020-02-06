@@ -1,10 +1,10 @@
-import { ILoginInfo } from '../interfaces/vos/session';
+import { LoginInformation } from '../interfaces/vos/session';
 
 export default class LoginInfo {
   readonly id: string;
   readonly pw: string;
 
-  constructor(param: ILoginInfo) {
+  constructor(param: LoginInformation) {
     this.id = param.id;
     this.pw = param.pw;
   }

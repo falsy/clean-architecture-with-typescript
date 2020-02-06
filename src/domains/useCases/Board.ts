@@ -1,11 +1,11 @@
-import { IBoardUseCase } from '../interfaces/useCases/board';
-import { IBoardRepository } from '../interfaces/repositories/board';
+import { BoardUseCaseImpl } from '../interfaces/useCases/board';
+import { BoardRepositoryImpl } from '../interfaces/repositories/board';
 
-class BaordUseCase implements IBoardUseCase {
+class BaordUseCase implements BoardUseCaseImpl {
 
-  readonly repository: IBoardRepository;
+  readonly repository: BoardRepositoryImpl;
 
-  constructor(sessionRepositories: IBoardRepository) {
+  constructor(sessionRepositories: BoardRepositoryImpl) {
     this.repository = sessionRepositories;
   }
 

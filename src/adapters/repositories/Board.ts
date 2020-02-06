@@ -1,51 +1,20 @@
-import { IBoardRepository } from '@domains/interfaces/repositories/board';
-import { BoardDTO } from "@domains/interfaces/infrastructures/httpRequest";
-import IInfrastructures from '@domains/interfaces/infrastructures';
+import { BoardRepositoryImpl } from '@domains/interfaces/repositories/board';
+import { RemoteInfrastructureImpl } from '@domains/interfaces/infrastructures/remote';
 
-class BoardRepository implements IBoardRepository {
+class BoardRepository implements BoardRepositoryImpl {
 
-  readonly infra: IInfrastructures;
-  readonly isMock: boolean;
+  readonly infrastructure: RemoteInfrastructureImpl;
 
-  constructor(infrastructure: IInfrastructures) {
-    this.infra = infrastructure;
-    this.isMock = process.env.STAGE === 'MOCK';
+  constructor(infrastructure: RemoteInfrastructureImpl) {
+    this.infrastructure = infrastructure;
   }
 
-  getBoard(): Promise<BoardDTO> {
-    if(this.isMock) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve({
-            results: {
-              list: [{
-                id: 1,
-                author: 'falsy',
-                content: 'hello',
-                createAt: new Date().getTime()
-              }, {
-                id: 2,
-                author: 'falsy',
-                content: 'world',
-                createAt: new Date().getTime()
-              }]
-            }
-          });
-        }, 500);
-      });
-    }
-    return this.infra.httpRequest.getBoard();
+  getBoard() {
+    return this.infrastructure.getBoard();
   }
 
-  insertBoard(author: string, content: string): Promise<number> {
-    if(this.isMock) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(200);
-        }, 500);
-      });
-    }
-    return this.infra.httpRequest.insertBoard(author, content);
+  insertBoard(author: string, content: string) {
+    return this.infrastructure.insertBoard(author, content);
   };
 
 }

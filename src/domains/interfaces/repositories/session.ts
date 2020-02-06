@@ -1,6 +1,6 @@
-import { ILoginInfo } from '../vos/session';
-import { TokenDTO } from "../infrastructures/httpRequest";
+import { LoginInformation } from '../vos/session';
+import { TokenDTO } from "../infrastructures/remote";
 
-export interface ISessionRepository {
-  login(LoginInfoVO: ILoginInfo): Promise<TokenDTO>;
+export interface SessionRepositoryImpl {
+  login(LoginInfoVO: LoginInformation): Promise<TokenDTO>;
 }
