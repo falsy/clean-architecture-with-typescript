@@ -1,4 +1,4 @@
-import { BoardData } from '../interfaces/entities/board';
+import { BoardData } from '@interfaces/entities/board';
 
 export default class Board {
   readonly id: number;
