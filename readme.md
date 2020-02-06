@@ -2,7 +2,8 @@
 'Clean Architecture'를 기반으로 하는 'React' 프로젝트의 베이스 코드
 
 ## Before the beginning
-아직 부족한 부분이 많습니다. 잘못되었거나 개선할 사항은 알려주시면 함께 반영하도록 하겠습니다. ☺️
+부족한 부분이나 개선사항은 Issue 또는 Pull Request 남겨주시면 함께 반영하도록 하겠습니다. ☺️ 
+
 
 ## Use Stack
 * Webpack
@@ -14,11 +15,14 @@
 * Jest
 * Enzyme
 
-## Clean architecture
+## Clean Architecture
 ![Alt Clean architecture](https://falsy.me/wp-content/uploads/2020/01/the-clean-architecture.jpg)
 
-## Communitaction flow
-...
+## Communitaction Flow
+준비중...
+
+## Development Flow
+준비중...
 
 ## Directory Structure
 ```
@@ -49,7 +53,7 @@
          └─ pages
 ```
 
-* '클린 아키텍처'의 레이어를 기준으로 구성 되어 있습니다.  [frameworks / adapters / domains(useCaes / entities)]
+* '클린 아키텍처'의 레이어를 기준으로 구성되어 있습니다.  [frameworks / adapters / domains(useCaes / entities)]
 * 'components' 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다.  [atoms / molecules / organisms / templates / pages]
 
 ## Alias
@@ -113,4 +117,4 @@ npm start
 ```
 
 ## Version
-v1.1.1
+v1.1.2
