@@ -1,4 +1,4 @@
-import Repositories from '@interfaces/repositories';
+import Repositories from '../interfaces/repositories';
 import Session from './Session';
 import Board from './Board';
 

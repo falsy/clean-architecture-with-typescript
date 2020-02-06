@@ -1,31 +1,17 @@
-import { ISessionRepository } from '@interfaces/repositories/session';
-import IInfrastructure from '@interfaces/infrastructures';
-import { ILoginInfo } from '@interfaces/vos/session';
-import { TokenDTO } from '@interfaces/infrastructures/httpRequest';
+import { SessionRepositoryImpl } from '@domains/interfaces/repositories/session';
+import { RemoteInfrastructureImpl } from '@domains/interfaces/infrastructures/remote';
+import { LoginInformation } from '@domains/interfaces/vos/session';
 
-class SessionRepository implements ISessionRepository {
+class SessionRepository implements SessionRepositoryImpl {
 
-  readonly infrastructure: IInfrastructure;
-  readonly isMock: boolean;
+  readonly infrastructure: RemoteInfrastructureImpl;
 
-  constructor(infrastructure: IInfrastructure) {
+  constructor(infrastructure: RemoteInfrastructureImpl) {
     this.infrastructure = infrastructure;
-    this.isMock = process.env.STAGE === 'MOCK';
   }
 
-  login(LoginInfoVO: ILoginInfo): Promise<TokenDTO> {
-    if(this.isMock) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve({
-            results: {
-              token: 'user token ...'
-            }
-          });
-        }, 500);
-      });
-    }
-    return this.infrastructure.httpRequest.login(LoginInfoVO);
+  login(LoginInfoVO: LoginInformation) {
+    return this.infrastructure.login(LoginInfoVO);
   }
 
 }
