@@ -1,5 +1,5 @@
 # Base code of React with Clean architecture
-'Clean Architecture'를 기반으로 하는 'React' 프로젝트의 베이스 코드
+'Clean Architecture'를 기반으로 하는 'React' 프로젝트 샘플 코드
 
 ## Before the beginning
 부족한 부분이나 개선사항은 Issue 또는 Pull Request 남겨주시면 함께 반영하도록 하겠습니다. ☺️ 
