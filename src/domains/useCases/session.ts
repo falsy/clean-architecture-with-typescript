@@ -14,6 +14,18 @@ class SessionUseCase implements ISessionUseCase {
     return this.repository.login(LoginInfoVO);
   }
 
+  getToken() {
+    return this.repository.getToken();
+  }
+
+  addToken(token: string) {
+    this.repository.addToken(token);
+  }
+
+  removeToken() {
+    this.repository.removeToken();
+  }
+
 }
 
 export default SessionUseCase;

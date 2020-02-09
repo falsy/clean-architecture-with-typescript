@@ -12,8 +12,9 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleClickAccreditation = async (id: string, pw: string) => {
-    const { results } = await SessionPresenter.login(id, pw);
-    dispatch(setToken(results.token));
+    const { results: { token } } = await SessionPresenter.login(id, pw);
+    SessionPresenter.addToken(token)
+    dispatch(setToken(token));
   };
 
   return (

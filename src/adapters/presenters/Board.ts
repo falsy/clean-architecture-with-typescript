@@ -1,15 +1,22 @@
+import IUseCases from '@interfaces/useCases';
 import useCase from '@domains/di';
 
 class BoardPresenter {
 
-  public static getBoard() {
-    return useCase.board.getBoard();
+  private useCases: IUseCases;
+
+  constructor() {
+    this.useCases = useCase;
   }
 
-  public static insertBoard(author: string, content: string) {
-    return useCase.board.insertBoard(author, content);
+  getBoard() {
+    return this.useCases.board.getBoard();
+  }
+
+  insertBoard(author: string, content: string) {
+    return this.useCases.board.insertBoard(author, content);
   };
 
 }
 
-export default BoardPresenter;
+export default new BoardPresenter();
