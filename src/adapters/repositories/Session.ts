@@ -28,6 +28,18 @@ class SessionRepository implements ISessionRepository {
     return this.infrastructure.httpRequest.login(LoginInfoVO);
   }
 
+  getToken() {
+    return this.infrastructure.webStorage.getToken();
+  }
+
+  addToken(token: string) {
+    this.infrastructure.webStorage.addToken(token);
+  }
+
+  removeToken() {
+    this.infrastructure.webStorage.removeToken();
+  }
+
 }
 
 export default SessionRepository;
