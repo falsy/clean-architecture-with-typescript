@@ -1,50 +1,51 @@
-import { useSelector } from "react-redux";
-import { BoardData } from '@interfaces/entities/board';
+import { useSelector, TypedUseSelectorHook } from "react-redux";
+import { IBoardData } from '@interfaces/entities/board';
+import { IBoardList, IBoardAction, IBoardStateGroup, IBoard } from '@interfaces/frameworks/board';
 
-// Constants
+
 const GET_BOARD = 'GET_BOARD';
 
-// Interfaces
-interface BoardList {
-  list: Array<BoardData>
-}
-interface BoardAction {
-  type: string;
-  payload: BoardList;
-}
-interface BoardStateGroup {
-  board: BoardList
-}
-type BoardActionTypes = BoardAction;
+class Board implements IBoard {
 
-// Actions
-export const setBoard = (list: Array<BoardData>) => {
-  return {
-    type: GET_BOARD,
-    payload: {
-      list
+  private initState: IBoardList;
+  private useSelector: TypedUseSelectorHook<IBoardStateGroup>;
+
+  constructor() {
+    this.initState = {
+      list: []
+    };
+    this.useSelector = useSelector;
+  }
+  
+  setBoard(list: Array<IBoardData>): IBoardAction {
+    return {
+      type: GET_BOARD,
+      payload: {
+        list
+      }
     }
   }
-};
-export const useBoardListSelector = () => {
-  return useSelector((state: BoardStateGroup) => state.board.list);
+
+  useBoardListSelector(): Array<IBoardData> {
+    return this.useSelector((state: IBoardStateGroup) => state.board.list);
+  }
+
+  reducer() {
+    const initState = this.initState;
+    return (state = initState, action: IBoardAction): IBoardList => {
+      switch (action.type) {
+        case GET_BOARD:
+          return {
+            list: action.payload.list
+          };
+        default:
+          return {
+            ...state
+          };
+      }
+    }
+  }
 }
 
 
-// Reducer
-const initState: BoardList = {
-  list: []
-};
-
-export default function session(state = initState, action: BoardActionTypes): BoardList {
-  switch (action.type) {
-    case GET_BOARD:
-      return {
-        list: action.payload.list
-      };
-    default:
-      return {
-        ...state
-      };
-  }
-};
+export default Board;

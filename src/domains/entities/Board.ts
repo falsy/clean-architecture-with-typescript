@@ -1,4 +1,4 @@
-import { BoardData } from '@interfaces/entities/board';
+import { IBoardData } from '@interfaces/entities/board';
 
 export default class Board {
   readonly id: number;
@@ -6,7 +6,7 @@ export default class Board {
   readonly content: string;
   readonly createAt: number;
 
-  constructor(param: BoardData) {
+  constructor(param: IBoardData) {
     this.id = param.id;
     this.author = param.author;
     this.content = param.content;

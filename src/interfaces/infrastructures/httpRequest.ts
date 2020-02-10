@@ -1,4 +1,4 @@
-import { BoardData } from '../entities/board';
+import { IBoardData } from '../entities/board';
 import { ILoginInfo } from '../vos/session';
 
 export interface TokenDTO {
@@ -9,7 +9,7 @@ export interface TokenDTO {
 
 export interface BoardDTO {
   results: {
-    list: Array<BoardData>
+    list: Array<IBoardData>
   }
 }
 

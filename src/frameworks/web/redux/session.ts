@@ -1,48 +1,50 @@
-import { useSelector } from "react-redux";
+import { useSelector, TypedUseSelectorHook } from "react-redux";
+import { ISessionStateGroup, ILoginAction, IToken } from '@interfaces/frameworks/session';
 
-// Constants
+
 const LOGIN = 'LOGIN';
 
-// Interfaces
-interface Token {
-  token: string
-}
-interface LoginAction {
-  type: string;
-  payload: Token;
-}
-interface SessionStateGroup {
-  session: Token
-}
-type SessionActionTypes = LoginAction;
+class Session {
 
-// Actions
-export const setToken = (token: string) => {
-  return {
-    type: LOGIN,
-    payload: {
-      token
+  private initState: IToken;
+  private useSelector: TypedUseSelectorHook<ISessionStateGroup>;
+
+  constructor() {
+    this.initState = {
+      token: ''
+    };
+    this.useSelector = useSelector;
+  }
+
+  setToken(token: string): ILoginAction {
+    return {
+      type: LOGIN,
+      payload: {
+        token
+      }
+    }
+  };
+
+  useTokenSelector(): string {
+    return this.useSelector((state: ISessionStateGroup) => state.session.token);
+  }
+
+  reducer() {
+    const initState = this.initState;
+    return (state = initState, action: ILoginAction): IToken => {
+      switch (action.type) {
+        case LOGIN:
+          return {
+            token: action.payload.token
+          };
+        default:
+          return {
+            ...state
+          };
+      }
     }
   }
-};
-export const useTokenSelector = () => {
-  return useSelector((state: SessionStateGroup) => state.session.token);
 }
 
-// Reducer
-const initState: Token = {
-  token: ''
-};
 
-export default function session(state = initState, action: SessionActionTypes): Token {
-  switch (action.type) {
-    case LOGIN:
-      return {
-        token: action.payload.token
-      };
-    default:
-      return {
-        ...state
-      };
-  }
-}
+export default Session;
