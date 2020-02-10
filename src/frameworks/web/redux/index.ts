@@ -1,7 +1,8 @@
-import session from './session';
-import board from './board';
+import Session from './session';
+import Board from './board';
+
 
 export default {
-  session,
-  board
+  session: new Session(),
+  board: new Board()
 };

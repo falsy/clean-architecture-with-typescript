@@ -12,9 +12,8 @@
       "@adapters/*": ["src/adapters/*"],
       "@domains/*": ["src/domains/*"],
       "@frameworks/*": ["src/frameworks/*"],
-      "@interfaces/*": ["src/domains/interfaces/*"],
-      "@presenters/*": ["src/adapters/presenters/*"],
-      "@redux/*": ["src/frameworks/web/redux/*"]
+      "@interfaces/*": ["src/interfaces/*"],
+      "@presenters/*": ["src/adapters/presenters/*"]
     }
   },
   "include": [

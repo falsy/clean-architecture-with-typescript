@@ -3,8 +3,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import SessionPresenter from '@presenters/Session';
-import { setToken, useTokenSelector } from '@redux/session';
+import Presenters from '@presenters/di';
 import Login from '../login';
 import Home from '../home';
 import * as styles from './index.scss';
@@ -14,12 +13,12 @@ const cx = className.bind(styles);
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
-  const token = useTokenSelector();
+  const token = Presenters.session.useTokenSelector();
 
   useEffect(() => {
-    const storageToken = SessionPresenter.getToken();
+    const storageToken = Presenters.session.getToken();
     if (storageToken) {
-      dispatch(setToken(storageToken));
+      dispatch(Presenters.session.addToken(storageToken));
     }
   }, [token]);
 
@@ -38,5 +37,6 @@ const Index: React.FC = () => {
     </div>
   );
 };
+
 
 export default Index;
