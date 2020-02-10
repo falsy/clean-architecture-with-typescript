@@ -1,5 +1,5 @@
 import IUseCases from '@interfaces/useCases';
-import useCase from '@domains/di';
+import useCase from '@domains/useCases/di';
 import LoginInfoVO from '@domains/vos/LoginInfo';
 
 class SessionPresenter {

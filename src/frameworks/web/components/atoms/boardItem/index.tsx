@@ -1,12 +1,12 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { BoardData } from '@domains/interfaces/entities/board';
+import { IBoardData } from '@interfaces/entities/board';
 import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
 interface Props {
-  board: BoardData
+  board: IBoardData
 }
 
 const BoardItem: React.FC<Props> = (props) => {

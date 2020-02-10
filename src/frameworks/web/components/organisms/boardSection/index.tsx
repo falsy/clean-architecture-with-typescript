@@ -2,8 +2,9 @@ import * as className from 'classnames/bind';
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import BoardPresenter from '@presenters/Board';
-import { setBoard, useBoardListSelector } from '@redux/board';
+// import BoardPresenter from '@presenters/Board';
+// import { setBoard, useBoardListSelector } from '../../../redux/board';
+import Presenters from '@presenters/di';
 import BoardList from '../../molecules/boardList';
 import AddBoard from '../../molecules/addBoard';
 import * as styles from './index.scss';
@@ -14,22 +15,25 @@ const cx = className.bind(styles);
 const BoardSection: React.FC = () => {
   const dispatch = useDispatch();
 
-  const list = useBoardListSelector();
+  // const list = useBoardListSelector();
+
+  const list = Presenters.board.useBoardListSelector();
 
   useEffect(() => {
     const asyncFnc = async () => {
-      const { results } = await BoardPresenter.getBoard();
-      dispatch(setBoard(results.list));
+      dispatch(await Presenters.board.getBoard());
+      // const { results } = await BoardPresenter.getBoard();
+      // dispatch(setBoard(results.list));
     };
     asyncFnc();
   }, []);
 
   const insertFnc = async (author: string, content: string) => {
-    const resStatus = await BoardPresenter.insertBoard(author, content);
-    if (resStatus === 200) {
-      const { results } = await BoardPresenter.getBoard();
-      dispatch(setBoard(results.list));
-    }
+    // const resStatus = await BoardPresenter.insertBoard(author, content);
+    // if (resStatus === 200) {
+      // const { results } = await BoardPresenter.getBoard();
+      // dispatch(setBoard(results.list));
+    // }
   };
 
   return (

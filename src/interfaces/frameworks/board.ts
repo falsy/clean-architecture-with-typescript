@@ -1,0 +1,24 @@
+import { IBoardData } from '@interfaces/entities/board';
+
+export interface IBoardList {
+  list: Array<IBoardData>
+}
+
+export interface IBoardAction {
+  type: string;
+  payload: IBoardList;
+}
+
+export interface IBoardStateGroup {
+  board: IBoardList
+}
+
+interface IReducer {
+  (state: IBoardList, action: IBoardAction): IBoardList
+}
+
+export interface IBoard {
+  setBoard(list: Array<IBoardData>): IBoardAction;
+  useBoardListSelector(): Array<IBoardData>;
+  reducer(): IReducer;
+}
