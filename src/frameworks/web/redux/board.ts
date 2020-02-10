@@ -16,7 +16,7 @@ class Board implements IBoard {
     this.useSelector = useSelector;
   }
   
-  setBoard(list: Array<IBoardData>) {
+  setBoard(list: Array<IBoardData>): IBoardAction {
     return {
       type: GET_BOARD,
       payload: {

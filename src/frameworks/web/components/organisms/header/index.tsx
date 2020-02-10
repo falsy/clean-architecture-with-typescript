@@ -1,8 +1,7 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import SessionPresenter from '@presenters/Session';
-import { setToken } from '../../../redux/session';
+import Presenters from '@presenters/di';
 import ShortBtn from '../../atoms/shortBtn';
 import * as styles from './index.scss';
 
@@ -13,8 +12,7 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleClickLogout = () => {
-    SessionPresenter.removeToken();
-    dispatch(setToken(''));
+    dispatch(Presenters.session.removeToken());
   };
 
   return (

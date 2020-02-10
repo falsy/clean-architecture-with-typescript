@@ -1,8 +1,7 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import { setToken } from '../../../redux/session';
-import SessionPresenter from '@presenters/Session';
+import Presenters from '@presenters/di';
 import Authorization from '../../templates/authorization';
 import * as styles from './index.scss';
 
@@ -12,9 +11,7 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleClickAccreditation = async (id: string, pw: string) => {
-    const { results: { token } } = await SessionPresenter.login(id, pw);
-    SessionPresenter.addToken(token)
-    dispatch(setToken(token));
+    dispatch(await Presenters.session.login(id, pw));
   };
 
   return (
