@@ -2,6 +2,7 @@ import IUseCases from '@interfaces/useCases';
 import useCase from '@domains/useCases/di';
 import IFrameworks from '@interfaces/frameworks';
 
+
 class BoardPresenter {
 
   private useCases: IUseCases;
@@ -30,5 +31,6 @@ class BoardPresenter {
   }
 
 }
+
 
 export default BoardPresenter;

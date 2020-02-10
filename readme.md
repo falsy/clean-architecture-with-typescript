@@ -1,9 +1,11 @@
 # Base code of React with Clean architecture
 'Clean Architecture'를 기반으로 하는 'React' 프로젝트 샘플 코드
 
+## Version
+v1.2.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+
 ## Before the beginning
 부족한 부분이나 개선사항은 Issue 또는 Pull Request 남겨주시면 함께 반영하도록 하겠습니다. ☺️ 
-
 
 ## Use Stack
 * Webpack
@@ -117,6 +119,3 @@ npm start
 // or
 // npm run mock
 ```
-
-## Version
-v1.1.3

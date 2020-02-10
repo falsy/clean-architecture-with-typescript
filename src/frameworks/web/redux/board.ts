@@ -2,6 +2,7 @@ import { useSelector, TypedUseSelectorHook } from "react-redux";
 import { IBoardData } from '@interfaces/entities/board';
 import { IBoardList, IBoardAction, IBoardStateGroup, IBoard } from '@interfaces/frameworks/board';
 
+
 const GET_BOARD = 'GET_BOARD';
 
 class Board implements IBoard {
@@ -45,5 +46,6 @@ class Board implements IBoard {
     }
   }
 }
+
 
 export default Board;

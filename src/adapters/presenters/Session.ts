@@ -3,6 +3,7 @@ import useCase from '@domains/useCases/di';
 import LoginInfoVO from '@domains/vos/LoginInfo';
 import IFrameworks from '@interfaces/frameworks';
 
+
 class SessionPresenter {
 
   private useCases: IUseCases;
@@ -42,5 +43,6 @@ class SessionPresenter {
   }
 
 }
+
 
 export default SessionPresenter;

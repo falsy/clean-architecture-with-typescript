@@ -5,6 +5,7 @@ import Presenters from '@presenters/di';
 import Authorization from '../../templates/authorization';
 import * as styles from './index.scss';
 
+
 const cx = className.bind(styles);
 
 const Login: React.FC = () => {
@@ -20,5 +21,6 @@ const Login: React.FC = () => {
     </div>
   );
 };
+
 
 export default Login;
