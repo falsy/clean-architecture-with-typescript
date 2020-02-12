@@ -1,5 +1,5 @@
-import Session from './session';
-import Board from './board';
+import Session from './Session';
+import Board from './Board';
 
 
 export default {
