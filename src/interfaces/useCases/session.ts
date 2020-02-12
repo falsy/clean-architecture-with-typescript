@@ -1,8 +1,8 @@
 import { ILoginInfo } from '../vos/session';
-import { TokenDTO } from "../infrastructures/httpRequest";
+import { ITokenDTO } from "../infrastructures/httpRequest";
 
 export interface ISessionUseCase {
-  login(loginInfo: ILoginInfo): Promise<TokenDTO>;
+  login(loginInfo: ILoginInfo): Promise<ITokenDTO>;
   getToken(): string;
   addToken(token: string): void;
   removeToken(): void;

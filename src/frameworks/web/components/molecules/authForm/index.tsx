@@ -7,12 +7,12 @@ import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
-interface Props {
+interface IProps {
   accredit(id: string, pw: string): void;
   btnValue: string;
 }
 
-const AuthForm: React.FC<Props> = (props) => {
+const AuthForm: React.FC<IProps> = (props) => {
 
   const { accredit, btnValue } = props;
   const [id, setId] = useState<string>('');

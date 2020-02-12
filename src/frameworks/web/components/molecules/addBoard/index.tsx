@@ -7,11 +7,11 @@ import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
-interface Props {
+interface IProps {
   insertFnc(author: string, content: string): void;
 }
 
-const BoardList: React.FC<Props> = (props) => {
+const BoardList: React.FC<IProps> = (props) => {
   const { insertFnc } = props;
   const [author, setAuthor] = useState('');
   const [content, setContent] = useState('');

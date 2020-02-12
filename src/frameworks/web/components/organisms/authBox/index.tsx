@@ -3,14 +3,15 @@ import * as React from "react";
 import * as styles from './index.scss';
 import AuthForm from '../../molecules/authForm';
 
+
 const cx = className.bind(styles);
 
-interface Props {
+interface IProps {
   accredit(id: string, pw: string): void;
   btnValue: string;
 }
 
-const AuthBox: React.FC<Props> = (props) => {
+const AuthBox: React.FC<IProps> = (props) => {
 
   const { accredit, btnValue } = props;
 

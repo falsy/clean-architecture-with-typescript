@@ -4,7 +4,7 @@ import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
-interface Props {
+interface IProps {
   type: string;
   name: string;
   placeholder: string;
@@ -12,7 +12,7 @@ interface Props {
   onKeyDown(event: React.KeyboardEvent): void;
 }
 
-const Input: React.FC<Props> = (props) => {
+const Input: React.FC<IProps> = (props) => {
   const { type, name, placeholder, onChange, onKeyDown } = props;
 
   return (

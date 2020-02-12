@@ -4,13 +4,13 @@ import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
-interface Props {
+interface IProps {
   type: "button" | "submit" | "reset";
   value: string;
   onClick(): void;
 }
 
-const ShortButton: React.FC<Props> = (props) => {
+const ShortButton: React.FC<IProps> = (props) => {
   const { type, value, onClick } = props;
 
   return (
