@@ -6,11 +6,11 @@ import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
-interface Props {
+interface IProps {
   list: Array<IBoardData>
 }
 
-const BoardList: React.FC<Props> = (props) => {
+const BoardList: React.FC<IProps> = (props) => {
   const { list } = props;
 
   return (
