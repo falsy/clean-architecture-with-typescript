@@ -1,6 +1,6 @@
 import IUseCases from '@interfaces/useCases';
 import useCase from '@domains/useCases/di';
-import LoginInfoVO from '@domains/vos/LoginInfo';
+import SessionVO from '@domains/vos/Session';
 import IFrameworks from '@interfaces/frameworks';
 
 
@@ -15,7 +15,7 @@ class SessionPresenter {
   }
 
   async login(id: string, pw: string) {
-    const { results: { token } } = await this.useCases.session.login(new LoginInfoVO({ id, pw }));
+    const { results: { token } } = await this.useCases.session.login(new SessionVO({ id, pw }));
     this.addToken(token);
     return this.actions.session.setToken(token);
   }

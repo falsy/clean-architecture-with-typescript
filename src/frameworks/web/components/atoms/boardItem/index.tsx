@@ -5,11 +5,11 @@ import * as styles from './index.scss';
 
 const cx = className.bind(styles);
 
-interface Props {
+interface IProps {
   board: IBoardData
 }
 
-const BoardItem: React.FC<Props> = (props) => {
+const BoardItem: React.FC<IProps> = (props) => {
   const { board: { id, author, content, createAt } } = props;
   const createDate = new Date(createAt);
 

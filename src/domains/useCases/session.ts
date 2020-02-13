@@ -1,6 +1,6 @@
 import { ISessionUseCase } from '@interfaces/useCases/session';
 import { ISessionRepository } from '@interfaces/repositories/session';
-import { ILoginInfo } from '@interfaces/vos/session';
+import { ISessionVO } from '@interfaces/vos/session';
 
 class SessionUseCase implements ISessionUseCase {
 
@@ -10,8 +10,8 @@ class SessionUseCase implements ISessionUseCase {
     this.repository = sessionRepositories;
   }
 
-  login(LoginInfoVO: ILoginInfo) {
-    return this.repository.login(LoginInfoVO);
+  login(SessionVO: ISessionVO) {
+    return this.repository.login(SessionVO);
   }
 
   getToken() {

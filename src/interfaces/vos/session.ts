@@ -1,4 +1,4 @@
-export interface ILoginInfo {
+export interface ISessionVO {
   id: string;
   pw: string;
 }

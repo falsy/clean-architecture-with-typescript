@@ -1,6 +1,6 @@
-import { BoardDTO } from '../infrastructures/httpRequest';
+import { IBoardDTO } from '../infrastructures/httpRequest';
 
 export interface IBoardRepository {
-  getBoard(): Promise<BoardDTO>;
+  getBoard(): Promise<IBoardDTO>;
   insertBoard(author: string, content: string): Promise<number>;
 }

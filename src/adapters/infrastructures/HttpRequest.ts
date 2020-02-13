@@ -1,5 +1,5 @@
-import { TokenDTO, BoardDTO, IHttpRequest } from "@interfaces/infrastructures/httpRequest";
-import { ILoginInfo } from '@interfaces/vos/session';
+import { ITokenDTO, IBoardDTO, IHttpRequest } from "@interfaces/infrastructures/httpRequest";
+import { ISessionVO } from '@interfaces/vos/session';
 
 class HttpRequest implements IHttpRequest {
 
@@ -9,8 +9,8 @@ class HttpRequest implements IHttpRequest {
     this.apiOrigin = process.env.API_ORIGIN;
   }
 
-  login(LoginInfoVO: ILoginInfo): Promise<TokenDTO> {
-    const { id, pw } = LoginInfoVO;
+  login(SessionVO: ISessionVO): Promise<ITokenDTO> {
+    const { id, pw } = SessionVO;
 
     return fetch(`${this.apiOrigin}/login`, {
       method: 'POST',
@@ -23,7 +23,7 @@ class HttpRequest implements IHttpRequest {
     }).then(res => res.json());
   }
 
-  getBoard(): Promise<BoardDTO> {
+  getBoard(): Promise<IBoardDTO> {
     return fetch(`${this.apiOrigin}/boards`, {
       method: 'GET',
     }).then(res => res.json());

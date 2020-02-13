@@ -1,7 +1,7 @@
 import { ISessionRepository } from '@interfaces/repositories/session';
 import IInfrastructure from '@interfaces/infrastructures';
-import { ILoginInfo } from '@interfaces/vos/session';
-import { TokenDTO } from '@interfaces/infrastructures/httpRequest';
+import { ISessionVO } from '@interfaces/vos/session';
+import { ITokenDTO } from '@interfaces/infrastructures/httpRequest';
 
 class SessionRepository implements ISessionRepository {
 
@@ -13,7 +13,7 @@ class SessionRepository implements ISessionRepository {
     this.isMock = process.env.STAGE === 'MOCK';
   }
 
-  login(LoginInfoVO: ILoginInfo): Promise<TokenDTO> {
+  login(SessionVO: ISessionVO): Promise<ITokenDTO> {
     if(this.isMock) {
       return new Promise(resolve => {
         setTimeout(() => {
@@ -25,7 +25,7 @@ class SessionRepository implements ISessionRepository {
         }, 500);
       });
     }
-    return this.infrastructure.httpRequest.login(LoginInfoVO);
+    return this.infrastructure.httpRequest.login(SessionVO);
   }
 
   getToken() {

@@ -1,5 +1,5 @@
 import { IBoardRepository } from '@interfaces/repositories/board';
-import { BoardDTO } from "@interfaces/infrastructures/httpRequest";
+import { IBoardDTO } from "@interfaces/infrastructures/httpRequest";
 import IInfrastructures from '@interfaces/infrastructures';
 
 class BoardRepository implements IBoardRepository {
@@ -12,7 +12,7 @@ class BoardRepository implements IBoardRepository {
     this.isMock = process.env.STAGE === 'MOCK';
   }
 
-  getBoard(): Promise<BoardDTO> {
+  getBoard(): Promise<IBoardDTO> {
     if(this.isMock) {
       return new Promise(resolve => {
         setTimeout(() => {
