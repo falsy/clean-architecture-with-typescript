@@ -1,5 +1,9 @@
 # Change log
 
+### v1.2.1
+* Uniform interface name convention
+* Add entity, value object, and usecase(session) test code
+
 ### v1.2.0*
 * Interfaces 디렉토리 위치 수정 `/src/interfaces`, (\+ Alias 수정)
 * DI 를 위한 Redux Actions, Reducers Class 구현 및 그에 따른 Store 수정
