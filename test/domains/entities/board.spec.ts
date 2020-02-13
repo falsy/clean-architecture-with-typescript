@@ -1,8 +1,8 @@
 import { IBoardData } from '@interfaces/entities/board';
 import Board from '@domains/entities/Board';
 
-describe('create vo', () => {
-  test('create field value object', () => {
+describe('create board', () => {
+  test('create board entity', () => {
     const id = 1;
     const author = 'author';
     const content = 'content';

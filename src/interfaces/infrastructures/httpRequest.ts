@@ -1,5 +1,5 @@
 import { IBoardData } from '../entities/board';
-import { ILoginInfo } from '../vos/session';
+import { ISessionVO } from '../vos/session';
 
 export interface ITokenDTO {
   results: {
@@ -14,7 +14,7 @@ export interface IBoardDTO {
 }
 
 export interface IHttpRequest {
-  login(LoginInfoVO: ILoginInfo): Promise<ITokenDTO>;
+  login(SessionVO: ISessionVO): Promise<ITokenDTO>;
   getBoard(): Promise<IBoardDTO>;
   insertBoard(author: string, content: string): Promise<number>;
 }

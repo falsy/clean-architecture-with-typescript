@@ -1,8 +1,8 @@
-import { ILoginInfo } from '../vos/session';
+import { ISessionVO } from '../vos/session';
 import { ITokenDTO } from "../infrastructures/httpRequest";
 
 export interface ISessionRepository {
-  login(LoginInfoVO: ILoginInfo): Promise<ITokenDTO>;
+  login(SessionVO: ISessionVO): Promise<ITokenDTO>;
   getToken(): string;
   addToken(token: string): void;
   removeToken(): void;
