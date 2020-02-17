@@ -18,7 +18,7 @@ v1.2.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob
 * Enzyme
 
 ## Clean Architecture
-![Alt Clean architecture](https://falsy.me/wp-content/uploads/2020/01/the-clean-architecture.jpg)
+![Alt Clean architecture](/_readme/clean-architecture.png)
 
 ## Communitaction Flow
 준비중...
