@@ -20,11 +20,36 @@ v1.2.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
 
-## Communitaction Flow
-준비중...
+### 1. Introduction
+클린 아키텍처에서 중요한 요소들은 아래와 같습니다.
+  
+* 세부 구현 영역과 도메인 영역을 구분합니다.
+* 아키텍처는 프레임워크에 의존하면 안됩니다.
+* 외부 영역은 내부 영역에 의존하며, 그 반대는 안됩니다.
+* 고수준, 저수준 모듈 모두 추상화에 의존해야 합니다.
 
-## Development Flow
-준비중...
+### 2. Entity
+* 엔티티는 핵심 업무 규칙과 핵심 업무 데이터를 합친 것을 이야기합니다.
+* 엔티티는 가장 내부의 레이어로 그 어떠한 외부의 영향을 받아서는 안됩니다.
+* 엔티티는 고유한 식별자를 가지고 있습니다.
+
+
+### 3. Use Case
+
+### 4. Interface Adapter
+
+### 5. Frameworks & Drivers
+
+
+## Communitaction Flow
+### 1. Code base
+![Code Base](/_readme/code-base.png)
+
+기본적으로 코드는 크게 내부(Domain)와 외부(Infrastructure)로 나누어 구성하며 내부 영역은 도메인, 외부 영역은 프레임워크나 데이터베이스 같은 기술적인 세부 구현의 역할을 합니다. 
+클린 아키텍처에서 내부 영역은 Entity와 Use Cases와 같은 도메인 영역을 모두 포함하며 외부 영역은 UI, Database, 서드 파티 통합 등의 외부 세계와의 상호작용을 포함합니다.  
+  
+그리고 여기서 가장 중요한 규칙은 '외부'가 '내부'에 의존하며 그 반대는 절대로 안된다는 점 입니다.
+> Clean Architecture - Robert C. Martin - 인사이트 - p.320
 
 ## Directory Structure
 ```
