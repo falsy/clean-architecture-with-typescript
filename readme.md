@@ -145,7 +145,7 @@ $ npm test
 v1.2.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
- - [ ] Readme 작성
- - [ ] 사용자 회원가입 로직 구현
- - [ ] 게시판 기능 세부 구현
- - [ ] 테스트 케이스 작성
+- [ ] 사용자 회원가입 샘플 구현
+- [ ] 게시판 세부 기능 샘플 구현
+- [ ] 테스트 케이스 작성
+- [ ] 리드미 작성
