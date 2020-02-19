@@ -1,10 +1,12 @@
+import { ILoginAction, IReducer } from '@interfaces/frameworks/session';
+import { ISessionPresenter } from '@interfaces/presenters/session';
 import IUseCases from '@interfaces/useCases';
 import useCase from '@domains/useCases/di';
 import SessionVO from '@domains/vos/Session';
 import IFrameworks from '@interfaces/frameworks';
 
 
-class SessionPresenter {
+class SessionPresenter implements ISessionPresenter {
 
   private useCases: IUseCases;
   private actions: IFrameworks;
@@ -14,31 +16,31 @@ class SessionPresenter {
     this.actions = actions;
   }
 
-  async login(id: string, pw: string) {
+  async login(id: string, pw: string): Promise<ILoginAction> {
     const { results: { token } } = await this.useCases.session.login(new SessionVO({ id, pw }));
     this.addToken(token);
     return this.actions.session.setToken(token);
   }
 
-  getToken() {
+  getToken(): string {
     return this.useCases.session.getToken();
   }
 
-  addToken(token: string) {
+  addToken(token: string): ILoginAction {
     this.useCases.session.addToken(token);
     return this.actions.session.setToken(token);
   }
 
-  removeToken() {
+  removeToken(): ILoginAction {
     this.useCases.session.removeToken();
     return this.actions.session.setToken('');
   }
 
-  useTokenSelector() {
+  useTokenSelector(): string {
     return this.actions.session.useTokenSelector();
   }
 
-  reducer() {
+  reducer(): IReducer {
     return this.actions.session.reducer();
   }
 

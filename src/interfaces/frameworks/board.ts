@@ -13,7 +13,7 @@ export interface IBoardStateGroup {
   board: IBoardList
 }
 
-interface IReducer {
+export interface IReducer {
   (state: IBoardList, action: IBoardAction): IBoardList
 }
 
