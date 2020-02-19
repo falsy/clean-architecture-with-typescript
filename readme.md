@@ -116,7 +116,7 @@ $ npm test
 ```
 
 ## Version
-v1.2.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.2.2 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [ ] 사용자 회원가입 샘플 구현
