@@ -11,7 +11,7 @@ export interface ISessionStateGroup {
   session: IToken;
 }
 
-interface IReducer {
+export interface IReducer {
   (state: IToken, action: ILoginAction): IToken;
 }
 

@@ -1,5 +1,8 @@
 # Change log
 
+### v1.2.2
+* Add Presenter Interface
+
 ### v1.2.1
 * Uniform interface name convention
 * Add entity, value object, and usecase(session) test code
