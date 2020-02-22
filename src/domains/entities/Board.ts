@@ -6,7 +6,7 @@ class Board implements IBoardEntity {
   private readonly _author: string;
   private readonly _content: string;
   private readonly _createAt: Date;
-  private readonly _comments: Array<ICommentEntity>;
+  private _comments: Array<ICommentEntity>;
 
   constructor(params: IBoardData) {
     this._id = params.id;
@@ -14,6 +14,10 @@ class Board implements IBoardEntity {
     this._content = params.content;
     this._createAt = params.createAt;
     this._comments = [];
+  }
+
+  set pushComment(comment: ICommentEntity) {
+    this._comments.push(comment);
   }
 
   get id() {

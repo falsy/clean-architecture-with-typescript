@@ -5,7 +5,8 @@ export interface IBoardEntity {
   author: string;
   content: string;
   createAt: Date;
-  comments: Array<ICommentEntity>; 
+  comments: Array<ICommentEntity>;
+  pushComment: ICommentEntity;
 }
 
 export interface IBoardData {
