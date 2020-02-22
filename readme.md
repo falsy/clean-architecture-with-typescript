@@ -1,5 +1,5 @@
 # Base code of React with Clean architecture
-Clean Architecture'를 기반으로 하는 'React' 프로젝트의 샘플 코드  
+Clean Architecture'를 기반으로 하는 'React' 프로젝트의 샘플 코드.  
 부족한 부분이나 개선사항은 Issue 또는 Pull Request 남겨주시면 함께 반영하도록 하겠습니다. ☺️ 
 
 ## Use Stack
@@ -119,7 +119,6 @@ $ npm test
 v1.2.2 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
-- [ ] 사용자 회원가입 샘플 구현
 - [ ] 게시판 세부 기능 샘플 구현
 - [ ] 테스트 케이스 작성
 - [ ] 리드미 작성

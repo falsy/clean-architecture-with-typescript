@@ -1,12 +1,13 @@
 import { IBoardData } from '@interfaces/entities/board';
 import Board from '@domains/entities/Board';
 
-describe('create board', () => {
-  test('create board entity', () => {
+describe('board entity', () => {
+  
+  test('constructor', () => {
     const id = 1;
     const author = 'author';
     const content = 'content';
-    const createAt = new Date().getTime();
+    const createAt = new Date();
     
     const boardData: IBoardData = { id, author, content, createAt };
     const board = new Board(boardData);

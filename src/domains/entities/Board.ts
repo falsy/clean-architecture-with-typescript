@@ -1,15 +1,40 @@
-import { IBoardData } from '@interfaces/entities/board';
+import { IBoardEntity, IBoardData } from '@interfaces/entities/board';
+import { ICommentEntity } from '@interfaces/entities/comment';
 
-export default class Board {
-  readonly id: number;
-  readonly author: string;
-  readonly content: string;
-  readonly createAt: number;
+class Board implements IBoardEntity {
+  private readonly _id: number;
+  private readonly _author: string;
+  private readonly _content: string;
+  private readonly _createAt: Date;
+  private readonly _comments: Array<ICommentEntity>;
 
-  constructor(param: IBoardData) {
-    this.id = param.id;
-    this.author = param.author;
-    this.content = param.content;
-    this.createAt = param.createAt;
+  constructor(params: IBoardData) {
+    this._id = params.id;
+    this._author = params.author;
+    this._content = params.content;
+    this._createAt = params.createAt;
+    this._comments = [];
+  }
+
+  get id() {
+    return this._id;
+  }
+
+  get comments() {
+    return this._comments;
+  }
+
+  get author() {
+    return this._author;
+  }
+
+  get content() {
+    return this._content;
+  }
+
+  get createAt() {
+    return this._createAt;
   }
 }
+
+export default Board;
