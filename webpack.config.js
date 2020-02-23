@@ -56,18 +56,32 @@ module.exports = (env, options) => {
           id: 1,
           author: 'falsy',
           content: 'hello',
-          createAt: new Date().getTime()
+          createAt: new Date()
         }, {
           id: 2,
           author: 'falsy',
           content: 'world',
-          createAt: new Date().getTime()
+          createAt: new Date()
+        }];
+        const comments = [{
+          id: 1,
+          boardId: 1,
+          content: 'comment',
+          createAt: new Date()
         }];
 
         app.get('/boards', (req, res) => {
           res.json({
             results: {
               list: boards
+            }
+          });
+        });
+
+        app.get('/comments', (req, res) => {
+          res.json({
+            results: {
+              list: comments
             }
           });
         });

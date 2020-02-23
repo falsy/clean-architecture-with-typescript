@@ -18,7 +18,7 @@ class BoardPresenter implements IBoardPresenter {
 
   async getBoard(): Promise<IBoardAction> {
     const { results } = await this.useCases.board.getBoard();
-    return this.actions.board.setBoard(results.list)
+    return this.actions.board.setBoard(results.list);
   }
 
   insertBoard(author: string, content: string): Promise<number> {
