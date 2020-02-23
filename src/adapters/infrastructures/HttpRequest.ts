@@ -3,16 +3,10 @@ import { ISessionVO } from '@interfaces/vos/session';
 
 class HttpRequest implements IHttpRequest {
 
-  readonly apiOrigin: string;
-
-  constructor() {
-    this.apiOrigin = process.env.API_ORIGIN;
-  }
-
   login(SessionVO: ISessionVO): Promise<ITokenDTO> {
     const { id, pw } = SessionVO;
 
-    return fetch(`${this.apiOrigin}/login`, {
+    return fetch(`/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -24,13 +18,13 @@ class HttpRequest implements IHttpRequest {
   }
 
   getBoard(): Promise<IBoardDTO> {
-    return fetch(`${this.apiOrigin}/boards`, {
+    return fetch(`/boards`, {
       method: 'GET',
     }).then(res => res.json());
   }
 
   insertBoard(author: string, content: string): Promise<number> {
-    return fetch(`${this.apiOrigin}/boards`, {
+    return fetch(`/boards`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

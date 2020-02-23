@@ -1,15 +1,8 @@
-const dotenv = require('dotenv');
-const webpack = require('webpack');
 const HTMLWeebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require("path");
 
 module.exports = (env, options) => {
-
-  dotenv.config({
-    path: `./env/${options.stage || 'local'}.env`
-  });
-
   return {
     entry: "./src/frameworks/web/index.tsx",
     module: {
@@ -50,12 +43,7 @@ module.exports = (env, options) => {
       }),
       new MiniCssExtractPlugin({
         filename: `style.css`
-      }),
-      new webpack.DefinePlugin({
-        'process.env.STAGE': JSON.stringify(process.env.STAGE),
-        'process.env.API_ORIGIN': JSON.stringify(process.env.API_ORIGIN)
-      }),
-      new webpack.EnvironmentPlugin(['STAGE', 'API_ORIGIN'])
+      })
     ],
     devServer: {
       historyApiFallback: true,

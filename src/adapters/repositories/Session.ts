@@ -6,25 +6,12 @@ import { ITokenDTO } from '@interfaces/infrastructures/httpRequest';
 class SessionRepository implements ISessionRepository {
 
   readonly infrastructure: IInfrastructure;
-  readonly isMock: boolean;
 
   constructor(infrastructure: IInfrastructure) {
     this.infrastructure = infrastructure;
-    this.isMock = process.env.STAGE === 'MOCK';
   }
 
   login(SessionVO: ISessionVO): Promise<ITokenDTO> {
-    if(this.isMock) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve({
-            results: {
-              token: 'user token ...'
-            }
-          });
-        }, 500);
-      });
-    }
     return this.infrastructure.httpRequest.login(SessionVO);
   }
 
