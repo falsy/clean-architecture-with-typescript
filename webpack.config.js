@@ -63,10 +63,16 @@ module.exports = (env, options) => {
           content: 'world',
           createAt: new Date()
         }];
+
         const comments = [{
           id: 1,
           boardId: 1,
           content: 'comment',
+          createAt: new Date()
+        }, {
+          id: 2,
+          boardId: 2,
+          content: 'comment2',
           createAt: new Date()
         }];
 
@@ -78,10 +84,13 @@ module.exports = (env, options) => {
           });
         });
 
-        app.get('/comments', (req, res) => {
+        app.get('/boards/:id/comments', (req, res) => {
+          const id = req.params.id;
+          const idx = comments.findIndex(comment => comment.id === Number(id));
+          
           res.json({
             results: {
-              list: comments
+              list: comments[idx]
             }
           });
         });
