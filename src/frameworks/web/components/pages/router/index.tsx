@@ -3,11 +3,10 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Presenters from '@presenters/di';
+import Presenters from '@adapters/presenters';
 import Login from '../login';
 import Home from '../home';
 import * as styles from './index.scss';
-
 
 const cx = className.bind(styles);
 

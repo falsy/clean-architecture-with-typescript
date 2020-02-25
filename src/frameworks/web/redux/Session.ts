@@ -1,7 +1,6 @@
 import { useSelector, TypedUseSelectorHook } from "react-redux";
 import { ISessionStateGroup, ILoginAction, IToken } from '@interfaces/frameworks/session';
 
-
 const LOGIN = 'LOGIN';
 
 class Session {

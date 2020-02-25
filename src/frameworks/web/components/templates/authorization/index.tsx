@@ -3,7 +3,6 @@ import * as React from "react";
 import * as styles from './index.scss';
 import AuthBox from '../../organisms/authBox';
 
-
 const cx = className.bind(styles);
 
 interface IProps {

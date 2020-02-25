@@ -4,7 +4,6 @@ import Header from '../../organisms/header';
 import BaordSection from '../../organisms/boardSection';
 import * as styles from './index.scss';
 
-
 const cx = className.bind(styles);
 
 const Board: React.FC = () => {

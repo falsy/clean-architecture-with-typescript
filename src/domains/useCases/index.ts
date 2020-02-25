@@ -1,10 +1,14 @@
-import Repositories from '@interfaces/repositories';
+import IInfrastructures from '@interfaces/infrastructures';
+import IRepositories from '@interfaces/repositories';
+import infrastructures from '@adapters/infrastructures';
+import repositories from '@adapters/repositories';
 import Session from './Session';
 import Board from './Board';
 
-export default (repositories: Repositories) => {
-  return {
-    session: new Session(repositories.session),
-    board: new Board(repositories.board)
-  }
+const infrastructure: IInfrastructures = infrastructures();
+const repository: IRepositories = repositories(infrastructure);
+
+export default {
+  session: new Session(repository.session),
+  board: new Board(repository.board)
 }

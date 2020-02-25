@@ -1,10 +1,9 @@
 import { ILoginAction, IReducer } from '@interfaces/frameworks/session';
 import { ISessionPresenter } from '@interfaces/presenters/session';
 import IUseCases from '@interfaces/useCases';
-import useCase from '@domains/useCases/di';
+import useCase from '@domains/useCases';
 import SessionVO from '@domains/vos/Session';
 import IFrameworks from '@interfaces/frameworks';
-
 
 class SessionPresenter implements ISessionPresenter {
 

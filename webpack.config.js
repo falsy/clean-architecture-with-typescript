@@ -29,7 +29,6 @@ module.exports = (env, options) => {
         "@domains": path.resolve(__dirname, "src/domains/"),
         "@frameworks": path.resolve(__dirname, "src/frameworks/"),
         "@interfaces": path.resolve(__dirname, "src/interfaces/"),
-        "@presenters": path.resolve(__dirname, "src/adapters/presenters/")
       }
     },
     output: {

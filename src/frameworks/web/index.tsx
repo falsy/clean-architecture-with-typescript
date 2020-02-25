@@ -5,7 +5,6 @@ import store from './store';
 import Router from "./components/pages/router";
 import './style.scss';
 
-
 const App = () => {
   return (
     <Provider store={store}>

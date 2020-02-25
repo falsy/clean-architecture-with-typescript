@@ -1,10 +1,9 @@
 import { IBoardData } from '@interfaces/entities/board';
 import { IBoardAction, IReducer } from '@interfaces/frameworks/board';
 import { IBoardPresenter } from '@interfaces/presenters/board';
-import IUseCases from '@interfaces/useCases';
-import useCase from '@domains/useCases/di';
 import IFrameworks from '@interfaces/frameworks';
-
+import IUseCases from '@interfaces/useCases';
+import useCase from '@domains/useCases';
 
 class BoardPresenter implements IBoardPresenter {
 

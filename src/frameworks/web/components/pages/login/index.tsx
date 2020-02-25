@@ -1,10 +1,9 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import Presenters from '@presenters/di';
+import Presenters from '@adapters/presenters';
 import Authorization from '../../templates/authorization';
 import * as styles from './index.scss';
-
 
 const cx = className.bind(styles);
 

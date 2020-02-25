@@ -22,14 +22,12 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 ./src
 ├─ adapters
 │  ├─ presenters
-│  │  └─ di
 │  ├─ repositories
 │  └─ infrastructures
 ├─ domains
 │  ├─ entities
 │  ├─ vos
 │  └─ useCases
-│     └─ di
 ├─ frameworks
 │  └─ web
 │     ├─ redux
@@ -61,8 +59,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
     "@adapters/*": ["src/adapters/*"],
     "@domains/*": ["src/domains/*"],
     "@frameworks/*": ["src/frameworks/*"],
-    "@interfaces/*": ["src/interfaces/*"],
-    "@presenters/*": ["src/adapters/presenters/*"],
+    "@interfaces/*": ["src/interfaces/*"]
   }
 }
 ```
@@ -77,8 +74,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
       "@adapters": path.resolve(__dirname, "src/adapters/"),
       "@domains": path.resolve(__dirname, "src/domains/"),
       "@frameworks": path.resolve(__dirname, "src/frameworks/"),
-      "@interfaces": path.resolve(__dirname, "src/interfaces/"),
-      "@presenters": path.resolve(__dirname, "src/adapters/presenters/")
+      "@interfaces": path.resolve(__dirname, "src/interfaces/")
     }
   }
 }
@@ -93,8 +89,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
     "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
     "^@domains/(.*)$": "<rootDir>/src/domains/$1",
     "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
-    "^@interfaces/(.*)$": "<rootDir>/src/interfaces/$1",
-    "^@presenters/(.*)$": "<rootDir>/src/presenters/$1"
+    "^@interfaces/(.*)$": "<rootDir>/src/interfaces/$1"
   }
 }
 ```
@@ -107,8 +102,6 @@ $ npm install
 #### Start
 ```
 $ npm start
-// or
-// npm run mock
 ```
 #### Test
 ```
