@@ -51,7 +51,9 @@ module.exports = (env, options) => {
         var bodyParser = require('body-parser');    
         app.use(bodyParser.json());
 
-        let autoInc = 3;
+        let boardAutoInc = 3;
+        let commentAutoInc = 3;
+
         const boards = [{
           id: 1,
           author: 'falsy',
@@ -84,9 +86,9 @@ module.exports = (env, options) => {
           });
         });
 
-        app.get('/boards/:id/comments', (req, res) => {
-          const id = req.params.id;
-          const idx = comments.findIndex(comment => comment.id === Number(id));
+        app.get('/boards/:boardId/comments', (req, res) => {
+          const { boardId } = req.params;
+          const idx = comments.findIndex(comment => comment.boardId === Number(boardId));
           
           res.json({
             results: {
@@ -95,15 +97,33 @@ module.exports = (env, options) => {
           });
         });
 
-        app.post('/boards', bodyParser.json(), (req, res) => {
+        app.post('/boards/:boardId/comments', (req, res) => {
+          const { boardId } = req.params;
           const { author, content } = req.body;
-          boards.push({
-            id: autoInc,
+
+          comments.push({
+            id: commentAutoInc,
+            boardId,
             author,
             content,
-            createAt: new Date().getTime()
+            createAt: new Date()
           });
-          autoInc += 1;
+
+          commentAutoInc += 1;
+          res.send(true);
+        });
+
+        app.post('/boards', bodyParser.json(), (req, res) => {
+          const { author, content } = req.body;
+
+          boards.push({
+            id: boardAutoInc,
+            author,
+            content,
+            createAt: new Date()
+          });
+
+          boardAutoInc += 1;
           res.send(true);
         });
       
