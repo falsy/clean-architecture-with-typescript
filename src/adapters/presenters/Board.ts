@@ -1,36 +1,23 @@
 import { IBoardData } from '@interfaces/entities/board';
-import { IBoardAction, IReducer } from '@interfaces/frameworks/board';
 import { IBoardPresenter } from '@interfaces/presenters/board';
-import IFrameworks from '@interfaces/frameworks';
-import IUseCases from '@interfaces/useCases';
-import useCase from '@domains/useCases';
+import { IBoardUseCase } from '@interfacesuseCases/board';
+import { IBoardDTO } from '@interfacesinfrastructures/httpRequest';
 
 class BoardPresenter implements IBoardPresenter {
 
-  private useCases: IUseCases;
-  private actions: IFrameworks;
+  private useCases: IBoardUseCase;
 
-  constructor(actions: IFrameworks) {
-    this.useCases = useCase;
-    this.actions = actions;
+  constructor(useCases: IBoardUseCase) {
+    this.useCases = useCases;
   }
 
-  async getBoard(): Promise<IBoardAction> {
-    const { results } = await this.useCases.board.getBoard();
-    return this.actions.board.setBoard(results.list);
+  async getBoard(): Promise<IBoardDTO> {
+    return await this.useCases.getBoard();
   }
 
   insertBoard(author: string, content: string): Promise<number> {
-    return this.useCases.board.insertBoard(author, content);
+    return this.useCases.insertBoard(author, content);
   };
-
-  useBoardListSelector(): Array<IBoardData> {
-    return this.actions.board.useBoardListSelector();
-  }
-
-  reducer(): IReducer {
-    return this.actions.board.reducer();
-  }
 
 }
 

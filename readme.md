@@ -15,7 +15,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
 
 ## Communitaction Flow
-
+(작성중...)
 
 ## Directory Structure
 ```
@@ -31,6 +31,9 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 ├─ frameworks
 │  └─ web
 │     ├─ redux
+│     │  ├─ actions
+│     │  ├─ reducer
+│     │  └─ store
 │     └─ components
 │        ├─ atoms
 │        ├─ molecules

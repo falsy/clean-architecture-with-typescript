@@ -1,5 +1,7 @@
 import { IBoardData } from '@interfaces/entities/board';
 
+export const GET_BOARD = 'GET_BOARD';
+
 export interface IBoardList {
   list: Array<IBoardData>
 }

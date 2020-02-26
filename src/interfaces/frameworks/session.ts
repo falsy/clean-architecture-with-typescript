@@ -1,3 +1,6 @@
+
+export const LOGIN = 'LOGIN';
+
 export interface IToken {
   token: string;
 }

@@ -1,9 +1,7 @@
-import { IBoardData } from '@interfaces/entities/board';
-import { IBoardAction, IReducer } from '@interfaces/frameworks/board';
+import { IBoardData } from '@interfacesentities/board';
+import { IBoardDTO } from '@interfacesinfrastructures/httpRequest';
 
 export interface IBoardPresenter {
-  getBoard(): Promise<IBoardAction>;
+  getBoard(): Promise<IBoardDTO>;
   insertBoard(author: string, content: string): Promise<number>;
-  useBoardListSelector(): Array<IBoardData>;
-  reducer(): IReducer;
 }

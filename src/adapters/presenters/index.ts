@@ -1,8 +1,10 @@
 import BoardPresenter from './Board';
 import SessionPresenter from './Session';
-import Frameworks from '../../frameworks/web/redux';
+import IUseCases from '@interfacesuseCases';
 
-export default {
-  board: new BoardPresenter(Frameworks),
-  session: new SessionPresenter(Frameworks)
+export default (useCases: IUseCases) => {
+  return {
+    board: new BoardPresenter(useCases.board),
+    session: new SessionPresenter(useCases.session)
+  }
 }

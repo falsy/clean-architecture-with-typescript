@@ -2,7 +2,7 @@ import * as className from 'classnames/bind';
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Presenters from '@adapters/presenters';
+import actions from '@frameworks/web/redux/actions';
 import BoardList from '../../molecules/boardList';
 import AddBoard from '../../molecules/addBoard';
 import * as styles from './index.scss';
@@ -12,20 +12,20 @@ const cx = className.bind(styles);
 const BoardSection: React.FC = () => {
   const dispatch = useDispatch();
 
-  const list = Presenters.board.useBoardListSelector();
+  const list = actions.board.useBoardListSelector();
 
   useEffect(() => {
     const asyncFnc = async () => {
-      dispatch(await Presenters.board.getBoard());
+      dispatch(await actions.board.getBoard());
     };
     asyncFnc();
   }, []);
 
   const insertFnc = async (author: string, content: string) => {
-    const resStatus = await Presenters.board.insertBoard(author, content);
-    if (resStatus === 200) {
-      dispatch(await Presenters.board.getBoard());
-    }
+    // const resStatus = await Actions.board.insertBoard(author, content);
+    // if (resStatus === 200) {
+    //   dispatch(await Actions.board.getBoard());
+    // }
   };
 
   return (

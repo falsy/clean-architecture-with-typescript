@@ -1,46 +1,27 @@
 import { ILoginAction, IReducer } from '@interfaces/frameworks/session';
 import { ISessionPresenter } from '@interfaces/presenters/session';
-import IUseCases from '@interfaces/useCases';
-import useCase from '@domains/useCases';
 import SessionVO from '@domains/vos/Session';
-import IFrameworks from '@interfaces/frameworks';
+import { ISessionUseCase } from '@interfacesuseCases/session';
+import { ITokenDTO } from '@interfacesinfrastructures/httpRequest';
 
 class SessionPresenter implements ISessionPresenter {
 
-  private useCases: IUseCases;
-  private actions: IFrameworks;
+  private useCases: ISessionUseCase;
 
-  constructor(actions: IFrameworks) {
-    this.useCases = useCase;
-    this.actions = actions;
+  constructor(useCases: ISessionUseCase) {
+    this.useCases = useCases;
   }
 
-  async login(id: string, pw: string): Promise<ILoginAction> {
-    const { results: { token } } = await this.useCases.session.login(new SessionVO({ id, pw }));
-    this.addToken(token);
-    return this.actions.session.setToken(token);
+  login(id: string, pw: string): Promise<ITokenDTO> {
+    return this.useCases.login(new SessionVO({ id, pw }));
   }
 
   getToken(): string {
-    return this.useCases.session.getToken();
+    return this.useCases.getToken();
   }
 
-  addToken(token: string): ILoginAction {
-    this.useCases.session.addToken(token);
-    return this.actions.session.setToken(token);
-  }
-
-  removeToken(): ILoginAction {
-    this.useCases.session.removeToken();
-    return this.actions.session.setToken('');
-  }
-
-  useTokenSelector(): string {
-    return this.actions.session.useTokenSelector();
-  }
-
-  reducer(): IReducer {
-    return this.actions.session.reducer();
+  removeToken() {
+    return this.useCases.removeToken();
   }
 
 }

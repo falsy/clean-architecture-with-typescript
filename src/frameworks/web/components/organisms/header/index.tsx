@@ -1,7 +1,7 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import Presenters from '@adapters/presenters';
+import actions from '@frameworks/web/redux/actions';
 import ShortBtn from '../../atoms/shortBtn';
 import * as styles from './index.scss';
 
@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleClickLogout = () => {
-    dispatch(Presenters.session.removeToken());
+    dispatch(actions.session.removeToken());
   };
 
   return (
