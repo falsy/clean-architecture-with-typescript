@@ -1,7 +1,7 @@
 import { ISessionRepository } from '@interfaces/repositories/session';
 import IInfrastructure from '@interfaces/infrastructures';
 import { ISessionVO } from '@interfaces/vos/session';
-import { ITokenDTO } from '@interfaces/infrastructures/httpRequest';
+import { ITokenDTO } from '@interfaces/infrastructures/Remote';
 
 class SessionRepository implements ISessionRepository {
 
@@ -12,7 +12,7 @@ class SessionRepository implements ISessionRepository {
   }
 
   login(SessionVO: ISessionVO): Promise<ITokenDTO> {
-    return this.infrastructure.httpRequest.login(SessionVO);
+    return this.infrastructure.remote.login(SessionVO);
   }
 
   getToken() {

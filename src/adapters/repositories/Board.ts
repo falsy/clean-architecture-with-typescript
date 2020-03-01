@@ -1,5 +1,5 @@
 import { IBoardRepository } from '@interfaces/repositories/board';
-import { IBoardDTO } from "@interfaces/infrastructures/httpRequest";
+import { IBoardDTO } from "@interfaces/infrastructures/Remote";
 import IInfrastructures from '@interfaces/infrastructures';
 
 class BoardRepository implements IBoardRepository {
@@ -11,11 +11,11 @@ class BoardRepository implements IBoardRepository {
   }
 
   getBoard(): Promise<IBoardDTO> {
-    return this.infra.httpRequest.getBoard();
+    return this.infra.remote.getBoard();
   }
 
   insertBoard(author: string, content: string): Promise<number> {
-    return this.infra.httpRequest.insertBoard(author, content);
+    return this.infra.remote.insertBoard(author, content);
   };
 
 }

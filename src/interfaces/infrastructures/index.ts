@@ -1,7 +1,7 @@
-import { IHttpRequest } from './httpRequest';
+import { IRemote } from './Remote';
 import { IWebStorage } from './webStorage';
 
 export default interface IInfrastructures {
-  httpRequest: IHttpRequest;
+  remote: IRemote;
   webStorage: IWebStorage;
 }

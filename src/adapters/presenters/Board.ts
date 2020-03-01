@@ -1,7 +1,6 @@
-import { IBoardData } from '@interfaces/entities/board';
 import { IBoardPresenter } from '@interfaces/presenters/board';
 import { IBoardUseCase } from '@interfacesuseCases/board';
-import { IBoardDTO } from '@interfacesinfrastructures/httpRequest';
+import { IBoardDTO } from '@interfaces/infrastructures/Remote';
 
 class BoardPresenter implements IBoardPresenter {
 

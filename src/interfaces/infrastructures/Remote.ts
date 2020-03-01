@@ -13,7 +13,7 @@ export interface IBoardDTO {
   }
 }
 
-export interface IHttpRequest {
+export interface IRemote {
   login(SessionVO: ISessionVO): Promise<ITokenDTO>;
   getBoard(): Promise<IBoardDTO>;
   insertBoard(author: string, content: string): Promise<number>;

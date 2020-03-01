@@ -1,5 +1,4 @@
-import { IBoardData } from '@interfacesentities/board';
-import { IBoardDTO } from '@interfacesinfrastructures/httpRequest';
+import { IBoardDTO } from '@interfaces/infrastructures/Remote';
 
 export interface IBoardPresenter {
   getBoard(): Promise<IBoardDTO>;

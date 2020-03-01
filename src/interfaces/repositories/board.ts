@@ -1,4 +1,4 @@
-import { IBoardDTO } from '../infrastructures/httpRequest';
+import { IBoardDTO } from '../infrastructures/Remote';
 
 export interface IBoardRepository {
   getBoard(): Promise<IBoardDTO>;

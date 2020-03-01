@@ -1,4 +1,4 @@
-import { ITokenDTO } from '@interfacesinfrastructures/httpRequest';
+import { ITokenDTO } from '@interfaces/infrastructures/Remote';
 
 export interface ISessionPresenter {
   login(id: string, pw: string): Promise<ITokenDTO>;

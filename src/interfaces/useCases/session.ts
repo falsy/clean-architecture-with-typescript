@@ -1,5 +1,5 @@
 import { ISessionVO } from '../vos/session';
-import { ITokenDTO } from "../infrastructures/httpRequest";
+import { ITokenDTO } from "../infrastructures/Remote";
 
 export interface ISessionUseCase {
   login(SessionVO: ISessionVO): Promise<ITokenDTO>;

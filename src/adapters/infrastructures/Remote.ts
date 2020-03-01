@@ -1,7 +1,7 @@
-import { ITokenDTO, IBoardDTO, IHttpRequest } from "@interfaces/infrastructures/httpRequest";
+import { ITokenDTO, IBoardDTO, IRemote } from "@interfaces/infrastructures/Remote";
 import { ISessionVO } from '@interfaces/vos/session';
 
-class HttpRequest implements IHttpRequest {
+class Remote implements IRemote {
 
   login(SessionVO: ISessionVO): Promise<ITokenDTO> {
     const { id, pw } = SessionVO;
@@ -36,4 +36,4 @@ class HttpRequest implements IHttpRequest {
   }
 }
 
-export default HttpRequest;
+export default Remote;
