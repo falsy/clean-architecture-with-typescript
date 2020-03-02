@@ -1,9 +1,11 @@
 import ISessionActions, { LOGIN, ILoginAction } from "@interfaces/frameworks/session";
+import { ISessionPresenter } from "@interfaces/presenters/session";
 
 class SessionActions implements ISessionActions {
-  private readonly _presenter: any;
+  
+  private readonly _presenter: ISessionPresenter;
 
-  constructor(presenter: any) {
+  constructor(presenter: ISessionPresenter) {
     this._presenter = presenter;
   }
 
@@ -30,9 +32,9 @@ class SessionActions implements ISessionActions {
     }
   }
 
-  removeToken(): void {
+  removeToken(): ILoginAction {
     this._presenter.removeToken();
-    this.setToken('');
+    return this.setToken('');
   }
 
 }

@@ -42,7 +42,7 @@ describe('session use case', () => {
     const userData: ISessionVO = { id: 'id', pw: 'pw' };
     const responseData = await sessionUseCase.login(userData);
 
-    expect(responseData).toEqual(responseMockData);
+    expect(responseData).toEqual(mockToken);
   });
 
   test('get user token, getToken()', () => {

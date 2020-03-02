@@ -18,7 +18,6 @@ class BaordUseCase implements IBoardUseCase {
 
     return boardList.map(board => {
       const comments = commentList.filter(comment => comment.boardId === board.id).map(comment => new Comment(comment));
-      console.log(comments);
       return new Board(board).pushComment(comments);
     });
   }
