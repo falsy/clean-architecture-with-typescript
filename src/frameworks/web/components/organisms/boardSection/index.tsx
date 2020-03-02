@@ -22,10 +22,10 @@ const BoardSection: React.FC = () => {
   }, []);
 
   const insertFnc = async (author: string, content: string) => {
-    // const resStatus = await Actions.board.insertBoard(author, content);
-    // if (resStatus === 200) {
-    //   dispatch(await Actions.board.getBoard());
-    // }
+    const resStatus = await actions.board.insertBoard(author, content);
+    if (resStatus === 200) {
+      dispatch(await actions.board.getBoards());
+    }
   };
 
   return (

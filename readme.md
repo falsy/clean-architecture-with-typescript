@@ -25,9 +25,10 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 │  ├─ repositories
 │  └─ infrastructures
 ├─ domains
+│  ├─ aggregates
 │  ├─ entities
-│  ├─ vos
-│  └─ useCases
+│  ├─ useCases
+│  └─ vos
 ├─ frameworks
 │  └─ web
 │     ├─ redux

@@ -21,6 +21,10 @@ class BoardActions {
     }
   }
 
+  insertBoard(author: string, content: string): Promise<number> {
+    return this._presenter.insertBoard(author, content);
+  }
+
   useBoardListSelector(): Array<IBoardData> {
     return useSelector((state: IBoardStateGroup) => state.board.list);
   }
