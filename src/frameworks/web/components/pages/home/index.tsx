@@ -3,7 +3,6 @@ import * as React from "react";
 import Board from '../../templates/board';
 import * as styles from './index.scss';
 
-
 const cx = className.bind(styles);
 
 const Home: React.FC = () => {

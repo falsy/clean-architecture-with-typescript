@@ -1,9 +1,9 @@
-import HttpRequest from './HttpRequest';
-import WebStorage from './WebStorage';
+import Remote from './Remote';
+import WebStorage from './Storage';
 
 export default () => {
   return {
-    httpRequest: new HttpRequest(),
+    remote: new Remote(),
     webStorage: new WebStorage()
   };
 };

@@ -1,10 +1,7 @@
-import { ILoginAction, IReducer } from '@interfaces/frameworks/session';
+import { ITokenDTO } from '@interfaces/infrastructures/Remote';
 
 export interface ISessionPresenter {
-  login(id: string, pw: string): Promise<ILoginAction>;
+  login(id: string, pw: string): Promise<ITokenDTO>;
   getToken(): string;
-  addToken(token: string): ILoginAction;
-  removeToken(): ILoginAction;
-  useTokenSelector(): string;
-  reducer(): IReducer;
+  removeToken(): void;
 }

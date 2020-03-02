@@ -3,7 +3,6 @@ import * as React from "react";
 import * as styles from './index.scss';
 import AuthForm from '../../molecules/authForm';
 
-
 const cx = className.bind(styles);
 
 interface IProps {

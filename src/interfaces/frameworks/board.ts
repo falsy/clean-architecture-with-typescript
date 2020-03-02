@@ -1,7 +1,9 @@
-import { IBoardData } from '@interfaces/entities/board';
+import { IBoardEntity } from '@interfaces/entities/board';
+
+export const GET_BOARD = 'GET_BOARD';
 
 export interface IBoardList {
-  list: Array<IBoardData>
+  list: Array<IBoardEntity>
 }
 
 export interface IBoardAction {
@@ -17,8 +19,8 @@ export interface IReducer {
   (state: IBoardList, action: IBoardAction): IBoardList
 }
 
-export interface IBoard {
-  setBoard(list: Array<IBoardData>): IBoardAction;
-  useBoardListSelector(): Array<IBoardData>;
-  reducer(): IReducer;
+
+export default interface IBoardActions {
+  getBoards(): Promise<IBoardAction>;
+  insertBoard(author: string, content: string): Promise<number>;
 }

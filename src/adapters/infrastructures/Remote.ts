@@ -1,18 +1,12 @@
-import { ITokenDTO, IBoardDTO, IHttpRequest } from "@interfaces/infrastructures/httpRequest";
+import { ITokenDTO, IBoardDTO, IRemote } from "@interfaces/infrastructures/Remote";
 import { ISessionVO } from '@interfaces/vos/session';
 
-class HttpRequest implements IHttpRequest {
-
-  readonly apiOrigin: string;
-
-  constructor() {
-    this.apiOrigin = process.env.API_ORIGIN;
-  }
+class Remote implements IRemote {
 
   login(SessionVO: ISessionVO): Promise<ITokenDTO> {
     const { id, pw } = SessionVO;
 
-    return fetch(`${this.apiOrigin}/login`, {
+    return fetch(`/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -23,14 +17,20 @@ class HttpRequest implements IHttpRequest {
     }).then(res => res.json());
   }
 
-  getBoard(): Promise<IBoardDTO> {
-    return fetch(`${this.apiOrigin}/boards`, {
-      method: 'GET',
+  getBoards(): Promise<IBoardDTO> {
+    return fetch(`/boards`, {
+      method: 'GET'
+    }).then(res => res.json());
+  }
+
+  getComments() {
+    return fetch(`/comments`, {
+      method: 'GET'
     }).then(res => res.json());
   }
 
   insertBoard(author: string, content: string): Promise<number> {
-    return fetch(`${this.apiOrigin}/boards`, {
+    return fetch(`/boards`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -42,4 +42,4 @@ class HttpRequest implements IHttpRequest {
   }
 }
 
-export default HttpRequest;
+export default Remote;

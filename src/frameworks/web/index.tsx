@@ -1,10 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
-import store from './store';
+import store from '@frameworks/web/redux/store';
 import Router from "./components/pages/router";
 import './style.scss';
-
 
 const App = () => {
   return (

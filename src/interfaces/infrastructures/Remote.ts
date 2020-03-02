@@ -1,3 +1,4 @@
+import { ICommentData } from '../entities/comment';
 import { IBoardData } from '../entities/board';
 import { ISessionVO } from '../vos/session';
 
@@ -13,8 +14,15 @@ export interface IBoardDTO {
   }
 }
 
-export interface IHttpRequest {
+export interface ICommentDTO {
+  results: {
+    list: Array<ICommentData>
+  }
+}
+
+export interface IRemote {
   login(SessionVO: ISessionVO): Promise<ITokenDTO>;
-  getBoard(): Promise<IBoardDTO>;
+  getBoards(): Promise<IBoardDTO>;
   insertBoard(author: string, content: string): Promise<number>;
+  getComments(): Promise<ICommentDTO>
 }

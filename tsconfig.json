@@ -12,8 +12,7 @@
       "@adapters/*": ["src/adapters/*"],
       "@domains/*": ["src/domains/*"],
       "@frameworks/*": ["src/frameworks/*"],
-      "@interfaces/*": ["src/interfaces/*"],
-      "@presenters/*": ["src/adapters/presenters/*"]
+      "@interfaces/*": ["src/interfaces/*"]
     }
   },
   "include": [

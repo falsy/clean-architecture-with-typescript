@@ -1,7 +1,7 @@
 import { ISessionUseCase } from '@interfaces/useCases/session';
 import { ISessionRepository } from '@interfaces/repositories/session';
 import { ISessionVO } from '@interfaces/vos/session';
-import { ITokenDTO } from "@interfaces/infrastructures/httpRequest";
+import { ITokenDTO } from "@interfaces/infrastructures/Remote";
 import SessionUseCase from '@domains/useCases/Session';
 
 describe('session use case', () => {

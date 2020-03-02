@@ -1,3 +1,6 @@
+
+export const LOGIN = 'LOGIN';
+
 export interface IToken {
   token: string;
 }
@@ -15,8 +18,9 @@ export interface IReducer {
   (state: IToken, action: ILoginAction): IToken;
 }
 
-export interface ISession {
+export default interface ISessionActions {
+  login(id: string, pw: string): Promise<ILoginAction>;
+  getToken(): string;
   setToken(token: string): ILoginAction;
-  useTokenSelector(): string;
-  reducer(): IReducer;
+  removeToken(): void;
 }

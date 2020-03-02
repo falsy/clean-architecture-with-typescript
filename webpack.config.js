@@ -1,15 +1,8 @@
-const dotenv = require('dotenv');
-const webpack = require('webpack');
 const HTMLWeebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require("path");
 
 module.exports = (env, options) => {
-
-  dotenv.config({
-    path: `./env/${options.stage || 'local'}.env`
-  });
-
   return {
     entry: "./src/frameworks/web/index.tsx",
     module: {
@@ -36,7 +29,6 @@ module.exports = (env, options) => {
         "@domains": path.resolve(__dirname, "src/domains/"),
         "@frameworks": path.resolve(__dirname, "src/frameworks/"),
         "@interfaces": path.resolve(__dirname, "src/interfaces/"),
-        "@presenters": path.resolve(__dirname, "src/adapters/presenters/")
       }
     },
     output: {
@@ -50,12 +42,7 @@ module.exports = (env, options) => {
       }),
       new MiniCssExtractPlugin({
         filename: `style.css`
-      }),
-      new webpack.DefinePlugin({
-        'process.env.STAGE': JSON.stringify(process.env.STAGE),
-        'process.env.API_ORIGIN': JSON.stringify(process.env.API_ORIGIN)
-      }),
-      new webpack.EnvironmentPlugin(['STAGE', 'API_ORIGIN'])
+      })
     ],
     devServer: {
       historyApiFallback: true,
@@ -63,17 +50,33 @@ module.exports = (env, options) => {
         var bodyParser = require('body-parser');    
         app.use(bodyParser.json());
 
-        let autoInc = 3;
+        let boardAutoInc = 3;
+        let commentAutoInc = 3;
+
         const boards = [{
           id: 1,
           author: 'falsy',
           content: 'hello',
-          createAt: new Date().getTime()
+          createAt: new Date()
         }, {
           id: 2,
           author: 'falsy',
           content: 'world',
-          createAt: new Date().getTime()
+          createAt: new Date()
+        }];
+
+        const comments = [{
+          id: 1,
+          boardId: 1,
+          author: 'falsy2',
+          content: 'comment',
+          createAt: new Date()
+        }, {
+          id: 2,
+          boardId: 2,
+          author: 'falsy2',
+          content: 'comment2',
+          createAt: new Date()
         }];
 
         app.get('/boards', (req, res) => {
@@ -84,15 +87,25 @@ module.exports = (env, options) => {
           });
         });
 
+        app.get('/comments', (req, res) => {
+          res.json({
+            results: {
+              list: comments
+            }
+          });
+        });
+
         app.post('/boards', bodyParser.json(), (req, res) => {
           const { author, content } = req.body;
+
           boards.push({
-            id: autoInc,
+            id: boardAutoInc,
             author,
             content,
-            createAt: new Date().getTime()
+            createAt: new Date()
           });
-          autoInc += 1;
+
+          boardAutoInc += 1;
           res.send(true);
         });
       
@@ -103,6 +116,23 @@ module.exports = (env, options) => {
             }
           });
         });
+
+        app.post('/boards/:boardId/comments', (req, res) => {
+          const { boardId } = req.params;
+          const { author, content } = req.body;
+
+          comments.push({
+            id: commentAutoInc,
+            boardId,
+            author,
+            content,
+            createAt: new Date()
+          });
+
+          commentAutoInc += 1;
+          res.send(true);
+        });
+
       }
     }
   }

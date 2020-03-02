@@ -1,9 +1,6 @@
-import { IBoardData } from '@interfaces/entities/board';
-import { IBoardAction, IReducer } from '@interfaces/frameworks/board';
+import { IBoardEntity } from '@interfaces/entities/board';
 
 export interface IBoardPresenter {
-  getBoard(): Promise<IBoardAction>;
+  getBoards(): Promise<Array<IBoardEntity>>;
   insertBoard(author: string, content: string): Promise<number>;
-  useBoardListSelector(): Array<IBoardData>;
-  reducer(): IReducer;
 }

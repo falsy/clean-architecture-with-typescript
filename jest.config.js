@@ -21,7 +21,6 @@ module.exports = {
     "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
     "^@domains/(.*)$": "<rootDir>/src/domains/$1",
     "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
-    "^@interfaces/(.*)$": "<rootDir>/src/interfaces/$1",
-    "^@presenters/(.*)$": "<rootDir>/src/presenters/$1"
+    "^@interfaces/(.*)$": "<rootDir>/src/interfaces/$1"
   }
 };
