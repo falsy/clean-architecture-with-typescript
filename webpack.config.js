@@ -85,31 +85,12 @@ module.exports = (env, options) => {
           });
         });
 
-        app.get('/boards/:boardId/comments', (req, res) => {
-          const { boardId } = req.params;
-          const idx = comments.findIndex(comment => comment.boardId === Number(boardId));
-          
+        app.get('/comments', (req, res) => {
           res.json({
             results: {
-              list: comments[idx]
+              list: comments
             }
           });
-        });
-
-        app.post('/boards/:boardId/comments', (req, res) => {
-          const { boardId } = req.params;
-          const { author, content } = req.body;
-
-          comments.push({
-            id: commentAutoInc,
-            boardId,
-            author,
-            content,
-            createAt: new Date()
-          });
-
-          commentAutoInc += 1;
-          res.send(true);
         });
 
         app.post('/boards', bodyParser.json(), (req, res) => {
@@ -133,6 +114,23 @@ module.exports = (env, options) => {
             }
           });
         });
+
+        app.post('/boards/:boardId/comments', (req, res) => {
+          const { boardId } = req.params;
+          const { author, content } = req.body;
+
+          comments.push({
+            id: commentAutoInc,
+            boardId,
+            author,
+            content,
+            createAt: new Date()
+          });
+
+          commentAutoInc += 1;
+          res.send(true);
+        });
+        
       }
     }
   }
