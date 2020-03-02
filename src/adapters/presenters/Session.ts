@@ -1,7 +1,6 @@
 import { ISessionPresenter } from '@interfaces/presenters/session';
 import SessionVO from '@domains/vos/Session';
 import { ISessionUseCase } from '@interfaces/useCases/session';
-import { ITokenDTO } from '@interfaces/infrastructures/Remote';
 
 class SessionPresenter implements ISessionPresenter {
 
@@ -11,7 +10,7 @@ class SessionPresenter implements ISessionPresenter {
     this.useCases = useCases;
   }
 
-  login(id: string, pw: string): Promise<ITokenDTO> {
+  login(id: string, pw: string): Promise<string> {
     return this.useCases.login(new SessionVO({ id, pw }));
   }
 
