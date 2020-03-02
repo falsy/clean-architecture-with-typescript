@@ -1,5 +1,10 @@
 # Change log
 
+### v1.3.0
+* Add Comment entitiy and root entitiy Board
+* Edit DI logic (Presenter-Actions Layer Detach)
+* Delete DI Directory
+
 ### v1.2.2
 * Add Presenter Interface
 

@@ -113,9 +113,9 @@ $ npm test
 ```
 
 ## Version
-v1.2.2 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.3.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
-- [ ] 게시판 세부 기능 샘플 구현
+- [x] 게시판 샘플 구현
 - [ ] 테스트 케이스 작성
 - [ ] 리드미 작성
