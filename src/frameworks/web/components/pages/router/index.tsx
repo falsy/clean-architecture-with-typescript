@@ -1,8 +1,9 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ISessionStateGroup } from '@interfaces/frameworks/session';
 import actions from '@frameworks/web/redux/actions';
 import Login from '../login';
 import Home from '../home';
@@ -12,7 +13,7 @@ const cx = className.bind(styles);
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
-  const token = actions.session.useTokenSelector();
+  const token = useSelector((state: ISessionStateGroup) => state.session.token);
 
   useEffect(() => {
     const storageToken = actions.session.getToken();

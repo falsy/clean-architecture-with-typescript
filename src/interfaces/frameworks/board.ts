@@ -23,5 +23,4 @@ export interface IReducer {
 export default interface IBoardActions {
   getBoards(): Promise<IBoardAction>;
   insertBoard(author: string, content: string): Promise<number>;
-  useBoardListSelector(): Array<IBoardData>;
 }

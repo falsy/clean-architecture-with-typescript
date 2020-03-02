@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-import { IBoardData } from "@interfaces/entities/board";
 import IBoardActions, { GET_BOARD, IBoardAction, IBoardStateGroup } from "@interfaces/frameworks/board";
 
 class BoardActions implements IBoardActions {
@@ -23,10 +21,6 @@ class BoardActions implements IBoardActions {
 
   insertBoard(author: string, content: string): Promise<number> {
     return this._presenter.insertBoard(author, content);
-  }
-
-  useBoardListSelector(): Array<IBoardData> {
-    return useSelector((state: IBoardStateGroup) => state.board.list);
   }
 
 }

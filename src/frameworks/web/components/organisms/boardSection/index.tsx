@@ -1,7 +1,8 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { IBoardStateGroup } from '@interfaces/frameworks/board';
 import actions from '@frameworks/web/redux/actions';
 import BoardList from '../../molecules/boardList';
 import AddBoard from '../../molecules/addBoard';
@@ -12,7 +13,7 @@ const cx = className.bind(styles);
 const BoardSection: React.FC = () => {
   const dispatch = useDispatch();
 
-  const list = actions.board.useBoardListSelector();
+  const list = useSelector((state: IBoardStateGroup) => state.board.list);
 
   useEffect(() => {
     const asyncFnc = async () => {

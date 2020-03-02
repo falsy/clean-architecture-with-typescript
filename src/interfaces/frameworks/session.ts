@@ -23,5 +23,4 @@ export default interface ISessionActions {
   getToken(): string;
   setToken(token: string): ILoginAction;
   removeToken(): void;
-  useTokenSelector(): string;
 }

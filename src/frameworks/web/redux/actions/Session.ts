@@ -1,5 +1,4 @@
-import { useSelector } from "react-redux";
-import ISessionActions, { LOGIN, ILoginAction, ISessionStateGroup } from "@interfaces/frameworks/session";
+import ISessionActions, { LOGIN, ILoginAction } from "@interfaces/frameworks/session";
 
 class SessionActions implements ISessionActions {
   private readonly _presenter: any;
@@ -34,10 +33,6 @@ class SessionActions implements ISessionActions {
   removeToken(): void {
     this._presenter.removeToken();
     this.setToken('');
-  }
-
-  useTokenSelector(): string {
-    return useSelector((state: ISessionStateGroup) => state.session.token);
   }
 
 }
