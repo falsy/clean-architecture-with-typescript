@@ -1,6 +1,6 @@
 import { IBoardPresenter } from '@interfaces/presenters/board';
 import { IBoardUseCase } from '@interfacesuseCases/board';
-import { IBoardDTO } from '@interfaces/infrastructures/Remote';
+import { IBoardEntity } from '@interfacesentities/board';
 
 class BoardPresenter implements IBoardPresenter {
 
@@ -10,8 +10,8 @@ class BoardPresenter implements IBoardPresenter {
     this.useCases = useCases;
   }
 
-  async getBoard(): Promise<IBoardDTO> {
-    return await this.useCases.getBoard();
+  getBoards(): Promise<Array<IBoardEntity>> {
+    return this.useCases.getBoards();
   }
 
   insertBoard(author: string, content: string): Promise<number> {

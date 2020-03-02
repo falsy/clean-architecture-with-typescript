@@ -16,8 +16,9 @@ class Board implements IBoardEntity {
     this._comments = [];
   }
 
-  set pushComment(comment: ICommentEntity) {
-    this._comments.push(comment);
+  pushComment(commentList: Array<ICommentEntity>) {
+    this._comments = this._comments.concat(commentList);
+    return this;
   }
 
   get id() {

@@ -10,13 +10,17 @@ class BoardRepository implements IBoardRepository {
     this.infra = infrastructure;
   }
 
-  getBoard(): Promise<IBoardDTO> {
-    return this.infra.remote.getBoard();
+  getBoards(): Promise<IBoardDTO> {
+    return this.infra.remote.getBoards();
   }
 
   insertBoard(author: string, content: string): Promise<number> {
     return this.infra.remote.insertBoard(author, content);
-  };
+  }
+
+  getComments() {
+    return this.infra.remote.getComments();
+  }
 
 }
 

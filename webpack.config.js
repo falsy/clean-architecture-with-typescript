@@ -68,11 +68,13 @@ module.exports = (env, options) => {
         const comments = [{
           id: 1,
           boardId: 1,
+          author: 'falsy2',
           content: 'comment',
           createAt: new Date()
         }, {
           id: 2,
           boardId: 2,
+          author: 'falsy2',
           content: 'comment2',
           createAt: new Date()
         }];
@@ -130,7 +132,7 @@ module.exports = (env, options) => {
           commentAutoInc += 1;
           res.send(true);
         });
-        
+
       }
     }
   }

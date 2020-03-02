@@ -10,12 +10,13 @@ class BoardActions {
     this._presenter = presenter;
   }
 
-  async getBoard(): Promise<IBoardAction> {
-    const { results: { list } } = await this._presenter.getBoard();
+  async getBoards(): Promise<IBoardAction> {
+    const boardEntityList = await this._presenter.getBoards();
+    console.log(boardEntityList);
     return {
       type: GET_BOARD,
       payload: {
-        list
+        list: boardEntityList
       }
     }
   }

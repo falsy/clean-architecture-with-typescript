@@ -6,7 +6,7 @@ export interface IBoardEntity {
   content: string;
   createAt: Date;
   comments: Array<ICommentEntity>;
-  pushComment: ICommentEntity;
+  pushComment(commentList: Array<ICommentEntity>): this;
 }
 
 export interface IBoardData {
@@ -14,4 +14,9 @@ export interface IBoardData {
   author: string;
   content: string;
   createAt: Date;
+}
+
+export interface ICommentData {
+  id: number;
+
 }

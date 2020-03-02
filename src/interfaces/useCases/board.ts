@@ -1,6 +1,6 @@
-import { IBoardDTO } from '../infrastructures/Remote';
+import { IBoardEntity } from '@interfacesentities/board';
 
 export interface IBoardUseCase {
-  getBoard(): Promise<IBoardDTO>;
+  getBoards(): Promise<Array<IBoardEntity>>;
   insertBoard(author: string, content: string): Promise<number>;
 }

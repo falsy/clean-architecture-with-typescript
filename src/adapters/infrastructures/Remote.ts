@@ -17,9 +17,15 @@ class Remote implements IRemote {
     }).then(res => res.json());
   }
 
-  getBoard(): Promise<IBoardDTO> {
+  getBoards(): Promise<IBoardDTO> {
     return fetch(`/boards`, {
-      method: 'GET',
+      method: 'GET'
+    }).then(res => res.json());
+  }
+
+  getComments() {
+    return fetch(`/comments`, {
+      method: 'GET'
     }).then(res => res.json());
   }
 

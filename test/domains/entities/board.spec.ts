@@ -1,6 +1,6 @@
 import { IBoardData } from '@interfaces/entities/board';
 import { ICommentData, ICommentEntity } from '@interfaces/entities/comment';
-import Board from '@domains/entities/Board';
+import Board from '@domains/aggregates/Board';
 import Comment from '@domains/entities/Comment';
 import { IBoardEntity } from '@interfaces/entities/board';
 
@@ -35,7 +35,7 @@ describe('board entity', () => {
     const commentData: ICommentData = { id, boardId, author, content, createAt };
     const comment: ICommentEntity = new Comment(commentData);
 
-    board.pushComment = comment;
+    board.pushComment([comment]);
 
     expect(board.comments[0]).toEqual(comment);
   });

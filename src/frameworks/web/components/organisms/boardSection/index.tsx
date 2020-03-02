@@ -16,7 +16,7 @@ const BoardSection: React.FC = () => {
 
   useEffect(() => {
     const asyncFnc = async () => {
-      dispatch(await actions.board.getBoard());
+      dispatch(await actions.board.getBoards());
     };
     asyncFnc();
   }, []);
@@ -31,11 +31,11 @@ const BoardSection: React.FC = () => {
   return (
     <div className={cx("board-section")}>
       <section>
-        <h2>Board List</h2>
+        <h2>Board</h2>
         <BoardList list={list} />
       </section>
       <section>
-        <h2>Add Board</h2>
+        <h2>Add Post</h2>
         <AddBoard insertFnc={insertFnc} />
       </section>
     </div>
