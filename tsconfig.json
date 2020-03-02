@@ -9,10 +9,10 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@adapters*": ["src/adapters/*"],
-      "@domains*": ["src/domains/*"],
-      "@frameworks*": ["src/frameworks/*"],
-      "@interfaces*": ["src/interfaces/*"]
+      "@adapters/*": ["src/adapters/*"],
+      "@domains/*": ["src/domains/*"],
+      "@frameworks/*": ["src/frameworks/*"],
+      "@interfaces/*": ["src/interfaces/*"]
     }
   },
   "include": [
