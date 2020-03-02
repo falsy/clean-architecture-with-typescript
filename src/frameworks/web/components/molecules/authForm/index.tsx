@@ -36,10 +36,10 @@ const AuthForm: React.FC<IProps> = (props) => {
   return (
     <section>
       <div className={cx("client-id")}>
-        <Input type="text" name="id" placeholder="ID" onChange={handleChangeClientInfo} onKeyDown={null} />
+        <Input type="text" name="id" placeholder="ID" onChange={handleChangeClientInfo} onKeyDown={null} value={id} />
       </div>
       <div className={cx("client-pw")}>
-        <Input type="text" name="pw" placeholder="Password" onChange={handleChangeClientInfo} onKeyDown={handleKeyDownAccredit} />
+        <Input type="text" name="pw" placeholder="Password" onChange={handleChangeClientInfo} onKeyDown={handleKeyDownAccredit} value={pw} />
       </div>
       <div className={cx("client-btn")}>
         <LongBtn type="button" onClick={handleClickAccredit} value={btnValue} />

@@ -7,13 +7,14 @@ import actions from '@frameworks/web/redux/actions';
 import BoardList from '../../molecules/boardList';
 import AddBoard from '../../molecules/addBoard';
 import * as styles from './index.scss';
+import { IBoardEntity } from '@interfaces/entities/board';
 
 const cx = className.bind(styles);
 
 const BoardSection: React.FC = () => {
   const dispatch = useDispatch();
 
-  const list = useSelector((state: IBoardStateGroup) => state.board.list);
+  const list: Array<IBoardEntity> = useSelector((state: IBoardStateGroup) => state.board.list);
 
   useEffect(() => {
     const asyncFnc = async () => {

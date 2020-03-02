@@ -27,9 +27,9 @@ const BoardList: React.FC<IProps> = (props) => {
   };
 
   const handleClickInsertBoard = () => {
-    insertFnc(author, content);
     setAuthor('');
     setContent('');
+    insertFnc(author, content);
   };
 
   const handleKeyDownInsertBoard = (event: React.KeyboardEvent) => {
@@ -42,10 +42,10 @@ const BoardList: React.FC<IProps> = (props) => {
     <section className={cx("add-board")}>
       <div className={cx("add-board-btn-area")}>
         <div className={cx("author-box")}>
-          <Input type="text" name="author" placeholder="author" onChange={handleChangeInput} onKeyDown={null} />
+          <Input type="text" name="author" placeholder="author" onChange={handleChangeInput} onKeyDown={null} value={author} />
         </div>
         <div className={cx("content-box")}>
-          <Input type="text" name="content" placeholder="content" onChange={handleChangeInput} onKeyDown={handleKeyDownInsertBoard} />
+          <Input type="text" name="content" placeholder="content" onChange={handleChangeInput} onKeyDown={handleKeyDownInsertBoard} value={content} />
         </div>
         <div className={cx("add-btn")}>
           <LongBtn type="button" value="Add" onClick={handleClickInsertBoard} />
