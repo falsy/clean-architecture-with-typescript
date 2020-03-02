@@ -1,6 +1,6 @@
 import { IBoardPresenter } from '@interfaces/presenters/board';
-import { IBoardUseCase } from '@interfacesuseCases/board';
-import { IBoardEntity } from '@interfacesentities/board';
+import { IBoardUseCase } from '@interfaces/useCases/board';
+import { IBoardEntity } from '@interfaces/entities/board';
 
 class BoardPresenter implements IBoardPresenter {
 

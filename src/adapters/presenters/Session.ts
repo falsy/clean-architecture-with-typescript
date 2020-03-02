@@ -1,7 +1,6 @@
-import { ILoginAction, IReducer } from '@interfaces/frameworks/session';
 import { ISessionPresenter } from '@interfaces/presenters/session';
 import SessionVO from '@domains/vos/Session';
-import { ISessionUseCase } from '@interfacesuseCases/session';
+import { ISessionUseCase } from '@interfaces/useCases/session';
 import { ITokenDTO } from '@interfaces/infrastructures/Remote';
 
 class SessionPresenter implements ISessionPresenter {

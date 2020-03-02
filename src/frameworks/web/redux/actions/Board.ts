@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { IBoardData } from "@interfaces/entities/board";
-import { GET_BOARD, IBoardAction, IBoardStateGroup } from "@interfaces/frameworks/board";
+import IBoardActions, { GET_BOARD, IBoardAction, IBoardStateGroup } from "@interfaces/frameworks/board";
 
-class BoardActions {
+class BoardActions implements IBoardActions {
   
   private readonly _presenter: any;
 

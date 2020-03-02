@@ -1,6 +1,6 @@
 import { IBoardUseCase } from '@interfaces/useCases/board';
 import { IBoardRepository } from '@interfaces/repositories/board';
-import { IBoardEntity } from '@interfacesentities/board';
+import { IBoardEntity } from '@interfaces/entities/board';
 import Board from '@domains/aggregates/Board';
 import Comment from '@domains/entities/Comment';
 

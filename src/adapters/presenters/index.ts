@@ -1,6 +1,6 @@
 import BoardPresenter from './Board';
 import SessionPresenter from './Session';
-import IUseCases from '@interfacesuseCases';
+import IUseCases from '@interfaces/useCases';
 
 export default (useCases: IUseCases) => {
   return {

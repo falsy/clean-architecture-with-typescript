@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { LOGIN, ILoginAction, ISessionStateGroup } from "@interfaces/frameworks/session";
+import ISessionActions, { LOGIN, ILoginAction, ISessionStateGroup } from "@interfaces/frameworks/session";
 
-class SessionActions {
+class SessionActions implements ISessionActions {
   private readonly _presenter: any;
 
   constructor(presenter: any) {

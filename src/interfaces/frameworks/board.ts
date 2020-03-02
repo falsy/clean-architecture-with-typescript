@@ -19,8 +19,9 @@ export interface IReducer {
   (state: IBoardList, action: IBoardAction): IBoardList
 }
 
-export interface IBoard {
-  setBoard(list: Array<IBoardData>): IBoardAction;
+
+export default interface IBoardActions {
+  getBoards(): Promise<IBoardAction>;
+  insertBoard(author: string, content: string): Promise<number>;
   useBoardListSelector(): Array<IBoardData>;
-  reducer(): IReducer;
 }
