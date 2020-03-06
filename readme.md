@@ -23,7 +23,8 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 ├─ adapters
 │  ├─ presenters
 │  ├─ repositories
-│  └─ infrastructures
+│  ├─ infrastructures
+│  └─ vms
 ├─ domains
 │  ├─ aggregates
 │  ├─ entities
@@ -47,6 +48,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
    ├─ infrastructures
    ├─ repositories
    ├─ useCases
+   ├─ vms
    └─ vos
 ```
 

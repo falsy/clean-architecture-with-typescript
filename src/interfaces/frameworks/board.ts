@@ -1,9 +1,9 @@
-import { IBoardEntity } from '@interfaces/entities/board';
+import { IBoardVM } from '@interfaces/vms/board';
 
 export const GET_BOARD = 'GET_BOARD';
 
 export interface IBoardList {
-  list: Array<IBoardEntity>
+  list: Array<IBoardVM>
 }
 
 export interface IBoardAction {
