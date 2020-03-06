@@ -1,6 +1,6 @@
-import { IBoardEntity } from '@interfaces/entities/board';
+import { IBoardVM } from '@interfaces/vms/board';
 
 export interface IBoardPresenter {
-  getBoards(): Promise<Array<IBoardEntity>>;
+  getBoards(): Promise<Array<IBoardVM>>;
   insertBoard(author: string, content: string): Promise<number>;
 }
