@@ -1,5 +1,8 @@
 # Change log
 
+### v1.3.2*
+* Add Board View Models
+
 ### v1.3.1*
 * Edit Session flow
 
