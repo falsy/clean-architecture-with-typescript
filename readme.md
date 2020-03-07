@@ -1,6 +1,8 @@
 # Base code of React with Clean architecture
-Clean Architecture'를 기반으로 하는 'React' 프로젝트의 샘플 코드.  
-부족한 부분이나 개선사항은 Issue 또는 Pull Request 남겨주시면 함께 반영하도록 하겠습니다. ☺️ 
+프레임워크로부터 독립적 설계가 하나의 요소인 클린 아키텍처를 이야기하며 리액트를 사용한 클린 아키텍처라는 말이 역설적일 수 있을 것 같습니다.
+이 샘플 코드는, 크게는 웹 프론트 엔드를 개발하며 클린 아키텍처를 도입하는, 작게는 리액트보다는 플럭스 아키텍처를 기반으로 하는 리덕스를 클린 아키텍처와 함께 사용하는, 저의 작은 아이디어입니다.
+  
+부족한 부분이나 개선사항은 Issue 또는 Pull Request 남겨주시면 함께 반영하도록 하겠습니다. ☺️
 
 ## Use Stack
 Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
@@ -15,7 +17,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
 
 ## Communitaction Flow
-(작성중...)
+![Alt Communitaction Flow](/_readme/communication-flow.png)
 
 ## Directory Structure
 ```
