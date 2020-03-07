@@ -68,7 +68,7 @@ Redux의 색이 파란색(Frameworks), 초록색(Adapters) 반반으로 표시�
 * 컴포넌트 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다. [atoms / molecules / organisms / templates / pages]
 
 > vms = View Models  
-> vos = Value Obejects
+> vos = Value Objects
 
 ## Alias
 #### tsconfig.json
