@@ -1,5 +1,5 @@
 import { ISessionPresenter } from '@interfaces/presenters/session';
-import SessionVO from '@domains/vos/Session';
+import SessionVO from '@domains/valueObjects/Session';
 import { ISessionUseCase } from '@interfaces/useCases/session';
 import { ILoginAction, LOGIN } from '@interfaces/frameworks/session';
 

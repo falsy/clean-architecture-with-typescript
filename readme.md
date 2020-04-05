@@ -33,19 +33,18 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 ├─ adapters
 │  ├─ presenters
 │  ├─ repositories
-│  ├─ infrastructures
-│  └─ vms
+│  └─ infrastructures
 ├─ domains
 │  ├─ aggregates
 │  ├─ entities
 │  ├─ useCases
-│  └─ vos
+│  └─ valueObjects
 ├─ frameworks
 │  └─ web
 │     ├─ redux
-│     │  ├─ actions
 │     │  ├─ reducer
-│     │  └─ store
+│     │  ├─ store
+│     │  └─ viewModels
 │     └─ components
 │        ├─ atoms
 │        ├─ molecules
@@ -58,15 +57,12 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
    ├─ infrastructures
    ├─ repositories
    ├─ useCases
-   ├─ vms
-   └─ vos
+   ├─ viewModels
+   └─ valueObjects
 ```
 
 * 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다. [frameworks / adapters / domains(useCaes / entities)]
 * 컴포넌트 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다. [atoms / molecules / organisms / templates / pages]
-
-> vms = View Models  
-> vos = Value Objects
 
 ## Alias
 #### tsconfig.json

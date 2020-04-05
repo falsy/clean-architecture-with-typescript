@@ -3,7 +3,7 @@ import * as React from "react";
 import BoardItem from '../../atoms/boardItem';
 import CommentItem from '../../atoms/commentItem';
 import * as styles from './index.scss';
-import { IBoardVM } from '@interfaces/vms/board';
+import { IBoardVM } from '@interfaces/viewModels/board';
 
 const cx = className.bind(styles);
 

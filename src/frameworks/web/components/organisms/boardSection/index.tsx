@@ -8,7 +8,7 @@ import BoardList from '../../molecules/boardList';
 import AddBoard from '../../molecules/addBoard';
 import * as styles from './index.scss';
 import { IBoardEntity } from '@interfaces/entities/board';
-import BoardVM from '@frameworks/web/vms/Board';
+import BoardVM from '@frameworks/web/viewModels/Board';
 
 const cx = className.bind(styles);
 

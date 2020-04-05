@@ -1,4 +1,4 @@
-import { ISessionVO } from '../vos/session';
+import { ISessionVO } from '../valueObjects/session';
 import { ITokenDTO } from "../infrastructures/Remote";
 
 export interface ISessionRepository {

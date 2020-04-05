@@ -1,5 +1,5 @@
-import { ISessionVO } from '@interfaces/vos/session';
-import SessionVO from '@domains/vos/Session';
+import { ISessionVO } from '@interfaces/valueObjects/session';
+import SessionVO from '@domains/valueObjects/Session';
 
 describe('create session', () => {
   test('create session value object', () => {

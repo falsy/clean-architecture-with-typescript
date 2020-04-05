@@ -1,6 +1,6 @@
 import { ICommentData } from '../entities/comment';
 import { IBoardData } from '../entities/board';
-import { ISessionVO } from '../vos/session';
+import { ISessionVO } from '../valueObjects/session';
 
 export interface ITokenDTO {
   results: {
