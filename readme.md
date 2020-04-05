@@ -16,7 +16,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow-v2.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v3.png)
 간단하게 다이어그램으로 표현하면 위와 같습니다.
 
 ### Session
