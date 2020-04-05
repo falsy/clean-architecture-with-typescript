@@ -1,6 +1,6 @@
-import { IBoardVM } from '@interfaces/vms/board';
+import { IBoardAction } from '@interfaces/frameworks/board';
 
 export interface IBoardPresenter {
-  getBoards(): Promise<Array<IBoardVM>>;
+  getBoards(): Promise<IBoardAction>;
   insertBoard(author: string, content: string): Promise<number>;
 }

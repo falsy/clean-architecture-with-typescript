@@ -1,14 +1,14 @@
 import * as className from 'classnames/bind';
 import * as React from "react";
-import { IBoardEntity } from '@interfaces/entities/board';
 import BoardItem from '../../atoms/boardItem';
 import CommentItem from '../../atoms/commentItem';
 import * as styles from './index.scss';
+import { IBoardVM } from '@interfaces/vms/board';
 
 const cx = className.bind(styles);
 
 interface IProps {
-  list: Array<IBoardEntity>
+  list: Array<IBoardVM>;
 }
 
 const BoardList: React.FC<IProps> = (props) => {
@@ -19,12 +19,14 @@ const BoardList: React.FC<IProps> = (props) => {
       {list.length > 0 && (
         <ul>
           {list.map(board => (
-            <>
-              <BoardItem key={board.id} board={board} />
-              {board.comments.map(comment => (
-                <CommentItem key={comment.id} comment={comment} />
-              ))}
-            </>
+            <li key={board.id}>
+              <BoardItem board={board} />
+              <ul>
+                {board.comments.map(comment => (
+                  <CommentItem key={comment.id} comment={comment} />
+                ))}
+              </ul>
+            </li>
           ))}
         </ul>
       )}

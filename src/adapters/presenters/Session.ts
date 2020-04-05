@@ -1,6 +1,7 @@
 import { ISessionPresenter } from '@interfaces/presenters/session';
 import SessionVO from '@domains/vos/Session';
 import { ISessionUseCase } from '@interfaces/useCases/session';
+import { ILoginAction, LOGIN } from '@interfaces/frameworks/session';
 
 class SessionPresenter implements ISessionPresenter {
 
@@ -10,16 +11,33 @@ class SessionPresenter implements ISessionPresenter {
     this.useCases = useCases;
   }
 
-  login(id: string, pw: string): Promise<string> {
-    return this.useCases.login(new SessionVO({ id, pw }));
+  async login(id: string, pw: string): Promise<ILoginAction> {
+    const token: string = await this.useCases.login(new SessionVO({ id, pw }));
+
+    return {
+      type: LOGIN,
+      payload: {
+        token
+      }
+    }
   }
 
   getToken(): string {
     return this.useCases.getToken();
   }
 
+  setToken(token: string): ILoginAction {
+    return {
+      type: LOGIN,
+      payload: {
+        token
+      }
+    }
+  }
+
   removeToken() {
-    return this.useCases.removeToken();
+    this.useCases.removeToken();
+    return this.setToken('');
   }
 
 }

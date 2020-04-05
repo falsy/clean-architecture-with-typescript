@@ -1,8 +1,7 @@
 import { IBoardPresenter } from '@interfaces/presenters/board';
 import { IBoardUseCase } from '@interfaces/useCases/board';
 import { IBoardEntity } from '@interfaces/entities/board';
-import { IBoardVM } from '@interfaces/vms/board';
-import BoardVM from '@adapters/vms/Board';
+import { IBoardAction, GET_BOARD } from '@interfaces/frameworks/board';
 
 class BoardPresenter implements IBoardPresenter {
 
@@ -12,9 +11,15 @@ class BoardPresenter implements IBoardPresenter {
     this.useCases = useCases;
   }
 
-  async getBoards(): Promise<Array<IBoardVM>> {
-    const boardList: Array<IBoardEntity> = await this.useCases.getBoards();
-    return boardList.map(board => new BoardVM(board));
+  async getBoards(): Promise<IBoardAction> {
+    const boardEntityList: Array<IBoardEntity> = await this.useCases.getBoards();
+    
+    return {
+      type: GET_BOARD,
+      payload: {
+        list: boardEntityList
+      }
+    }
   }
 
   insertBoard(author: string, content: string): Promise<number> {

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ISessionStateGroup } from '@interfaces/frameworks/session';
-import actions from '@frameworks/web/redux/actions';
+import presenters from '@adapters/presenters';
 import Login from '../login';
 import Home from '../home';
 import * as styles from './index.scss';
@@ -16,9 +16,9 @@ const Index: React.FC = () => {
   const token = useSelector((state: ISessionStateGroup) => state.session.token);
 
   useEffect(() => {
-    const storageToken = actions.session.getToken();
+    const storageToken = presenters.session.getToken();
     if (storageToken) {
-      dispatch(actions.session.setToken(storageToken));
+      dispatch(presenters.session.setToken(storageToken));
     }
   }, [token]);
 
