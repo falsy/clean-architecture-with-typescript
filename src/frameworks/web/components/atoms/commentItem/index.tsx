@@ -6,7 +6,7 @@ import { ICommentEntity } from '@interfaces/entities/comment';
 const cx = className.bind(styles);
 
 interface IProps {
-  comment: ICommentEntity
+  comment: ICommentEntity;
 }
 
 const CommentItem: React.FC<IProps> = (props) => {
