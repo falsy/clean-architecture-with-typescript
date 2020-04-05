@@ -1,5 +1,8 @@
 # Change log
 
+### v1.4.0
+* Remove Redux(Actions) Layer
+
 ### v1.3.2*
 * Add Board View Models
 

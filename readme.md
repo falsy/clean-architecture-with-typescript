@@ -16,17 +16,15 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v2.png)
 간단하게 다이어그램으로 표현하면 위와 같습니다.
-
-### Redux
-Redux의 색이 파란색(Frameworks), 초록색(Adapters) 반반으로 표시했죠? Redux의 역할은 Presenter에 어울리지만, 동시에 Frameworks이기도 하기 때문에 저는 Redux와 Presenter 레이어를 분리해서(Redux 레이어 추가) 구성하였습니다.  
 
 ### Session
 사용자 로그인 후 발급된 인증 토큰을 웹 스토리지에 저장하여 사용합니다. 웹 스토리지는 전역에서 접근할 수 있지만, 샘플 코드는 위 흐름대로 진행하여 'Infrastructures'의 'Storege'에서 제어합니다. 이는 변할 수 있는 세부 구현의 부분이며, 그 역할에 맞게 위치하여 유지보수에 용의하게 합니다.
 
 ### Board
-'Infrastructures'에서 통해 http 통신으로 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 해당 Entity를 기반으로 하여 View를 그리기 위한 View Model을 만들고 'Redux'는 View Model을 스토어에 Action하며 Commponents(View)에서는 Dispath하여 View를 그립니다.
+'Infrastructures'에서 통해 http 통신으로 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 Entity 데이터를 가진 'Action'를 리턴합니다.
+'View'에서는 Flux 아키텍처대로 Action 값을 Dispatch 하고 Dispatcher는 Store 값을 갱신하고 자신이 변경됨을 알리고 View에서는 Store의 'Entity'값을 'View Model'로 다시 캡슐화하고 'View Model' 값을 기반으로 View를 그립니다.
 
 
 ## Directory Structure
@@ -130,7 +128,7 @@ $ npm test
 ```
 
 ## Version
-v1.3.2 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.4.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [x] 게시판 샘플 구현
