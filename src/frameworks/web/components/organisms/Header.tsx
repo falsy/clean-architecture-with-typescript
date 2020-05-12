@@ -1,11 +1,7 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import presenters from '@adapters/presenters';
-import ShortBtn from '../../atoms/shortBtn';
-import * as styles from './index.scss';
-
-const cx = className.bind(styles);
+import ShortBtn from '../atoms/ShortBtn';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,9 +11,9 @@ const Header: React.FC = () => {
   };
 
   return (
-    <section className={cx("header")}>
+    <section className={"header"}>
       <h1>React with Clean architecture</h1>
-      <div className={cx("btn-area")}>
+      <div className={"btn-area"}>
         <ShortBtn type="button" onClick={handleClickLogout} value="Logout" />
       </div>
     </section>

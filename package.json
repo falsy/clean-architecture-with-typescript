@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --mode development --stage local",
-    "mock": "webpack-dev-server --mode development --stage mock"
+    "start": "webpack-dev-server --mode development"
   },
   "repository": {
     "type": "git",
@@ -22,18 +21,12 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^25.1.1",
     "body-parser": "^1.19.0",
-    "css-loader": "^3.4.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.13.1",
-    "sass-loader": "^8.0.1",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^1.1.2",
-    "ts-jest": "^25.2.0",
+    "ts-jest": "^25.5.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.6.2",
     "webpack": "^4.30.0",
@@ -41,16 +34,16 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
-    "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.5",
     "@types/react-router-dom": "^5.1.3",
-    "classnames": "^2.2.6",
+    "@types/styled-components": "^5.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "styled-components": "^5.1.0"
   }
 }

@@ -1,8 +1,4 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
-import * as styles from './index.scss';
-
-const cx = className.bind(styles);
 
 interface IProps {
   type: "button" | "submit" | "reset";
@@ -14,7 +10,7 @@ const ShortButton: React.FC<IProps> = (props) => {
   const { type, value, onClick } = props;
 
   return (
-    <button className={cx("short-button")} type={type} onClick={onClick}>{value}</button>
+    <button className={"short-button"} type={type} onClick={onClick}>{value}</button>
   );
 };
 

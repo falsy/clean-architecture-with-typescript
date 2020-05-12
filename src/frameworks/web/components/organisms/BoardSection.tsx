@@ -1,16 +1,12 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IBoardStateGroup } from '@interfaces/frameworks/board';
 import presenters from '@adapters/presenters';
-import BoardList from '../../molecules/boardList';
-import AddBoard from '../../molecules/addBoard';
-import * as styles from './index.scss';
+import BoardList from '../molecules/BoardList';
+import AddBoard from '../molecules/AddBoard';
 import { IBoardEntity } from '@interfaces/entities/board';
 import BoardVM from '@frameworks/web/viewModels/Board';
-
-const cx = className.bind(styles);
 
 const BoardSection: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,7 +29,7 @@ const BoardSection: React.FC = () => {
   };
 
   return (
-    <div className={cx("board-section")}>
+    <div className={"board-section"}>
       <section>
         <h2>Board</h2>
         <BoardList list={boardVMList} />

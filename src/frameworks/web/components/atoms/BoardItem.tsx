@@ -1,9 +1,5 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
 import { IBoardData } from '@interfaces/entities/board';
-import * as styles from './index.scss';
-
-const cx = className.bind(styles);
 
 interface IProps {
   board: IBoardData;
@@ -14,7 +10,7 @@ const BoardItem: React.FC<IProps> = (props) => {
   const createDate = new Date(createAt);
 
   return (
-    <div className={cx("board-item")}>
+    <div className={"board-item"}>
       <p>{id}</p>
       <p>{author}</p>
       <p>{content}</p>
