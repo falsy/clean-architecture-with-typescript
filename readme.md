@@ -1,10 +1,10 @@
-# Base code of React with Clean architecture
-프레임워크로부터 독립적인 구성이 하나의 요소인 클린 아키텍처를 이야기하며 리액트를 사용한 클린 아키텍처라는 제목이... 조금 역설적이지만 크게는 웹 프론트에 클린 아키텍처를 도입하는, 작게는 Flux 아키텍처 기반의 Redux를 클린 아키텍처와 함께 사용하는 샘플 코드입니다.
+# Sample code of React with Clean architecture
+이 프로젝트는 크게는 웹 서비스에 클린 아키텍처를 도입하는, 작게는 Flux 아키텍처 기반의 Redux를 클린 아키텍처와 함께 사용하는 하나의 아이디어 샘플 코드입니다.
   
 부족한 부분이나 개선사항은 Issue 또는 Pull Request 남겨주시면 함께 반영하도록 하겠습니다. ☺️
 
 ## Use Stack
-Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
+Typescript, Webpack, React, Redux, Jest, Enzyme
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
@@ -16,7 +16,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow-v3.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v4.png)
 간단하게 다이어그램으로 표현하면 위와 같습니다.
 
 ### Session
@@ -24,7 +24,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
 
 ### Board
 'Infrastructures'에서 통해 http 통신으로 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 Entity 데이터를 가진 'Action'를 리턴합니다.
-'View'에서는 Flux 아키텍처대로 Action 값을 Dispatch 하고 Dispatcher는 Store 값을 갱신하고 자신이 변경됨을 알리고 View에서는 Store의 'Entity'값을 'View Model'로 다시 캡슐화하고 'View Model' 값을 기반으로 View를 그립니다.
+'View'에서는 Flux 아키텍처의 흐름대로 Action 값을 Dispatch 하고 Dispatcher는 Store 값을 갱신하며 자신이 변경됨을 알리고 View에서는 Store의 'Entity'값을 'View Model'로 다시 캡슐화하고 'View Model' 값을 기반으로 View를 그립니다.
 
 
 ## Directory Structure
@@ -61,7 +61,7 @@ Typescript, Webpack, React, Redux, Sass, Jest, Enzyme
    └─ valueObjects
 ```
 
-* 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다. [frameworks / adapters / domains(useCaes / entities)]
+* 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다. [frameworks / adapters / domains(useCases / entities)]
 * 컴포넌트 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다. [atoms / molecules / organisms / templates / pages]
 
 ## Alias
@@ -124,10 +124,10 @@ $ npm test
 ```
 
 ## Version
-v1.4.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.5.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [x] 게시판 샘플 구현
 - [x] 리드미 작성
-- [ ] 스타일 컴포넌트
+- [x] 스타일 컴포넌트
 - [ ] 테스트 케이스 작성

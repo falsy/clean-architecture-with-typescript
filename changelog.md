@@ -1,6 +1,9 @@
 # Change log
 
-### v1.4.0
+### v1.5.0
+* Changed to styled-components
+
+### v1.4.0*
 * Remove Redux(Actions) Layer
 
 ### v1.3.2*
