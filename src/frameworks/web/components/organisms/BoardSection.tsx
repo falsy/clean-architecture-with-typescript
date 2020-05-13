@@ -1,16 +1,25 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
 import { useEffect } from "react";
+import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
 import { IBoardStateGroup } from '@interfaces/frameworks/board';
 import presenters from '@adapters/presenters';
-import BoardList from '../../molecules/boardList';
-import AddBoard from '../../molecules/addBoard';
-import * as styles from './index.scss';
+import BoardList from '../molecules/BoardList';
+import AddBoard from '../molecules/AddBoard';
 import { IBoardEntity } from '@interfaces/entities/board';
 import BoardVM from '@frameworks/web/viewModels/Board';
 
-const cx = className.bind(styles);
+const SBoardSectionArea = styled.section`
+  margin-top: 40px;
+  &:first-child {
+    margin-top: 0;
+  }
+`;
+
+const SSectionTitle = styled.h2`
+  font-size: 24px;
+  font-weight: 200;
+`;
 
 const BoardSection: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,15 +42,15 @@ const BoardSection: React.FC = () => {
   };
 
   return (
-    <div className={cx("board-section")}>
-      <section>
-        <h2>Board</h2>
+    <div className={"board-section"}>
+      <SBoardSectionArea>
+        <SSectionTitle>Board</SSectionTitle>
         <BoardList list={boardVMList} />
-      </section>
-      <section>
-        <h2>Add Post</h2>
+      </SBoardSectionArea>
+      <SBoardSectionArea>
+        <SSectionTitle>Add Post</SSectionTitle>
         <AddBoard insertFnc={insertFnc} />
-      </section>
+      </SBoardSectionArea>
     </div>
   );
 };

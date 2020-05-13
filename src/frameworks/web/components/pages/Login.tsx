@@ -1,11 +1,7 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import presenters from '@adapters/presenters';
-import Authorization from '../../templates/authorization';
-import * as styles from './index.scss';
-
-const cx = className.bind(styles);
+import Authorization from '../templates/authorization';
 
 const Login: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,7 +11,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className={cx("login")}>
+    <div className={"login"}>
       <Authorization accredit={handleClickAccreditation} btnValue="Login" />
     </div>
   );

@@ -1,23 +1,25 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
-import * as styles from './index.scss';
-import AuthBox from '../../organisms/authBox';
-
-const cx = className.bind(styles);
+import styled from 'styled-components';
+import AuthBox from '../organisms/AuthBox';
 
 interface IProps {
   accredit(id: string, pw: string): void;
   btnValue: string;
 }
 
+const AuthArea = styled.div`
+  width: 400px;
+  margin: 100px auto;
+`;
+
 const Authorization: React.FC<IProps> = (props) => {
 
   const { accredit, btnValue } = props;
 
   return (
-    <div className={cx("authorization")}>
+    <AuthArea>
       <AuthBox accredit={accredit} btnValue={btnValue} />
-    </div>
+    </AuthArea>
   );
 };
 

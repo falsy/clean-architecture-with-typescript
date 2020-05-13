@@ -1,11 +1,34 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
+import styled from 'styled-components';
 import { useState } from 'react';
-import LongBtn from '../../atoms/longBtn';
-import Input from '../../atoms/input';
-import * as styles from './index.scss';
+import LongBtn from '../atoms/LongBtn';
+import Input from '../atoms/Input';
 
-const cx = className.bind(styles);
+const SAddBtnArea = styled.div`
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+`;
+
+const SAuthorBox = styled.div`
+  float: left;
+  margin-right: 10px;
+  width: 200px;
+`;
+
+const SContentBox = styled.div`
+  float: left;
+  margin-right: 10px;
+  width: 200px;
+`;
+
+const SAddBox = styled.div`
+  float: left;
+  margin-right: 10px;
+  width: 80px;
+`;
 
 interface IProps {
   insertFnc(author: string, content: string): void;
@@ -39,18 +62,18 @@ const BoardList: React.FC<IProps> = (props) => {
   }
 
   return (
-    <section className={cx("add-board")}>
-      <div className={cx("add-board-btn-area")}>
-        <div className={cx("author-box")}>
+    <section>
+      <SAddBtnArea>
+        <SAuthorBox>
           <Input type="text" name="author" placeholder="author" onChange={handleChangeInput} onKeyDown={null} value={author} />
-        </div>
-        <div className={cx("content-box")}>
+        </SAuthorBox>
+        <SContentBox>
           <Input type="text" name="content" placeholder="content" onChange={handleChangeInput} onKeyDown={handleKeyDownInsertBoard} value={content} />
-        </div>
-        <div className={cx("add-btn")}>
+        </SContentBox>
+        <SAddBox>
           <LongBtn type="button" value="Add" onClick={handleClickInsertBoard} />
-        </div>
-      </div>
+        </SAddBox>
+      </SAddBtnArea>
     </section>
   );
 };

@@ -1,8 +1,13 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
-import * as styles from './index.scss';
+import styled from 'styled-components';
 
-const cx = className.bind(styles);
+const SInput = styled.input`
+  display: inline-block;
+  padding: 0 20px;
+  height: 60px;
+  width: 100%;
+  font-size: 16px;  
+`;
 
 interface IProps {
   type: string;
@@ -17,7 +22,7 @@ const Input: React.FC<IProps> = (props) => {
   const { type, name, placeholder, onChange, onKeyDown, value } = props;
 
   return (
-    <input className={cx("input")} type={type} name={name} placeholder={placeholder} onChange={onChange} onKeyDown={onKeyDown} value={value} />
+    <SInput className={"input"} type={type} name={name} placeholder={placeholder} onChange={onChange} onKeyDown={onKeyDown} value={value} />
   );
 };
 

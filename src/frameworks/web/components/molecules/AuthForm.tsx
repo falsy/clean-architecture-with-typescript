@@ -1,11 +1,12 @@
-import * as className from 'classnames/bind';
 import * as React from "react";
+import styled from 'styled-components';
 import { useState } from "react";
-import Input from '../../atoms/input';
-import LongBtn from '../../atoms/longBtn';
-import * as styles from './index.scss';
+import Input from '../atoms/Input';
+import LongBtn from '../atoms/LongBtn';
 
-const cx = className.bind(styles);
+const SBtnArea = styled.div`
+  margin: 10px 0;
+`;
 
 interface IProps {
   accredit(id: string, pw: string): void;
@@ -35,15 +36,15 @@ const AuthForm: React.FC<IProps> = (props) => {
 
   return (
     <section>
-      <div className={cx("client-id")}>
+      <SBtnArea>
         <Input type="text" name="id" placeholder="ID" onChange={handleChangeClientInfo} onKeyDown={null} value={id} />
-      </div>
-      <div className={cx("client-pw")}>
+      </SBtnArea>
+      <SBtnArea>
         <Input type="text" name="pw" placeholder="Password" onChange={handleChangeClientInfo} onKeyDown={handleKeyDownAccredit} value={pw} />
-      </div>
-      <div className={cx("client-btn")}>
+      </SBtnArea>
+      <SBtnArea>
         <LongBtn type="button" onClick={handleClickAccredit} value={btnValue} />
-      </div>
+      </SBtnArea>
     </section>
   );
 };
