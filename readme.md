@@ -41,16 +41,16 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 │  └─ valueObjects
 ├─ frameworks
 │  └─ web
+│     ├─ components
+│     │  ├─ atoms
+│     │  ├─ molecules
+│     │  ├─ organisms
+│     │  ├─ templates
+│     │  └─ pages
 │     ├─ redux
 │     │  ├─ reducer
-│     │  ├─ store
-│     │  └─ viewModels
-│     └─ components
-│        ├─ atoms
-│        ├─ molecules
-│        ├─ organisms
-│        ├─ templates
-│        └─ pages
+│     │  └─ store
+│     └─ viewModels
 └─ interfaces
    ├─ entites
    ├─ frameworks
