@@ -1,8 +1,8 @@
-import { IBoardData } from '@interfaces/entities/board';
-import { ICommentData, ICommentEntity } from '@interfaces/entities/comment';
+import { IBoardData } from '@domains/aggregates/interfaces/iBoard';
+import { ICommentData, ICommentEntity } from '@domains/entities/interfaces/iComment';
 import Board from '@domains/aggregates/Board';
 import Comment from '@domains/entities/Comment';
-import { IBoardEntity } from '@interfaces/entities/board';
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
 
 describe('board entity', () => {
 

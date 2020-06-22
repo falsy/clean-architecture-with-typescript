@@ -1,5 +1,5 @@
-import { ISessionVO } from '../valueObjects/session';
-import { ITokenDTO } from "../infrastructures/Remote";
+import { ISessionVO } from '@domains/vos/interfaces/iSession';
+import { ITokenDTO } from "@adapters/infrastructures/interfaces/iRemote";
 
 export interface ISessionRepository {
   login(SessionVO: ISessionVO): Promise<ITokenDTO>;

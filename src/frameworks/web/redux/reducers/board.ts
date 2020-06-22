@@ -1,4 +1,4 @@
-import { GET_BOARD, IBoardList, IBoardAction, IReducer } from '@interfaces/frameworks/board';
+import { GET_BOARD, IBoardList, IBoardAction, IReducer } from '@frameworks/web/redux/interfaces/iBoard';
 
 const initState: IBoardList = {
   list: []

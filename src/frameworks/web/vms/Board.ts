@@ -1,6 +1,6 @@
-import { IBoardEntity } from '@interfaces/entities/board';
-import { ICommentEntity } from '@interfaces/entities/comment';
-import { IBoardVM } from '@interfaces/viewModels/board';
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
+import { ICommentEntity } from '@domains/entities/interfaces/iComment';
+import { IBoardVM } from '@frameworks/web/vms/interfaces/iBoard';
 
 class BoardVM implements IBoardVM {
   private readonly _id: number;

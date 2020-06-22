@@ -1,4 +1,4 @@
-import { ISessionVO } from '@interfaces/valueObjects/session';
+import { ISessionVO } from '@domains/vos/interfaces/iSession';
 
 export default class SessionVO {
   readonly id: string;

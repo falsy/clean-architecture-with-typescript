@@ -1,5 +1,5 @@
-import { ISessionUseCase } from './session';
-import { IBoardUseCase } from './board';
+import { ISessionUseCase } from './iSession';
+import { IBoardUseCase } from './iBoard';
 
 export default interface IUseCases {
   session: ISessionUseCase;

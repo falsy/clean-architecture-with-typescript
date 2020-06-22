@@ -2,12 +2,12 @@ import * as React from "react";
 import { useEffect } from "react";
 import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
-import { IBoardStateGroup } from '@interfaces/frameworks/board';
+import { IBoardStateGroup } from '@frameworks/web/redux/interfaces/iBoard';
 import presenters from '@adapters/presenters';
 import BoardList from '../molecules/BoardList';
 import AddBoard from '../molecules/AddBoard';
-import { IBoardEntity } from '@interfaces/entities/board';
-import BoardVM from '@frameworks/web/viewModels/Board';
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
+import BoardVM from '@frameworks/web/vms/Board';
 
 const SBoardSectionArea = styled.section`
   margin-top: 40px;

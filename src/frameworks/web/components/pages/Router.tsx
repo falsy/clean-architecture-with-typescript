@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { ISessionStateGroup } from '@interfaces/frameworks/session';
+import { ISessionStateGroup } from '@frameworks/web/redux/interfaces/iSession';
 import presenters from '@adapters/presenters';
 import Login from './Login';
 import Home from './Home';

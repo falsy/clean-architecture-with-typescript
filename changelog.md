@@ -1,5 +1,8 @@
 # Change log
 
+### v1.5.1
+* Edit Directory Structure
+
 ### v1.5.0
 * Changed to styled-components
 

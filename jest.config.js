@@ -17,10 +17,8 @@ module.exports = {
     }
   },
   moduleNameMapper: { 
-    "^.+\\.(scss|css|svg|png|sass)$": "identity-obj-proxy",
     "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
     "^@domains/(.*)$": "<rootDir>/src/domains/$1",
-    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
-    "^@interfaces/(.*)$": "<rootDir>/src/interfaces/$1"
+    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1"
   }
 };

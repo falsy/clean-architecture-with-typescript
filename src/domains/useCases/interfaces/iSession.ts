@@ -1,4 +1,4 @@
-import { ISessionVO } from '../valueObjects/session';
+import { ISessionVO } from '@domains/vos/interfaces/iSession';
 
 export interface ISessionUseCase {
   login(SessionVO: ISessionVO): Promise<string>;

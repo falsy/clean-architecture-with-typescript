@@ -1,7 +1,7 @@
-import { ISessionUseCase } from '@interfaces/useCases/session';
-import { ISessionRepository } from '@interfaces/repositories/session';
-import { ISessionVO } from '@interfaces/valueObjects/session';
-import { ITokenDTO } from "@interfaces/infrastructures/Remote";
+import { ISessionUseCase } from '@domains/useCases/interfaces/iSession';
+import { ISessionRepository } from '@adapters/repositories/interfaces/iSession';
+import { ISessionVO } from '@domains/vos/interfaces/iSession';
+import { ITokenDTO } from  "@adapters/infrastructures/interfaces/iRemote";
 import SessionUseCase from '@domains/useCases/Session';
 
 describe('session use case', () => {

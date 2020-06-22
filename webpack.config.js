@@ -13,8 +13,7 @@ module.exports = {
     alias: { 
       "@adapters": path.resolve(__dirname, "src/adapters/"),
       "@domains": path.resolve(__dirname, "src/domains/"),
-      "@frameworks": path.resolve(__dirname, "src/frameworks/"),
-      "@interfaces": path.resolve(__dirname, "src/interfaces/"),
+      "@frameworks": path.resolve(__dirname, "src/frameworks/")
     }
   },
   output: {

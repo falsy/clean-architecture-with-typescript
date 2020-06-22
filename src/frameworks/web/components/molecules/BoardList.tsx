@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from 'styled-components';
 import BoardItem from '../atoms/BoardItem';
 import CommentItem from '../atoms/CommentItem';
-import { IBoardVM } from '@interfaces/viewModels/board';
+import { IBoardVM } from '@frameworks/web/vms/interfaces/iBoard';
 
 const SBoardUl = styled.ul`
   border-top: 1px solid #eee;

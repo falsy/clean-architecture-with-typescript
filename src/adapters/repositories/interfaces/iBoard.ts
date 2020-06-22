@@ -1,4 +1,4 @@
-import { IBoardDTO, ICommentDTO } from '../infrastructures/Remote';
+import { IBoardDTO, ICommentDTO } from '@adapters/infrastructures/interfaces/iRemote';
 
 export interface IBoardRepository {
   getBoards(): Promise<IBoardDTO>;

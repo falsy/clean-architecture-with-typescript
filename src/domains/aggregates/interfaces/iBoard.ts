@@ -1,4 +1,4 @@
-import { ICommentEntity } from "./comment";
+import { ICommentEntity } from "../../entities/interfaces/iComment";
 
 export interface IBoardEntity {
   id: number;
