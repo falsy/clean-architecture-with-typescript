@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from 'styled-components';
-import { IBoardData } from '@interfaces/entities/board';
+import { IBoardData } from '@domains/aggregates/interfaces/iBoard';
 
 const SBoardItem = styled.div`
   list-style: none;

@@ -1,4 +1,4 @@
-import { ICommentEntity, ICommentData } from '@interfaces/entities/comment';
+import { ICommentEntity, ICommentData } from '@domains/entities/interfaces/iComment';
 
 class Comment implements ICommentEntity { 
 

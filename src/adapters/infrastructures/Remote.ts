@@ -1,5 +1,5 @@
-import { ITokenDTO, IBoardDTO, IRemote } from "@interfaces/infrastructures/Remote";
-import { ISessionVO } from '@interfaces/valueObjects/session';
+import { ITokenDTO, IBoardDTO, IRemote } from "./interfaces/iRemote";
+import { ISessionVO } from '@domains/vos/interfaces/iSession';
 
 class Remote implements IRemote {
 

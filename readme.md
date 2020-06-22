@@ -32,33 +32,34 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 ./src
 ├─ adapters
 │  ├─ presenters
+│  │  └─ interfaces
 │  ├─ repositories
+│  │  └─ interfaces
 │  └─ infrastructures
+│     └─ interfaces
 ├─ domains
 │  ├─ aggregates
+│  │  └─ interfaces
 │  ├─ entities
+│  │  └─ interfaces
 │  ├─ useCases
-│  └─ valueObjects
-├─ frameworks
-│  └─ web
-│     ├─ components
-│     │  ├─ atoms
-│     │  ├─ molecules
-│     │  ├─ organisms
-│     │  ├─ templates
-│     │  └─ pages
-│     ├─ redux
-│     │  ├─ reducer
-│     │  └─ store
-│     └─ viewModels
-└─ interfaces
-   ├─ entites
-   ├─ frameworks
-   ├─ infrastructures
-   ├─ repositories
-   ├─ useCases
-   ├─ viewModels
-   └─ valueObjects
+│  │  └─ interfaces
+│  └─ vos
+│     └─ interfaces
+└─ frameworks
+   └─ web
+      ├─ components
+      │  ├─ atoms
+      │  ├─ molecules
+      │  ├─ organisms
+      │  ├─ templates
+      │  └─ pages
+      ├─ redux
+      │  ├─ interfaces
+      │  ├─ reducers
+      │  └─ store
+      └─ vms
+
 ```
 
 * 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다. [frameworks / adapters / domains(useCases / entities)]
@@ -73,8 +74,7 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
   "paths": {
     "@adapters/*": ["src/adapters/*"],
     "@domains/*": ["src/domains/*"],
-    "@frameworks/*": ["src/frameworks/*"],
-    "@interfaces/*": ["src/interfaces/*"]
+    "@frameworks/*": ["src/frameworks/*"]
   }
 }
 ```
@@ -88,8 +88,7 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
     alias: { 
       "@adapters": path.resolve(__dirname, "src/adapters/"),
       "@domains": path.resolve(__dirname, "src/domains/"),
-      "@frameworks": path.resolve(__dirname, "src/frameworks/"),
-      "@interfaces": path.resolve(__dirname, "src/interfaces/")
+      "@frameworks": path.resolve(__dirname, "src/frameworks/")
     }
   }
 }
@@ -103,8 +102,7 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
     //...
     "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
     "^@domains/(.*)$": "<rootDir>/src/domains/$1",
-    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
-    "^@interfaces/(.*)$": "<rootDir>/src/interfaces/$1"
+    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1"
   }
 }
 ```
@@ -124,7 +122,7 @@ $ npm test
 ```
 
 ## Version
-v1.5.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.5.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [x] 게시판 샘플 구현

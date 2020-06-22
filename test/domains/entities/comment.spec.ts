@@ -1,4 +1,4 @@
-import { ICommentData } from '@interfaces/entities/comment';
+import { ICommentData } from '@domains/entities/interfaces/iComment';
 import Comment from '@domains/entities/Comment';
 
 describe('comment entity', () => {

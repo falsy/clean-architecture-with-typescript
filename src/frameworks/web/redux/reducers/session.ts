@@ -1,4 +1,4 @@
-import { LOGIN, ILoginAction, IToken, IReducer } from '@interfaces/frameworks/session';
+import { LOGIN, ILoginAction, IToken, IReducer } from '@frameworks/web/redux/interfaces/iSession';
 
 const initState: IToken = {
   token: ''

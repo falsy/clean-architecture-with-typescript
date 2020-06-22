@@ -1,4 +1,4 @@
-import { IBoardEntity } from '@interfaces/entities/board';
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
 
 export const GET_BOARD = 'GET_BOARD';
 

@@ -1,7 +1,7 @@
-import { ISessionRepository } from '@interfaces/repositories/session';
-import IInfrastructure from '@interfaces/infrastructures';
-import { ISessionVO } from '@interfaces/valueObjects/session';
-import { ITokenDTO } from '@interfaces/infrastructures/Remote';
+import { ISessionRepository } from '@adapters/repositories/interfaces/iSession';
+import IInfrastructure from '@adapters/infrastructures/interfaces/iInfrastructures';
+import { ISessionVO } from '@domains/vos/interfaces/iSession';
+import { ITokenDTO } from '@adapters/infrastructures/interfaces/iRemote';
 
 class SessionRepository implements ISessionRepository {
 

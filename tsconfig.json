@@ -11,8 +11,7 @@
     "paths": {
       "@adapters/*": ["src/adapters/*"],
       "@domains/*": ["src/domains/*"],
-      "@frameworks/*": ["src/frameworks/*"],
-      "@interfaces/*": ["src/interfaces/*"]
+      "@frameworks/*": ["src/frameworks/*"]
     }
   },
   "include": [

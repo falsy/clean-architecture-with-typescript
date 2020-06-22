@@ -1,4 +1,4 @@
-import { IBoardEntity } from '@interfaces/entities/board';
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
 
 export interface IBoardUseCase {
   getBoards(): Promise<Array<IBoardEntity>>;

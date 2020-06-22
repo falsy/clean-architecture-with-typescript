@@ -1,7 +1,7 @@
-import { ISessionPresenter } from '@interfaces/presenters/session';
-import SessionVO from '@domains/valueObjects/Session';
-import { ISessionUseCase } from '@interfaces/useCases/session';
-import { ILoginAction, LOGIN } from '@interfaces/frameworks/session';
+import { ISessionPresenter } from '@adapters/presenters/interfaces/iSession';
+import SessionVO from '@domains/vos/Session';
+import { ISessionUseCase } from '@domains/useCases/interfaces/iSession';
+import { ILoginAction, LOGIN } from '@frameworks/web/redux/interfaces/iSession';
 
 class SessionPresenter implements ISessionPresenter {
 

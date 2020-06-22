@@ -1,5 +1,5 @@
-import { IRemote } from './Remote';
-import { IWebStorage } from './webStorage';
+import { IRemote } from './iRemote';
+import { IWebStorage } from './iWebStorage';
 
 export default interface IInfrastructures {
   remote: IRemote;

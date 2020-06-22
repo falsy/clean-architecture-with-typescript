@@ -1,6 +1,6 @@
-import { IBoardRepository } from '@interfaces/repositories/board';
-import { IBoardDTO } from "@interfaces/infrastructures/Remote";
-import IInfrastructures from '@interfaces/infrastructures';
+import { IBoardRepository } from '@adapters/repositories/interfaces/iBoard';
+import { IBoardDTO } from "@adapters/infrastructures/interfaces/iRemote";
+import IInfrastructures from '@adapters/infrastructures/interfaces/iInfrastructures';
 
 class BoardRepository implements IBoardRepository {
 

@@ -1,7 +1,7 @@
-import { IBoardPresenter } from '@interfaces/presenters/board';
-import { IBoardUseCase } from '@interfaces/useCases/board';
-import { IBoardEntity } from '@interfaces/entities/board';
-import { IBoardAction, GET_BOARD } from '@interfaces/frameworks/board';
+import { IBoardPresenter } from './interfaces/iBoard';
+import { IBoardUseCase } from '@domains/useCases/interfaces/iBoard';
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
+import { IBoardAction, GET_BOARD } from '@frameworks/web/redux/interfaces/iBoard';
 
 class BoardPresenter implements IBoardPresenter {
 

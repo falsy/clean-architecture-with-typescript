@@ -1,4 +1,4 @@
-import { IWebStorage } from '@interfaces/infrastructures/webStorage';
+import { IWebStorage } from './interfaces/iWebStorage';
 
 class WebStorage implements IWebStorage {
 
