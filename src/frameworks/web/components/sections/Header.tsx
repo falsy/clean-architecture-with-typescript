@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from 'styled-components';
 import { useDispatch } from "react-redux";
 import di from '@di/index';
-import ShortBtn from '../atoms/ShortBtn';
+import ShortBtn from '../items/ShortBtn';
 
 const SHeaderArea = styled.section`
   width: 100%;

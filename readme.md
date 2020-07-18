@@ -50,11 +50,11 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 └─ frameworks
    └─ web
       ├─ components
-      │  ├─ atoms
-      │  ├─ molecules
-      │  ├─ organisms
+      │  ├─ pages
       │  ├─ templates
-      │  └─ pages
+      │  ├─ sections
+      │  ├─ boxs
+      │  └─ items
       ├─ redux
       │  ├─ interfaces
       │  ├─ actions
@@ -64,8 +64,10 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 
 ```
 
-* 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다. [frameworks / adapters / domains(useCases / entities)]
-* 컴포넌트 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다. [atoms / molecules / organisms / templates / pages]
+* 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다.  
+[ frameworks / adapters / domains(useCases / entities) ]
+* 컴포넌트 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다.  
+[ pages / templates / sections / boxs / items ]
 
 ## Alias
 #### tsconfig.json
@@ -127,7 +129,7 @@ $ npm test
 ```
 
 ## Version
-v1.6.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [x] 게시판 샘플 구현

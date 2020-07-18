@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from 'styled-components';
-import AuthBox from '../organisms/AuthBox';
+import AuthBox from '../sections/AuthBox';
 
 interface IProps {
   accredit(id: string, pw: string): void;

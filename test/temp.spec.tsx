@@ -1,6 +1,6 @@
 import * as React from "react";
 import { mount } from 'enzyme';
-import AddBoard from '@frameworks/web/components/molecules/addBoard';
+import AddBoard from '@frameworks/web/components/boxs/addBoard';
 
 describe('test', () => {
   it('check status component redner', () => {
