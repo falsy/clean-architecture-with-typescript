@@ -1,5 +1,8 @@
 # Change log
 
+### v1.6.2
+* Add English Introduction
+
 ### v1.6.1
 * Edit Component Directory Structures
 
