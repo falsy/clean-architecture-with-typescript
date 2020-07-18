@@ -1,5 +1,5 @@
 # Sample code of React with Clean architecture
-This project is one small idea sample code for use Redux based on Flux architecture with Clean architecture  
+This project is one small idea sample code for use Redux based on Flux architecture with Clean architecture.  
 if you leave an issue or a pull request, we will reflect the insufficient part or improvement. ☺️  
 (+ i am not good at English.)
 
