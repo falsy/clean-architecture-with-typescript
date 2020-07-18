@@ -132,7 +132,7 @@ $ npm test
 ```
 
 ## Version
-v1.6.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.2 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [x] board sample implementation
