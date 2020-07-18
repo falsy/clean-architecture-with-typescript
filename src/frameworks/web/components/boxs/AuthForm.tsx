@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from 'styled-components';
 import { useState } from "react";
-import Input from '../atoms/Input';
-import LongBtn from '../atoms/LongBtn';
+import Input from '../items/Input';
+import LongBtn from '../items/LongBtn';
 
 const SBtnArea = styled.div`
   margin: 10px 0;

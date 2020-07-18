@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
 import { IBoardStateGroup } from '@frameworks/web/redux/interfaces/iBoard';
 import di from '@di/index';
-import BoardList from '../molecules/BoardList';
-import AddBoard from '../molecules/AddBoard';
+import BoardList from '../boxs/BoardList';
+import AddBoard from '../boxs/AddBoard';
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
 import BoardVM from '@frameworks/web/vms/Board';
 

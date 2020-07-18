@@ -1,5 +1,5 @@
 import * as React from "react";
-import AuthForm from '../molecules/AuthForm';
+import AuthForm from '../boxs/AuthForm';
 
 interface IProps {
   accredit(id: string, pw: string): void;

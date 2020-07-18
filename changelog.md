@@ -1,5 +1,8 @@
 # Change log
 
+### v1.6.1
+* Edit Component Directory Structures
+
 ### v1.6.0
 * Action-Presenter Separation
 

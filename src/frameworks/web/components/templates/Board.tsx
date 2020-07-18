@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from 'styled-components';
-import Header from '../organisms/Header';
-import BaordSection from '../organisms/BoardSection';
+import Header from '../sections/Header';
+import BaordSection from '../sections/BoardSection';
 
 const BoardContent = styled.div`
   padding: 30px;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from 'styled-components';
-import BoardItem from '../atoms/BoardItem';
-import CommentItem from '../atoms/CommentItem';
+import BoardItem from '../items/BoardItem';
+import CommentItem from '../items/CommentItem';
 import { IBoardVM } from '@frameworks/web/vms/interfaces/iBoard';
 
 const SBoardUl = styled.ul`

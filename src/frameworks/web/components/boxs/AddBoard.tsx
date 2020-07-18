@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from 'styled-components';
 import { useState } from 'react';
-import LongBtn from '../atoms/LongBtn';
-import Input from '../atoms/Input';
+import LongBtn from '../items/LongBtn';
+import Input from '../items/Input';
 
 const SAddBtnArea = styled.div`
   &::after {
