@@ -4,7 +4,7 @@ if you leave an issue or a pull request, we will reflect the insufficient part o
 (+ i am not good at English.)
 
 ## Language
-[🇰🇷](https://github.com/falsy/react-with-clean-architecture/blob/master/readme-ko.md) [🇺🇲](https://github.com/falsy/react-with-clean-architecture/blob/master/readme.md)
+[🇰🇷](https://github.com/falsy/react-with-clean-architecture/blob/master/readme-ko.md) [🇺🇲](https://github.com/falsy/react-with-clean-architecture)
 
 
 ## Use Stack
@@ -27,8 +27,7 @@ in simple diagram, it is as above.
 After the user logs in, the issued authentication token is stored and used in the web storage. web storage is accessible globally, but the sample code follows the flow above and is controlled by 'Storege' in 'Infrastructures'. this is part of a detailed implementation that can change, and is positioned according to its role to improve maintenance.
 
 ### Board
-In 'Infrastructures', bulletin board posts and comments are taken via http communication and encapsulated in'Use Case' as Board Root Entity including Comment Entity, delivered to 'Presenter', and 'Presenter' responds to 'Action' with Entity data.  
-'View' dispatches Action value according to the flow of Flux architecture, Dispatcher updates Store value, notifies itself of change, and View encapsulates'Entity' value of Store as'View Model' again and based on'View Model' value Output the View.
+In 'Infrastructures', bulletin board posts and comments are taken via http communication and encapsulated in'Use Case' as Board Root Entity including Comment Entity, delivered to 'Presenter', and 'Presenter' responds to 'Action' with Entity data. 'View' dispatches Action value according to the flow of Flux architecture, Dispatcher updates Store value, notifies itself of change, and View encapsulates'Entity' value of Store as'View Model' again and based on'View Model' value Output the View.
 
 
 ## Directory Structure
