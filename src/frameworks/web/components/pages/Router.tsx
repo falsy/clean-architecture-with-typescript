@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ISessionStateGroup } from '@frameworks/web/redux/interfaces/iSession';
-import presenters from '@adapters/presenters';
+import di from '@di/index';
 import Login from './Login';
 import Home from './Home';
 
@@ -12,9 +12,9 @@ const Index: React.FC = () => {
   const token = useSelector((state: ISessionStateGroup) => state.session.token);
 
   useEffect(() => {
-    const storageToken = presenters.session.getToken();
+    const storageToken = di.session.getToken();
     if (storageToken) {
-      dispatch(presenters.session.setToken(storageToken));
+      dispatch(di.session.setToken(storageToken));
     }
   }, [token]);
 

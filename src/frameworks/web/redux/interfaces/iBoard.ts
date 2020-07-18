@@ -20,7 +20,6 @@ export interface IReducer {
 }
 
 
-export default interface IBoardActions {
-  getBoards(): Promise<IBoardAction>;
-  insertBoard(author: string, content: string): Promise<number>;
+export interface IBoardActions {
+  getBoards(boardEntityList: Array<IBoardEntity>): IBoardAction;
 }

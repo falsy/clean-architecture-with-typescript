@@ -18,9 +18,6 @@ export interface IReducer {
   (state: IToken, action: ILoginAction): IToken;
 }
 
-export default interface ISessionActions {
-  login(id: string, pw: string): Promise<ILoginAction>;
-  getToken(): string;
+export interface ISessionActions {
   setToken(token: string): ILoginAction;
-  removeToken(): ILoginAction;
 }

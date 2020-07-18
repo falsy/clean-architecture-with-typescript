@@ -1,25 +1,16 @@
 import { ISessionPresenter } from '@adapters/presenters/interfaces/iSession';
-import SessionVO from '@domains/vos/Session';
 import { ISessionUseCase } from '@domains/useCases/interfaces/iSession';
-import { ILoginAction, LOGIN } from '@frameworks/web/redux/interfaces/iSession';
+import { ILoginAction, ISessionActions } from '@frameworks/web/redux/interfaces/iSession';
+import SessionVO from '@domains/vos/Session';
 
 class SessionPresenter implements ISessionPresenter {
 
   private useCases: ISessionUseCase;
+  private actions: ISessionActions;
 
-  constructor(useCases: ISessionUseCase) {
+  constructor(useCases: ISessionUseCase, actions: any) {
     this.useCases = useCases;
-  }
-
-  async login(id: string, pw: string): Promise<ILoginAction> {
-    const token: string = await this.useCases.login(new SessionVO({ id, pw }));
-
-    return {
-      type: LOGIN,
-      payload: {
-        token
-      }
-    }
+    this.actions = actions;
   }
 
   getToken(): string {
@@ -27,12 +18,12 @@ class SessionPresenter implements ISessionPresenter {
   }
 
   setToken(token: string): ILoginAction {
-    return {
-      type: LOGIN,
-      payload: {
-        token
-      }
-    }
+    return this.actions.setToken(token);
+  }
+
+  async login(id: string, pw: string): Promise<ILoginAction> {
+    const token: string = await this.useCases.login(new SessionVO({ id, pw }));
+    return this.setToken(token);
   }
 
   removeToken() {
@@ -41,6 +32,5 @@ class SessionPresenter implements ISessionPresenter {
   }
 
 }
-
 
 export default SessionPresenter;
