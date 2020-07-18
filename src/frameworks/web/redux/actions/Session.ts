@@ -1,6 +1,6 @@
-import { ILoginAction, LOGIN } from '@frameworks/web/redux/interfaces/iSession';
+import { ILoginAction, LOGIN, ISessionActions } from '@frameworks/web/redux/interfaces/iSession';
 
-class SessionActions {
+class SessionActions implements ISessionActions {
 
   setToken(token: string): ILoginAction {
     return {
@@ -10,7 +10,7 @@ class SessionActions {
       }
     }
   }
-  
+
 }
 
 

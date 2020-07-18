@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from 'styled-components';
 import { useDispatch } from "react-redux";
-import presenters from '@adapters/presenters';
+import di from '@di/index';
 import ShortBtn from '../atoms/ShortBtn';
 
 const SHeaderArea = styled.section`
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleClickLogout = () => {
-    dispatch(presenters.session.removeToken());
+    dispatch(di.session.removeToken());
   };
 
   return (

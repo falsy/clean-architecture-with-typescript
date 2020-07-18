@@ -1,15 +1,15 @@
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
-import { IBoardAction, GET_BOARD } from '@frameworks/web/redux/interfaces/iBoard';
+import { IBoardAction, GET_BOARD, IBoardActions } from '@frameworks/web/redux/interfaces/iBoard';
 
-class BoardActions {
+class BoardActions implements IBoardActions {
 
-  async getBoards(boardEntityList: Array<IBoardEntity>): Promise<IBoardAction> {
+  getBoards(boardEntityList: Array<IBoardEntity>): IBoardAction {
     return {
       type: GET_BOARD,
       payload: {
         list: boardEntityList
       }
-    }
+    };
   }
 
 }

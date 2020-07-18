@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
 import { IBoardStateGroup } from '@frameworks/web/redux/interfaces/iBoard';
-import presenters from '@adapters/presenters';
+import di from '@di/index';
 import BoardList from '../molecules/BoardList';
 import AddBoard from '../molecules/AddBoard';
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
@@ -29,15 +29,15 @@ const BoardSection: React.FC = () => {
 
   useEffect(() => {
     const asyncFnc = async () => {
-      dispatch(await presenters.board.getBoards());
+      dispatch(await di.board.getBoards());
     };
     asyncFnc();
   }, []);
 
   const insertFnc = async (author: string, content: string) => {
-    const resStatus = await presenters.board.insertBoard(author, content);
+    const resStatus = await di.board.insertBoard(author, content);
     if (resStatus === 200) {
-      dispatch(await presenters.board.getBoards());
+      dispatch(await di.board.getBoards());
     }
   };
 

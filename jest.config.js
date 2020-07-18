@@ -19,6 +19,7 @@ module.exports = {
   moduleNameMapper: { 
     "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
     "^@domains/(.*)$": "<rootDir>/src/domains/$1",
-    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1"
+    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
+    "^@di/(.*)$": "<rootDir>/src/di/$1"
   }
 };

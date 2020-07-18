@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import presenters from '@adapters/presenters';
+import di from '@di/index';
 import Authorization from '../templates/authorization';
 
 const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleClickAccreditation = async (id: string, pw: string) => {
-    dispatch(await presenters.session.login(id, pw));
+    dispatch(await di.session.login(id, pw));
   };
 
   return (

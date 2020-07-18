@@ -46,6 +46,7 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 │  │  └─ interfaces
 │  └─ vos
 │     └─ interfaces
+├─ di
 └─ frameworks
    └─ web
       ├─ components
@@ -56,6 +57,7 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
       │  └─ pages
       ├─ redux
       │  ├─ interfaces
+      │  ├─ actions
       │  ├─ reducers
       │  └─ store
       └─ vms
@@ -74,7 +76,8 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
   "paths": {
     "@adapters/*": ["src/adapters/*"],
     "@domains/*": ["src/domains/*"],
-    "@frameworks/*": ["src/frameworks/*"]
+    "@frameworks/*": ["src/frameworks/*"],
+    "@di/*": ["src/di/*"]
   }
 }
 ```
@@ -88,7 +91,8 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
     alias: { 
       "@adapters": path.resolve(__dirname, "src/adapters/"),
       "@domains": path.resolve(__dirname, "src/domains/"),
-      "@frameworks": path.resolve(__dirname, "src/frameworks/")
+      "@frameworks": path.resolve(__dirname, "src/frameworks/"),
+      "@di": path.resolve(__dirname, "src/di/")
     }
   }
 }
@@ -102,7 +106,8 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
     //...
     "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
     "^@domains/(.*)$": "<rootDir>/src/domains/$1",
-    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1"
+    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
+    "^@di/(.*)$": "<rootDir>/src/di/$1"
   }
 }
 ```
@@ -122,7 +127,7 @@ $ npm test
 ```
 
 ## Version
-v1.5.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [x] 게시판 샘플 구현
