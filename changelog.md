@@ -1,5 +1,8 @@
 # Change log
 
+### v1.6.3
+* Modify login response object
+
 ### v1.6.2
 * Add English Introduction
 

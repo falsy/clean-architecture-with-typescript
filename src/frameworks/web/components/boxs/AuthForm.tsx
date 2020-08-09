@@ -40,7 +40,7 @@ const AuthForm: React.FC<IProps> = (props) => {
         <Input type="text" name="id" placeholder="ID" onChange={handleChangeClientInfo} onKeyDown={null} value={id} />
       </SBtnArea>
       <SBtnArea>
-        <Input type="text" name="pw" placeholder="Password" onChange={handleChangeClientInfo} onKeyDown={handleKeyDownAccredit} value={pw} />
+        <Input type="password" name="pw" placeholder="Password" onChange={handleChangeClientInfo} onKeyDown={handleKeyDownAccredit} value={pw} />
       </SBtnArea>
       <SBtnArea>
         <LongBtn type="button" onClick={handleClickAccredit} value={btnValue} />
