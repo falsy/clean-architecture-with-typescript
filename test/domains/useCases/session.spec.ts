@@ -3,6 +3,8 @@ import { ISessionRepository } from '@adapters/repositories/interfaces/iSession';
 import { ISessionVO } from '@domains/vos/interfaces/iSession';
 import { ITokenDTO } from  "@adapters/infrastructures/interfaces/iRemote";
 import SessionUseCase from '@domains/useCases/Session';
+import infrastructures from '@adapters/infrastructures';
+import repositories from '@adapters/repositories';
 
 describe('session use case', () => {
 
@@ -15,38 +17,36 @@ describe('session use case', () => {
     status: 200
   };
 
-  class MockSessionRepository implements ISessionRepository {
-    login(sessionVO: ISessionVO): Promise<ITokenDTO> {
-      return new Promise(resolve => {
-        resolve(responseMockData);
-      });
-    }
-    getToken() {
-      return 'token';
-    }
-    addToken(token: string) {}
-    removeToken() {}
-  }
-
-  const mockSessionRepository = new MockSessionRepository();
+  const infra = infrastructures();
+  const sessionRepository = repositories(infra);
   let sessionUseCase: ISessionUseCase;
 
   beforeEach(() => {
-    sessionUseCase = new SessionUseCase(mockSessionRepository);
+    sessionRepository.session.login = jest.fn().mockResolvedValue(responseMockData);
+    sessionUseCase = new SessionUseCase(sessionRepository.session);
   });
 
   test('create session use case', () => {
     expect(sessionUseCase).toBeDefined();
   });
 
-  test('request user token, login()', async () => {
+  test('request user token, login() - success', async () => {
     const userData: ISessionVO = { id: 'id', pw: 'pw' };
     const responseData = await sessionUseCase.login(userData);
 
     expect(responseData).toEqual(mockToken);
   });
 
-  test('get user token, getToken()', () => {
+  test('request user token, login() - fail', async () => {
+    const userData: ISessionVO = { id: '', pw: '' };
+    const responseData = await sessionUseCase.login(userData);
+
+    expect(responseData).toEqual('');
+  });
+
+  test('get user token, getToken()', async () => {
+    const userData: ISessionVO = { id: 'id', pw: 'pw' };
+    const responseData = await sessionUseCase.login(userData);
     const token = sessionUseCase.getToken();
     
     expect(token).toEqual(mockToken);
