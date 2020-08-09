@@ -11,8 +11,8 @@ class SessionUseCase implements ISessionUseCase {
   }
 
   async login(SessionVO: ISessionVO): Promise<string> {
-    const { results: { token } } = await this.repository.login(SessionVO);
-    this.repository.addToken(token);
+    const { results: { token }, status } = await this.repository.login(SessionVO);
+    if(status === 200) this.repository.addToken(token);
     return token;
   }
 

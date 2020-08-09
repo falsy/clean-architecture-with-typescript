@@ -11,7 +11,8 @@ describe('session use case', () => {
   const responseMockData: ITokenDTO = {
     results: {
       token: mockToken
-    }
+    },
+    status: 200
   };
 
   class MockSessionRepository implements ISessionRepository {

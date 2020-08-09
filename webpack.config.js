@@ -30,7 +30,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     setup(app) {
-      var bodyParser = require('body-parser');    
+      const bodyParser = require('body-parser');    
       app.use(bodyParser.json());
 
       let boardAutoInc = 3;
@@ -62,6 +62,22 @@ module.exports = {
         createAt: new Date()
       }];
 
+      app.post('/login', (req, res) => {
+        const { id, pw } = req.body;
+        
+        if(id === '' || pw === '') {
+          res.status(400);
+          res.json(false);
+          return;
+        }
+
+        res.json({
+          results: {
+            token: 'token...'
+          }
+        });
+      });
+
       app.get('/boards', (req, res) => {
         res.json({
           results: {
@@ -90,14 +106,6 @@ module.exports = {
 
         boardAutoInc += 1;
         res.send(true);
-      });
-    
-      app.post('/login', (req, res) => {
-        res.json({
-          results: {
-            token: 'token...'
-          }
-        });
       });
 
       app.post('/boards/:boardId/comments', (req, res) => {

@@ -8,9 +8,14 @@ class SessionPresenter implements ISessionPresenter {
   private useCases: ISessionUseCase;
   private actions: ISessionActions;
 
-  constructor(useCases: ISessionUseCase, actions: any) {
+  constructor(useCases: ISessionUseCase, actions: ISessionActions) {
     this.useCases = useCases;
     this.actions = actions;
+  }
+
+  async login(id: string, pw: string): Promise<ILoginAction> {
+    const token = await this.useCases.login(new SessionVO({ id, pw }));
+    return this.setToken(token);
   }
 
   getToken(): string {
@@ -19,11 +24,6 @@ class SessionPresenter implements ISessionPresenter {
 
   setToken(token: string): ILoginAction {
     return this.actions.setToken(token);
-  }
-
-  async login(id: string, pw: string): Promise<ILoginAction> {
-    const token: string = await this.useCases.login(new SessionVO({ id, pw }));
-    return this.setToken(token);
   }
 
   removeToken() {
