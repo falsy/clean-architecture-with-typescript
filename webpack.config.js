@@ -63,14 +63,6 @@ module.exports = {
       }];
 
       app.post('/login', (req, res) => {
-        const { id, pw } = req.body;
-        
-        if(id === '' || pw === '') {
-          res.status(400);
-          res.json(false);
-          return;
-        }
-
         res.json({
           results: {
             token: 'token...'

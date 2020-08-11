@@ -1,9 +1,9 @@
-import { ICommentData } from '@domains/entities/interfaces/iComment';
 import Comment from '@domains/entities/Comment';
+import { ICommentData } from '@domains/entities/interfaces/iComment';
 
 describe('comment entity', () => {
   
-  test('constructor', () => {
+  it('constructor', () => {
     const id = 1;
     const author = 'author';
     const boardId = 1;

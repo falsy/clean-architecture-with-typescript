@@ -1,9 +1,9 @@
-import { ISessionUseCase } from '@domains/useCases/interfaces/iSession';
-import { ISessionVO } from '@domains/vos/interfaces/iSession';
-import { ITokenDTO } from  "@adapters/infrastructures/interfaces/iRemote";
 import SessionUseCase from '@domains/useCases/Session';
 import infrastructures from '@adapters/infrastructures';
 import repositories from '@adapters/repositories';
+import { ISessionUseCase } from '@domains/useCases/interfaces/iSession';
+import { ISessionVO } from '@domains/vos/interfaces/iSession';
+import { ITokenDTO } from  "@adapters/infrastructures/interfaces/iRemote";
 
 describe('session use case', () => {
 
@@ -12,8 +12,7 @@ describe('session use case', () => {
   const responseMockData: ITokenDTO = {
     results: {
       token: mockToken
-    },
-    status: 200
+    }
   };
 
   const infra = infrastructures();
@@ -25,11 +24,12 @@ describe('session use case', () => {
     sessionUseCase = new SessionUseCase(sessionRepository.session);
   });
 
-  test('create session use case', () => {
+  it('create session use case', () => {
     expect(sessionUseCase).toBeDefined();
+    expect(sessionUseCase).toHaveProperty('repository');
   });
 
-  test('request user token, login() - success', async () => {
+  it('request user token, login() - success', async () => {
     const userData: ISessionVO = { id: 'id', pw: 'pw' };
     const responseData = await sessionUseCase.login(userData);
 

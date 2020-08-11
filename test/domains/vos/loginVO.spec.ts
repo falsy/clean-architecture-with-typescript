@@ -1,8 +1,9 @@
-import { ISessionVO } from '@domains/vos/interfaces/iSession';
 import SessionVO from '@domains/vos/Session';
+import { ISessionVO } from '@domains/vos/interfaces/iSession';
 
 describe('create session', () => {
-  test('create session value object', () => {
+
+  it('create session value object', () => {
     const id = 'id';
     const pw = 'pw';
     
@@ -12,4 +13,5 @@ describe('create session', () => {
     expect(sessionVO.id).toEqual(id);
     expect(sessionVO.pw).toEqual(pw);
   });
+  
 });
