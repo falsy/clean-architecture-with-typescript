@@ -1,7 +1,10 @@
 # Change log
 
+### v1.6.4
+* Creating a test case corresponding to the login flow
+
 ### v1.6.3
-* Modify login response object
+* ~Modify login response object~
 
 ### v1.6.2
 * Add English Introduction

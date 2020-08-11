@@ -72,6 +72,10 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 * 컴포넌트 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다.  
 [ pages / templates / sections / boxs / items ]
 
+## Test
+작성된 테스트 케이스는 단순한 의미를 갖습니다.  
+실제 서비스에 사용한다면, 메인 로직에도 수정이 필요하고 더 다양한 케이스를 작성해야 합니다.
+
 ## Alias
 #### tsconfig.json
 ```js
@@ -132,10 +136,10 @@ $ npm test
 ```
 
 ## Version
-v1.6.3 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.4 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [x] 게시판 샘플 구현
 - [x] 리드미 작성
 - [x] 스타일 컴포넌트
-- [ ] 테스트 케이스 작성
+- [x] 테스트 케이스 작성 - 로그인

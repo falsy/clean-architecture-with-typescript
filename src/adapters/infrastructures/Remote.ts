@@ -14,10 +14,7 @@ class Remote implements IRemote {
       body: JSON.stringify({
         id, pw
       })
-    }).then(res => {
-      if(res.status !== 200) return { results: { token: '' }, status: res.status};
-      return res.json();
-    });
+    }).then(res => res.json());
   }
 
   getBoards(): Promise<IBoardDTO> {

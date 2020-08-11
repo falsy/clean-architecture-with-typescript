@@ -72,6 +72,10 @@ In 'Infrastructures', bulletin board posts and comments are taken via http commu
 * Refer to [[Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/#atoms)] for component directory.  
 [ pages / templates / sections / boxs / items ]
 
+## Test
+The written test case has a simple meaning.  
+If you use it for actual service, you need to modify the main logic and create more diverse cases.
+
 ## Alias
 #### tsconfig.json
 ```js
@@ -132,10 +136,10 @@ $ npm test
 ```
 
 ## Version
-v1.6.3 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.4 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
 
 ## Roadmap
 - [x] board sample implementation
 - [x] write readme
 - [x] adding style components
-- [ ] write test cases
+- [x] write test cases - session

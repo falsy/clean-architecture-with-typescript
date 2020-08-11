@@ -5,8 +5,7 @@ import { ISessionVO } from '@domains/vos/interfaces/iSession';
 export interface ITokenDTO {
   results: {
     token: string
-  },
-  status: number
+  }
 }
 
 export interface IBoardDTO {

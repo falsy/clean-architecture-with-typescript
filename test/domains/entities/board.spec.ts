@@ -1,7 +1,7 @@
-import { IBoardData } from '@domains/aggregates/interfaces/iBoard';
-import { ICommentData, ICommentEntity } from '@domains/entities/interfaces/iComment';
 import Board from '@domains/aggregates/Board';
 import Comment from '@domains/entities/Comment';
+import { IBoardData } from '@domains/aggregates/interfaces/iBoard';
+import { ICommentData, ICommentEntity } from '@domains/entities/interfaces/iComment';
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
 
 describe('board entity', () => {
@@ -18,14 +18,14 @@ describe('board entity', () => {
     board = new Board(boardData);
   });
   
-  test('constructor', () => {
+  it('constructor', () => {
     expect(board.id).toEqual(id);
     expect(board.author).toEqual(author);
     expect(board.content).toEqual(content);
     expect(board.createAt).toEqual(createAt);
   });
 
-  test('push comment', () => {
+  it('push comment', () => {
     const id = 1;
     const boardId = 1;
     const author = 'comment author';
@@ -39,4 +39,5 @@ describe('board entity', () => {
 
     expect(board.comments[0]).toEqual(comment);
   });
+  
 });
