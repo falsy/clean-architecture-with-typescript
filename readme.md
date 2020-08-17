@@ -34,22 +34,22 @@ In 'Infrastructures', bulletin board posts and comments are taken via http commu
 ```
 ./src
 ├─ adapters
+│  ├─ infrastructures
+│  │  └─ interfaces
 │  ├─ presenters
 │  │  └─ interfaces
-│  ├─ repositories
-│  │  └─ interfaces
-│  └─ infrastructures
-│     └─ interfaces
+│  └─ repositories
+├─ di
 ├─ domains
 │  ├─ aggregates
 │  │  └─ interfaces
 │  ├─ entities
 │  │  └─ interfaces
+│  ├─ interfaces-repo
 │  ├─ useCases
 │  │  └─ interfaces
 │  └─ vos
 │     └─ interfaces
-├─ di
 └─ frameworks
    └─ web
       ├─ components
@@ -64,7 +64,6 @@ In 'Infrastructures', bulletin board posts and comments are taken via http commu
       │  ├─ reducers
       │  └─ store
       └─ vms
-
 ```
 
 * The basic directory is organized based on layers of clean architecture.  
@@ -136,10 +135,4 @@ $ npm test
 ```
 
 ## Version
-v1.6.4 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
-
-## Roadmap
-- [x] board sample implementation
-- [x] write readme
-- [x] adding style components
-- [x] write test cases - session
+v1.6.5 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

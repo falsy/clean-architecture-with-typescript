@@ -34,22 +34,22 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 ```
 ./src
 ├─ adapters
+│  ├─ infrastructures
+│  │  └─ interfaces
 │  ├─ presenters
 │  │  └─ interfaces
-│  ├─ repositories
-│  │  └─ interfaces
-│  └─ infrastructures
-│     └─ interfaces
+│  └─ repositories
+├─ di
 ├─ domains
 │  ├─ aggregates
 │  │  └─ interfaces
 │  ├─ entities
 │  │  └─ interfaces
+│  ├─ interfaces-repo
 │  ├─ useCases
 │  │  └─ interfaces
 │  └─ vos
 │     └─ interfaces
-├─ di
 └─ frameworks
    └─ web
       ├─ components
@@ -64,7 +64,6 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
       │  ├─ reducers
       │  └─ store
       └─ vms
-
 ```
 
 * 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다.  
@@ -136,10 +135,4 @@ $ npm test
 ```
 
 ## Version
-v1.6.4 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
-
-## Roadmap
-- [x] 게시판 샘플 구현
-- [x] 리드미 작성
-- [x] 스타일 컴포넌트
-- [x] 테스트 케이스 작성 - 로그인
+v1.6.5 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

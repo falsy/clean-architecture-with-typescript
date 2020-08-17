@@ -1,5 +1,8 @@
 # Change log
 
+### v1.6.5
+* Edit directory structure - Change to storage interface domain
+
 ### v1.6.4
 * Creating a test case corresponding to the login flow
 

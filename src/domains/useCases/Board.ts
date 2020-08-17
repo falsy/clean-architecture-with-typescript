@@ -1,5 +1,5 @@
 import { IBoardUseCase } from '@domains/useCases/interfaces/iBoard';
-import { IBoardRepository } from '@adapters/repositories/interfaces/iBoard';
+import { IBoardRepository } from '@domains/interfaces-repo/iBoard';
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
 import Board from '@domains/aggregates/Board';
 import Comment from '@domains/entities/Comment';

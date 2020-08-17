@@ -1,5 +1,5 @@
 import { ISessionUseCase } from '@domains/useCases/interfaces/iSession';
-import { ISessionRepository } from '@adapters/repositories/interfaces/iSession';
+import { ISessionRepository } from '@domains/interfaces-repo/iSession';
 import { ISessionVO } from '@domains/vos/interfaces/iSession';
 
 class SessionUseCase implements ISessionUseCase {
