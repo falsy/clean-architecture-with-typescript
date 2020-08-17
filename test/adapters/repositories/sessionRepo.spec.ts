@@ -1,7 +1,7 @@
 import infrastructures from '@adapters/infrastructures';
 import repositories from '@adapters/repositories';
 import { ISessionVO } from '@domains/vos/interfaces/iSession';
-import { ISessionRepository } from "@adapters/repositories/interfaces/iSession";
+import { ISessionRepository } from "@domains/interfaces-repo/iSession";
 import { ITokenDTO } from '@adapters/infrastructures/interfaces/iRemote';
 
 describe('session use case', () => {

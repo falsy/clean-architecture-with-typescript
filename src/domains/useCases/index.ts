@@ -1,4 +1,4 @@
-import IRepositories from '@adapters/repositories/interfaces/iRepositories';
+import IRepositories from '@domains/interfaces-repo/iRepositories';
 import Session from './Session';
 import Board from './Board';
 import IUseCases from './interfaces/iUseCases';
