@@ -19,7 +19,7 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow-v5.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v6.png)
 간단하게 다이어그램으로 표현하면 위와 같습니다.
 
 ### Session
@@ -135,4 +135,4 @@ $ npm test
 ```
 
 ## Version
-v1.6.5 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.6 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

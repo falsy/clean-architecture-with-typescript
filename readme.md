@@ -20,7 +20,7 @@ As with various architectures, the primary purpose of a clean architecture is to
 * Both high-level and low-level modules rely on abstraction..
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow-v5.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v6.png)
 in simple diagram, it is as above.
 
 ### Session
@@ -135,4 +135,4 @@ $ npm test
 ```
 
 ## Version
-v1.6.5 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.6 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
