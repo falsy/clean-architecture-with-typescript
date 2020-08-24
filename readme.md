@@ -27,7 +27,14 @@ in simple diagram, it is as above.
 After the user logs in, the issued authentication token is stored and used in the web storage. web storage is accessible globally, but the sample code follows the flow above and is controlled by 'Storege' in 'Infrastructures'. this is part of a detailed implementation that can change, and is positioned according to its role to improve maintenance.
 
 ### Board
-In 'Infrastructures', bulletin board posts and comments are taken via http communication and encapsulated in'Use Case' as Board Root Entity including Comment Entity, delivered to 'Presenter', and 'Presenter' responds to 'Action' with Entity data. 'View' dispatches Action value according to the flow of Flux architecture, Dispatcher updates Store value, notifies itself of change, and View encapsulates'Entity' value of Store as'View Model' again and based on'View Model' value Output the View.
+Board posts and comments are fetched through http communication from 'Infrastructures', encapsulated as Board Root Entity including Comment Entity in 'Use Case' and delivered to 'Presenter', and 'Presenter' returns 'Action' with Entity data.  
+In 'View', the Action value is dispatched according to the flow of Redux architecture, and the Dispatcher updates the Store value to notify that it is changed. In View, the 'Entity' value of the Store is re-encapsulated as 'View Model' and is based on the 'View Model' value. Draw a view.
+
+
+## Inversion of Control
+![Alt Communitaction Flow](/_readme/inversion-of-control-v2.png)
+In the case of 'Repository', it is an adapter layer, so you should not know about 'Repository' in 'Use Case'. Therefore, in 'Use Case', it is implemented through the Repository Interface located in the domain layer, which is then operated through Dependency Injection.  
+The Action Interface of 'Presenter' is also the same.
 
 
 ## Directory Structure
@@ -37,7 +44,8 @@ In 'Infrastructures', bulletin board posts and comments are taken via http commu
 │  ├─ infrastructures
 │  │  └─ interfaces
 │  ├─ presenters
-│  │  └─ interfaces
+│  │  ├─ interfaces
+│  │  └─ action-interfaces
 │  └─ repositories
 ├─ di
 ├─ domains
@@ -45,9 +53,9 @@ In 'Infrastructures', bulletin board posts and comments are taken via http commu
 │  │  └─ interfaces
 │  ├─ entities
 │  │  └─ interfaces
-│  ├─ interfaces-repo
 │  ├─ useCases
-│  │  └─ interfaces
+│  │  ├─ interfaces
+│  │  └─ repository-interfaces
 │  └─ vos
 │     └─ interfaces
 └─ frameworks
@@ -135,4 +143,4 @@ $ npm test
 ```
 
 ## Version
-v1.6.6 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.7 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

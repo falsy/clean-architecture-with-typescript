@@ -26,8 +26,13 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 사용자 로그인 후 발급된 인증 토큰을 웹 스토리지에 저장하여 사용합니다. 웹 스토리지는 전역에서 접근할 수 있지만, 샘플 코드는 위 흐름대로 진행하여 'Infrastructures'의 'Storege'에서 제어합니다. 이는 변할 수 있는 세부 구현의 부분이며, 그 역할에 맞게 위치하여 유지보수에 용의하게 합니다.
 
 ### Board
-'Infrastructures'에서 통해 http 통신으로 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 Entity 데이터를 가진 'Action'를 리턴합니다.
-'View'에서는 Flux 아키텍처의 흐름대로 Action 값을 Dispatch 하고 Dispatcher는 Store 값을 갱신하며 자신이 변경됨을 알리고 View에서는 Store의 'Entity'값을 'View Model'로 다시 캡슐화하고 'View Model' 값을 기반으로 View를 그립니다.
+'Infrastructures'에서 http 통신을 통해 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 Entity 데이터를 가진 'Action'를 리턴합니다.  
+'View'에서는 Redux 아키텍처의 흐름대로 Action 값을 Dispatch 하고 Dispatcher는 Store 값을 갱신하며 자신이 변경됨을 알리고 View에서는 Store의 'Entity'값을 'View Model'로 다시 캡슐화하고 'View Model' 값을 기반으로 View를 그립니다.
+
+## Inversion of Control
+![Alt Communitaction Flow](/_readme/inversion-of-control-v2.png)
+'Repository'의 경우 Adapter 레이어에 해당하기 때문에 'Use Case'에서는 'Repository'에 대해서 알아서는 안됩니다. 그렇기 때문에 'Use Case'에서는 Domain 레이어 Repository Interface를 가지고 구현하며, 이는 이후에 Dependency Injection를 통해 동작합니다.  
+'Presenter'의 Action Interface도 동일합니다.
 
 
 ## Directory Structure
@@ -37,7 +42,8 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 │  ├─ infrastructures
 │  │  └─ interfaces
 │  ├─ presenters
-│  │  └─ interfaces
+│  │  ├─ interfaces
+│  │  └─ action-interfaces
 │  └─ repositories
 ├─ di
 ├─ domains
@@ -45,9 +51,9 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 │  │  └─ interfaces
 │  ├─ entities
 │  │  └─ interfaces
-│  ├─ interfaces-repo
 │  ├─ useCases
-│  │  └─ interfaces
+│  │  ├─ interfaces
+│  │  └─ repository-interfaces
 │  └─ vos
 │     └─ interfaces
 └─ frameworks
@@ -135,4 +141,4 @@ $ npm test
 ```
 
 ## Version
-v1.6.6 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.7 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

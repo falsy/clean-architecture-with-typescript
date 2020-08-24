@@ -1,15 +1,6 @@
-import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
+import { IBoardList, IBoardAction } from "@adapters/presenters/action-interfaces/IBoard";
 
 export const GET_BOARD = 'GET_BOARD';
-
-export interface IBoardList {
-  list: Array<IBoardEntity>
-}
-
-export interface IBoardAction {
-  type: string;
-  payload: IBoardList;
-}
 
 export interface IBoardStateGroup {
   board: IBoardList
@@ -20,6 +11,3 @@ export interface IReducer {
 }
 
 
-export interface IBoardActions {
-  getBoards(boardEntityList: Array<IBoardEntity>): IBoardAction;
-}
