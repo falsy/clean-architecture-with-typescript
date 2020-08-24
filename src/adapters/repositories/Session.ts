@@ -1,4 +1,4 @@
-import { ISessionRepository } from '@domains/interfaces-repo/iSession';
+import { ISessionRepository } from '@domains/useCases/repository-interfaces/iSession';
 import IInfrastructure from '@adapters/infrastructures/interfaces/iInfrastructures';
 import { ISessionVO } from '@domains/vos/interfaces/iSession';
 import { ITokenDTO } from '@adapters/infrastructures/interfaces/iRemote';

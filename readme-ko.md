@@ -29,6 +29,11 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 'Infrastructures'에서 통해 http 통신으로 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 Entity 데이터를 가진 'Action'를 리턴합니다.
 'View'에서는 Flux 아키텍처의 흐름대로 Action 값을 Dispatch 하고 Dispatcher는 Store 값을 갱신하며 자신이 변경됨을 알리고 View에서는 Store의 'Entity'값을 'View Model'로 다시 캡슐화하고 'View Model' 값을 기반으로 View를 그립니다.
 
+## Inversion of Control
+![Alt Communitaction Flow](/_readme/inversion-of-control.png)
+'Repository'의 경우 Adapter 레이어에 해당하기 때문에 'Use Case'에서는 'Repository'에 대해서 알아서는 안됩니다. 그렇기 때문에 'Use Case'에서는 Domain 레이어 Repository Interface를 가지고 구현하며, 이는 이후에 Dependency Injection를 통해 동작합니다.  
+'Presenter'의 Action interface도 동일합니다.
+
 
 ## Directory Structure
 ```
@@ -37,7 +42,8 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 │  ├─ infrastructures
 │  │  └─ interfaces
 │  ├─ presenters
-│  │  └─ interfaces
+│  │  ├─ interfaces
+│  │  └─ action-interfaces
 │  └─ repositories
 ├─ di
 ├─ domains
@@ -45,9 +51,9 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 │  │  └─ interfaces
 │  ├─ entities
 │  │  └─ interfaces
-│  ├─ interfaces-repo
 │  ├─ useCases
-│  │  └─ interfaces
+│  │  ├─ interfaces
+│  │  └─ repository-interfaces
 │  └─ vos
 │     └─ interfaces
 └─ frameworks
@@ -135,4 +141,4 @@ $ npm test
 ```
 
 ## Version
-v1.6.6 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.7 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

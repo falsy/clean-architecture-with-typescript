@@ -1,4 +1,4 @@
-import { IBoardRepository } from '@domains/interfaces-repo/iBoard';
+import { IBoardRepository } from '@domains/useCases/repository-interfaces/iBoard';
 import { IBoardDTO } from "@adapters/infrastructures/interfaces/iRemote";
 import IInfrastructures from '@adapters/infrastructures/interfaces/iInfrastructures';
 

@@ -1,5 +1,6 @@
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
-import { IBoardAction, GET_BOARD, IBoardActions } from '@frameworks/web/redux/interfaces/iBoard';
+import { GET_BOARD } from '@frameworks/web/redux/interfaces/iBoard';
+import { IBoardAction, IBoardActions } from '@adapters/presenters/action-interfaces/IBoard';
 
 class BoardActions implements IBoardActions {
 

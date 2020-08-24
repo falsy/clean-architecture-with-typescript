@@ -30,6 +30,12 @@ After the user logs in, the issued authentication token is stored and used in th
 In 'Infrastructures', bulletin board posts and comments are taken via http communication and encapsulated in'Use Case' as Board Root Entity including Comment Entity, delivered to 'Presenter', and 'Presenter' responds to 'Action' with Entity data. 'View' dispatches Action value according to the flow of Flux architecture, Dispatcher updates Store value, notifies itself of change, and View encapsulates'Entity' value of Store as'View Model' again and based on'View Model' value Output the View.
 
 
+## Inversion of Control
+![Alt Communitaction Flow](/_readme/inversion-of-control.png)
+In the case of 'Repository', it is an adapter layer, so you should not know about 'Repository' in 'Use Case'. Therefore, in 'Use Case', it is implemented through the Repository Interface located in the domain layer, which is then operated through Dependency Injection.  
+The Action interface of 'Presenter' is also the same.
+
+
 ## Directory Structure
 ```
 ./src
@@ -37,7 +43,8 @@ In 'Infrastructures', bulletin board posts and comments are taken via http commu
 │  ├─ infrastructures
 │  │  └─ interfaces
 │  ├─ presenters
-│  │  └─ interfaces
+│  │  ├─ interfaces
+│  │  └─ action-interfaces
 │  └─ repositories
 ├─ di
 ├─ domains
@@ -45,9 +52,9 @@ In 'Infrastructures', bulletin board posts and comments are taken via http commu
 │  │  └─ interfaces
 │  ├─ entities
 │  │  └─ interfaces
-│  ├─ interfaces-repo
 │  ├─ useCases
-│  │  └─ interfaces
+│  │  ├─ interfaces
+│  │  └─ repository-interfaces
 │  └─ vos
 │     └─ interfaces
 └─ frameworks
@@ -135,4 +142,4 @@ $ npm test
 ```
 
 ## Version
-v1.6.6 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.7 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

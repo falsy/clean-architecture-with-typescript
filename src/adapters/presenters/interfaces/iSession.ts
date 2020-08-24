@@ -1,4 +1,4 @@
-import { ILoginAction } from "@frameworks/web/redux/interfaces/iSession";
+import { ILoginAction } from "../action-interfaces/ISession";
 
 export interface ISessionPresenter {
   login(id: string, pw: string): Promise<ILoginAction>;

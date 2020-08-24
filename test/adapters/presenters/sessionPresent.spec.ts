@@ -5,7 +5,8 @@ import SessionPresenter from '@adapters/presenters/Session';
 import SessionActions from '@frameworks/web/redux/actions/Session';
 import { ITokenDTO } from '@adapters/infrastructures/interfaces/iRemote';
 import { ISessionPresenter } from '@adapters/presenters/interfaces/iSession';
-import { ILoginAction, LOGIN } from '@frameworks/web/redux/interfaces/iSession';
+import { LOGIN } from '@frameworks/web/redux/interfaces/iSession';
+import { ILoginAction } from '@adapters/presenters/action-interfaces/ISession';
 
 describe('session use case', () => {
 

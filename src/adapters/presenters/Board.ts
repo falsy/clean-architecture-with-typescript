@@ -1,7 +1,7 @@
 import { IBoardPresenter } from './interfaces/iBoard';
 import { IBoardUseCase } from '@domains/useCases/interfaces/iBoard';
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
-import { IBoardAction, IBoardActions } from '@frameworks/web/redux/interfaces/iBoard';
+import { IBoardActions, IBoardAction } from './action-interfaces/IBoard';
 
 class BoardPresenter implements IBoardPresenter {
 

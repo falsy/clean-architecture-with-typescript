@@ -1,4 +1,4 @@
-import { IBoardAction } from '@frameworks/web/redux/interfaces/iBoard';
+import { IBoardAction } from '../action-interfaces/IBoard';
 
 export interface IBoardPresenter {
   getBoards(): Promise<IBoardAction>;

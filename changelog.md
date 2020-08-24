@@ -1,5 +1,9 @@
 # Change log
 
+### v1.6.7
+* Edit directory structure(IoC)
+* Added Inversion of Control description
+
 ### v1.6.6
 * Edit Communitaction Flow Image
 
