@@ -31,9 +31,9 @@ In 'Infrastructures', bulletin board posts and comments are taken via http commu
 
 
 ## Inversion of Control
-![Alt Communitaction Flow](/_readme/inversion-of-control.png)
+![Alt Communitaction Flow](/_readme/inversion-of-control-v2.png)
 In the case of 'Repository', it is an adapter layer, so you should not know about 'Repository' in 'Use Case'. Therefore, in 'Use Case', it is implemented through the Repository Interface located in the domain layer, which is then operated through Dependency Injection.  
-The Action interface of 'Presenter' is also the same.
+The Action Interface of 'Presenter' is also the same.
 
 
 ## Directory Structure
