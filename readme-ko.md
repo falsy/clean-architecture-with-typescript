@@ -77,10 +77,6 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 * 컴포넌트 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다.  
 [ pages / templates / sections / boxs / items ]
 
-## Test
-작성된 테스트 케이스는 단순한 의미를 갖습니다.  
-실제 서비스에 사용한다면, 메인 로직에도 수정이 필요하고 더 다양한 케이스를 작성해야 합니다.
-
 ## Alias
 #### tsconfig.json
 ```js
@@ -112,20 +108,6 @@ Typescript, Webpack, React, Redux, Jest, Enzyme
 }
 ```
 
-#### jest.config.js
-```js
-{
-  //...
-  moduleNameMapper: { 
-    //...
-    "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
-    "^@domains/(.*)$": "<rootDir>/src/domains/$1",
-    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
-    "^@di/(.*)$": "<rootDir>/src/di/$1"
-  }
-}
-```
-
 ## Sample Project
 #### Install
 ```
@@ -135,10 +117,6 @@ $ npm install
 ```
 $ npm start
 ```
-#### Test
-```
-$ npm test
-```
 
 ## Version
-v1.6.7 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.8 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
