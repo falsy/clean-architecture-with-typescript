@@ -8,7 +8,7 @@ if you leave an issue or a pull request, we will reflect the insufficient part o
 
 
 ## Use Stack
-Typescript, Webpack, React, Redux, Jest, Enzyme
+Typescript, Webpack, React, Redux, styled-components
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
