@@ -1,5 +1,8 @@
 # Change log
 
+### v1.6.8
+* Remove test code
+
 ### v1.6.7
 * Edit directory structure(IoC)
 * Added Inversion of Control description

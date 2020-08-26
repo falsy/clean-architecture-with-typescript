@@ -79,10 +79,6 @@ The Action Interface of 'Presenter' is also the same.
 * Refer to [[Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/#atoms)] for component directory.  
 [ pages / templates / sections / boxs / items ]
 
-## Test
-The written test case has a simple meaning.  
-If you use it for actual service, you need to modify the main logic and create more diverse cases.
-
 ## Alias
 #### tsconfig.json
 ```js
@@ -114,20 +110,6 @@ If you use it for actual service, you need to modify the main logic and create m
 }
 ```
 
-#### jest.config.js
-```js
-{
-  //...
-  moduleNameMapper: { 
-    //...
-    "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",
-    "^@domains/(.*)$": "<rootDir>/src/domains/$1",
-    "^@frameworks/(.*)$": "<rootDir>/src/frameworks/$1",
-    "^@di/(.*)$": "<rootDir>/src/di/$1"
-  }
-}
-```
-
 ## Sample Project
 #### Install
 ```
@@ -137,10 +119,6 @@ $ npm install
 ```
 $ npm start
 ```
-#### Test
-```
-$ npm test
-```
 
 ## Version
-v1.6.7 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.6.8 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
