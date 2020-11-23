@@ -22,4 +22,4 @@ class WebStorage implements IWebStorage {
   
 }
 
-export default WebStorage;
+export default WebStorage
