@@ -1,28 +1,25 @@
-import { IBoardPresenter } from './interfaces/iBoard';
-import { IBoardUseCase } from '@domains/useCases/interfaces/iBoard';
-import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
-import { IBoardActions, IBoardAction } from './action-interfaces/IBoard';
+import { IBoardPresenter } from './interfaces/iBoard'
+import { IBoardUseCase } from '@domains/useCases/interfaces/iBoard'
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard'
+import { IBoardAction } from './action-interfaces/iBoard'
 
 class BoardPresenter implements IBoardPresenter {
 
-  private useCases: IBoardUseCase;
-  private actions: IBoardActions;
-
-  constructor(useCases: IBoardUseCase, actions: any) {
-    this.useCases = useCases;
-    this.actions = actions;
-  }
+  constructor(
+    private readonly useCases: IBoardUseCase, 
+    private readonly actions: any
+  ) {}
 
   async getBoards(): Promise<IBoardAction> {
-    const boardEntityList: Array<IBoardEntity> = await this.useCases.getBoards();
-    return this.actions.getBoards(boardEntityList);
+    const boardEntityList: Array<IBoardEntity> = await this.useCases.getBoards()
+    return this.actions.getBoards(boardEntityList)
   }
 
-  insertBoard(author: string, content: string): Promise<number> {
-    return this.useCases.insertBoard(author, content);
-  };
+  insertBoard(author: string, content: string): Promise<boolean> {
+    return this.useCases.insertBoard(author, content)
+  }
 
 }
 
 
-export default BoardPresenter;
+export default BoardPresenter

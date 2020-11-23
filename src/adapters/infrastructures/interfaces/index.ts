@@ -1,7 +1,7 @@
-import { IRemote } from './iRemote';
+import { IHttp } from './iHttp';
 import { IWebStorage } from './iWebStorage';
 
 export default interface IInfrastructures {
-  remote: IRemote;
+  http: IHttp;
   webStorage: IWebStorage;
 }

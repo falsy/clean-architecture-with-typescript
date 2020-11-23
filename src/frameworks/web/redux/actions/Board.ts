@@ -1,6 +1,6 @@
-import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
-import { GET_BOARD } from '@frameworks/web/redux/interfaces/iBoard';
-import { IBoardAction, IBoardActions } from '@adapters/presenters/action-interfaces/IBoard';
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard'
+import { GET_BOARD } from '@frameworks/web/redux/interfaces/iBoard'
+import { IBoardAction, IBoardActions } from '@adapters/presenters/action-interfaces/iBoard'
 
 class BoardActions implements IBoardActions {
 
@@ -10,10 +10,10 @@ class BoardActions implements IBoardActions {
       payload: {
         list: boardEntityList
       }
-    };
+    }
   }
 
 }
 
 
-export default BoardActions;
+export default BoardActions

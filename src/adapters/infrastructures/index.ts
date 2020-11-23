@@ -1,9 +1,10 @@
-import Remote from './Remote';
-import WebStorage from './Storage';
+import Http from './Http'
+import IInfrastructures from './interfaces'
+import WebStorage from './Storage'
 
-export default () => {
+export default (): IInfrastructures => {
   return {
-    remote: new Remote(),
+    http: new Http(),
     webStorage: new WebStorage()
-  };
-};
+  }
+}

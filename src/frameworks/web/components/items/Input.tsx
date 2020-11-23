@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from 'styled-components';
+import * as React from "react"
+import styled from 'styled-components'
 
 const SInput = styled.input`
   display: inline-block;
@@ -7,23 +7,23 @@ const SInput = styled.input`
   height: 60px;
   width: 100%;
   font-size: 16px;  
-`;
+`
 
 interface IProps {
-  type: string;
-  name: string;
-  placeholder: string;
-  value: string | number;
-  onChange(evnet: React.ChangeEvent<HTMLInputElement>): void;
-  onKeyDown(event: React.KeyboardEvent): void;
+  type: string
+  name: string
+  placeholder: string
+  value: string | number
+  onChange(evnet: React.ChangeEvent<HTMLInputElement>): void
+  onKeyDown(event: React.KeyboardEvent): void
 }
 
 const Input: React.FC<IProps> = (props) => {
-  const { type, name, placeholder, onChange, onKeyDown, value } = props;
+  const { type, name, placeholder, onChange, onKeyDown, value } = props
 
   return (
     <SInput className={"input"} type={type} name={name} placeholder={placeholder} onChange={onChange} onKeyDown={onKeyDown} value={value} />
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

@@ -1,7 +1,8 @@
-import { IBoardDTO, ICommentDTO } from '@adapters/infrastructures/interfaces/iRemote';
+import { IBoardDTO } from "@domains/dto/boardDTO"
+import { ICommentDTO } from "@domains/dto/CommentDTO"
 
 export interface IBoardRepository {
-  getBoards(): Promise<IBoardDTO>;
-  insertBoard(author: string, content: string): Promise<number>;
-  getComments(): Promise<ICommentDTO>;
+  getBoards(): Promise<Array<IBoardDTO>>
+  insertBoard(author: string, content: string): Promise<boolean>
+  getComments(): Promise<Array<ICommentDTO>>
 }

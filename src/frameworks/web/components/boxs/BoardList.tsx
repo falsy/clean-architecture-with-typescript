@@ -1,25 +1,25 @@
-import * as React from "react";
-import styled from 'styled-components';
-import BoardItem from '../items/BoardItem';
-import CommentItem from '../items/CommentItem';
-import { IBoardVM } from '@frameworks/web/vms/interfaces/iBoard';
+import * as React from "react"
+import styled from 'styled-components'
+import BoardItem from '../items/BoardItem'
+import CommentItem from '../items/CommentItem'
+import { IBoardVM } from '@adapters/vms/Board'
 
 const SBoardUl = styled.ul`
   border-top: 1px solid #eee;
   padding: 0;
   list-style: none;
-`;
+`
 
 const SCommentArea = styled.ul`
   background: #f5f5f5;
-`;
+`
 
 interface IProps {
   list: Array<IBoardVM>;
 }
 
 const BoardList: React.FC<IProps> = (props) => {
-  const { list } = props;
+  const { list } = props
 
   return (
     <div className={"board-list"}>
@@ -38,7 +38,7 @@ const BoardList: React.FC<IProps> = (props) => {
         </SBoardUl>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default BoardList;
+export default BoardList

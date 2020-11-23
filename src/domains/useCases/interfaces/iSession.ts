@@ -1,8 +1,8 @@
-import { ISessionVO } from '@domains/vos/interfaces/iSession';
+import { IUserDTO } from '@domains/dto/UserDTO'
 
 export interface ISessionUseCase {
-  login(SessionVO: ISessionVO): Promise<string>;
-  getToken(): string;
-  addToken(token: string): void;
-  removeToken(): void;
+  login(userDTO: IUserDTO): Promise<string>
+  getToken(): string
+  setToken(token: string): void
+  removeToken(): void
 }

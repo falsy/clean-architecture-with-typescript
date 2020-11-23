@@ -1,32 +1,37 @@
-import { ISessionRepository } from '@domains/useCases/repository-interfaces/iSession';
-import IInfrastructure from '@adapters/infrastructures/interfaces/iInfrastructures';
-import { ISessionVO } from '@domains/vos/interfaces/iSession';
-import { ITokenDTO } from '@adapters/infrastructures/interfaces/iRemote';
+import { ISessionRepository } from '@domains/useCases/repository-interfaces/iSession'
+import IInfrastructure from '@adapters/infrastructures/interfaces'
+import { IUserDTO } from '@domains/dto/UserDTO'
 
 class SessionRepository implements ISessionRepository {
 
-  readonly infrastructure: IInfrastructure;
+  constructor(
+    private readonly infrastructure: IInfrastructure
+  ) {}
 
-  constructor(infrastructure: IInfrastructure) {
-    this.infrastructure = infrastructure;
+  async login(userDTO: IUserDTO): Promise<string> {
+    const response = await this.infrastructure.http.post({
+      url: '/login',
+      body: {
+        id: userDTO.id,
+        pw: userDTO.pw
+      }
+    })
+
+    if(response?.token) return response.token
   }
 
-  login(SessionVO: ISessionVO): Promise<ITokenDTO> {
-    return this.infrastructure.remote.login(SessionVO);
+  getToken(): string {
+    return this.infrastructure.webStorage.get('token')
   }
 
-  getToken() {
-    return this.infrastructure.webStorage.getToken();
+  setToken(token: string): void {
+    this.infrastructure.webStorage.set('token', token)
   }
 
-  addToken(token: string) {
-    this.infrastructure.webStorage.addToken(token);
-  }
-
-  removeToken() {
-    this.infrastructure.webStorage.removeToken();
+  removeToken(): void {
+    this.infrastructure.webStorage.remove('token')
   }
 
 }
 
-export default SessionRepository;
+export default SessionRepository
