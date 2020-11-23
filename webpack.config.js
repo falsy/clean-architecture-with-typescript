@@ -1,5 +1,5 @@
-const HTMLWeebPackPlugin = require("html-webpack-plugin");
-const path = require("path");
+const HTMLWeebPackPlugin = require("html-webpack-plugin")
+const path = require("path")
 
 module.exports = {
   entry: "./src/frameworks/web/index.tsx",
@@ -30,11 +30,11 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     setup(app) {
-      const bodyParser = require('body-parser');    
-      app.use(bodyParser.json());
+      const bodyParser = require('body-parser')    
+      app.use(bodyParser.json())
 
-      let boardAutoInc = 3;
-      let commentAutoInc = 3;
+      let boardAutoInc = 3
+      let commentAutoInc = 3
 
       const boards = [{
         id: 1,
@@ -46,7 +46,7 @@ module.exports = {
         author: 'falsy',
         content: 'world',
         createAt: new Date()
-      }];
+      }]
 
       const comments = [{
         id: 1,
@@ -60,49 +60,43 @@ module.exports = {
         author: 'falsy2',
         content: 'comment2',
         createAt: new Date()
-      }];
+      }]
 
       app.post('/login', (req, res) => {
         res.json({
-          results: {
-            token: 'token...'
-          }
-        });
-      });
+          token: 'token...'
+        })
+      })
 
       app.get('/boards', (req, res) => {
         res.json({
-          results: {
-            list: boards
-          }
-        });
-      });
+          boards
+        })
+      })
 
       app.get('/comments', (req, res) => {
         res.json({
-          results: {
-            list: comments
-          }
-        });
-      });
+          comments
+        })
+      })
 
       app.post('/boards', bodyParser.json(), (req, res) => {
-        const { author, content } = req.body;
+        const { author, content } = req.body
 
         boards.push({
           id: boardAutoInc,
           author,
           content,
           createAt: new Date()
-        });
+        })
 
-        boardAutoInc += 1;
-        res.send(true);
-      });
+        boardAutoInc += 1
+        res.send(true)
+      })
 
       app.post('/boards/:boardId/comments', (req, res) => {
-        const { boardId } = req.params;
-        const { author, content } = req.body;
+        const { boardId } = req.params
+        const { author, content } = req.body
 
         comments.push({
           id: commentAutoInc,
@@ -110,12 +104,12 @@ module.exports = {
           author,
           content,
           createAt: new Date()
-        });
+        })
 
-        commentAutoInc += 1;
-        res.send(true);
-      });
+        commentAutoInc += 1
+        res.send(true)
+      })
 
     }
   }
-};
+}

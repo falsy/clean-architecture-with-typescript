@@ -1,11 +1,11 @@
-import * as React from "react";
-import styled from 'styled-components';
-import { ICommentEntity } from '@domains/entities/interfaces/iComment';
+import * as React from "react"
+import styled from 'styled-components'
+import { ICommentEntity } from '@domains/entities/interfaces/iComment'
 
 const SCommentItem = styled.li`
   list-style: none;
   border-bottom: 1px solid #eee;
-`;
+`
 
 const SCommentText = styled.p`
   display: inline-block;
@@ -13,15 +13,15 @@ const SCommentText = styled.p`
   font-size: 16px;
   line-height: 60px;
   margin: 0;
-`;
+`
 
 interface IProps {
-  comment: ICommentEntity;
+  comment: ICommentEntity
 }
 
 const CommentItem: React.FC<IProps> = (props) => {
-  const { comment: { author, content, createAt } } = props;
-  const createDate = new Date(createAt);
+  const { comment: { author, content, createAt } } = props
+  const createDate = new Date(createAt)
 
   return (
     <SCommentItem>
@@ -30,7 +30,7 @@ const CommentItem: React.FC<IProps> = (props) => {
       <SCommentText>{content}</SCommentText>
       <SCommentText>{`${createDate.getFullYear()}-${createDate.getMonth() + 1}-${createDate.getDate()}`}</SCommentText>
     </SCommentItem>
-  );
-};
+  )
+}
 
-export default CommentItem;
+export default CommentItem

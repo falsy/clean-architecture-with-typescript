@@ -1,8 +1,8 @@
-import * as React from "react";
-import styled from 'styled-components';
-import { useDispatch } from "react-redux";
-import di from '@di/index';
-import ShortBtn from '../items/ShortBtn';
+import * as React from "react"
+import styled from 'styled-components'
+import { useDispatch } from "react-redux"
+import di from '@di/index'
+import ShortBtn from '../items/ShortBtn'
 
 const SHeaderArea = styled.section`
   width: 100%;
@@ -15,7 +15,7 @@ const SHeaderArea = styled.section`
     display: block;
     clear: both;
   }
-`;
+`
 
 const SLogo = styled.h1`
   float: left;
@@ -23,18 +23,18 @@ const SLogo = styled.h1`
   line-height: 40px;
   font-size: 16px;
   font-weight: 500;
-`;
+`
 
 const SBtnArea = styled.div`
   float: right;
-`;
+`
 
 const Header: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleClickLogout = () => {
-    dispatch(di.session.removeToken());
-  };
+    dispatch(di.session.removeToken())
+  }
 
   return (
     <SHeaderArea>
@@ -43,8 +43,8 @@ const Header: React.FC = () => {
         <ShortBtn type="button" onClick={handleClickLogout} value="Logout" />
       </SBtnArea>
     </SHeaderArea>
-  );
-};
+  )
+}
 
 
-export default Header;
+export default Header

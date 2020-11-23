@@ -1,5 +1,10 @@
 # Change log
 
+### v1.7.0
+* Delete VO, Add DTO
+* Modifying the Repository and Infrastructure Layer (Remote -> Http)
+* Move VM Location (frameworks -> adapters)
+
 ### v1.6.8
 * Remove test code
 

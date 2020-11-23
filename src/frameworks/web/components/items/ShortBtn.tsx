@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from 'styled-components';
+import * as React from "react"
+import styled from 'styled-components'
 
 const SShortBtn = styled.button`
   border: 1px solid #26b49e;
@@ -12,20 +12,20 @@ const SShortBtn = styled.button`
   cursor: pointer;
   border-radius: 4px;
   text-shadow: 0px 0px 1px #1d9b88;
-`;
+`
 
 interface IProps {
-  type: "button" | "submit" | "reset";
-  value: string;
-  onClick(): void;
+  type: "button" | "submit" | "reset"
+  value: string
+  onClick(): void
 }
 
 const ShortButton: React.FC<IProps> = (props) => {
-  const { type, value, onClick } = props;
+  const { type, value, onClick } = props
 
   return (
     <SShortBtn className={"short-button"} type={type} onClick={onClick}>{value}</SShortBtn>
-  );
-};
+  )
+}
 
-export default ShortButton;
+export default ShortButton

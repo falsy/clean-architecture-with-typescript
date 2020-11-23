@@ -1,25 +1,25 @@
-import { IWebStorage } from './interfaces/iWebStorage';
+import { IWebStorage } from './interfaces/iWebStorage'
 
 class WebStorage implements IWebStorage {
 
-  private storage: Storage;
+  private storage: Storage
 
   constructor() {
-    this.storage = window.sessionStorage;
+    this.storage = window.sessionStorage
   }
 
-  getToken() {
-    return this.storage.getItem('token');
+  get(name: string): string {
+    return this.storage.getItem(name)
   }
 
-  addToken(token: string) {
-    this.storage.setItem('token', token);    
+  set(name: string, value: string): void {
+    this.storage.setItem(name, value)
   }
 
-  removeToken() {
-    this.storage.removeItem('token');
+  remove(name: string): void {
+    this.storage.removeItem(name)
   }
-
+  
 }
 
 export default WebStorage;

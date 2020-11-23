@@ -1,5 +1,5 @@
 export interface IWebStorage {
-  getToken(): string;
-  addToken(token: string): void;
-  removeToken(): void;
+  get(name: string): string
+  set(name: string, value: string): void
+  remove(name: string): void
 }

@@ -1,11 +1,11 @@
-import * as React from "react";
-import styled from 'styled-components';
-import { IBoardData } from '@domains/aggregates/interfaces/iBoard';
+import * as React from "react"
+import styled from 'styled-components'
+import { IBoardData } from '@domains/aggregates/interfaces/iBoard'
 
 const SBoardItem = styled.div`
   list-style: none;
   border-bottom: 1px solid #eee;
-`;
+`
 
 const SBoardText = styled.p`
   display: inline-block;
@@ -13,15 +13,15 @@ const SBoardText = styled.p`
   font-size: 16px;
   line-height: 60px;
   margin: 0;
-`;
+`
 
 interface IProps {
-  board: IBoardData;
+  board: IBoardData
 }
 
 const BoardItem: React.FC<IProps> = (props) => {
-  const { board: { id, author, content, createAt } } = props;
-  const createDate = new Date(createAt);
+  const { board: { id, author, content, createAt } } = props
+  const createDate = new Date(createAt)
 
   return (
     <SBoardItem>
@@ -30,7 +30,7 @@ const BoardItem: React.FC<IProps> = (props) => {
       <SBoardText>{content}</SBoardText>
       <SBoardText>{`${createDate.getFullYear()}-${createDate.getMonth() + 1}-${createDate.getDate()}`}</SBoardText>
     </SBoardItem>
-  );
-};
+  )
+}
 
-export default BoardItem;
+export default BoardItem

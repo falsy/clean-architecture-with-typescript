@@ -1,12 +1,12 @@
 export interface IToken {
-  token: string;
+  token: string
 }
 
 export interface ILoginAction {
-  type: string;
-  payload: IToken;
+  type: string
+  payload: IToken
 }
 
 export interface ISessionActions {
-  setToken(token: string): ILoginAction;
+  setToken(token: string): ILoginAction
 }

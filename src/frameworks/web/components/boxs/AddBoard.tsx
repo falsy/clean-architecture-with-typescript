@@ -1,8 +1,8 @@
-import * as React from "react";
-import styled from 'styled-components';
-import { useState } from 'react';
-import LongBtn from '../items/LongBtn';
-import Input from '../items/Input';
+import * as React from "react"
+import styled from 'styled-components'
+import { useState } from 'react'
+import LongBtn from '../items/LongBtn'
+import Input from '../items/Input'
 
 const SAddBtnArea = styled.div`
   &::after {
@@ -10,54 +10,54 @@ const SAddBtnArea = styled.div`
     clear: both;
     display: block;
   }
-`;
+`
 
 const SAuthorBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 200px;
-`;
+`
 
 const SContentBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 200px;
-`;
+`
 
 const SAddBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 80px;
-`;
+`
 
 interface IProps {
-  insertFnc(author: string, content: string): void;
+  insertFnc(author: string, content: string): void
 }
 
 const BoardList: React.FC<IProps> = (props) => {
-  const { insertFnc } = props;
-  const [author, setAuthor] = useState('');
-  const [content, setContent] = useState('');
+  const { insertFnc } = props
+  const [author, setAuthor] = useState('')
+  const [content, setContent] = useState('')
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+    const value = event.target.value
     if (event.target.name === 'author') {
-      setAuthor(value);
+      setAuthor(value)
     }
     if (event.target.name === 'content') {
-      setContent(value);
+      setContent(value)
     }
-  };
+  }
 
   const handleClickInsertBoard = () => {
-    setAuthor('');
-    setContent('');
-    insertFnc(author, content);
-  };
+    setAuthor('')
+    setContent('')
+    insertFnc(author, content)
+  }
 
   const handleKeyDownInsertBoard = (event: React.KeyboardEvent) => {
     if (event.keyCode === 13) {
-      handleClickInsertBoard();
+      handleClickInsertBoard()
     }
   }
 
@@ -75,7 +75,7 @@ const BoardList: React.FC<IProps> = (props) => {
         </SAddBox>
       </SAddBtnArea>
     </section>
-  );
-};
+  )
+}
 
-export default BoardList;
+export default BoardList

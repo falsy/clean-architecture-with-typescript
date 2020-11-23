@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from 'styled-components';
+import * as React from "react"
+import styled from 'styled-components'
 
 const SLongBtn = styled.button`
   display: inline-block;
@@ -11,20 +11,20 @@ const SLongBtn = styled.button`
   color: #fff;
   cursor: pointer;
   text-shadow: 0px 0px 1px #1d9b88;
-`;
+`
 
 interface IProps {
-  type: "button" | "submit" | "reset";
-  value: string;
-  onClick(): void;
+  type: "button" | "submit" | "reset"
+  value: string
+  onClick(): void
 }
 
 const LongButton: React.FC<IProps> = (props) => {
-  const { type, value, onClick } = props;
+  const { type, value, onClick } = props
 
   return (
     <SLongBtn className={"button"} type={type} onClick={onClick}>{value}</SLongBtn>
-  );
-};
+  )
+}
 
-export default LongButton;
+export default LongButton

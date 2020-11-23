@@ -1,31 +1,31 @@
-import { IBoardUseCase } from '@domains/useCases/interfaces/iBoard';
-import { IBoardRepository } from '@domains/useCases/repository-interfaces/iBoard';
-import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard';
-import Board from '@domains/aggregates/Board';
-import Comment from '@domains/entities/Comment';
+import Board from '@domains/aggregates/Board'
+import Comment from '@domains/entities/Comment'
+import { IBoardUseCase } from '@domains/useCases/interfaces/iBoard'
+import { IBoardRepository } from '@domains/useCases/repository-interfaces/iBoard'
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard'
 
-class BaordUseCase implements IBoardUseCase {
+class BoardUseCase implements IBoardUseCase {
 
-  readonly repository: IBoardRepository;
-
-  constructor(sessionRepositories: IBoardRepository) {
-    this.repository = sessionRepositories;
-  }
+  constructor(
+    private readonly boardRepo: IBoardRepository
+  ) {}
 
   async getBoards(): Promise<Array<IBoardEntity>> {
-    const { results: { list: boardList } } = await this.repository.getBoards();
-    const { results: { list: commentList } } = await this.repository.getComments();
+    const boarDTOList = await this.boardRepo.getBoards()
+    const commentDTOList = await this.boardRepo.getComments()
 
-    return boardList.map(board => {
-      const comments = commentList.filter(comment => comment.boardId === board.id).map(comment => new Comment(comment));
-      return new Board(board).pushComment(comments);
-    });
+    return boarDTOList.map(board => {
+      const comments = commentDTOList.filter(comment => comment.boardId === board.id)
+        .map(comment => new Comment(comment))
+      const boardEntity = new Board(board).pushComment(comments)
+      return boardEntity
+    })
   }
 
-  insertBoard(author: string, content: string): Promise<number> {
-    return this.repository.insertBoard(author, content);
-  };
+  insertBoard(author: string, content: string): Promise<boolean> {
+    return this.boardRepo.insertBoard(author, content)
+  }
 
 }
 
-export default BaordUseCase;
+export default BoardUseCase

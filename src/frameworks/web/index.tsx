@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { createGlobalStyle } from 'styled-components';
-import { Provider } from 'react-redux';
-import store from '@frameworks/web/redux/store';
-import Router from "./components/pages/Router";
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import { createGlobalStyle } from 'styled-components'
+import { Provider } from 'react-redux'
+import store from '@frameworks/web/redux/store'
+import Router from "./components/pages/Router"
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4 {
     letter-spacing: 0.3px;
   }
-`;
+`
 
 const App = () => {
   return (
@@ -31,4 +31,4 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"))

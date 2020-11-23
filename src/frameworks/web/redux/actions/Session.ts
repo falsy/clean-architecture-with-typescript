@@ -1,5 +1,5 @@
-import { LOGIN } from '@frameworks/web/redux/interfaces/iSession';
-import { ILoginAction, ISessionActions } from '@adapters/presenters/action-interfaces/ISession';
+import { LOGIN } from '@frameworks/web/redux/interfaces/iSession'
+import { ILoginAction, ISessionActions } from '@adapters/presenters/action-interfaces/iSession'
 
 class SessionActions implements ISessionActions {
 
@@ -15,4 +15,4 @@ class SessionActions implements ISessionActions {
 }
 
 
-export default SessionActions;
+export default SessionActions
