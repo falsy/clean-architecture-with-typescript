@@ -6,11 +6,12 @@ import IInfrastructures from '@adapters/infrastructures/interfaces'
 class BoardRepository implements IBoardRepository {
 
   constructor(
-    readonly infra: IInfrastructures
+    readonly infrastructure: IInfrastructures
   ) {}
 
   async getBoards(): Promise<Array<IBoardDTO>> {
-    const response = await this.infra.http.get({
+    const response = await this.infrastructure.http.request({
+      method: 'GET',
       url: '/boards'
     })
 
@@ -20,7 +21,8 @@ class BoardRepository implements IBoardRepository {
   }
 
   async getComments(): Promise<Array<ICommentDTO>> {
-    const response = await this.infra.http.get({
+    const response = await this.infrastructure.http.request({
+      method: 'GET',
       url: '/comments'
     })
 
@@ -30,8 +32,12 @@ class BoardRepository implements IBoardRepository {
   }
 
   insertBoard(author: string, content: string): Promise<boolean> {
-    return this.infra.http.post({
+    return this.infrastructure.http.request({
+      method: 'POST',
       url: '/boards',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: {
         author, 
         content

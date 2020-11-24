@@ -12,7 +12,7 @@
       "@adapters/*": ["src/adapters/*"],
       "@domains/*": ["src/domains/*"],
       "@frameworks/*": ["src/frameworks/*"],
-      "@di/*": ["src/di/*"]
+      "@di": ["src/di/index.ts"]
     }
   },
   "include": [

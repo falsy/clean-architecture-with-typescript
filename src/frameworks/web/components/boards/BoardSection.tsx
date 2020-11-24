@@ -3,20 +3,21 @@ import { useEffect } from "react"
 import styled from 'styled-components'
 import { useDispatch, useSelector } from "react-redux"
 import { IBoardStateGroup } from '@frameworks/web/redux/interfaces/iBoard'
-import di from '@di/index'
-import BoardList from '../boxs/BoardList'
-import AddBoard from '../boxs/AddBoard'
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard'
+import BoardList from './BoardList'
+import AddBoard from './AddBoard'
 import BoardVM from '@frameworks/web/vm/Board'
 
-const SBoardSectionArea = styled.section`
+import di from '@di'
+
+const S_BoardSectionArea = styled.section`
   margin-top: 40px;
   &:first-child {
     margin-top: 0;
   }
 `
 
-const SSectionTitle = styled.h2`
+const S_SectionTitle = styled.h2`
   font-size: 24px;
   font-weight: 200;
 `
@@ -42,16 +43,16 @@ const BoardSection: React.FC = () => {
   }
 
   return (
-    <div className={"board-section"}>
-      <SBoardSectionArea>
-        <SSectionTitle>Board</SSectionTitle>
+    <>
+      <S_BoardSectionArea>
+        <S_SectionTitle>Board</S_SectionTitle>
         <BoardList list={boardVMList} />
-      </SBoardSectionArea>
-      <SBoardSectionArea>
-        <SSectionTitle>Add Post</SSectionTitle>
+      </S_BoardSectionArea>
+      <S_BoardSectionArea>
+        <S_SectionTitle>Add Post</S_SectionTitle>
         <AddBoard insertFnc={insertFnc} />
-      </SBoardSectionArea>
-    </div>
+      </S_BoardSectionArea>
+    </>
   )
 }
 

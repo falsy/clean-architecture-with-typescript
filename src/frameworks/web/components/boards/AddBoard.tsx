@@ -1,10 +1,10 @@
 import * as React from "react"
 import styled from 'styled-components'
 import { useState } from 'react'
-import LongBtn from '../items/LongBtn'
-import Input from '../items/Input'
+import LongBtn from '../commons/LongBtn'
+import Input from '../commons/Input'
 
-const SAddBtnArea = styled.div`
+const S_AddBtnArea = styled.div`
   &::after {
     content: '';
     clear: both;
@@ -12,19 +12,19 @@ const SAddBtnArea = styled.div`
   }
 `
 
-const SAuthorBox = styled.div`
+const S_AuthorBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 200px;
 `
 
-const SContentBox = styled.div`
+const S_ContentBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 200px;
 `
 
-const SAddBox = styled.div`
+const S_AddBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 80px;
@@ -63,17 +63,17 @@ const BoardList: React.FC<IProps> = (props) => {
 
   return (
     <section>
-      <SAddBtnArea>
-        <SAuthorBox>
+      <S_AddBtnArea>
+        <S_AuthorBox>
           <Input type="text" name="author" placeholder="author" onChange={handleChangeInput} onKeyDown={null} value={author} />
-        </SAuthorBox>
-        <SContentBox>
+        </S_AuthorBox>
+        <S_ContentBox>
           <Input type="text" name="content" placeholder="content" onChange={handleChangeInput} onKeyDown={handleKeyDownInsertBoard} value={content} />
-        </SContentBox>
-        <SAddBox>
+        </S_ContentBox>
+        <S_AddBox>
           <LongBtn type="button" value="Add" onClick={handleClickInsertBoard} />
-        </SAddBox>
-      </SAddBtnArea>
+        </S_AddBox>
+      </S_AddBtnArea>
     </section>
   )
 }

@@ -1,5 +1,10 @@
 # Change log
 
+### v1.7.2
+* Edit Components directory structure
+* Edit Infrastructure Layer
+* Edit DI path alias
+
 ### v1.7.1
 * Move VM Location (adapters -> frameworks)
 

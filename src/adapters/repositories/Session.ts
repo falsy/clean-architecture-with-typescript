@@ -9,8 +9,12 @@ class SessionRepository implements ISessionRepository {
   ) {}
 
   async login(userDTO: IUserDTO): Promise<string> {
-    const response = await this.infrastructure.http.post({
+    const response = await this.infrastructure.http.request({
+      method: 'POST',
       url: '/login',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: {
         id: userDTO.id,
         pw: userDTO.pw

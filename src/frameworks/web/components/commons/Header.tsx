@@ -1,10 +1,10 @@
 import * as React from "react"
 import styled from 'styled-components'
 import { useDispatch } from "react-redux"
-import di from '@di/index'
-import ShortBtn from '../items/ShortBtn'
+import ShortBtn from './ShortBtn'
+import di from '@di'
 
-const SHeaderArea = styled.section`
+const S_HeaderArea = styled.section`
   width: 100%;
   height: 70px;
   padding: 17px 30px;
@@ -17,7 +17,7 @@ const SHeaderArea = styled.section`
   }
 `
 
-const SLogo = styled.h1`
+const S_Logo = styled.h1`
   float: left;
   margin: 0;
   line-height: 40px;
@@ -25,7 +25,7 @@ const SLogo = styled.h1`
   font-weight: 500;
 `
 
-const SBtnArea = styled.div`
+const S_BtnArea = styled.div`
   float: right;
 `
 
@@ -37,12 +37,12 @@ const Header: React.FC = () => {
   }
 
   return (
-    <SHeaderArea>
-      <SLogo>React with Clean architecture</SLogo>
-      <SBtnArea>
+    <S_HeaderArea>
+      <S_Logo>React with Clean architecture</S_Logo>
+      <S_BtnArea>
         <ShortBtn type="button" onClick={handleClickLogout} value="Logout" />
-      </SBtnArea>
-    </SHeaderArea>
+      </S_BtnArea>
+    </S_HeaderArea>
   )
 }
 

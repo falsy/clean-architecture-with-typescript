@@ -60,11 +60,9 @@ The Action Interface of 'Presenter' is also the same.
 └─ frameworks
    └─ web
       ├─ components
-      │  ├─ pages
-      │  ├─ templates
-      │  ├─ sections
-      │  ├─ boxs
-      │  └─ items
+      │  ├─ commons
+      │  ├─ logins
+      │  └─ boards
       ├─ redux
       │  ├─ interfaces
       │  ├─ actions
@@ -75,8 +73,7 @@ The Action Interface of 'Presenter' is also the same.
 
 * The basic directory is organized based on layers of clean architecture.  
 [ frameworks / adapters / domains(useCases / entities) ]
-* Refer to [[Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/#atoms)] for component directory.  
-[ pages / templates / sections / boxs / items ]
+* The component's directory structure is freely structured in the form promised between services or members.
 
 ## Alias
 #### tsconfig.json
@@ -88,7 +85,7 @@ The Action Interface of 'Presenter' is also the same.
     "@adapters/*": ["src/adapters/*"],
     "@domains/*": ["src/domains/*"],
     "@frameworks/*": ["src/frameworks/*"],
-    "@di/*": ["src/di/*"]
+    "@di": ["src/di/index.ts"]
   }
 }
 ```
@@ -103,7 +100,7 @@ The Action Interface of 'Presenter' is also the same.
       "@adapters": path.resolve(__dirname, "src/adapters/"),
       "@domains": path.resolve(__dirname, "src/domains/"),
       "@frameworks": path.resolve(__dirname, "src/frameworks/"),
-      "@di": path.resolve(__dirname, "src/di/")
+      "@di": path.resolve(__dirname, "src/di/index.ts")
     }
   }
 }
@@ -120,4 +117,4 @@ $ npm start
 ```
 
 ## Version
-v1.7.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.7.2 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

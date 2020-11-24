@@ -54,28 +54,24 @@ Typescript, Webpack, React, Redux, styled-components
 │  ├─ useCases
 │  │  ├─ interfaces
 │  │  └─ repository-interfaces
-│  └─ vos
-│     └─ interfaces
+│  └─ dto
 └─ frameworks
    └─ web
       ├─ components
-      │  ├─ pages
-      │  ├─ templates
-      │  ├─ sections
-      │  ├─ boxs
-      │  └─ items
+      │  ├─ commons
+      │  ├─ logins
+      │  └─ boards
       ├─ redux
       │  ├─ interfaces
       │  ├─ actions
       │  ├─ reducers
       │  └─ store
-      └─ vms
+      └─ vm
 ```
 
 * 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다.  
 [ frameworks / adapters / domains(useCases / entities) ]
-* 컴포넌트 디렉토리는 [[아토믹 디자인](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]을 참고 하였습니다.  
-[ pages / templates / sections / boxs / items ]
+* 컴포넌트의 디렉토리 구조는 서비스 또는 구성원 간 약속된 형식으로 자유롭게 구성합니다.
 
 ## Alias
 #### tsconfig.json
@@ -87,7 +83,7 @@ Typescript, Webpack, React, Redux, styled-components
     "@adapters/*": ["src/adapters/*"],
     "@domains/*": ["src/domains/*"],
     "@frameworks/*": ["src/frameworks/*"],
-    "@di/*": ["src/di/*"]
+    "@di": ["src/di/index.ts"]
   }
 }
 ```
@@ -102,7 +98,7 @@ Typescript, Webpack, React, Redux, styled-components
       "@adapters": path.resolve(__dirname, "src/adapters/"),
       "@domains": path.resolve(__dirname, "src/domains/"),
       "@frameworks": path.resolve(__dirname, "src/frameworks/"),
-      "@di": path.resolve(__dirname, "src/di/")
+      "@di": path.resolve(__dirname, "src/di/index.ts")
     }
   }
 }
@@ -119,4 +115,4 @@ $ npm start
 ```
 
 ## Version
-v1.6.8 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.7.2 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

@@ -3,9 +3,9 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { ISessionStateGroup } from '@frameworks/web/redux/interfaces/iSession'
-import di from '@di/index'
-import Login from './Login'
-import Home from './Home'
+import di from '@di'
+import Login from './logins/Login'
+import Board from './boards/Board'
 
 const Index: React.FC = () => {
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ const Index: React.FC = () => {
       {token && (
         <Router>
           <Route path="">
-            <Home />
+            <Board />
           </Route>
         </Router>
       )}
