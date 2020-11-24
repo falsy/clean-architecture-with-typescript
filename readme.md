@@ -46,8 +46,7 @@ The Action Interface of 'Presenter' is also the same.
 │  ├─ presenters
 │  │  ├─ interfaces
 │  │  └─ action-interfaces
-│  ├─ repositories
-│  └─ vms
+│  └─ repositories
 ├─ di
 ├─ domains
 │  ├─ aggregates
@@ -66,11 +65,12 @@ The Action Interface of 'Presenter' is also the same.
       │  ├─ sections
       │  ├─ boxs
       │  └─ items
-      └─ redux
-         ├─ interfaces
-         ├─ actions
-         ├─ reducers
-         └─ store
+      ├─ redux
+      │  ├─ interfaces
+      │  ├─ actions
+      │  ├─ reducers
+      │  └─ store
+      └─ vm
 ```
 
 * The basic directory is organized based on layers of clean architecture.  
@@ -120,4 +120,4 @@ $ npm start
 ```
 
 ## Version
-v1.7.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.7.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

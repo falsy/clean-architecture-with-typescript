@@ -2,7 +2,7 @@ import * as React from "react"
 import styled from 'styled-components'
 import BoardItem from '../items/BoardItem'
 import CommentItem from '../items/CommentItem'
-import { IBoardVM } from '@adapters/vms/Board'
+import { IBoardVM } from '@frameworks/web/vm/Board'
 
 const SBoardUl = styled.ul`
   border-top: 1px solid #eee;

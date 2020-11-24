@@ -1,5 +1,8 @@
 # Change log
 
+### v1.7.1
+* Move VM Location (adapters -> frameworks)
+
 ### v1.7.0
 * Delete VO, Add DTO
 * Modifying the Repository and Infrastructure Layer (Remote -> Http)

@@ -7,7 +7,7 @@ import di from '@di/index'
 import BoardList from '../boxs/BoardList'
 import AddBoard from '../boxs/AddBoard'
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard'
-import BoardVM from '@adapters/vms/Board'
+import BoardVM from '@frameworks/web/vm/Board'
 
 const SBoardSectionArea = styled.section`
   margin-top: 40px;
