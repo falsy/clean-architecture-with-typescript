@@ -1,33 +1,16 @@
-import { IHttp } from "./interfaces/iHttp"
+import { IHttp, IRequestOption } from "./interfaces/iHttp"
 
 class Http implements IHttp {
 
-  get(request: { url: string }): Promise<any> {
-    const option = {
-      method: 'GET'
-    }
-    
-    return fetch(request.url, option)
-    .then(res => res.json())
-    .catch((e) => {
-      console.log(e)
-    })
-  }
+  request(requestOption: IRequestOption): Promise<any> {
+    const option: RequestInit = { method: requestOption.method }
 
-  post(request: { url: string, body?: unknown }): Promise<any> {
-    const option = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: request?.body ? JSON.stringify(request.body) : ''
-    }
+    if(requestOption?.headers) option.headers = requestOption.headers
+    if(requestOption?.body) option.body = JSON.stringify(requestOption.body)
 
-    return fetch(request.url, option)
-    .then(res => res.json())
-    .catch((e) => {
-      console.log(e)
-    })
+    return fetch(requestOption.url, option)
+      .then(res => res.json())
+      .catch((e) => console.log(e))
   }
 
 }

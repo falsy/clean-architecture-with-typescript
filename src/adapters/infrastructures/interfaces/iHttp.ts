@@ -1,4 +1,10 @@
+export interface IRequestOption {
+  readonly method: string;
+  readonly url: string;
+  readonly headers?: any;
+  readonly body?: any;
+}
+
 export interface IHttp {
-  get(request: { url: string }): Promise<any>
-  post(request: { url: string, body?: unknown }): Promise<any>
+  request(requestOption: IRequestOption): Promise<any>;
 }

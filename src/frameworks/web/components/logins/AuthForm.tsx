@@ -1,10 +1,10 @@
 import * as React from "react"
 import styled from 'styled-components'
 import { useState } from "react"
-import Input from '../items/Input'
-import LongBtn from '../items/LongBtn'
+import Input from '../commons/Input'
+import LongBtn from '../commons/LongBtn'
 
-const SBtnArea = styled.div`
+const S_BtnArea = styled.div`
   margin: 10px 0;
 `
 
@@ -36,15 +36,15 @@ const AuthForm: React.FC<IProps> = (props) => {
 
   return (
     <section>
-      <SBtnArea>
+      <S_BtnArea>
         <Input type="text" name="id" placeholder="ID" onChange={handleChangeClientInfo} onKeyDown={null} value={id} />
-      </SBtnArea>
-      <SBtnArea>
+      </S_BtnArea>
+      <S_BtnArea>
         <Input type="password" name="pw" placeholder="Password" onChange={handleChangeClientInfo} onKeyDown={handleKeyDownAccredit} value={pw} />
-      </SBtnArea>
-      <SBtnArea>
+      </S_BtnArea>
+      <S_BtnArea>
         <LongBtn type="button" onClick={handleClickAccredit} value={btnValue} />
-      </SBtnArea>
+      </S_BtnArea>
     </section>
   )
 }

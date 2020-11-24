@@ -1,7 +1,13 @@
 import * as React from "react"
 import { useDispatch } from "react-redux"
-import di from '@di/index'
-import Authorization from '../templates/authorization'
+import styled from 'styled-components'
+import di from '@di'
+import AuthForm from "./AuthForm"
+
+const S_AuthArea = styled.div`
+  width: 400px;
+  margin: 100px auto;
+`
 
 const Login: React.FC = () => {
   const dispatch = useDispatch()
@@ -11,8 +17,10 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className={"login"}>
-      <Authorization accredit={handleClickAccreditation} btnValue="Login" />
+    <div>
+      <S_AuthArea>
+        <AuthForm accredit={handleClickAccreditation} btnValue={"Login"} />
+      </S_AuthArea>
     </div>
   )
 }

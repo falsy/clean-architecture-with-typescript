@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from 'styled-components'
-import BoardItem from '../items/BoardItem'
-import CommentItem from '../items/CommentItem'
 import { IBoardVM } from '@frameworks/web/vm/Board'
+import BoardItem from './BoardItem'
+import CommentItem from './CommentItem'
 
 const SBoardUl = styled.ul`
   border-top: 1px solid #eee;
@@ -22,7 +22,7 @@ const BoardList: React.FC<IProps> = (props) => {
   const { list } = props
 
   return (
-    <div className={"board-list"}>
+    <div>
       {list.length > 0 && (
         <SBoardUl>
           {list.map(board => (
