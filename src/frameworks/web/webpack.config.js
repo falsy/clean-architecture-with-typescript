@@ -2,19 +2,23 @@ const HTMLWeebPackPlugin = require("html-webpack-plugin")
 const path = require("path")
 
 module.exports = {
-  entry: "./src/frameworks/web/index.tsx",
+  entry: "./index.tsx",
   module: {
-    rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" }
-    ]
+    rules: [{ 
+      test: /\.tsx?$/, 
+      loader: "ts-loader",
+      options: {
+        configFile: './tsconfig.json',
+      }
+    }]
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
     alias: { 
-      "@adapters": path.resolve(__dirname, "src/adapters/"),
-      "@domains": path.resolve(__dirname, "src/domains/"),
-      "@frameworks": path.resolve(__dirname, "src/frameworks/"),
-      "@di": path.resolve(__dirname, "src/di/index.ts")
+      "@adapters": path.resolve(__dirname, "../../adapters/"),
+      "@domains": path.resolve(__dirname, "../../domains/"),
+      "@frameworks": path.resolve(__dirname, "../../frameworks/"),
+      "@di": path.resolve(__dirname, "./di/index.ts")
     }
   },
   output: {
@@ -23,7 +27,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWeebPackPlugin({
-      template: "./src/frameworks/web/index.html",
+      template: "./index.html",
       filename: "./index.html"
     })
   ],
