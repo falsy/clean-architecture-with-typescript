@@ -1,10 +1,5 @@
 import React, { useEffect } from "react"
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  StatusBar,
-} from 'react-native'
+import { SafeAreaView, StyleSheet, ScrollView, StatusBar } from 'react-native'
 import { useDispatch, useSelector } from "react-redux"
 import { ISessionStateGroup } from '@frameworks/mobile/redux/interfaces/iSession'
 import Header from "./commons/Header"
@@ -19,7 +14,6 @@ const Index: React.FC = () => {
   useEffect(() => {
     (async () => {
       const storageToken = await di.session.getToken()
-      console.log(storageToken)
       if (storageToken) {
         dispatch(di.session.setToken(storageToken))
       }

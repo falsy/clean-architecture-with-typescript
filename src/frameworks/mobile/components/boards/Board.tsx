@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react"
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Button
-} from 'react-native'
+import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
 import { useDispatch, useSelector } from "react-redux"
-import { IBoardStateGroup } from '@frameworks/web/redux/interfaces/iBoard'
+import { IBoardStateGroup } from '@frameworks/mobile/redux/interfaces/iBoard'
 import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard'
-import BoardVM from '@frameworks/web/vm/Board'
+import BoardVM from '@frameworks/mobile/vm/Board'
 
 import di from '@di'
 

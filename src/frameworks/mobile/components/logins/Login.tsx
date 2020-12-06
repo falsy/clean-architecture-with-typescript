@@ -1,10 +1,5 @@
 import React, { useState } from "react"
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  Button
-} from 'react-native'
+import { StyleSheet, View, TextInput, Button } from 'react-native'
 import { useDispatch } from "react-redux"
 import di from '@di'
 
