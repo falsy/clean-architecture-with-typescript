@@ -3,15 +3,14 @@ import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  View,
-  Text,
   StatusBar,
 } from 'react-native'
 import { useDispatch, useSelector } from "react-redux"
 import { ISessionStateGroup } from '@frameworks/mobile/redux/interfaces/iSession'
-import di from '@di'
 import Header from "./commons/Header"
-import Login from "./login/Login"
+import Login from "./logins/Login"
+import Board from "./boards/Board"
+import di from '@di'
 
 const Index: React.FC = () => {
   const dispatch = useDispatch()
@@ -27,7 +26,6 @@ const Index: React.FC = () => {
     })()
   }, [token])
 
-  console.log(token);
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -37,7 +35,10 @@ const Index: React.FC = () => {
             <Login />
           )}
           {token !== '' && (
-            <Header />
+            <>
+              <Header />
+              <Board />
+            </>
           )}
         </ScrollView>
       </SafeAreaView>
@@ -48,6 +49,7 @@ const Index: React.FC = () => {
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: '#ffffff',
+    height: '100%'
   },
 })
 
