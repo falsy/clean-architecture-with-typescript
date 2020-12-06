@@ -11,7 +11,6 @@ app.use(cors())
 const router = new Router()
 
 let boardAutoInc = 3
-let commentAutoInc = 3
 
 const boards = [{
   id: 1,
