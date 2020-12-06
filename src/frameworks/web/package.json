@@ -1,7 +1,7 @@
 {
   "name": "web",
   "version": "1.8.0",
-  "description": "",
+  "description": "Clean architecture based react project sample code",
   "scripts": {
     "start": "webpack-dev-server --mode development"
   },

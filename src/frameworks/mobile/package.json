@@ -1,7 +1,7 @@
 {
   "name": "mobile",
   "version": "1.8.0",
-  "description": "",
+  "description": "Clean architecture based react project sample code",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
