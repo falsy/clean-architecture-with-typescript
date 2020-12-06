@@ -14,9 +14,8 @@ class SessionUseCase implements ISessionUseCase {
     return token
   }
 
-  getToken(): string {
-    const token = this.sessionRepo.getToken()
-    return token
+  getToken(): Promise<string> {
+    return this.sessionRepo.getToken()
   }
 
   setToken(token: string): void {

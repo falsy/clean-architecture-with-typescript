@@ -4,7 +4,7 @@ import useCases from '@domains/useCases'
 import actions from '@frameworks/mobile/redux/actions'
 import presenters from '@adapters/presenters'
 
-const cInfrastructures = infrastructures()
+const cInfrastructures = infrastructures('mobile')
 const cRepositorires = repositories(cInfrastructures)
 const cUseCases = useCases(cRepositorires)
 const cActions =  actions()

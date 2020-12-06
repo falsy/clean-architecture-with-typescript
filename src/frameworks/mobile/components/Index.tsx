@@ -9,17 +9,19 @@ import {
 } from 'react-native'
 import { useDispatch, useSelector } from "react-redux"
 import { ISessionStateGroup } from '@frameworks/mobile/redux/interfaces/iSession'
-// import di from '@di'
+import di from '@di'
 
 const Index: React.FC = () => {
   const dispatch = useDispatch()
   const token = useSelector((state: ISessionStateGroup) => state.session.token)
   // console.log(di)
   useEffect(() => {
-    // const storageToken = di.session.getToken()
-    // if (storageToken) {
-    //   dispatch(di.session.setToken(storageToken))
-    // }
+    (async () => {
+      const storageToken = await di.session.getToken()
+      if (storageToken) {
+        dispatch(di.session.setToken(storageToken))
+      }
+    })()
   }, [token])
 
   return (

@@ -1,0 +1,27 @@
+{
+  "name": "react-with-clean-architecture",
+  "version": "1.7.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/falsy/react-with-clean-architecture.git"
+  },
+  "author": "falsy",
+  "bugs": {
+    "url": "https://github.com/falsy/react-with-clean-architecture/issues"
+  },
+  "dependencies": {
+    "react": "16.13.1",
+    "react-native": "0.63.3"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-native": "^0.63.37"
+  }
+}

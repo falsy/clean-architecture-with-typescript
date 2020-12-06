@@ -11,10 +11,12 @@ const Index: React.FC = () => {
   const token = useSelector((state: ISessionStateGroup) => state.session.token)
 
   useEffect(() => {
-    const storageToken = di.session.getToken()
-    if (storageToken) {
-      dispatch(di.session.setToken(storageToken))
-    }
+    (async () => {
+      const storageToken = await di.session.getToken()
+      if (storageToken) {
+        dispatch(di.session.setToken(storageToken))
+      }
+    })()
   }, [token])
 
   return (

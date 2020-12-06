@@ -1,8 +1,8 @@
-import infrastructures from '@adapters/infrastructures'
-import repositories from '@adapters/repositories'
-import useCases from '@domains/useCases'
-import actions from '@frameworks/web/redux/actions'
-import presenters from '@adapters/presenters'
+import infrastructures from './infrastructure'
+import repositories from './repositories'
+import useCases from './useCases'
+import actions from './actions'
+import presenters from './presenters'
 
 const cInfrastructures = infrastructures()
 const cRepositorires = repositories(cInfrastructures)

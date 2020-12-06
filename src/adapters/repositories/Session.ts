@@ -1,15 +1,17 @@
 import { ISessionRepository } from '@domains/useCases/repository-interfaces/iSession'
-import IInfrastructure from '@adapters/infrastructures/interfaces'
 import { IUserDTO } from '@domains/dto/UserDTO'
+import { IHttp } from '@adapters/infrastructures/interfaces/iHttp'
+import { IStorage } from '@adapters/infrastructures/interfaces/iStorage'
 
 class SessionRepository implements ISessionRepository {
 
   constructor(
-    private readonly infrastructure: IInfrastructure
+    private readonly http: IHttp,
+    private readonly storage: IStorage
   ) {}
 
   async login(userDTO: IUserDTO): Promise<string> {
-    const response = await this.infrastructure.http.request({
+    const response = await this.http.request({
       method: 'POST',
       url: '/login',
       headers: {
@@ -24,16 +26,16 @@ class SessionRepository implements ISessionRepository {
     if(response?.token) return response.token
   }
 
-  getToken(): string {
-    return this.infrastructure.webStorage.get('token')
+  getToken(): Promise<string> {
+    return this.storage.get('token')
   }
 
   setToken(token: string): void {
-    this.infrastructure.webStorage.set('token', token)
+    this.storage.set('token', token)
   }
 
   removeToken(): void {
-    this.infrastructure.webStorage.remove('token')
+    this.storage.remove('token')
   }
 
 }

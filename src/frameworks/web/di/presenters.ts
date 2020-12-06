@@ -1,7 +1,7 @@
-import IUseCases from '@domains/useCases/interfaces/iUseCases'
-import IActions from './action-interfaces'
-import BoardPresenter from './Board'
-import SessionPresenter from './Session'
+import IUseCases from './interfaces/iUseCases'
+import IActions from './interfaces/iActions'
+import BoardPresenter from '@adapters/presenters/Board'
+import SessionPresenter from '@adapters/presenters/Session'
 
 export default (useCases: IUseCases, actions: IActions) => {
   return {

@@ -23,16 +23,5 @@
     "react-test-renderer": "16.13.1",
     "redux": "^4.0.5",
     "typescript": "^3.8.3"
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
   }
 }
