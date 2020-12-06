@@ -1,7 +1,6 @@
 import * as React from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { BrowserRouter as Router, Route } from "react-router-dom"
 import { ISessionStateGroup } from '@frameworks/web/redux/interfaces/iSession'
 import di from '@di'
 import Login from './logins/Login'
@@ -12,10 +11,12 @@ const Index: React.FC = () => {
   const token = useSelector((state: ISessionStateGroup) => state.session.token)
 
   useEffect(() => {
-    const storageToken = di.session.getToken()
-    if (storageToken) {
-      dispatch(di.session.setToken(storageToken))
-    }
+    (async () => {
+      const storageToken = await di.session.getToken()
+      if (storageToken) {
+        dispatch(di.session.setToken(storageToken))
+      }
+    })()
   }, [token])
 
   return (
@@ -24,11 +25,7 @@ const Index: React.FC = () => {
         <Login />
       )}
       {token && (
-        <Router>
-          <Route path="">
-            <Board />
-          </Route>
-        </Router>
+        <Board />
       )}
     </div>
   )

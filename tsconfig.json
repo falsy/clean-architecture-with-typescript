@@ -1,21 +1,25 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": ".",
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@adapters/*": ["src/adapters/*"],
       "@domains/*": ["src/domains/*"],
-      "@frameworks/*": ["src/frameworks/*"],
-      "@di": ["src/di/index.ts"]
-    }
+      "@frameworks/*": ["src/frameworks/*"]
+    },
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2015"
+    ]
   },
-  "include": [
-    "./src/**/*"
+  "exclude": [
+    "node_modules",
   ]
 }

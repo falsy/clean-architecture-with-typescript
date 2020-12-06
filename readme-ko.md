@@ -7,7 +7,7 @@
 [🇰🇷](https://github.com/falsy/react-with-clean-architecture/blob/master/readme-ko.md) [🇺🇲](https://github.com/falsy/react-with-clean-architecture)
 
 ## Use Stack
-Typescript, Webpack, React, Redux, styled-components
+Typescript, Webpack, React, React-Native, Redux, styled-components
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
@@ -45,7 +45,6 @@ Typescript, Webpack, React, Redux, styled-components
 │  │  ├─ interfaces
 │  │  └─ action-interfaces
 │  └─ repositories
-├─ di
 ├─ domains
 │  ├─ aggregates
 │  │  └─ interfaces
@@ -56,11 +55,20 @@ Typescript, Webpack, React, Redux, styled-components
 │  │  └─ repository-interfaces
 │  └─ dto
 └─ frameworks
-   └─ web
+   ├─ web
+   │  ├─ di
+   │  ├─ components
+   │  ├─ redux
+   │  │  ├─ interfaces
+   │  │  ├─ actions
+   │  │  ├─ reducers
+   │  │  └─ store
+   │  └─ vm
+   └─ mobile(React Native)
+      ├─ android
+      ├─ ios
+      ├─ di
       ├─ components
-      │  ├─ commons
-      │  ├─ logins
-      │  └─ boards
       ├─ redux
       │  ├─ interfaces
       │  ├─ actions
@@ -73,46 +81,130 @@ Typescript, Webpack, React, Redux, styled-components
 [ frameworks / adapters / domains(useCases / entities) ]
 * 컴포넌트의 디렉토리 구조는 서비스 또는 구성원 간 약속된 형식으로 자유롭게 구성합니다.
 
+## Screenshots
+![Alt Screenshot 1](/_readme/screenshot_1.jpg)
+![Alt Screenshot 2](/_readme/screenshot_2.jpg)
+
 ## Alias
+### Web
 #### tsconfig.json
+>/src/frameworks/web/tsconfing.json
 ```js
 {
-  //...
-  "baseUrl": "./",
-  "paths": {
-    "@adapters/*": ["src/adapters/*"],
-    "@domains/*": ["src/domains/*"],
-    "@frameworks/*": ["src/frameworks/*"],
-    "@di": ["src/di/index.ts"]
-  }
+  "compilerOptions": {
+    //...
+    "baseUrl": ".",
+    "paths": {
+      "@adapters/*": ["../../adapters/*"],
+      "@domains/*": ["../../domains/*"],
+      "@frameworks/*": ["../../frameworks/*"],
+      "@di": ["./di/index.ts"]
+    }
+  },
 }
 ```
 
 #### webpack.config.js
+>/src/frameworks/web/webpack.config.js
 ```js
 {
   //...
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
     alias: { 
-      "@adapters": path.resolve(__dirname, "src/adapters/"),
-      "@domains": path.resolve(__dirname, "src/domains/"),
-      "@frameworks": path.resolve(__dirname, "src/frameworks/"),
-      "@di": path.resolve(__dirname, "src/di/index.ts")
+      "@adapters": path.resolve(__dirname, "../../adapters/"),
+      "@domains": path.resolve(__dirname, "../../domains/"),
+      "@frameworks": path.resolve(__dirname, "../../frameworks/"),
+      "@di": path.resolve(__dirname, "./di/index.ts")
     }
-  }
+  },
 }
 ```
 
-## Sample Project
-#### Install
+### Mobile
+#### tsconfig.json
+>/src/frameworks/mobile/tsconfing.json
+```js
+{
+  "compilerOptions": {
+    //...
+    "baseUrl": ".",
+    "paths": {
+      "@adapters/*": ["../../adapters/*"],
+      "@domains/*": ["../../domains/*"],
+      "@frameworks/*": ["../../frameworks/*"],
+      "@di": ["./di/index.ts"]
+    }
+  },
+}
 ```
+
+#### metro.config.js
+>/src/frameworks/mobile/metro.config.js
+```js
+const path = require('path')
+const extraNodeModules = {
+  '@adapters': path.resolve(__dirname + './../../adapters'),
+  '@domains': path.resolve(__dirname + './../../domains'),
+  '@frameworks': path.resolve(__dirname + './../../frameworks'),
+}
+const watchFolders = [
+  path.resolve(__dirname + './../../adapters'),
+  path.resolve(__dirname + './../../domains'),
+  path.resolve(__dirname + './../../frameworks'),
+]
+
+module.exports = {
+  //...
+  resolver: {
+    extraNodeModules: new Proxy(extraNodeModules, {
+      get: (target, name) =>
+        name in target ? target[name] : path.join(process.cwd(), `node_modules/${name}`),
+    }),
+  },
+  watchFolders,
+}
+```
+
+## Run Project
+### 1. Mock Server
+#### Install
+```shell
+# $ cd /mock-server
 $ npm install
 ```
 #### Start
-```
+```shell
+# $ cd /mock-server
 $ npm start
 ```
 
+### 2-1. Web
+#### Install
+```shell
+# $ cd /src/frameworks/web
+$ npm install
+```
+#### Start
+```shell
+# $ cd /src/frameworks/web
+$ npm start
+```
+
+### 2-2. Mobile(ios)
+#### Install
+```shell
+# $ cd /src/frameworks/mobile
+$ npm install
+
+# $ cd /src/frameworks/mobile/ios
+$ pod install
+```
+#### Start
+```shell
+# $ cd /src/frameworks/mobile
+$ npx react-native run-ios
+```
+
 ## Version
-v1.7.2 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.8.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

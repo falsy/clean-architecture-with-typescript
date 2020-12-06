@@ -15,7 +15,7 @@ class SessionPresenter implements ISessionPresenter {
     return this.setToken(token)
   }
 
-  getToken(): string {
+  getToken(): Promise<string> {
     return this.useCases.getToken()
   }
 

@@ -1,18 +1,18 @@
 import { IBoardRepository } from '@domains/useCases/repository-interfaces/iBoard'
-import BoardDTO, { IBoardDTO, IBoardParams } from "@domains/dto/boardDTO"
+import BoardDTO, { IBoardDTO, IBoardParams } from "@domains/dto/BoardDTO"
 import CommentDTO, { ICommentDTO, ICommentParams } from '@domains/dto/CommentDTO'
-import IInfrastructures from '@adapters/infrastructures/interfaces'
+import { IHttp } from '@adapters/infrastructures/interfaces/iHttp'
 
 class BoardRepository implements IBoardRepository {
 
   constructor(
-    readonly infrastructure: IInfrastructures
+    readonly http: IHttp
   ) {}
 
   async getBoards(): Promise<Array<IBoardDTO>> {
-    const response = await this.infrastructure.http.request({
+    const response = await this.http.request({
       method: 'GET',
-      url: '/boards'
+      url: 'http://localhost:7777/boards'
     })
 
     if(response?.boards) {
@@ -21,9 +21,9 @@ class BoardRepository implements IBoardRepository {
   }
 
   async getComments(): Promise<Array<ICommentDTO>> {
-    const response = await this.infrastructure.http.request({
+    const response = await this.http.request({
       method: 'GET',
-      url: '/comments'
+      url: 'http://localhost:7777/comments'
     })
 
     if(response?.comments) {
@@ -32,9 +32,9 @@ class BoardRepository implements IBoardRepository {
   }
 
   insertBoard(author: string, content: string): Promise<boolean> {
-    return this.infrastructure.http.request({
+    return this.http.request({
       method: 'POST',
-      url: '/boards',
+      url: 'http://localhost:7777/boards',
       headers: {
         'Content-Type': 'application/json'
       },
