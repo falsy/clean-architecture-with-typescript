@@ -1,4 +1,4 @@
-import infrastructures from './infrastructure'
+import infrastructures from './infrastructures'
 import repositories from './repositories'
 import useCases from './useCases'
 import actions from './actions'

@@ -21,6 +21,7 @@
     "react-native": "0.63.3"
   },
   "devDependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@types/react": "^17.0.0",
     "@types/react-native": "^0.63.37"
   }

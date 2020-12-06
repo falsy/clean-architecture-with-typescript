@@ -1,8 +1,7 @@
 {
-  "name": "react-with-clean-architecture",
-  "version": "1.7.1",
+  "name": "web",
+  "version": "1.8.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development"
   },

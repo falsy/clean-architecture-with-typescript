@@ -1,11 +1,19 @@
 {
   "name": "mobile",
-  "version": "0.0.1",
-  "private": true,
+  "version": "1.8.0",
+  "description": "",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/falsy/react-with-clean-architecture.git"
+  },
+  "author": "falsy",
+  "bugs": {
+    "url": "https://github.com/falsy/react-with-clean-architecture/issues"
   },
   "dependencies": {
     "react": "16.13.1",
@@ -14,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
+    "@react-native-community/async-storage": "^1.12.1",
     "@types/react-native": "^0.63.2",
     "@types/react-redux": "^7.1.11",
     "@types/react-test-renderer": "^16.9.2",

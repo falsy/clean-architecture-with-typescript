@@ -1,10 +1,10 @@
-import infrastructures from '@adapters/infrastructures'
-import repositories from '@adapters/repositories'
-import useCases from '@domains/useCases'
-import actions from '@frameworks/mobile/redux/actions'
-import presenters from '@adapters/presenters'
+import infrastructures from './infrastructures'
+import repositories from './repositories'
+import useCases from './useCases'
+import actions from './actions'
+import presenters from './presenters'
 
-const cInfrastructures = infrastructures('mobile')
+const cInfrastructures = infrastructures()
 const cRepositorires = repositories(cInfrastructures)
 const cUseCases = useCases(cRepositorires)
 const cActions =  actions()

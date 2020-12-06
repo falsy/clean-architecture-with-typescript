@@ -13,7 +13,7 @@ class SessionRepository implements ISessionRepository {
   async login(userDTO: IUserDTO): Promise<string> {
     const response = await this.http.request({
       method: 'POST',
-      url: '/login',
+      url: 'http://localhost:7777/login',
       headers: {
         'Content-Type': 'application/json'
       },

@@ -1,4 +1,5 @@
-import { AsyncStorage, AsyncStorageStatic } from 'react-native'
+import { AsyncStorageStatic } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage';
 import { IStorage } from './interfaces/iStorage'
 
 class MobileStorage implements IStorage {
@@ -13,8 +14,9 @@ class MobileStorage implements IStorage {
     return this.storage.getItem(name)
   }
 
-  set(name: string, value: string): void {
-    this.storage.setItem(name, value)
+  async set(name: string, value: string): Promise<void> {
+    console.log(name, value);
+    await this.storage.setItem(name, value)
   }
 
   remove(name: string): void {
