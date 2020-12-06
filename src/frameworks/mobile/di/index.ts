@@ -1,7 +1,7 @@
 import infrastructures from '@adapters/infrastructures'
 import repositories from '@adapters/repositories'
 import useCases from '@domains/useCases'
-import actions from '@frameworks/web/redux/actions'
+import actions from '@frameworks/mobile/redux/actions'
 import presenters from '@adapters/presenters'
 
 const cInfrastructures = infrastructures()
