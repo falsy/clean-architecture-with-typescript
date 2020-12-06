@@ -81,6 +81,10 @@ Typescript, Webpack, React, Redux, styled-components
 [ frameworks / adapters / domains(useCases / entities) ]
 * 컴포넌트의 디렉토리 구조는 서비스 또는 구성원 간 약속된 형식으로 자유롭게 구성합니다.
 
+## Screenshots
+![Alt Screenshot 1](/_readme/screenshot_1.jpg)
+![Alt Screenshot 2](/_readme/screenshot_2.jpg)
+
 ## Alias
 ### Web
 #### tsconfig.json

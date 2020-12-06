@@ -83,6 +83,10 @@ The Action Interface of 'Presenter' is also the same.
 [ frameworks / adapters / domains(useCases / entities) ]
 * The component's directory structure is freely structured in the form promised between services or members.
 
+## Screenshots
+![Alt Screenshot 1](/_readme/screenshot_1.jpg)
+![Alt Screenshot 2](/_readme/screenshot_2.jpg)
+
 ## Alias
 ### Web
 #### tsconfig.json
