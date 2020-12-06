@@ -7,7 +7,7 @@
 [🇰🇷](https://github.com/falsy/react-with-clean-architecture/blob/master/readme-ko.md) [🇺🇲](https://github.com/falsy/react-with-clean-architecture)
 
 ## Use Stack
-Typescript, Webpack, React, Redux, styled-components
+Typescript, Webpack, React, React-naitve, Redux, styled-components
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
@@ -166,7 +166,7 @@ module.exports = {
 }
 ```
 
-## Sample Project
+## Run Project
 ### 1. Mock Server
 #### Install
 ```shell
