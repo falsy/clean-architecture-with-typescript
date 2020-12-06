@@ -1,5 +1,11 @@
 # Change log
 
+### v1.8.0
+* Add mobile framework(react native)
+* Modify the package root directory
+* Modify DI directory location
+* Detach Mock Server
+
 ### v1.7.2
 * Edit Components directory structure
 * Edit Infrastructure Layer

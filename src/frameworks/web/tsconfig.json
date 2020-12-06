@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
@@ -15,11 +14,7 @@
       "@di": ["./di/index.ts"]
     }
   },
-  "include": [
-    "../../**/*"
-  ],
   "exclude": [
-    "node_modules",
-    "../mobile/**/*"
+    "node_modules"
   ]
 }
