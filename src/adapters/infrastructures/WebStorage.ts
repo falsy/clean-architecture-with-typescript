@@ -2,10 +2,10 @@ import { IStorage } from './interfaces/iStorage'
 
 class WebStorage implements IStorage {
 
-  private storage: Storage
+  private storage: any
 
-  constructor() {
-    this.storage = (window as any).sessionStorage
+  constructor(storage: any) {
+    this.storage = storage
   }
 
   get(name: string): Promise<string> {

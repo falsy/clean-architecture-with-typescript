@@ -41,8 +41,8 @@ const Board: React.FC = () => {
           {boardVMList.map(({ id, author, content, createAt, comments }) => {
             const createDate = new Date(createAt)
             return (
-              <>
-                <View key={`board-${id}`} style={styles.borderList}>
+              <View key={`board-${id}`}>
+                <View style={styles.borderList}>
                   <Text style={{...styles.boardItem, width: '10%'}}>{id}</Text>
                   <Text style={styles.boardItem}>{author}</Text>
                   <Text style={styles.boardItem}>{content}</Text>
@@ -59,7 +59,7 @@ const Board: React.FC = () => {
                     </View>
                   )
                 })}
-              </>
+              </View>
             )
           })}
         </View>

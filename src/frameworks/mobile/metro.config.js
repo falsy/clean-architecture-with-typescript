@@ -6,14 +6,14 @@
  */
 const path = require('path')
 const extraNodeModules = {
-  '@adapters': path.resolve(__dirname + './../../adapters'),
-  '@domains': path.resolve(__dirname + './../../domains'),
-  '@frameworks': path.resolve(__dirname + './../../frameworks'),
+  '@adapters': path.resolve(__dirname + '/../../adapters'),
+  '@domains': path.resolve(__dirname + '/../../domains'),
+  '@frameworks': path.resolve(__dirname + '/../../frameworks'),
 }
 const watchFolders = [
-  path.resolve(__dirname + './../../adapters'),
-  path.resolve(__dirname + './../../domains'),
-  path.resolve(__dirname + './../../frameworks'),
+  path.resolve(__dirname + '/../../adapters'),
+  path.resolve(__dirname + '/../../domains'),
+  path.resolve(__dirname + '/../../frameworks'),
 ]
 
 module.exports = {

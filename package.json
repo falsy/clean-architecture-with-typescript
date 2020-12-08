@@ -1,6 +1,6 @@
 {
   "name": "react-with-clean-architecture",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "Clean architecture based react project sample code",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
     "react-native": "0.63.3"
   },
   "devDependencies": {
-    "@react-native-community/async-storage": "^1.12.1",
     "@types/react": "^17.0.0",
     "@types/react-native": "^0.63.37"
   }

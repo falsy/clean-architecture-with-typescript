@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "Clean architecture based react project sample code",
   "scripts": {
     "start": "node ./index.js"

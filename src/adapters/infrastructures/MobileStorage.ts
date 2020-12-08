@@ -1,13 +1,11 @@
-import { AsyncStorageStatic } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage';
 import { IStorage } from './interfaces/iStorage'
 
 class MobileStorage implements IStorage {
 
-  private storage: AsyncStorageStatic
+  private storage: any
 
-  constructor() {
-    this.storage = AsyncStorage
+  constructor(storage: any) {
+    this.storage = storage
   }
 
   get(name: string): Promise<string> {
@@ -15,7 +13,6 @@ class MobileStorage implements IStorage {
   }
 
   async set(name: string, value: string): Promise<void> {
-    console.log(name, value);
     await this.storage.setItem(name, value)
   }
 

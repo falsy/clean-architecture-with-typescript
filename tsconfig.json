@@ -21,5 +21,6 @@
   },
   "exclude": [
     "node_modules",
+    "mock-server"
   ]
 }

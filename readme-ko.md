@@ -7,7 +7,7 @@
 [🇰🇷](https://github.com/falsy/react-with-clean-architecture/blob/master/readme-ko.md) [🇺🇲](https://github.com/falsy/react-with-clean-architecture)
 
 ## Use Stack
-Typescript, Webpack, React, React-Native, Redux, styled-components
+Typescript, Webpack, React, React-Native, Redux, Styled-Components
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
@@ -207,4 +207,4 @@ $ npx react-native run-ios
 ```
 
 ## Version
-v1.8.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.8.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

@@ -1,5 +1,8 @@
 # Change log
 
+### v1.8.1
+* Edit infrastructure DI
+
 ### v1.8.0
 * Add mobile framework(react native)
 * Modify the package root directory
