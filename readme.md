@@ -25,7 +25,7 @@ As with various architectures, the primary purpose of a clean architecture is to
 in simple diagram, it is as above.
 
 ### Session
-After the user logs in, the issued authentication token is stored and used in the web storage. web storage is accessible globally, but the sample code follows the flow above and is controlled by 'Storege' in 'Infrastructures'. this is part of a detailed implementation that can change, and is positioned according to its role to improve maintenance.
+After the user logs in, the issued authentication token is stored and used in the web storage. web storage is accessible globally, but the sample code follows the flow above and is controlled by 'Storage' in 'Infrastructures'. this is part of a detailed implementation that can change, and is positioned according to its role to improve maintenance.
 
 ### Board
 Board posts and comments are fetched through http communication from 'Infrastructures', encapsulated as Board Root Entity including Comment Entity in 'Use Case' and delivered to 'Presenter', and 'Presenter' returns 'Action' with Entity data.  
