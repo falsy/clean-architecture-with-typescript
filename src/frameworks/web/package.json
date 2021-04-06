@@ -10,6 +10,7 @@
     "url": "git+https://github.com/falsy/react-with-clean-architecture.git"
   },
   "author": "falsy",
+  "license": "WTFPL",
   "bugs": {
     "url": "https://github.com/falsy/react-with-clean-architecture/issues"
   },
