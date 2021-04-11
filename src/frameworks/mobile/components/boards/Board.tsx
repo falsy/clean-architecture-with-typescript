@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react"
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
-import { useDispatch, useSelector } from "react-redux"
-import { IBoardStateGroup } from '@frameworks/mobile/redux/interfaces/iBoard'
-import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard'
+import { useBoardListState } from "../../hooks/boardRecoil"
 import BoardVM from '@frameworks/mobile/vm/Board'
-
 import di from '@di'
 
 const Board: React.FC = () => {
-  const dispatch = useDispatch()
+  const [list, setList] = useBoardListState()
 
   const [author, onChangeAuthor] = useState('')
   const [content, onChangeContent] = useState('')
 
-  const list: Array<IBoardEntity> = useSelector((state: IBoardStateGroup) => state.board.list)
   const boardVMList = list.map(boardEntity => new BoardVM(boardEntity))
 
   useEffect(() => {
     const asyncFnc = async () => {
-      dispatch(await di.board.getBoards())
+      setList(await di.board.getBoards())
     }
     asyncFnc()
   }, [])
@@ -29,7 +25,7 @@ const Board: React.FC = () => {
     if (resStatus) {
       onChangeAuthor('')
       onChangeContent('')
-      dispatch(await di.board.getBoards())
+      setList(await di.board.getBoards())
     }
   }
 
