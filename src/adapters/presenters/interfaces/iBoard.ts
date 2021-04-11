@@ -1,6 +1,6 @@
-import { IBoardAction } from '../action-interfaces/iBoard'
+import { IBoardEntity } from '@domains/aggregates/interfaces/iBoard'
 
 export interface IBoardPresenter {
-  getBoards(): Promise<IBoardAction>
+  getBoards(): Promise<Array<IBoardEntity>>
   insertBoard(author: string, content: string): Promise<boolean>
 }

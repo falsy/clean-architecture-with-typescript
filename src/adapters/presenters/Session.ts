@@ -1,31 +1,27 @@
 import UserDTO from '@domains/dto/UserDTO'
 import { ISessionUseCase } from '@domains/useCases/interfaces/iSession'
 import { ISessionPresenter } from '@adapters/presenters/interfaces/iSession'
-import { ISessionActions, ILoginAction } from './action-interfaces/iSession'
 
 class SessionPresenter implements ISessionPresenter {
 
   constructor(
-    private readonly useCases: ISessionUseCase, 
-    private readonly actions: ISessionActions
+    private readonly useCases: ISessionUseCase
   ) {}
 
-  async login(id: string, pw: string): Promise<ILoginAction> {
-    const token = await this.useCases.login(new UserDTO({ id, pw }))
-    return this.setToken(token)
+  async login(id: string, pw: string): Promise<string> {
+    return await this.useCases.login(new UserDTO({ id, pw }))
   }
 
   getToken(): Promise<string> {
     return this.useCases.getToken()
   }
 
-  setToken(token: string): ILoginAction {
-    return this.actions.setToken(token)
+  setToken(token: string): void {
+    this.useCases.setToken(token)
   }
 
-  removeToken(): ILoginAction {
+  removeToken(): void {
     this.useCases.removeToken()
-    return this.setToken('')
   }
 
 }

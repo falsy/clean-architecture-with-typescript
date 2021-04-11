@@ -3,18 +3,17 @@
  */
 
 import React from 'react'
-import { Provider } from 'react-redux'
 import {AppRegistry} from 'react-native'
+import { RecoilRoot } from 'recoil'
 import {name as appName} from './app.json'
-import store from '@frameworks/mobile/redux/store'
 import Index from './components/Index'
 
 const App = () => {
   return (
     <>
-      <Provider store={store}>
+      <RecoilRoot>
         <Index />
-      </Provider>
+      </RecoilRoot>
     </>
   )
 }

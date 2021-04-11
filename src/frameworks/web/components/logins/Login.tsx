@@ -1,29 +1,30 @@
-import * as React from "react"
-import { useDispatch } from "react-redux"
+import * as React from 'react'
+import { useSetToken } from '@hooks/sessionRecoil'
 import styled from 'styled-components'
+import AuthForm from './AuthForm'
 import di from '@di'
-import AuthForm from "./AuthForm"
-
-const S_AuthArea = styled.div`
-  width: 400px;
-  margin: 100px auto;
-`
 
 const Login: React.FC = () => {
-  const dispatch = useDispatch()
+  const setToken = useSetToken()
 
   const handleClickAccreditation = async (id: string, pw: string) => {
-    dispatch(await di.session.login(id, pw))
+    const token = await di.session.login(id, pw)
+    di.session.setToken(token)
+    setToken(token)
   }
 
   return (
     <div>
-      <S_AuthArea>
+      <$authArea>
         <AuthForm accredit={handleClickAccreditation} btnValue={"Login"} />
-      </S_AuthArea>
+      </$authArea>
     </div>
   )
 }
 
-
 export default Login
+
+const $authArea = styled.div`
+  width: 400px;
+  margin: 100px auto;
+`

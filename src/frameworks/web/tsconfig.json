@@ -11,6 +11,7 @@
       "@adapters/*": ["../../adapters/*"],
       "@domains/*": ["../../domains/*"],
       "@frameworks/*": ["../../frameworks/*"],
+      "@hooks/*": ["../../frameworks/web/hooks/*"],
       "@di": ["./di/index.ts"]
     }
   },

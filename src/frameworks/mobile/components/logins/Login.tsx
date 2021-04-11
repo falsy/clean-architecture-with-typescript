@@ -1,16 +1,18 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import { StyleSheet, View, TextInput, Button } from 'react-native'
-import { useDispatch } from "react-redux"
+import { useSetToken } from '../../hooks/sessionRecoil'
 import di from '@di'
 
 const Login: React.FC = () => {
-  const dispatch = useDispatch()
+  const setToken = useSetToken()
 
   const [userId, onChangeId] = useState('')
   const [userPw, onChangePw] = useState('')
 
   const handleClickAccreditation = async () => {
-    dispatch(await di.session.login(userId, userPw))
+    const token = await di.session.login(userId, userPw)
+    di.session.setToken(token)
+    setToken(token)
   }
 
   return (

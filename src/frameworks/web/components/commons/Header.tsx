@@ -1,10 +1,30 @@
-import * as React from "react"
+import * as React from 'react'
+import { useSetToken } from '@hooks/sessionRecoil'
 import styled from 'styled-components'
-import { useDispatch } from "react-redux"
 import ShortBtn from './ShortBtn'
 import di from '@di'
 
-const S_HeaderArea = styled.section`
+const Header: React.FC = () => {
+  const setUserToken = useSetToken();
+
+  const handleClickLogout = () => {
+    di.session.removeToken()
+    setUserToken('')
+  }
+
+  return (
+    <$headerArea>
+      <$logo>React with Clean architecture</$logo>
+      <$btnArea>
+        <ShortBtn type="button" onClick={handleClickLogout} value="Logout" />
+      </$btnArea>
+    </$headerArea>
+  )
+}
+
+export default Header
+
+const $headerArea = styled.section`
   width: 100%;
   height: 70px;
   padding: 17px 30px;
@@ -17,7 +37,7 @@ const S_HeaderArea = styled.section`
   }
 `
 
-const S_Logo = styled.h1`
+const $logo = styled.h1`
   float: left;
   margin: 0;
   line-height: 40px;
@@ -25,26 +45,6 @@ const S_Logo = styled.h1`
   font-weight: 500;
 `
 
-const S_BtnArea = styled.div`
+const $btnArea = styled.div`
   float: right;
 `
-
-const Header: React.FC = () => {
-  const dispatch = useDispatch()
-
-  const handleClickLogout = () => {
-    dispatch(di.session.removeToken())
-  }
-
-  return (
-    <S_HeaderArea>
-      <S_Logo>React with Clean architecture</S_Logo>
-      <S_BtnArea>
-        <ShortBtn type="button" onClick={handleClickLogout} value="Logout" />
-      </S_BtnArea>
-    </S_HeaderArea>
-  )
-}
-
-
-export default Header

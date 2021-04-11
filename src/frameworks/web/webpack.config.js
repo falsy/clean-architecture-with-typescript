@@ -18,6 +18,7 @@ module.exports = {
       "@adapters": path.resolve(__dirname, "../../adapters/"),
       "@domains": path.resolve(__dirname, "../../domains/"),
       "@frameworks": path.resolve(__dirname, "../../frameworks/"),
+      "@hooks": path.resolve(__dirname, "../../frameworks/web/hooks/"),
       "@di": path.resolve(__dirname, "./di/index.ts")
     }
   },
