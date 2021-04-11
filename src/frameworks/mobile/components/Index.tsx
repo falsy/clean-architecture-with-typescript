@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, StatusBar } from 'react-native'
 import { useTokenState } from '../hooks/sessionRecoil'
-import Header from "./commons/Header"
-import Login from "./logins/Login"
-import Board from "./boards/Board"
+import Header from './commons/Header'
+import Login from './logins/Login'
+import Board from './boards/Board'
 import di from '@di'
 
 const Index: React.FC = () => {

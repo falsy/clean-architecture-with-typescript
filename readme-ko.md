@@ -7,7 +7,10 @@
 [🇰🇷](https://github.com/falsy/react-with-clean-architecture/blob/master/readme-ko.md) [🇺🇲](https://github.com/falsy/react-with-clean-architecture)
 
 ## Use Stack
-Typescript, Webpack, React, React-Native, Redux, Styled-Components
+Typescript, Webpack, React, React-Native, Recoil, Styled-Components
+
+(Recoid > Redux)
+> https://github.com/falsy/react-with-clean-architecture/tree/v1.8.1
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
@@ -31,8 +34,7 @@ Typescript, Webpack, React, React-Native, Redux, Styled-Components
 
 ## Inversion of Control
 ![Alt Communitaction Flow](/_readme/inversion-of-control-v2.png)
-'Repository'의 경우 Adapter 레이어에 해당하기 때문에 'Use Case'에서는 'Repository'에 대해서 알아서는 안됩니다. 그렇기 때문에 'Use Case'에서는 Domain 레이어 Repository Interface를 가지고 구현하며, 이는 이후에 Dependency Injection를 통해 동작합니다.  
-'Presenter'의 Action Interface도 동일합니다.
+'Repository'의 경우 Adapter 레이어에 해당하기 때문에 'Use Case'에서는 'Repository'에 대해서 알아서는 안됩니다. 그렇기 때문에 'Use Case'에서는 Domain 레이어 Repository Interface를 가지고 구현하며, 이는 이후에 Dependency Injection를 통해 동작합니다.
 
 
 ## Directory Structure
@@ -42,8 +44,7 @@ Typescript, Webpack, React, React-Native, Redux, Styled-Components
 │  ├─ infrastructures
 │  │  └─ interfaces
 │  ├─ presenters
-│  │  ├─ interfaces
-│  │  └─ action-interfaces
+│  │  └─ interfaces
 │  └─ repositories
 ├─ domains
 │  ├─ aggregates
@@ -58,22 +59,14 @@ Typescript, Webpack, React, React-Native, Redux, Styled-Components
    ├─ web
    │  ├─ di
    │  ├─ components
-   │  ├─ redux
-   │  │  ├─ interfaces
-   │  │  ├─ actions
-   │  │  ├─ reducers
-   │  │  └─ store
+   │  ├─ hooks
    │  └─ vm
    └─ mobile(React Native)
-      ├─ android
-      ├─ ios
       ├─ di
       ├─ components
-      ├─ redux
-      │  ├─ interfaces
-      │  ├─ actions
-      │  ├─ reducers
-      │  └─ store
+      ├─ android
+      ├─ ios
+      ├─ hooks
       └─ vm
 ```
 
@@ -197,6 +190,9 @@ $ npm start
 # $ cd /src/frameworks/mobile
 $ npm install
 
+# cocoapods install
+$ gem install cocoapods
+
 # $ cd /src/frameworks/mobile/ios
 $ pod install
 ```
@@ -207,4 +203,4 @@ $ npx react-native run-ios
 ```
 
 ## Version
-v1.8.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.9.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

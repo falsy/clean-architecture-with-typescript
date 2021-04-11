@@ -9,7 +9,10 @@ if you leave an issue or a pull request, we will reflect the insufficient part o
 
 
 ## Use Stack
-Typescript, Webpack, React, React-Native, Redux, Styled-Components
+Typescript, Webpack, React, React-Native, Recoil, Styled-Components
+
+(Recoid > Redux)
+> https://github.com/falsy/react-with-clean-architecture/tree/v1.8.1
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
@@ -34,8 +37,7 @@ In 'View', the Action value is dispatched according to the flow of Redux archite
 
 ## Inversion of Control
 ![Alt Communitaction Flow](/_readme/inversion-of-control-v2.png)
-In the case of 'Repository', it is an adapter layer, so you should not know about 'Repository' in 'Use Case'. Therefore, in 'Use Case', it is implemented through the Repository Interface located in the domain layer, which is then operated through Dependency Injection.  
-The Action Interface of 'Presenter' is also the same.
+In the case of 'Repository', it is an adapter layer, so you should not know about 'Repository' in 'Use Case'. Therefore, in 'Use Case', it is implemented through the Repository Interface located in the domain layer, which is then operated through Dependency Injection.
 
 
 ## Directory Structure
@@ -45,8 +47,7 @@ The Action Interface of 'Presenter' is also the same.
 │  ├─ infrastructures
 │  │  └─ interfaces
 │  ├─ presenters
-│  │  ├─ interfaces
-│  │  └─ action-interfaces
+│  │  └─ interfaces
 │  └─ repositories
 ├─ domains
 │  ├─ aggregates
@@ -61,22 +62,14 @@ The Action Interface of 'Presenter' is also the same.
    ├─ web
    │  ├─ di
    │  ├─ components
-   │  ├─ redux
-   │  │  ├─ interfaces
-   │  │  ├─ actions
-   │  │  ├─ reducers
-   │  │  └─ store
+   │  ├─ hooks
    │  └─ vm
    └─ mobile(React Native)
-      ├─ android
-      ├─ ios
       ├─ di
       ├─ components
-      ├─ redux
-      │  ├─ interfaces
-      │  ├─ actions
-      │  ├─ reducers
-      │  └─ store
+      ├─ android
+      ├─ ios
+      ├─ hooks
       └─ vm
 ```
 
@@ -200,6 +193,9 @@ $ npm start
 # $ cd /src/frameworks/mobile
 $ npm install
 
+# cocoapods install
+$ gem install cocoapods
+
 # $ cd /src/frameworks/mobile/ios
 $ pod install
 ```
@@ -210,4 +206,4 @@ $ npx react-native run-ios
 ```
 
 ## Version
-v1.8.1 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v1.9.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

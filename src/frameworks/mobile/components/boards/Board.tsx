@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
-import { useBoardListState } from "../../hooks/boardRecoil"
+import { useBoardListState } from '../../hooks/boardRecoil'
 import BoardVM from '@frameworks/mobile/vm/Board'
 import di from '@di'
 
