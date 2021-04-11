@@ -14,18 +14,18 @@ const BoardList: React.FC<IProps> = (props) => {
   return (
     <div>
       {list.length > 0 && (
-        <SBoardUl>
+        <$boardUl>
           {list.map(board => (
             <li key={board.id}>
               <BoardItem board={board} />
-              <SCommentArea>
+              <$commentArea>
                 {board.comments.map(comment => (
                   <CommentItem key={comment.id} comment={comment} />
                 ))}
-              </SCommentArea>
+              </$commentArea>
             </li>
           ))}
-        </SBoardUl>
+        </$boardUl>
       )}
     </div>
   )
@@ -33,12 +33,12 @@ const BoardList: React.FC<IProps> = (props) => {
 
 export default BoardList
 
-const SBoardUl = styled.ul`
+const $boardUl = styled.ul`
   border-top: 1px solid #eee;
   padding: 0;
   list-style: none;
 `
 
-const SCommentArea = styled.ul`
+const $commentArea = styled.ul`
   background: #f5f5f5;
 `

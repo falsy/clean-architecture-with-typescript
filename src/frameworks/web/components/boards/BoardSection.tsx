@@ -28,14 +28,14 @@ const BoardSection: React.FC = () => {
 
   return (
     <>
-      <S_BoardSectionArea>
-        <S_SectionTitle>Board</S_SectionTitle>
+      <$boardSectionArea>
+        <$sectionTitle>Board</$sectionTitle>
         <BoardList list={boardVMList} />
-      </S_BoardSectionArea>
-      <S_BoardSectionArea>
-        <S_SectionTitle>Add Post</S_SectionTitle>
+      </$boardSectionArea>
+      <$boardSectionArea>
+        <$sectionTitle>Add Post</$sectionTitle>
         <AddBoard insertFnc={insertFnc} />
-      </S_BoardSectionArea>
+      </$boardSectionArea>
     </>
   )
 }
@@ -43,14 +43,14 @@ const BoardSection: React.FC = () => {
 
 export default BoardSection
 
-const S_BoardSectionArea = styled.section`
+const $boardSectionArea = styled.section`
   margin-top: 40px;
   &:first-child {
     margin-top: 0;
   }
 `
 
-const S_SectionTitle = styled.h2`
+const $sectionTitle = styled.h2`
   font-size: 24px;
   font-weight: 200;
 `

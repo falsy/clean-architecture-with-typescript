@@ -11,23 +11,23 @@ const BoardItem: React.FC<IProps> = (props) => {
   const createDate = new Date(createAt)
 
   return (
-    <SBoardItem>
-      <SBoardText>{id}</SBoardText>
-      <SBoardText>{author}</SBoardText>
-      <SBoardText>{content}</SBoardText>
-      <SBoardText>{`${createDate.getFullYear()}-${createDate.getMonth() + 1}-${createDate.getDate()}`}</SBoardText>
-    </SBoardItem>
+    <$boardItem>
+      <$boardText>{id}</$boardText>
+      <$boardText>{author}</$boardText>
+      <$boardText>{content}</$boardText>
+      <$boardText>{`${createDate.getFullYear()}-${createDate.getMonth() + 1}-${createDate.getDate()}`}</$boardText>
+    </$boardItem>
   )
 }
 
 export default BoardItem
 
-const SBoardItem = styled.div`
+const $boardItem = styled.div`
   list-style: none;
   border-bottom: 1px solid #eee;
 `
 
-const SBoardText = styled.p`
+const $boardText = styled.p`
   display: inline-block;
   padding: 0 20px;
   font-size: 16px;

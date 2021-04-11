@@ -11,13 +11,13 @@ const LongButton: React.FC<IProps> = (props) => {
   const { type, value, onClick } = props
 
   return (
-    <S_LongBtn className={'button'} type={type} onClick={onClick}>{value}</S_LongBtn>
+    <$longBtn className={'button'} type={type} onClick={onClick}>{value}</$longBtn>
   )
 }
 
 export default LongButton
 
-const S_LongBtn = styled.button`
+const $longBtn = styled.button`
   display: inline-block;
   height: 60px;
   width: 100%;

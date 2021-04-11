@@ -11,23 +11,23 @@ const CommentItem: React.FC<IProps> = (props) => {
   const createDate = new Date(createAt)
 
   return (
-    <S_CommentItem>
-      <S_CommentText>&rsaquo;</S_CommentText>
-      <S_CommentText>{author}</S_CommentText>
-      <S_CommentText>{content}</S_CommentText>
-      <S_CommentText>{`${createDate.getFullYear()}-${createDate.getMonth() + 1}-${createDate.getDate()}`}</S_CommentText>
-    </S_CommentItem>
+    <$commentItem>
+      <$commentText>&rsaquo;</$commentText>
+      <$commentText>{author}</$commentText>
+      <$commentText>{content}</$commentText>
+      <$commentText>{`${createDate.getFullYear()}-${createDate.getMonth() + 1}-${createDate.getDate()}`}</$commentText>
+    </$commentItem>
   )
 }
 
 export default CommentItem
 
-const S_CommentItem = styled.li`
+const $commentItem = styled.li`
   list-style: none;
   border-bottom: 1px solid #eee;
 `
 
-const S_CommentText = styled.p`
+const $commentText = styled.p`
   display: inline-block;
   padding: 0 20px;
   font-size: 16px;

@@ -37,24 +37,24 @@ const BoardList: React.FC<IProps> = (props) => {
 
   return (
     <section>
-      <S_AddBtnArea>
-        <S_AuthorBox>
+      <$addBtnArea>
+        <$authorBox>
           <Input type="text" name="author" placeholder="author" onChange={handleChangeInput} onKeyDown={null} value={author} />
-        </S_AuthorBox>
-        <S_ContentBox>
+        </$authorBox>
+        <$contentBox>
           <Input type="text" name="content" placeholder="content" onChange={handleChangeInput} onKeyDown={handleKeyDownInsertBoard} value={content} />
-        </S_ContentBox>
-        <S_AddBox>
+        </$contentBox>
+        <$addBox>
           <LongBtn type="button" value="Add" onClick={handleClickInsertBoard} />
-        </S_AddBox>
-      </S_AddBtnArea>
+        </$addBox>
+      </$addBtnArea>
     </section>
   )
 }
 
 export default BoardList
 
-const S_AddBtnArea = styled.div`
+const $addBtnArea = styled.div`
   &::after {
     content: '';
     clear: both;
@@ -62,19 +62,19 @@ const S_AddBtnArea = styled.div`
   }
 `
 
-const S_AuthorBox = styled.div`
+const $authorBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 200px;
 `
 
-const S_ContentBox = styled.div`
+const $contentBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 200px;
 `
 
-const S_AddBox = styled.div`
+const $addBox = styled.div`
   float: left;
   margin-right: 10px;
   width: 80px;

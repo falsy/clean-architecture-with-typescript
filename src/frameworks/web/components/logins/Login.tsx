@@ -15,16 +15,16 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <S_AuthArea>
+      <$authArea>
         <AuthForm accredit={handleClickAccreditation} btnValue={"Login"} />
-      </S_AuthArea>
+      </$authArea>
     </div>
   )
 }
 
 export default Login
 
-const S_AuthArea = styled.div`
+const $authArea = styled.div`
   width: 400px;
   margin: 100px auto;
 `

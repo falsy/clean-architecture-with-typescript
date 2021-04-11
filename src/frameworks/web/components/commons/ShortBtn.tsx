@@ -11,13 +11,13 @@ const ShortButton: React.FC<IProps> = (props) => {
   const { type, value, onClick } = props
 
   return (
-    <S_ShortBtn className={'short-button'} type={type} onClick={onClick}>{value}</S_ShortBtn>
+    <$shortBtn className={'short-button'} type={type} onClick={onClick}>{value}</$shortBtn>
   )
 }
 
 export default ShortButton
 
-const S_ShortBtn = styled.button`
+const $shortBtn = styled.button`
   border: 1px solid #26b49e;
   background: #33c1ab;
   color: #fff;

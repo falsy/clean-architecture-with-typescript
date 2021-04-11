@@ -2,6 +2,7 @@
 
 ### v1.9.0
 * Changed state management from Redux to Recoil
+* Style component convention modification
 
 ### v1.8.1
 * Edit infrastructure DI

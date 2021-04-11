@@ -32,21 +32,21 @@ const AuthForm: React.FC<IProps> = (props) => {
 
   return (
     <section>
-      <S_BtnArea>
+      <$btnArea>
         <Input type="text" name="id" placeholder="ID" onChange={handleChangeClientInfo} onKeyDown={null} value={id} />
-      </S_BtnArea>
-      <S_BtnArea>
+      </$btnArea>
+      <$btnArea>
         <Input type="password" name="pw" placeholder="Password" onChange={handleChangeClientInfo} onKeyDown={handleKeyDownAccredit} value={pw} />
-      </S_BtnArea>
-      <S_BtnArea>
+      </$btnArea>
+      <$btnArea>
         <LongBtn type="button" onClick={handleClickAccredit} value={btnValue} />
-      </S_BtnArea>
+      </$btnArea>
     </section>
   )
 }
 
 export default AuthForm
 
-const S_BtnArea = styled.div`
+const $btnArea = styled.div`
   margin: 10px 0;
 `

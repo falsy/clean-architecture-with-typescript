@@ -14,13 +14,13 @@ const Input: React.FC<IProps> = (props) => {
   const { type, name, placeholder, onChange, onKeyDown, value } = props
 
   return (
-    <S_Input className={'input'} type={type} name={name} placeholder={placeholder} onChange={onChange} onKeyDown={onKeyDown} value={value} />
+    <$input className={'input'} type={type} name={name} placeholder={placeholder} onChange={onChange} onKeyDown={onKeyDown} value={value} />
   )
 }
 
 export default Input
 
-const S_Input = styled.input`
+const $input = styled.input`
   display: inline-block;
   padding: 0 20px;
   height: 60px;

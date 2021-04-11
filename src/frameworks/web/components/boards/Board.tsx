@@ -8,15 +8,15 @@ const Board: React.FC = () => {
   return (
     <div>
       <Header />
-      <S_BoardContent>
+      <$boardContent>
         <BoardSection />
-      </S_BoardContent>
+      </$boardContent>
     </div>
   )
 }
 
 export default Board
 
-const S_BoardContent = styled.div`
+const $boardContent = styled.div`
   padding: 30px;
 `
