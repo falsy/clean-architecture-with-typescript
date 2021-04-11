@@ -22,15 +22,15 @@ Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow-v6.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v7.png)
 간단하게 다이어그램으로 표현하면 위와 같습니다.
 
 ### Session
 사용자 로그인 후 발급된 인증 토큰을 웹 스토리지에 저장하여 사용합니다. 웹 스토리지는 전역에서 접근할 수 있지만, 샘플 코드는 위 흐름대로 진행하여 'Infrastructures'의 'Storege'에서 제어합니다. 이는 변할 수 있는 세부 구현의 부분이며, 그 역할에 맞게 위치하여 유지보수에 용의하게 합니다.
 
 ### Board
-'Infrastructures'에서 http 통신을 통해 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 Entity 데이터를 가진 'Action'를 리턴합니다.  
-'View'에서는 Redux 아키텍처의 흐름대로 Action 값을 Dispatch 하고 Dispatcher는 Store 값을 갱신하며 자신이 변경됨을 알리고 View에서는 Store의 'Entity'값을 'View Model'로 다시 캡슐화하고 'View Model' 값을 기반으로 View를 그립니다.
+'Infrastructures'에서 http 통신을 통해 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 Entity 데이터를 'Components'로 전달합니다.  
+'Components'에서는 상태 관리 매니저를 통해 'Entity' 데이터나 'View Model'로 다시 캡슐화 한 데이터를 기억하고, 데이터의 상태 변화에 따라 View를 다시 그립니다.
 
 ## Inversion of Control
 ![Alt Communitaction Flow](/_readme/inversion-of-control-v2.png)

@@ -24,15 +24,15 @@ As with various architectures, the primary purpose of a clean architecture is to
 * Both high-level and low-level modules rely on abstraction..
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow-v6.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v7.png)
 in simple diagram, it is as above.
 
 ### Session
 After the user logs in, the issued authentication token is stored and used in the web storage. web storage is accessible globally, but the sample code follows the flow above and is controlled by 'Storage' in 'Infrastructures'. this is part of a detailed implementation that can change, and is positioned according to its role to improve maintenance.
 
 ### Board
-Board posts and comments are fetched through http communication from 'Infrastructures', encapsulated as Board Root Entity including Comment Entity in 'Use Case' and delivered to 'Presenter', and 'Presenter' returns 'Action' with Entity data.  
-In 'View', the Action value is dispatched according to the flow of Redux architecture, and the Dispatcher updates the Store value to notify that it is changed. In View, the 'Entity' value of the Store is re-encapsulated as 'View Model' and is based on the 'View Model' value. Draw a view.
+Board posts and comments are fetched through http communication from 'Infrastructures', encapsulated as Board Root Entity including Comment Entity in 'Use Case' and delivered to 'Presenter', and 'Presenter' returns Entity data.  
+in 'Components', 'Entity' data or 'View Model' encapsulated data is stored in the state management manager, and the view is redrawn according to the state change of the data.
 
 
 ## Inversion of Control
