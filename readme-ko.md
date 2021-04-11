@@ -9,7 +9,7 @@
 ## Use Stack
 Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 
-(Recoid > Redux)
+> (Recoil > Redux)  
 > https://github.com/falsy/react-with-clean-architecture/tree/v1.8.1
 
 ## Clean Architecture
