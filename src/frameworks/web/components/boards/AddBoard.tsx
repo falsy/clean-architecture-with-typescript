@@ -1,34 +1,8 @@
-import * as React from "react"
-import styled from 'styled-components'
+import * as React from 'react'
 import { useState } from 'react'
+import styled from 'styled-components'
 import LongBtn from '../commons/LongBtn'
 import Input from '../commons/Input'
-
-const S_AddBtnArea = styled.div`
-  &::after {
-    content: '';
-    clear: both;
-    display: block;
-  }
-`
-
-const S_AuthorBox = styled.div`
-  float: left;
-  margin-right: 10px;
-  width: 200px;
-`
-
-const S_ContentBox = styled.div`
-  float: left;
-  margin-right: 10px;
-  width: 200px;
-`
-
-const S_AddBox = styled.div`
-  float: left;
-  margin-right: 10px;
-  width: 80px;
-`
 
 interface IProps {
   insertFnc(author: string, content: string): void
@@ -79,3 +53,29 @@ const BoardList: React.FC<IProps> = (props) => {
 }
 
 export default BoardList
+
+const S_AddBtnArea = styled.div`
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+`
+
+const S_AuthorBox = styled.div`
+  float: left;
+  margin-right: 10px;
+  width: 200px;
+`
+
+const S_ContentBox = styled.div`
+  float: left;
+  margin-right: 10px;
+  width: 200px;
+`
+
+const S_AddBox = styled.div`
+  float: left;
+  margin-right: 10px;
+  width: 80px;
+`

@@ -1,18 +1,8 @@
-import * as React from "react"
+import * as React from 'react'
 import styled from 'styled-components'
-import { IBoardVM } from '@frameworks/web/vm/Board'
+import { IBoardVM } from '../../vm/Board'
 import BoardItem from './BoardItem'
 import CommentItem from './CommentItem'
-
-const SBoardUl = styled.ul`
-  border-top: 1px solid #eee;
-  padding: 0;
-  list-style: none;
-`
-
-const SCommentArea = styled.ul`
-  background: #f5f5f5;
-`
 
 interface IProps {
   list: Array<IBoardVM>;
@@ -42,3 +32,13 @@ const BoardList: React.FC<IProps> = (props) => {
 }
 
 export default BoardList
+
+const SBoardUl = styled.ul`
+  border-top: 1px solid #eee;
+  padding: 0;
+  list-style: none;
+`
+
+const SCommentArea = styled.ul`
+  background: #f5f5f5;
+`

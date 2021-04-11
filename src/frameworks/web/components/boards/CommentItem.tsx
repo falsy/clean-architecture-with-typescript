@@ -1,19 +1,6 @@
-import * as React from "react"
+import * as React from 'react'
 import styled from 'styled-components'
 import { ICommentEntity } from '@domains/entities/interfaces/iComment'
-
-const S_CommentItem = styled.li`
-  list-style: none;
-  border-bottom: 1px solid #eee;
-`
-
-const S_CommentText = styled.p`
-  display: inline-block;
-  padding: 0 20px;
-  font-size: 16px;
-  line-height: 60px;
-  margin: 0;
-`
 
 interface IProps {
   comment: ICommentEntity
@@ -34,3 +21,16 @@ const CommentItem: React.FC<IProps> = (props) => {
 }
 
 export default CommentItem
+
+const S_CommentItem = styled.li`
+  list-style: none;
+  border-bottom: 1px solid #eee;
+`
+
+const S_CommentText = styled.p`
+  display: inline-block;
+  padding: 0 20px;
+  font-size: 16px;
+  line-height: 60px;
+  margin: 0;
+`

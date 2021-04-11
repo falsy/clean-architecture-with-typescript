@@ -1,26 +1,25 @@
-import * as React from "react"
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { ISessionStateGroup } from '@frameworks/web/redux/interfaces/iSession'
+import * as React from 'react'
+import { useEffect } from 'react'
+import { useTokenState } from '@hooks/sessionRecoil'
 import di from '@di'
 import Login from './logins/Login'
 import Board from './boards/Board'
 
 const Index: React.FC = () => {
-  const dispatch = useDispatch()
-  const token = useSelector((state: ISessionStateGroup) => state.session.token)
+  const [token, setToken] = useTokenState()
 
   useEffect(() => {
     (async () => {
       const storageToken = await di.session.getToken()
       if (storageToken) {
-        dispatch(di.session.setToken(storageToken))
+        di.session.setToken(storageToken)
+        setToken(storageToken)
       }
     })()
   }, [token])
 
   return (
-    <div className={"wrap"}>
+    <div className={'wrap'}>
       {token === '' && (
         <Login />
       )}

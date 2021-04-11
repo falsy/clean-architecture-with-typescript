@@ -1,12 +1,8 @@
-import * as React from "react"
+import * as React from 'react'
 import styled from 'styled-components'
 import { useState } from "react"
 import Input from '../commons/Input'
 import LongBtn from '../commons/LongBtn'
-
-const S_BtnArea = styled.div`
-  margin: 10px 0;
-`
 
 interface IProps {
   accredit(id: string, pw: string): void
@@ -50,3 +46,7 @@ const AuthForm: React.FC<IProps> = (props) => {
 }
 
 export default AuthForm
+
+const S_BtnArea = styled.div`
+  margin: 10px 0;
+`

@@ -1,5 +1,8 @@
 # Change log
 
+### v1.9.0
+* Changed state management from Redux to Recoil
+
 ### v1.8.1
 * Edit infrastructure DI
 

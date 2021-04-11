@@ -1,9 +1,8 @@
-import * as React from "react"
-import * as ReactDOM from "react-dom"
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import { RecoilRoot } from 'recoil'
 import { createGlobalStyle } from 'styled-components'
-import { Provider } from 'react-redux'
-import store from '@frameworks/web/redux/store'
-import Index from "./components/Index"
+import Index from './components/Index'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -24,11 +23,11 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Provider store={store}>
+      <RecoilRoot>
         <Index />
-      </Provider>
+      </RecoilRoot>
     </>
   )
 }
 
-ReactDOM.render(<App />, document.getElementById("app"))
+ReactDOM.render(<App />, document.getElementById('app'))
