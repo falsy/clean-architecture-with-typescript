@@ -24,7 +24,7 @@ As with various architectures, the primary purpose of a clean architecture is to
 * Both high-level and low-level modules rely on abstraction..
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow-v7.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v8.png)
 in simple diagram, it is as above.
 
 ### Session

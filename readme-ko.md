@@ -22,7 +22,7 @@ Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
 
 ## Communitaction Flow
-![Alt Communitaction Flow](/_readme/communication-flow-v7.png)
+![Alt Communitaction Flow](/_readme/communication-flow-v8.png)
 간단하게 다이어그램으로 표현하면 위와 같습니다.
 
 ### Session
@@ -30,7 +30,7 @@ Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 
 ### Board
 'Infrastructures'에서 http 통신을 통해 게시판 글과 댓글을 가져와 'Use Case'에서 Comment Entity를 포함한 Board Root Entity로 캡슐화하여 'Presenter'로 전달하며 'Presenter'는 Entity 데이터를 'Components'로 전달합니다.  
-'Components'에서는 상태 관리 매니저를 통해 'Entity' 데이터나 'View Model'로 다시 캡슐화 한 데이터를 기억하고, 데이터의 상태 변화에 따라 View를 다시 그립니다.
+'Components'에서는 상태 관리 매니저에 'Entity' 데이터 또는 'View Model'로 캡슐화 한 데이터를 기억하고, 데이터의 상태 변화에 따라 View를 다시 그립니다.
 
 ## Inversion of Control
 ![Alt Communitaction Flow](/_readme/inversion-of-control-v2.png)
