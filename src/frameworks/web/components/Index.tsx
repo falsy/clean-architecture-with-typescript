@@ -1,34 +1,10 @@
 import * as React from 'react'
-import { useEffect } from 'react'
-import { useTokenState } from '@hooks/sessionRecoil'
-import di from '@di'
-import Login from './logins/Login'
 import Board from './boards/Board'
+import withAuth from "@frameworks/web/hoc/withAuth";
 
 const Index: React.FC = () => {
-  const [token, setToken] = useTokenState()
-
-  useEffect(() => {
-    (async () => {
-      const storageToken = await di.session.getToken()
-      if (storageToken) {
-        di.session.setToken(storageToken)
-        setToken(storageToken)
-      }
-    })()
-  }, [token])
-
-  return (
-    <div className={'wrap'}>
-      {token === '' && (
-        <Login />
-      )}
-      {token && (
-        <Board />
-      )}
-    </div>
-  )
+    return <Board/>
 }
 
 
-export default Index
+export default withAuth(Index)
