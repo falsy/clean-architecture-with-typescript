@@ -1,0 +1,49 @@
+import BoardDTO, { IBoardDTO, IBoardParams } from '@domain/dto/BoardDTO'
+import CommentDTO, { ICommentDTO, ICommentParams } from '@domain/dto/CommentDTO'
+import { IHttp } from "../infrastructures/Http"
+
+class BoardRepository {
+
+  constructor(
+    readonly http: IHttp
+  ) {}
+
+  async getBoards(): Promise<Array<IBoardDTO>> {
+    const response = await this.http.request({
+      method: 'GET',
+      url: 'http://localhost:7777/boards'
+    })
+
+    if(response?.boards) {
+      return response.boards.map((board: IBoardParams) => new BoardDTO(board))
+    }
+  }
+
+  async getComments(): Promise<Array<ICommentDTO>> {
+    const response = await this.http.request({
+      method: 'GET',
+      url: 'http://localhost:7777/comments'
+    })
+
+    if(response?.comments) {
+      return response.comments.map((comment: ICommentParams) => new CommentDTO(comment))
+    }
+  }
+
+  insertBoard(author: string, content: string): Promise<boolean> {
+    return this.http.request({
+      method: 'POST',
+      url: 'http://localhost:7777/boards',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        author, 
+        content
+      }
+    })
+  }
+
+}
+
+export default BoardRepository

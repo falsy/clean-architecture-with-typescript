@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsxImportSource": "@emotion/react",
+    "incremental": true,
+    "paths": {
+      "@domain/*": [
+        "packages/domain/src/*",
+      ]
+    },
+    "isolatedModules": true
+  },
+  "include": ["./src/**/*"]
+}
