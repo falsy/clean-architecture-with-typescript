@@ -1,9 +1,7 @@
-import IRepositories from './interfaces/iRepositories'
-import IInfrastructures from './interfaces/iInfrastructures'
-import SessionRepository from '@adapters/repositories/Session'
-import BoardRepository from '@adapters/repositories/Board'
+import BoardRepository from '@adapter/repositories/Board'
+import SessionRepository from '@adapter/repositories/Session'
 
-export default (infrastructure: IInfrastructures): IRepositories => {
+export default (infrastructure: any) => {
   return {
     session: new SessionRepository(infrastructure.http, infrastructure.storage),
     board: new BoardRepository(infrastructure.http)

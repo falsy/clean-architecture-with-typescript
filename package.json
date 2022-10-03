@@ -8,7 +8,8 @@
   "author": "falsy",
   "license": "WTFPL",
   "scripts": {
-    "mock-server": "yarn workspace mock-server start"
+    "mock-server": "yarn workspace mock-server start",
+    "web": "yarn workspace web start"
   },
   "workspaces": {
     "packages": [

@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { useSetToken } from '@hooks/sessionRecoil'
 import styled from 'styled-components'
+import { useSetToken } from '../../hooks/sessionRecoil'
 import ShortBtn from './ShortBtn'
-import di from '@di'
+import di from '../../di'
 
 const Header: React.FC = () => {
   const setUserToken = useSetToken();

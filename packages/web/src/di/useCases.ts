@@ -1,11 +1,9 @@
-import IRepositories from './interfaces/iRepositories'
-import IUseCases from './interfaces/iUseCases'
-import Session from '@domains/useCases/Session'
-import Board from '@domains/useCases/Board'
+import Board from '@domain/useCases/Board'
+import Session from '@domain/useCases/Session'
 
-export default (repositories: IRepositories): IUseCases => {
+export default (repositories: any) => {
   return {
-    board: new Board(repositories.board),
-    session: new Session(repositories.session)
+    session: new Session(repositories.session),
+    board: new Board(repositories.board)
   }
 }

@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { useEffect } from 'react'
-import { useTokenState } from '@hooks/sessionRecoil'
-import di from '@di'
+import { useTokenState } from '../hooks/sessionRecoil'
 import Login from './logins/Login'
 import Board from './boards/Board'
+import di from '../di'
 
 const Index: React.FC = () => {
   const [token, setToken] = useTokenState()

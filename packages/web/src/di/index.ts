@@ -1,4 +1,3 @@
-import IPresenters from './interfaces/iPresenters'
 import infrastructures from './infrastructures'
 import repositories from './repositories'
 import useCases from './useCases'
@@ -12,4 +11,4 @@ const cPresenters = presenters(cUseCases)
 export default {
   board: cPresenters.board,
   session: cPresenters.session
-} as IPresenters
+}

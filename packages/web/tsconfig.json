@@ -1,18 +1,21 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "incremental": true,
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "isolatedModules": true,
     "paths": {
-      // "@adapters/*": ["../../adapters/*"],
-      // "@domains/*": ["../../domains/*"],
-      // "@frameworks/*": ["../../frameworks/*"],
-      // "@hooks/*": ["../../frameworks/web/hooks/*"],
-      // "@di": ["./di/index.ts"]
+      "@domain/*": [
+        "packages/domain/src/*"
+      ],
+      "@adapter/*": [
+        "packages/adapter/src/*"
+      ]
     }
   },
   "exclude": [

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { IBoardData } from '@domains/aggregates/interfaces/iBoard'
+// import { IBoardData } from '@domain/'
 
 interface IProps {
   board: IBoardData

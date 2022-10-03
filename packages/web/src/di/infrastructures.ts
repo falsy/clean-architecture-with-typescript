@@ -1,10 +1,9 @@
-import IInfrastructures from './interfaces/iInfrastructures'
-import Http from '@adapters/infrastructures/Http'
-import WebStorage from '@adapters/infrastructures/WebStorage'
+import Http from '@adapter/infrastructures/Http'
+import Stoarge from '@adapter/infrastructures/Storage'
 
-export default (): IInfrastructures => {
+export default () => {
   return {
     http: new Http(),
-    storage: new WebStorage((window as any).sessionStorage)
+    storage: new Stoarge((window as any).sessionStorage)
   }
 }
