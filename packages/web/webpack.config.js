@@ -2,36 +2,32 @@ const HTMLWeebPackPlugin = require("html-webpack-plugin")
 const path = require("path")
 
 module.exports = {
+  entry: path.resolve(__dirname, "./src/index.tsx"),
   module: {
     rules: [{ 
-      test: /\.tsx?$/, 
+      test: /\.tsx?$/,
       loader: "ts-loader",
+      exclude: /node_modules/,
       options: {
-        configFile: './tsconfig.json',
+        configFile: path.resolve(__dirname, "./tsconfig.json")
       }
     }]
   },
   resolve: {
-    extensions: [".ts", ".tsx"],
-    alias: { 
-      // "@adapters": path.resolve(__dirname, "../../adapters/"),
-      // "@domains": path.resolve(__dirname, "../../domains/"),
-      // "@frameworks": path.resolve(__dirname, "../../frameworks/"),
-      // "@hooks": path.resolve(__dirname, "../../frameworks/web/hooks/"),
-      // "@di": path.resolve(__dirname, "./di/index.ts")
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      "@adapter": path.resolve(__dirname, "../adapter/src/"),
+      "@domain": path.resolve(__dirname, "../domain/src/")
     }
-  },
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist")
   },
   plugins: [
     new HTMLWeebPackPlugin({
-      template: "./index.html",
-      filename: "./index.html"
+      template: path.resolve(__dirname, "./src/index.html")
     })
   ],
   devServer: {
+    compress: true,
+    port: 9000,
     historyApiFallback: true
   }
 }
