@@ -9,11 +9,17 @@
   "license": "WTFPL",
   "scripts": {
     "mock-server": "yarn workspace mock-server start",
-    "web": "yarn workspace web start"
+    "web": "yarn workspace web start",
+    "ios": "yarn workspace mobile ios",
+    "android": "yarn workspace mobile android"
   },
   "workspaces": {
     "packages": [
       "packages/**"
+    ],
+    "nohoist": [
+      "**/mobile",
+      "**/mobile/**"
     ]
   },
   "dependencies": {
