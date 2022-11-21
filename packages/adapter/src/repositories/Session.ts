@@ -1,6 +1,6 @@
 import { IHttp } from "../infrastructures/Http"
 import { IStorage } from "../infrastructures/MobileStorage"
-import { IUserDTO } from '@domain/dto/UserDTO'
+import { IUserDTO } from '../../../domain/src/dto/UserDTO'
 
 class SessionRepository {
 

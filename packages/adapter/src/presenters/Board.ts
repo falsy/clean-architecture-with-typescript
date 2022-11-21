@@ -1,5 +1,5 @@
-import BoardUseCase from '@domain/useCases/Board'
-import { IBoardEntity } from '@domain/aggregates/Board'
+import BoardUseCase from '../../../domain/src/useCases/Board'
+import { IBoardEntity } from '../../../domain/src/aggregates/Board'
 
 class BoardPresenter {
 

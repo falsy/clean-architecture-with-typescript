@@ -1,5 +1,5 @@
-import BoardDTO, { IBoardDTO, IBoardParams } from '@domain/dto/BoardDTO'
-import CommentDTO, { ICommentDTO, ICommentParams } from '@domain/dto/CommentDTO'
+import BoardDTO, { IBoardDTO, IBoardParams } from '../../../domain/src/dto/BoardDTO'
+import CommentDTO, { ICommentDTO, ICommentParams } from '../../../domain/src/dto/CommentDTO'
 import { IHttp } from "../infrastructures/Http"
 
 class BoardRepository {

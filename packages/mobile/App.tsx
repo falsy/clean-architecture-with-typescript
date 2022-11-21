@@ -2,12 +2,13 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
+ * Generated with the TypeScript template
+ * https://github.com/react-native-community/react-native-template-typescript
+ *
  * @format
- * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
+import React, {type PropsWithChildren, useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -25,10 +26,13 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import di from './src/di';
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
+const Section: React.FC<
+  PropsWithChildren<{
+    title: string;
+  }>
+> = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -54,12 +58,22 @@ const Section = ({children, title}): Node => {
   );
 };
 
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const [test, setTest] = useState<any>([]);
+
+  const getTest = async () => {
+    setTest(await di.board.getBoards());
+  };
+
+  useEffect(() => {
+    getTest();
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -76,8 +90,9 @@ const App: () => Node = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
+            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
+            {JSON.stringify(test)}
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />

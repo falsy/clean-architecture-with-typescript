@@ -1,5 +1,5 @@
-import SessionUseCase from '@domain/useCases/Session'
-import UserDTO from '@domain/dto/UserDTO'
+import SessionUseCase from '../../../domain/src/useCases/Session'
+import UserDTO from '../../../domain/src/dto/UserDTO'
 
 class SessionPresenter {
 
