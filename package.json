@@ -1,0 +1,34 @@
+{
+  "name": "react-with-clean-architecture",
+  "version": "1.9.0",
+  "description": "Clean architecture based react project sample code",
+  "scripts": {
+    "server": "node ./mock-server/index.js",
+    "web": "cd ./src/frameworks/web && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/falsy/react-with-clean-architecture.git"
+  },
+  "keywords": [
+    "react",
+    "clean",
+    "architecture"
+  ],
+  "author": "falsy",
+  "license": "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE",
+  "bugs": {
+    "url": "https://github.com/falsy/react-with-clean-architecture/issues"
+  },
+  "homepage": "https://github.com/falsy/react-with-clean-architecture#readme",
+  "devDependencies": {
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.8.0"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json,js}": [
+      "prettier --single-quote --write --tab-width 2",
+      "git add"
+    ]
+  }
+}
