@@ -4,7 +4,7 @@ export interface IStorage {
   remove(name: string): void
 }
 
-class MobileStorage implements IStorage {
+class Storage implements IStorage {
 
   private storage: any
 
@@ -12,18 +12,18 @@ class MobileStorage implements IStorage {
     this.storage = storage
   }
 
-  get(name: string): Promise<string> {
-    return this.storage.getItem(name)
+  async get(name: string): Promise<string> {
+    return await this.storage.getItem(name)
   }
 
-  set(name: string, value: string): void {
-    this.storage.setItem(name, value)
+  async set(name: string, value: string): Promise<void> {
+    await this.storage.setItem(name, value)
   }
 
-  remove(name: string): void {
-    this.storage.removeItem(name)
+  async remove(name: string): Promise<void> {
+    await this.storage.removeItem(name)
   }
   
 }
 
-export default MobileStorage
+export default Storage

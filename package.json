@@ -2,7 +2,7 @@
   "name": "react-with-clean-architecture",
   "private": true,
   "version": "2.0.0",
-  "description": "ean architecture based react project sample code",
+  "description": "clean architecture based react project sample code",
   "main": "index.js",
   "repository": "git+https://github.com/falsy/react-with-clean-architecture.git",
   "author": "falsy",
@@ -11,7 +11,9 @@
     "mock-server": "yarn workspace mock-server start",
     "web": "yarn workspace web start",
     "ios": "yarn workspace mobile ios",
-    "android": "yarn workspace mobile android"
+    "android": "yarn workspace mobile android",
+    "clean-android": "yarn workspace mobile clean-android",
+    "build-android": "yarn workspace mobile build-android"
   },
   "workspaces": {
     "packages": [
@@ -24,11 +26,12 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "recoil": "^0.7.5",
     "typescript": "^4.8.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
     "@babel/runtime": "^7.20.1",
-    "@types/react": "^18.0.21"
+    "@types/react": "^18.0.21",
+    "lerna": "^6.1.0"
   }
 }

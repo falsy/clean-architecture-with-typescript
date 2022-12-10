@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import infrastructures from './infrastructures';
 import repositories from './repositories';
 import useCases from './useCases';
@@ -11,4 +10,5 @@ const cPresenters = presenters(cUseCases);
 
 export default {
   board: cPresenters.board,
+  session: cPresenters.session,
 };
