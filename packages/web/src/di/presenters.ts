@@ -1,5 +1,5 @@
-import BoardPresenter from '@adapter/presenters/Board'
-import SessionPresenter from '@adapter/presenters/Session'
+import BoardPresenter from 'adapter/src/presenters/Board'
+import SessionPresenter from 'adapter/src/presenters/Session'
 
 export default (useCases: any) => {
   return {

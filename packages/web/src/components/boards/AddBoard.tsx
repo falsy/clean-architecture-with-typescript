@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+
 import LongBtn from '../commons/LongBtn'
 import Input from '../commons/Input'
 

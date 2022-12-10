@@ -1,5 +1,5 @@
-import Board from '@domain/useCases/Board'
-import Session from '@domain/useCases/Session'
+import Board from 'domain/src/useCases/Board'
+import Session from 'domain/src/useCases/Session'
 
 export default (repositories: any) => {
   return {

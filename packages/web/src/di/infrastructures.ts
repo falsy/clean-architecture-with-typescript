@@ -1,5 +1,5 @@
-import Http from '@adapter/infrastructures/Http'
-import Stoarge from '@adapter/infrastructures/Storage'
+import Http from 'adapter/src/infrastructures/Http'
+import Stoarge from 'adapter/src/infrastructures/Storage'
 
 export default () => {
   return {

@@ -12,6 +12,7 @@
     "body-parser": "^1.20.0",
     "html-webpack-plugin": "^5.5.0",
     "react-dom": "^18.2.0",
+    "recoil": "^0.7.6",
     "styled-components": "^5.3.6",
     "ts-loader": "^9.4.1",
     "webpack": "^5.74.0",

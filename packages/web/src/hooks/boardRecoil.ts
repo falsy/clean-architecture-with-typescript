@@ -1,5 +1,6 @@
-import { IBoardEntity } from '@domain/aggregates/Board'
 import { atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+
+import { IBoardEntity } from 'domain/src/aggregates/Board'
 
 const boardList = atom<Array<IBoardEntity>>({
   key: 'boardList',

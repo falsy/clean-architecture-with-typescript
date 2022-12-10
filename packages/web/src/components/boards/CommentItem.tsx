@@ -1,6 +1,7 @@
-import * as React from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { ICommentEntity } from '@domain/entities/Comment'
+
+import { ICommentEntity } from 'domain/src/entities/Comment'
 
 interface IProps {
   comment: ICommentEntity

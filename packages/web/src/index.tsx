@@ -1,7 +1,8 @@
-import * as React from 'react'
-import * as ReactDOMClient from 'react-dom/client'
+import React from 'react'
+import ReactDOMClient from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 import { createGlobalStyle } from 'styled-components'
+
 import Index from './components/Index'
 
 const GlobalStyle = createGlobalStyle`

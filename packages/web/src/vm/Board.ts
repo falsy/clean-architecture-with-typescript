@@ -1,5 +1,5 @@
-import { IBoardEntity } from '@domain/aggregates/Board'
-import { ICommentEntity } from '@domain/entities/Comment'
+import { IBoardEntity } from 'domain/src/aggregates/Board'
+import { ICommentEntity } from 'domain/src/entities/Comment'
 
 export interface IBoardVM {
   id: number
