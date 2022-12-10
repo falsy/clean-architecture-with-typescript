@@ -1,5 +1,5 @@
-import { ISessionRepository } from "./repository-interfaces/iSession"
-import { IUserDTO } from "../dto/UserDTO"
+import { ISessionRepository } from './repository-interfaces/iSession'
+import { IUserDTO } from '../dto/UserDTO'
 
 class SessionUseCase {
 
