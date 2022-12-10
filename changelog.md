@@ -2,6 +2,7 @@
 
 ### v2.0.0
 * Change to monorepo configuration
+* Update package version
 
 ### v1.9.0
 * Changed state management from Redux to Recoil
