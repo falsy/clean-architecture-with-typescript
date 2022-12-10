@@ -1,5 +1,6 @@
 # Sample code of React with Clean architecture
-This project is a small idea sample code to introduce a Clean Architecture to a web service or to use a Redux Architecture and a Clean Architecture together.
+This project is a sample code of one small idea to introduce a clean architecture to web services in a large sense, and a clean architecture to a project using React in a small sense.
+With minimal library and service functions, we are concentrating on overall project composition.
    
 if you leave an issue or a pull request, we will reflect the insufficient part or improvement. ☺️  
 (+ i am not good at English.)
@@ -11,8 +12,8 @@ if you leave an issue or a pull request, we will reflect the insufficient part o
 ## Use Stack
 Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 
-> (Recoil > Redux)  
-> https://github.com/falsy/react-with-clean-architecture/tree/v1.8.1
+> (Previous single repo configuration)  
+> https://github.com/falsy/react-with-clean-architecture/tree/v1.9.0
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
@@ -22,6 +23,10 @@ As with various architectures, the primary purpose of a clean architecture is to
 * Architecture does not depend on the framework.
 * The outer zone can depend on the inner zone, but the inner zone cannot depend on the outer zone.
 * Both high-level and low-level modules rely on abstraction..
+
+## Monorepo
+![Alt Monorepo](/_readme/monorepo-v2.png)
+The monorepo package consists of the above. The domain area, adapter area, and framework area are each configured as a package and designed to be more clearly distinguished. New services can be configured by adding packages from the framework area.
 
 ## Communitaction Flow
 ![Alt Communitaction Flow](/_readme/communication-flow-v8.png)
@@ -42,168 +47,137 @@ In the case of 'Repository', it is an adapter layer, so you should not know abou
 
 ## Directory Structure
 ```
-./src
-├─ adapters
-│  ├─ infrastructures
-│  │  └─ interfaces
-│  ├─ presenters
-│  │  └─ interfaces
-│  └─ repositories
-├─ domains
-│  ├─ aggregates
-│  │  └─ interfaces
-│  ├─ entities
-│  │  └─ interfaces
-│  ├─ useCases
-│  │  ├─ interfaces
-│  │  └─ repository-interfaces
-│  └─ dto
-└─ frameworks
-   ├─ web
-   │  ├─ di
-   │  ├─ components
-   │  ├─ hooks
-   │  └─ vm
-   └─ mobile(React Native)
-      ├─ di
+/packages
+├─ adapter
+│  └─ src
+│     ├─ infrastructures
+│     ├─ presenters
+│     └─ repositories
+├─ domain
+│  └─ src
+│     ├─ aggregates
+│     ├─ entities
+│     ├─ useCases
+│     │  └─ repository-interfaces
+│     └─ dto
+├─ mobile(React Native)
+│  ├─ android
+│  ├─ ios
+│  └─ src
+│     ├─ components
+│     ├─ di
+│     ├─ hooks
+│     └─ vm
+└─ web
+   └─ src
       ├─ components
-      ├─ android
-      ├─ ios
+      ├─ di
       ├─ hooks
       └─ vm
 ```
 
-* The basic directory is organized based on layers of clean architecture.  
-[ frameworks / adapters / domains(useCases / entities) ]
+* The package structure of the monorepo is based on the layers of the clean architecture.  
+[ adapter / domain(useCases/entities) / mobile(react-native) / web ]
 * The component's directory structure is freely structured in the form promised between services or members.
 
 ## Screenshots
 ![Alt Screenshot 1](/_readme/screenshot_1.jpg)
 ![Alt Screenshot 2](/_readme/screenshot_2.jpg)
 
-## Alias
-### Web
-#### tsconfig.json
->/src/frameworks/web/tsconfing.json
-```js
-{
-  "compilerOptions": {
-    //...
-    "baseUrl": ".",
-    "paths": {
-      "@adapters/*": ["../../adapters/*"],
-      "@domains/*": ["../../domains/*"],
-      "@frameworks/*": ["../../frameworks/*"],
-      "@di": ["./di/index.ts"]
-    }
-  },
-}
-```
-
-#### webpack.config.js
->/src/frameworks/web/webpack.config.js
-```js
-{
-  //...
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-    alias: { 
-      "@adapters": path.resolve(__dirname, "../../adapters/"),
-      "@domains": path.resolve(__dirname, "../../domains/"),
-      "@frameworks": path.resolve(__dirname, "../../frameworks/"),
-      "@di": path.resolve(__dirname, "./di/index.ts")
-    }
-  },
-}
-```
-
-### Mobile
-#### tsconfig.json
->/src/frameworks/mobile/tsconfing.json
-```js
-{
-  "compilerOptions": {
-    //...
-    "baseUrl": ".",
-    "paths": {
-      "@adapters/*": ["../../adapters/*"],
-      "@domains/*": ["../../domains/*"],
-      "@frameworks/*": ["../../frameworks/*"],
-      "@di": ["./di/index.ts"]
-    }
-  },
-}
-```
-
-#### metro.config.js
->/src/frameworks/mobile/metro.config.js
+## Settings
+### Mobile(React Native)
+#### Metro
+>/packages/mobile/metro.config.js
 ```js
 const path = require('path')
-const extraNodeModules = {
-  '@adapters': path.resolve(__dirname + './../../adapters'),
-  '@domains': path.resolve(__dirname + './../../domains'),
-  '@frameworks': path.resolve(__dirname + './../../frameworks'),
-}
-const watchFolders = [
-  path.resolve(__dirname + './../../adapters'),
-  path.resolve(__dirname + './../../domains'),
-  path.resolve(__dirname + './../../frameworks'),
-]
 
 module.exports = {
-  //...
-  resolver: {
-    extraNodeModules: new Proxy(extraNodeModules, {
-      get: (target, name) =>
-        name in target ? target[name] : path.join(process.cwd(), `node_modules/${name}`),
-    }),
-  },
-  watchFolders,
+  projectRoot: path.resolve(__dirname, "../../"),
+  ...
 }
 ```
+### iOS
+#### xcode 
+```
+open packages/mobile/ios/mobile.xcodeproj
+```
+>AppDelegate.m
+```shell
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+```
+Modify as below.
+```shell
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"packages/mobile/index"];
+```
 
-## Run Project
-### 1. Mock Server
+### Android
+>/packages/mobile/android/app/src/main/java/com/mobile/MainApplication.java
+```shell
+@Override
+protected String getJSMainModuleName() {
+  return "index";
+}
+```
+Modify as below.
+```shell
+@Override
+protected String getJSMainModuleName() {
+  return "packages/mobile/index";
+}
+```
+>/packages/mobile/android/app/build.gradle 
+```js
+project.ext.react = [
+  enableHermes: true, // clean and rebuild if changing
+];
+```
+Modify as below.
+```js
+project.ext.react = [
+  enableHermes: true, // clean and rebuild if changing
+  cliPath: "../../node_modules/react-native/local-cli/cli.js",
+  entryFile: "packages/mobile/index.js",
+];
+```
+
+## Run Projects
+### 1. install
 #### Install
 ```shell
-# $ cd /mock-server
-$ npm install
+$ yarn install
 ```
+
+### 2. Mock Server
 #### Start
 ```shell
-# $ cd /mock-server
-$ npm start
+$ yarn run mock-server
 ```
 
-### 2-1. Web
-#### Install
-```shell
-# $ cd /src/frameworks/web
-$ npm install
-```
+### 3. Web
 #### Start
 ```shell
-# $ cd /src/frameworks/web
-$ npm start
+$ yarn run web
 ```
 
-### 2-2. Mobile(ios)
+### 4-1. Mobile(iOS)
 #### Install
 ```shell
-# $ cd /src/frameworks/mobile
-$ npm install
-
-# cocoapods install
-$ gem install cocoapods
-
-# $ cd /src/frameworks/mobile/ios
+# $ cd /packages/mobile/ios
 $ pod install
+# $ cd ../../../
 ```
 #### Start
 ```shell
-# $ cd /src/frameworks/mobile
-$ npx react-native run-ios
+$ yarn run ios
+```
+
+### 4-2. Mobile(Android)
+#### Start
+```shell
+$ yarn run android
 ```
 
 ## Version
-v1.9.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v2.0.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

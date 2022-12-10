@@ -1,5 +1,6 @@
 # Sample code of React with Clean architecture
-이 프로젝트는 크게는 웹 서비스에 클린 아키텍처를 도입하는, 그리고 작게는 리덕스 아키텍처와 클린 아키텍처를 함께 사용하기 위한, 하나의 작은 아이디어의 샘플 코드입니다.
+이 프로젝트는 크게는 웹 서비스에 클린 아키텍처를 도입하는, 그리고 작게는 리액트를 사용하는 프로젝트에 클린 아키텍처를 도입하기 위한, 하나의 작은 아이디어의 샘플 코드입니다. 
+최소한의 라이브러리와 서비스 기능으로, 전체적인 프로젝트 구성에 집중하고 있습니다. 
   
 부족한 부분이나 개선사항은 Issue 또는 Pull Request 남겨주시면 함께 반영하도록 하겠습니다. ☺️
 
@@ -9,8 +10,8 @@
 ## Use Stack
 Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 
-> (Recoil > Redux)  
-> https://github.com/falsy/react-with-clean-architecture/tree/v1.8.1
+> (이전의 싱글 레포 구성)  
+> https://github.com/falsy/react-with-clean-architecture/tree/v1.9.0
 
 ## Clean Architecture
 ![Alt Clean architecture](/_readme/clean-architecture.png)
@@ -20,6 +21,10 @@ Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 * 아키텍처는 프레임워크에 의존하지 않습니다.
 * 외부 영역은 내부 영역에 의존할 수 있지만, 내부 영역은 외부 영역에 의존할 수 없습니다.
 * 고수준, 저수준 모듈 모두 추상화에 의존합니다.
+
+## Monorepo
+![Alt Monorepo](/_readme/monorepo-v2.png)
+모노레포의 패키지는 위와 같이 구성되어 있습니다. 도메인 영역과 어댑터 영역, 그리고 프레임워크 영역을 각각 패키지로 구성하여 보다 명확하게 구분되도록 설계하였습니다. 새로운 서비스는 프레임워크 영역의 패키지를 추가하여 구성할 수 있습니다.
 
 ## Communitaction Flow
 ![Alt Communitaction Flow](/_readme/communication-flow-v8.png)
@@ -34,173 +39,142 @@ Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 
 ## Inversion of Control
 ![Alt Communitaction Flow](/_readme/inversion-of-control-v2.png)
-'Repository'의 경우 Adapter 레이어에 해당하기 때문에 'Use Case'에서는 'Repository'에 대해서 알아서는 안됩니다. 그렇기 때문에 'Use Case'에서는 Domain 레이어 Repository Interface를 가지고 구현하며, 이는 이후에 Dependency Injection를 통해 동작합니다.
+'Repository'의 경우 Adapter 레이어에 해당하기 때문에 'Use Case'에서는 'Repository'에 대해서 알아서는 안됩니다. 그렇기 때문에 'Use Case'에서는 Domain 레이어에서 Repository Interface를 가지고 구현하며, 이는 이후에 Dependency Injection를 통해 동작합니다.
 
 
 ## Directory Structure
 ```
-./src
-├─ adapters
-│  ├─ infrastructures
-│  │  └─ interfaces
-│  ├─ presenters
-│  │  └─ interfaces
-│  └─ repositories
-├─ domains
-│  ├─ aggregates
-│  │  └─ interfaces
-│  ├─ entities
-│  │  └─ interfaces
-│  ├─ useCases
-│  │  ├─ interfaces
-│  │  └─ repository-interfaces
-│  └─ dto
-└─ frameworks
-   ├─ web
-   │  ├─ di
-   │  ├─ components
-   │  ├─ hooks
-   │  └─ vm
-   └─ mobile(React Native)
-      ├─ di
+/packages
+├─ adapter
+│  └─ src
+│     ├─ infrastructures
+│     ├─ presenters
+│     └─ repositories
+├─ domain
+│  └─ src
+│     ├─ aggregates
+│     ├─ entities
+│     ├─ useCases
+│     │  └─ repository-interfaces
+│     └─ dto
+├─ mobile(React Native)
+│  ├─ android
+│  ├─ ios
+│  └─ src
+│     ├─ components
+│     ├─ di
+│     ├─ hooks
+│     └─ vm
+└─ web
+   └─ src
       ├─ components
-      ├─ android
-      ├─ ios
+      ├─ di
       ├─ hooks
       └─ vm
 ```
 
-* 기본 디렉토리는 클린 아키텍처의 레이어를 기준으로 구성하였습니다.  
-[ frameworks / adapters / domains(useCases / entities) ]
+* 모노레포의 패키지 구조는 클린 아키텍처의 레이어를 기준으로 구성하였습니다.  
+[ adapter / domain(useCases/entities) / mobile(react-native) / web ]
 * 컴포넌트의 디렉토리 구조는 서비스 또는 구성원 간 약속된 형식으로 자유롭게 구성합니다.
 
 ## Screenshots
 ![Alt Screenshot 1](/_readme/screenshot_1.jpg)
 ![Alt Screenshot 2](/_readme/screenshot_2.jpg)
 
-## Alias
-### Web
-#### tsconfig.json
->/src/frameworks/web/tsconfing.json
-```js
-{
-  "compilerOptions": {
-    //...
-    "baseUrl": ".",
-    "paths": {
-      "@adapters/*": ["../../adapters/*"],
-      "@domains/*": ["../../domains/*"],
-      "@frameworks/*": ["../../frameworks/*"],
-      "@di": ["./di/index.ts"]
-    }
-  },
-}
-```
-
-#### webpack.config.js
->/src/frameworks/web/webpack.config.js
-```js
-{
-  //...
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-    alias: { 
-      "@adapters": path.resolve(__dirname, "../../adapters/"),
-      "@domains": path.resolve(__dirname, "../../domains/"),
-      "@frameworks": path.resolve(__dirname, "../../frameworks/"),
-      "@di": path.resolve(__dirname, "./di/index.ts")
-    }
-  },
-}
-```
-
-### Mobile
-#### tsconfig.json
->/src/frameworks/mobile/tsconfing.json
-```js
-{
-  "compilerOptions": {
-    //...
-    "baseUrl": ".",
-    "paths": {
-      "@adapters/*": ["../../adapters/*"],
-      "@domains/*": ["../../domains/*"],
-      "@frameworks/*": ["../../frameworks/*"],
-      "@di": ["./di/index.ts"]
-    }
-  },
-}
-```
-
-#### metro.config.js
->/src/frameworks/mobile/metro.config.js
+## Settings
+### Mobile(React Native)
+#### Metro
+>/packages/mobile/metro.config.js
 ```js
 const path = require('path')
-const extraNodeModules = {
-  '@adapters': path.resolve(__dirname + './../../adapters'),
-  '@domains': path.resolve(__dirname + './../../domains'),
-  '@frameworks': path.resolve(__dirname + './../../frameworks'),
-}
-const watchFolders = [
-  path.resolve(__dirname + './../../adapters'),
-  path.resolve(__dirname + './../../domains'),
-  path.resolve(__dirname + './../../frameworks'),
-]
 
 module.exports = {
-  //...
-  resolver: {
-    extraNodeModules: new Proxy(extraNodeModules, {
-      get: (target, name) =>
-        name in target ? target[name] : path.join(process.cwd(), `node_modules/${name}`),
-    }),
-  },
-  watchFolders,
+  projectRoot: path.resolve(__dirname, "../../"),
+  ...
 }
 ```
+### iOS
+#### xcode 
+```
+open packages/mobile/ios/mobile.xcodeproj
+```
+>AppDelegate.m
+```shell
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+```
+아래와 같이 수정합니다.
+```shell
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"packages/mobile/index"];
+```
 
-## Run Project
-### 1. Mock Server
+### Android
+>/packages/mobile/android/app/src/main/java/com/mobile/MainApplication.java
+```shell
+@Override
+protected String getJSMainModuleName() {
+  return "index";
+}
+```
+아래와 같이 수정합니다.
+```shell
+@Override
+protected String getJSMainModuleName() {
+  return "packages/mobile/index";
+}
+```
+>/packages/mobile/android/app/build.gradle 
+```js
+project.ext.react = [
+  enableHermes: true, // clean and rebuild if changing
+];
+```
+아래와 같이 수정합니다.
+```js
+project.ext.react = [
+  enableHermes: true, // clean and rebuild if changing
+  cliPath: "../../node_modules/react-native/local-cli/cli.js",
+  entryFile: "packages/mobile/index.js",
+];
+```
+
+## Run Projects
+### 1. install
 #### Install
 ```shell
-# $ cd /mock-server
-$ npm install
+$ yarn install
 ```
+
+### 2. Mock Server
 #### Start
 ```shell
-# $ cd /mock-server
-$ npm start
+$ yarn run mock-server
 ```
 
-### 2-1. Web
-#### Install
-```shell
-# $ cd /src/frameworks/web
-$ npm install
-```
+### 3. Web
 #### Start
 ```shell
-# $ cd /src/frameworks/web
-$ npm start
+$ yarn run web
 ```
 
-### 2-2. Mobile(ios)
+### 4-1. Mobile(iOS)
 #### Install
 ```shell
-# $ cd /src/frameworks/mobile
-$ npm install
-
-# cocoapods install
-$ gem install cocoapods
-
-# $ cd /src/frameworks/mobile/ios
+# $ cd /packages/mobile/ios
 $ pod install
+# $ cd ../../../
 ```
 #### Start
 ```shell
-# $ cd /src/frameworks/mobile
-$ npx react-native run-ios
+$ yarn run ios
+```
+
+### 4-2. Mobile(Android)
+#### Start
+```shell
+$ yarn run android
 ```
 
 ## Version
-v1.9.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)
+v2.0.0 - [ChangeLog](https://github.com/falsy/react-with-clean-architecture/blob/master/changelog.md)

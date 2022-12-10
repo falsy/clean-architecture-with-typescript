@@ -1,5 +1,8 @@
 # Change log
 
+### v2.0.0
+* Change to monorepo configuration
+
 ### v1.9.0
 * Changed state management from Redux to Recoil
 * Style component convention modification
