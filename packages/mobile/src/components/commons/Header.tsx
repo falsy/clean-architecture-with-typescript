@@ -1,16 +1,16 @@
-import React from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import React from 'react'
+import {StyleSheet, View, Text, Button} from 'react-native'
 
-import {useSetToken} from '../../hooks/sessionRecoil';
-import di from '../../di';
+import {useSetToken} from '../../hooks/sessionRecoil'
+import di from '../../di'
 
 const Header: React.FC = () => {
-  const setUserToken = useSetToken();
+  const setUserToken = useSetToken()
 
   const handleClickLogout = () => {
-    di.session.removeToken();
-    setUserToken('');
-  };
+    di.session.removeToken()
+    setUserToken('')
+  }
 
   return (
     <View style={styles.headerView}>
@@ -21,8 +21,8 @@ const Header: React.FC = () => {
         <Button onPress={handleClickLogout} title="Logout" />
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   headerView: {
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
   },
-});
+})
 
-export default Header;
+export default Header

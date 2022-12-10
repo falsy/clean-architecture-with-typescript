@@ -1,11 +1,8 @@
-/**
- * @format
- */
+import { AppRegistry } from 'react-native'
+import { RecoilRoot } from 'recoil'
 
-import {AppRegistry} from 'react-native';
-import Index from './src/Index';
-import {name as appName} from './app.json';
-import { RecoilRoot } from 'recoil';
+import { name as appName } from './app.json'
+import Index from './src/Index'
 
 const App = () => {
   return (
@@ -15,4 +12,4 @@ const App = () => {
   )
 }
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => App)

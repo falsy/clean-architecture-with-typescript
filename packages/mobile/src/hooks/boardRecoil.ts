@@ -1,30 +1,30 @@
-import {IBoardEntity} from 'domain/src/aggregates/Board';
+import {IBoardEntity} from 'domain/src/aggregates/Board'
 import {
   atom,
   selector,
   useRecoilState,
   useRecoilValue,
   useSetRecoilState,
-} from 'recoil';
+} from 'recoil'
 
 const boardList = atom<Array<IBoardEntity>>({
   key: 'boardList',
-  default: [],
-});
+  default: []
+})
 
 const boardListState = selector({
   key: 'boardListState',
-  get: ({get}) => get(boardList),
-});
+  get: ({get}) => get(boardList)
+})
 
 export const useGetBoardList = () => {
-  return useRecoilValue(boardListState);
-};
+  return useRecoilValue(boardListState)
+}
 
 export const useSetBoardList = () => {
-  return useSetRecoilState(boardList);
-};
+  return useSetRecoilState(boardList)
+}
 
 export const useBoardListState = () => {
-  return useRecoilState(boardList);
-};
+  return useRecoilState(boardList)
+}

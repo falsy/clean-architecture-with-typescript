@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, StatusBar } from 'react-native';
+import React, { useEffect } from 'react'
+import { SafeAreaView, StyleSheet, ScrollView, StatusBar } from 'react-native'
 
 import Header from './components/commons/Header'
 import Login from './components/logins/Login'
 import Board from './components/boards/Board'
 
-import {useTokenState} from './hooks/sessionRecoil';
-import di from './di';
+import {useTokenState} from './hooks/sessionRecoil'
+import di from './di'
 
 const Index: React.FC = () => {
-  const [token, setToken] = useTokenState();
+  const [token, setToken] = useTokenState()
 
   useEffect(() => {
     (async () => {
-      const storageToken = await di.session.getToken();
+      const storageToken = await di.session.getToken()
       if (storageToken) {
-        di.session.setToken(storageToken);
-        setToken(storageToken);
+        di.session.setToken(storageToken)
+        setToken(storageToken)
       }
-    })();
-  }, [token]);
+    })()
+  }, [token])
 
   return (
     <>
@@ -38,14 +38,14 @@ const Index: React.FC = () => {
         </ScrollView>
       </SafeAreaView>
     </>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: '#ffffff',
-    height: '100%',
-  },
-});
+    height: '100%'
+  }
+})
 
-export default Index;
+export default Index

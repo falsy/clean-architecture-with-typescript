@@ -9,14 +9,6 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "noEmit": false,
-    "paths": {
-      "@domain/*": [
-        "packages/domain/src/*"
-      ],
-      "@adapter/*": [
-        "packages/adapter/src/*"
-      ]
-    }
   },
   "exclude": [
     "node_modules",

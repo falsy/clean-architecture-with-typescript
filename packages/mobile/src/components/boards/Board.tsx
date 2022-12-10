@@ -1,37 +1,37 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Text, TextInput, Button} from 'react-native';
+import React, {useEffect, useState} from 'react'
+import {StyleSheet, View, Text, TextInput, Button} from 'react-native'
 
-import BoardVM from '../../vm/Board';
+import BoardVM from '../../vm/Board'
 
-import {useBoardListState} from '../../hooks/boardRecoil';
-import di from '../../di';
+import {useBoardListState} from '../../hooks/boardRecoil'
+import di from '../../di'
 
 const Board: React.FC = () => {
-  const [list, setList] = useBoardListState();
+  const [list, setList] = useBoardListState()
 
-  const [author, onChangeAuthor] = useState('');
-  const [content, onChangeContent] = useState('');
+  const [author, onChangeAuthor] = useState('')
+  const [content, onChangeContent] = useState('')
 
-  const boardVMList = list.map(boardEntity => new BoardVM(boardEntity));
+  const boardVMList = list.map(boardEntity => new BoardVM(boardEntity))
 
   useEffect(() => {
     const asyncFnc = async () => {
-      setList(await di.board.getBoards());
-    };
-    asyncFnc();
-  }, [setList]);
+      setList(await di.board.getBoards())
+    }
+    asyncFnc()
+  }, [setList])
 
   const insertFnc = async () => {
     if (author === '' || content === '') {
-      return;
+      return
     }
-    const resStatus = await di.board.insertBoard(author, content);
+    const resStatus = await di.board.insertBoard(author, content)
     if (resStatus) {
-      onChangeAuthor('');
-      onChangeContent('');
-      setList(await di.board.getBoards());
+      onChangeAuthor('')
+      onChangeContent('')
+      setList(await di.board.getBoards())
     }
-  };
+  }
 
   return (
     <View style={styles.boardSection}>
@@ -39,7 +39,7 @@ const Board: React.FC = () => {
         <Text style={styles.sectionTitle}>Board</Text>
         <View style={styles.borderListArea}>
           {boardVMList.map(({id, author, content, createAt, comments}) => {
-            const createDate = new Date(createAt);
+            const createDate = new Date(createAt)
             return (
               <View key={`board-${id}`}>
                 <View style={styles.borderList}>
@@ -52,11 +52,11 @@ const Board: React.FC = () => {
                   }-${createDate.getDate()}`}</Text>
                 </View>
                 {comments.map(({id, author, content, createAt}) => {
-                  const createDate = new Date(createAt);
+                  const createDate = new Date(createAt)
                   return (
                     <View key={`comment-${id}`} style={styles.commentList}>
                       <Text style={{...styles.commentItem, width: '10%'}}>
-                        &rsaquo;
+                        &rsaquo
                       </Text>
                       <Text style={styles.commentItem}>{author}</Text>
                       <Text style={styles.commentItem}>{content}</Text>
@@ -67,10 +67,10 @@ const Board: React.FC = () => {
                         createDate.getMonth() + 1
                       }-${createDate.getDate()}`}</Text>
                     </View>
-                  );
+                  )
                 })}
               </View>
-            );
+            )
           })}
         </View>
       </View>
@@ -93,8 +93,8 @@ const Board: React.FC = () => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   boardSection: {
@@ -147,6 +147,6 @@ const styles = StyleSheet.create({
     color: '#000000',
     marginBottom: 10,
   },
-});
+})
 
-export default Board;
+export default Board

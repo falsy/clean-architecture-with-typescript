@@ -14,11 +14,7 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-    alias: {
-      "@adapter": path.resolve(__dirname, "../adapter/src/"),
-      "@domain": path.resolve(__dirname, "../domain/src/")
-    }
+    extensions: ['.tsx', '.ts', '.js']
   },
   plugins: [
     new HTMLWeebPackPlugin({

@@ -1,20 +1,20 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, TextInput, Button} from 'react-native';
+import React, {useState} from 'react'
+import {StyleSheet, View, TextInput, Button} from 'react-native'
 
-import {useSetToken} from '../../hooks/sessionRecoil';
-import di from '../../di';
+import {useSetToken} from '../../hooks/sessionRecoil'
+import di from '../../di'
 
 const Login: React.FC = () => {
-  const setToken = useSetToken();
+  const setToken = useSetToken()
 
-  const [userId, onChangeId] = useState('');
-  const [userPw, onChangePw] = useState('');
+  const [userId, onChangeId] = useState('')
+  const [userPw, onChangePw] = useState('')
 
   const handleClickAccreditation = async () => {
-    const token = await di.session.login(userId, userPw);
-    di.session.setToken(token ? token : '');
-    setToken(token);
-  };
+    const token = await di.session.login(userId, userPw)
+    di.session.setToken(token ? token : '')
+    setToken(token)
+  }
 
   return (
     <View style={styles.loginForm}>
@@ -32,8 +32,8 @@ const Login: React.FC = () => {
       />
       <Button onPress={handleClickAccreditation} title="Login" />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   loginForm: {
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     color: '#000000',
     marginBottom: 10,
   },
-});
+})
 
-export default Login;
+export default Login

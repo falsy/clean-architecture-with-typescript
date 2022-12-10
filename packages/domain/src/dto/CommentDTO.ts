@@ -11,7 +11,7 @@ export interface ICommentDTO {
   readonly boardId: number
   readonly author: string
   readonly content: string
-  readonly createAt: Date;
+  readonly createAt: Date
 }
 
 class CommentDTO implements ICommentDTO {

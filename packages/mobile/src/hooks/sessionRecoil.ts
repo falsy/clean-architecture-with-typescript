@@ -4,26 +4,26 @@ import {
   useRecoilState,
   useRecoilValue,
   useSetRecoilState,
-} from 'recoil';
+} from 'recoil'
 
 const userToken = atom<string>({
   key: 'userToken',
-  default: '',
-});
+  default: ''
+})
 
 const userTokenState = selector({
   key: 'userTokenState',
-  get: ({get}) => get(userToken),
-});
+  get: ({get}) => get(userToken)
+})
 
 export const useGetToken = () => {
-  return useRecoilValue(userTokenState);
-};
+  return useRecoilValue(userTokenState)
+}
 
 export const useSetToken = () => {
-  return useSetRecoilState(userToken);
-};
+  return useSetRecoilState(userToken)
+}
 
 export const useTokenState = () => {
-  return useRecoilState(userToken);
-};
+  return useRecoilState(userToken)
+}
