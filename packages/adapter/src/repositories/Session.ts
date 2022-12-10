@@ -5,6 +5,7 @@ import { IUserDTO } from '../../../domain/src/dto/UserDTO'
 class SessionRepository {
 
   constructor(
+    private readonly baseURL: string,
     private readonly http: IHttp,
     private readonly storage: IStorage
   ) {}
@@ -12,7 +13,7 @@ class SessionRepository {
   async login(userDTO: IUserDTO): Promise<string> {
     const response = await this.http.request({
       method: 'POST',
-      url: 'http://localhost:7777/login',
+      url: `${this.baseURL}/login`,
       headers: {
         'Content-Type': 'application/json'
       },

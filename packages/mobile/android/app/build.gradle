@@ -80,6 +80,8 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 project.ext.react = [
     enableHermes: true,  // clean and rebuild if changing
+    cliPath: "../../node_modules/react-native/local-cli/cli.js",
+    entryFile: "packages/mobile/index.js",
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"

@@ -12,7 +12,7 @@ const Login: React.FC = () => {
 
   const handleClickAccreditation = async () => {
     const token = await di.session.login(userId, userPw);
-    di.session.setToken(token);
+    di.session.setToken(token ? token : '');
     setToken(token);
   };
 
