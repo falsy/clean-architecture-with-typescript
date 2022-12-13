@@ -82,6 +82,35 @@ Typescript, Webpack, React, React-Native, Recoil, Styled-Components
 ![Alt Screenshot 2](/_readme/screenshot_2.jpg)
 
 ## Settings
+### Package
+#### Lerna
+> /lerna.json
+```js
+{
+  "packages": ["packages/*"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "0.0.1"
+}
+
+```
+#### Package
+> /package.json
+```js
+{
+  ...
+  "workspaces": {
+    "packages": [
+      "packages/**"
+    ],
+    "nohoist": [
+      "**/mobile",
+      "**/mobile/**"
+    ]
+  }
+  ...
+}
+```
 ### Mobile(React Native)
 #### Metro
 >/packages/mobile/metro.config.js

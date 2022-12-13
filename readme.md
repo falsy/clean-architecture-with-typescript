@@ -85,6 +85,35 @@ In the case of 'Repository', it is an adapter layer, so you should not know abou
 ![Alt Screenshot 2](/_readme/screenshot_2.jpg)
 
 ## Settings
+### Package
+#### Lerna
+> /lerna.json
+```js
+{
+  "packages": ["packages/*"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "0.0.1"
+}
+
+```
+#### Package
+> /package.json
+```js
+{
+  ...
+  "workspaces": {
+    "packages": [
+      "packages/**"
+    ],
+    "nohoist": [
+      "**/mobile",
+      "**/mobile/**"
+    ]
+  }
+  ...
+}
+```
 ### Mobile(React Native)
 #### Metro
 >/packages/mobile/metro.config.js
