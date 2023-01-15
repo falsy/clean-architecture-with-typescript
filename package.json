@@ -29,9 +29,9 @@
     "typescript": "^4.8.4"
   },
   "devDependencies": {
+    "lerna": "^6.4.1",
     "@babel/core": "^7.20.5",
     "@babel/runtime": "^7.20.1",
-    "@types/react": "^18.0.21",
-    "lerna": "^6.1.0"
+    "@types/react": "^18.0.21"
   }
 }
