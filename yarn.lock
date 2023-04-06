@@ -1821,8 +1821,8 @@
     "@hapi/hoek" "^9.0.0"
 
 "@sideway/formula@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/@sideway/formula/-/formula-3.0.0.tgz"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@sideway/formula/-/formula-3.0.1.tgz#80fcbcbaf7ce031e0ef2dd29b1bfc7c3f583611f"
 
 "@sideway/pinpoint@^2.0.0":
   version "2.0.0"
@@ -3879,8 +3879,8 @@ flat@^5.0.2:
   resolved "https://registry.npmjs.org/flat/-/flat-5.0.2.tgz"
 
 flow-parser@0.*:
-  version "0.201.0"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.201.0.tgz#d2005d4dae6fddf60d30f9ae0fb49a13c9c51cfe"
+  version "0.202.0"
+  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.202.0.tgz#534178266d3ceec5368415e59990db97eece5bd0"
 
 flow-parser@^0.121.0:
   version "0.121.0"
