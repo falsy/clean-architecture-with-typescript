@@ -735,9 +735,9 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@koa/cors@^3.4.1":
-  version "3.4.1"
-  resolved "https://registry.npmjs.org/@koa/cors/-/cors-3.4.1.tgz"
+"@koa/cors@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@koa/cors/-/cors-5.0.0.tgz#0029b5f057fa0d0ae0e37dd2c89ece315a0daffd"
   dependencies:
     vary "^1.1.2"
 
