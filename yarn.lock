@@ -812,6 +812,13 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@jridgewell/trace-mapping@^0.3.17":
+  version "0.3.25"
+  resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.25.tgz#15f190e98895f3fc23276ee14bc76b675c2e50f0"
+  dependencies:
+    "@jridgewell/resolve-uri" "^3.1.0"
+    "@jridgewell/sourcemap-codec" "^1.4.14"
+
 "@koa/cors@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@koa/cors/-/cors-5.0.0.tgz#0029b5f057fa0d0ae0e37dd2c89ece315a0daffd"
@@ -5769,11 +5776,9 @@ minipass@^3.0.0, minipass@^3.1.1, minipass@^3.1.6:
   dependencies:
     yallist "^4.0.0"
 
-minipass@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/minipass/-/minipass-4.0.0.tgz"
-  dependencies:
-    yallist "^4.0.0"
+minipass@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-5.0.0.tgz#3e9788ffb90b694a5d0ec94479a45b5d8738133d"
 
 minizlib@^2.1.1, minizlib@^2.1.2:
   version "2.1.2"
@@ -7554,12 +7559,12 @@ tar-stream@~2.2.0:
     readable-stream "^3.1.1"
 
 tar@^6.1.0, tar@^6.1.11, tar@^6.1.2:
-  version "6.1.13"
-  resolved "https://registry.npmjs.org/tar/-/tar-6.1.13.tgz"
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.2.1.tgz#717549c541bc3c2af15751bea94b1dd068d4b03a"
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
-    minipass "^4.0.0"
+    minipass "^5.0.0"
     minizlib "^2.1.1"
     mkdirp "^1.0.3"
     yallist "^4.0.0"
