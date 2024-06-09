@@ -6,13 +6,16 @@ It is an extended version of the `React with Clean Architecture` project, which 
 > (React with Clean Architecture)  
 > https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0
 
-## Language
+## Languages
 
-[🇺🇲](https://github.com/falsy/clean-architecture-with-typescript) [🇰🇷](https://github.com/falsy/clean-architecture-with-typescript/blob/main/README-ko.md)
+- [English](https://github.com/falsy/clean-architecture-with-typescript)
+- [한글](https://github.com/falsy/clean-architecture-with-typescript/blob/main/README-ko.md)
 
 # Clean Architecture
 
-![Alt Clean architecture](/_images/clean-architecture.png)
+![Alt Clean architecture](/_images/clean-architecture.png#gh-light-mode-only)
+![Alt Clean architecture](/_images/clean-architecture-dark.png#gh-dark-mode-only)
+
 As with many architectures, the primary goal of Clean Architecture is to separate concerns. It divides layers according to each concern, designs around the domain rather than detailed implementations, and ensures the inner layers do not depend on external elements like frameworks, databases, or UIs.
 
 - Separate the detailed implementation area and the domain area.
@@ -22,7 +25,9 @@ As with many architectures, the primary goal of Clean Architecture is to separat
 
 ## Communitaction Flow
 
-![Alt Communitaction Flow](/_images/communication-flow.png)
+![Alt Communitaction Flow](/_images/communication-flow.png#gh-light-mode-only)
+![Alt Communitaction Flow](/_images/communication-flow-dark.png#gh-dark-mode-only)
+
 The flow of Clean Architecture can be briefly illustrated in the diagram above.
 
 ## Example
@@ -35,7 +40,8 @@ This document uses the [`Parcel Tracking`](https://github.com/parcel-tracking) s
 Various services sharing the same domain were organized using `Git` submodules.  
 The `core` repository of the domain area is composed, and the remaining services are configured using this `core` repository as a submodule.
 
-![Alt Configuration](/_images/configuration.png)
+![Alt Configuration](/_images/configuration.png#gh-light-mode-only)
+![Alt Configuration](/_images/configuration-dark.png#gh-dark-mode-only)
 
 In the `example project`, there are three repositories: `core-dev` for developing and testing the core, `api-server` for the API server, and `extension-for-whale` for the extension client's code.  
 All these repositories use the `core` repository as a submodule.
@@ -74,13 +80,13 @@ Based on the above service definitions, we define the entities.
 
 ```ts
 interface ICarrier {
-  readonly id: string
-  readonly no: number // (Legacy properties)
-  readonly name: string
-  readonly displayName: string
-  readonly isCrawlable: boolean
-  readonly isPopupEnabled: boolean
-  readonly popupURL: string
+  readonly id: string;
+  readonly no: number; // (Legacy properties)
+  readonly name: string;
+  readonly displayName: string;
+  readonly isCrawlable: boolean;
+  readonly isPopupEnabled: boolean;
+  readonly popupURL: string;
 }
 ```
 
@@ -88,17 +94,17 @@ interface ICarrier {
 
 ```ts
 interface ITracker {
-  readonly id: string
-  carrierId: string
-  label: string
-  trackingNumber: string
-  memos: string[]
-  updateLabel(newLabel: string): void
-  updateTrackingNumber(newTrackingNumber: string): void
-  updateCarrierId(newCarrierId: string): void
-  addMemo(): void
-  updateMemo(index: number, newMemo: string): void
-  deleteMemo(index: number): void
+  readonly id: string;
+  carrierId: string;
+  label: string;
+  trackingNumber: string;
+  memos: string[];
+  updateLabel(newLabel: string): void;
+  updateTrackingNumber(newTrackingNumber: string): void;
+  updateCarrierId(newCarrierId: string): void;
+  addMemo(): void;
+  updateMemo(index: number, newMemo: string): void;
+  deleteMemo(index: number): void;
 }
 ```
 
@@ -108,7 +114,9 @@ The `Use Case` layer encapsulates data into entities, coordinates the interactio
 
 ## Inversion of Control
 
-![Alt Communitaction Flow](/_images/inversion-of-control.png)
+![Alt Inversion Of Control](/_images/inversion-of-control.png#gh-light-mode-only)
+![Alt Inversion Of Control](/_images/inversion-of-control-dark.png#gh-dark-mode-only)
+
 As the `Repository` belongs to the `Adapter` layer, the `Use Case` should not know about the `Repository`. Therefore, in the Use Case, the Repository is abstracted into an interface and operates through `Dependency Injection`.
 
 ## Repository interfaces
@@ -155,7 +163,8 @@ The directory structure is composed of core(domains), imported as a submodule us
 
 The architecture of Clean Architecture should not depend on the framework. That is, even if the framework is changed, it should be possible to apply it with minimal changes. However, since `NestJS` uses `Decorators` to compose services, each layer inevitably depends on them.
 
-![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection.png)
+![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection.png#gh-light-mode-only)
+![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection-dark.png#gh-dark-mode-only)
 
 Therefore, the operations are implemented in the `adapters` layer, which does not depend on NestJS, and the `frameworks` layer inherits from the parent (`controllers`, `usecases`, ...) to add `decorators`, override methods, and call the parent's implementation using `super`.
 
@@ -201,7 +210,8 @@ Adding another service later can be configured similarly without significant dif
 
 In the web service, `ClientHTTP`, providing HTTP communication functions, and `WebLocalStorage`, providing the browser's storage function, are defined in Infrastructures and injected into Repositories. These ultimately operate by injecting `fetch` and `localStorage`, respectively.
 
-![Alt Web API](/_images/web-api.png)
+![Alt Web API](/_images/web-api.png#gh-light-mode-only)
+![Alt Web API](/_images/web-api-dark.png#gh-dark-mode-only)
 
 #### Note.
 
@@ -297,4 +307,4 @@ We are always looking for new ideas and suggestions to improve and expand this p
 
 # Thank You!
 
-Thank you for your interest despite the shortcomings of this document. 🙇‍♂️
+I'm grateful for all the support and interest 🙇‍♂️

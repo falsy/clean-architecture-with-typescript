@@ -1,18 +1,21 @@
 # Clean Architecture with TypeScript
 
-타입스크립트를 사용하는 서비스의 클린 아키텍처 도입을 위한 샘플 프로젝트입니다.  
-기존에 도메인을 공유하는 `React`와 `React Native` 서비스 구성의 `React with Clean Architecture` 프로젝트의 확장 버전으로, 더 다양한 타입스크립트 기반의 서비스들을 같은 도메인을 공유하며 확장해 나갈 수 있도록 구성하였습니다.
+타입스크립트를 사용하는 서비스에 클린 아키텍처 도입을 위한 샘플 프로젝트입니다.  
+기존의, 같은 도메인을 공유하는 `React`와 `React Native` 서비스 구성의 `React with Clean Architecture` 프로젝트의 확장 버전으로, 다양한 타입스크립트 기반의 서비스들이 같은 도메인을 공유하며 확장해 나갈 수 있도록 구성하였습니다.
 
 > (React with Clean Architecture)  
 > https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0
 
-## Language
+## Languages
 
-[🇺🇲](https://github.com/falsy/clean-architecture-with-typescript) [🇰🇷](https://github.com/falsy/clean-architecture-with-typescript/blob/main/README-ko.md)
+- [English](https://github.com/falsy/clean-architecture-with-typescript)
+- [한글](https://github.com/falsy/clean-architecture-with-typescript/blob/main/README-ko.md)
 
 # Clean Architecture
 
-![Alt Clean architecture](/_images/clean-architecture.png)
+![Alt Clean architecture](/_images/clean-architecture.png#gh-light-mode-only)
+![Alt Clean architecture](/_images/clean-architecture-dark.png#gh-dark-mode-only)
+
 다양한 아키텍처들이 그러하듯 클린 아키텍처가 갖는 기본 목적은 관심사를 분리하는 것입니다. 각의 관심사에 따라 계층을 나누고 세부 구현이 아닌 도메인 중심으로 설계하며, 내부 영역이 프레임워크나 데이터베이스, UI 등의 외부 요소에 의존하지 않도록 합니다.
 
 - 세부 구현 영역과 도메인 영역을 구분합니다.
@@ -22,7 +25,9 @@
 
 ## Communitaction Flow
 
-![Alt Communitaction Flow](/_images/communication-flow.png)
+![Alt Communitaction Flow](/_images/communication-flow.png#gh-light-mode-only)
+![Alt Communitaction Flow](/_images/communication-flow-dark.png#gh-dark-mode-only)
+
 클린 아키텍처의 흐름을 간단하게 다이어그램으로 표현하면 위와 같습니다.
 
 ## Example
@@ -36,7 +41,8 @@
 다양한 서비스에서 같은 도메인을 공유하는 방법으로 `Git`의 서브모듈을 사용하여 프로젝트를 구성하였습니다.  
 도메인 영역의 `core` 리포지토리를 구성하고, 해당 `core` 리포지토리를 서브모듈로 활용하여 나머지 서비스를 구성합니다.
 
-![Alt Configuration](/_images/configuration.png)
+![Alt Configuration](/_images/configuration.png#gh-light-mode-only)
+![Alt Configuration](/_images/configuration-dark.png#gh-dark-mode-only)
 
 `예시 프로젝트`에서는 core를 개발하고 테스트하는 `core-dev` 리포지토리와 API 서버에 해당하는 `api-server` 리포지토리 그리고 확장 프로그램의 클라이언트에 해당하는 `extension-for-whale` 리포지토리가 있습니다.  
 이들 리포지토리는 모두 `core` 리포지토리를 서브모듈로 사용합니다.
@@ -75,13 +81,13 @@
 
 ```ts
 interface ICarrier {
-  readonly id: string
-  readonly no: number // (레거시 프로퍼티)
-  readonly name: string
-  readonly displayName: string
-  readonly isCrawlable: boolean // 크롤링 가능 여부
-  readonly isPopupEnabled: boolean // 새창 조회 가능 여부
-  readonly popupURL: string // 새창 조회 URL
+  readonly id: string;
+  readonly no: number; // (레거시 프로퍼티)
+  readonly name: string;
+  readonly displayName: string;
+  readonly isCrawlable: boolean; // 크롤링 가능 여부
+  readonly isPopupEnabled: boolean; // 새창 조회 가능 여부
+  readonly popupURL: string; // 새창 조회 URL
 }
 ```
 
@@ -89,17 +95,17 @@ interface ICarrier {
 
 ```ts
 interface ITracker {
-  readonly id: string
-  carrierId: string
-  label: string
-  trackingNumber: string
-  memos: string[]
-  updateLabel(newLabel: string): void
-  updateTrackingNumber(newTrackingNumber: string): void
-  updateCarrierId(newCarrierId: string): void
-  addMemo(): void
-  updateMemo(index: number, newMemo: string): void
-  deleteMemo(index: number): void
+  readonly id: string;
+  carrierId: string;
+  label: string;
+  trackingNumber: string;
+  memos: string[];
+  updateLabel(newLabel: string): void;
+  updateTrackingNumber(newTrackingNumber: string): void;
+  updateCarrierId(newCarrierId: string): void;
+  addMemo(): void;
+  updateMemo(index: number, newMemo: string): void;
+  deleteMemo(index: number): void;
 }
 ```
 
@@ -110,7 +116,9 @@ Use Case 레이어는 엔티티로 데이터를 캡슐화하고, 엔티티의 �
 
 ## Inversion of Control
 
-![Alt Communitaction Flow](/_images/inversion-of-control.png)
+![Alt Inversion Of Control](/_images/inversion-of-control.png#gh-light-mode-only)
+![Alt Inversion Of Control](/_images/inversion-of-control-dark.png#gh-dark-mode-only)
+
 `Repository`의 경우 `Adapter` 레이어에 해당하기 때문에 `Use Case`에서는 `Repository`에 대해서 알아서는 안됩니다. 그렇기 때문에 `Use Case`에서는 `Repository`를 추상화한 인터페이스를 가지고 구현하며, 이는 이후에 `Dependency Injection`를 통해 동작합니다.
 
 ## Repository interfaces
@@ -157,7 +165,8 @@ Use Case 레이어는 엔티티로 데이터를 캡슐화하고, 엔티티의 �
 
 클린 아키텍처의 아키텍처는 프레임워크에 의존하지 않아야 합니다. 즉, 프레임워크를 변경하더라고 최소한의 변경으로 적용이 가능하도록 구성해야 합니다. 하지만 NestJS는 `Decorator`를 사용하여 서비스를 구성하기 때문에 각 레이어에 의존성이 불가피합니다.
 
-![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection.png)
+![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection.png#gh-light-mode-only)
+![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection-dark.png#gh-dark-mode-only)
 
 그렇기 때문에 NestJS에 의존하지 않는 `adapters` 레이어에서 동작을 구현하고 `frameworks` 레이어에서는 부모(`controllers`, `usecases`, ...)를 상속 받아서 `Decorator`를 추가하고, 메서드를 오버라이드한 후 `super`를 사용해서 부모의 구현을 호출하도록 하였습니다.
 
@@ -204,7 +213,8 @@ Use Case 레이어는 엔티티로 데이터를 캡슐화하고, 엔티티의 �
 웹 서비스에서는 HTTP 통신에 대한 기능을 제공하는 `ClientHTTP`와 브라우저의 저장소 기능을 제공하는 `WebLocalStorage`를 `Infrastructures`에 정의하여 `Repositories`에 주입하여 사용하고 있습니다.  
 이는 최종적으로 각각 `fetch`와 `localStorage`를 주입 받아 동작하게 됩니다.
 
-![Alt Web API](/_images/web-api.png)
+![Alt Web API](/_images/web-api.png#gh-light-mode-only)
+![Alt Web API](/_images/web-api-dark.png#gh-dark-mode-only)
 
 #### Note.
 
@@ -301,4 +311,4 @@ DB_DIALECT=mysql
 
 # Thank You!
 
-부족함이 많은 글임에도 많은 관심 주셔서 감사합니다. 🙇‍♂️
+많은 도움과 관심 주셔서 감사합니다. 🙇‍♂️
