@@ -3,6 +3,8 @@
 This is a sample project for introducing Clean Architecture into services using TypeScript.  
 It is an extended version of the `React with Clean Architecture` project, which configures `React` and `React Native` services sharing the same domain. This setup allows for the expansion of various TypeScript-based services while sharing the same domain.
 
+#### Note.
+
 > (React with Clean Architecture)  
 > https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0
 
@@ -32,8 +34,21 @@ The flow of Clean Architecture can be briefly illustrated in the diagram above.
 
 ## Example
 
-This document uses the [`Parcel Tracking`](https://github.com/parcel-tracking) service, provided as an extension for the Whale browser, as an `example project`. This service is a simple application that crawls the delivery status information from the delivery company's tracking page using the delivery company and tracking number. Please refer to the example project's code.  
-(You can check the code or contribute through GitHub as it is open-source software.)
+This document uses the [`Parcel Tracking`](https://github.com/parcel-tracking) service, provided as an extension for the Whale browser, as an `example project`. This service is a simple application that crawls the delivery status information from the delivery company's tracking page using the delivery company and tracking number. Please refer to the example project's code.
+
+#### Note.
+
+> You can check the code or contribute through `GitHub` as it is open-source software.
+
+#### Note.
+
+> `Parcel Tracking` is an ongoing service, so please be mindful of the version.  
+> The version at the time of writing is as follows.
+>
+> - [core v1.0.0](https://github.com/parcel-tracking/core/tree/v1.0.0)
+> - [core-dev v1.0.0](https://github.com/parcel-tracking/core-dev/tree/v1.0.0)
+> - [api-serive v1.0.0](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
+> - [extension-for-whale v1.7.9](https://github.com/parcel-tracking/extension-for-whale/tree/v1.7.9)
 
 ## Configuration
 
@@ -46,10 +61,16 @@ The `core` repository of the domain area is composed, and the remaining services
 In the `example project`, there are three repositories: `core-dev` for developing and testing the core, `api-server` for the API server, and `extension-for-whale` for the extension client's code.  
 All these repositories use the `core` repository as a submodule.
 
+All services that share the domain, as mentioned above, are structured with a clean architecture and operate according to the previously discussed `Communication Flow`.
+
 # Core(Domain)
 
-> (example project)  
-> https://github.com/parcel-tracking/core
+In the domain layer, business rules and business logic are defined.
+
+#### Note.
+
+> Example project code  
+> [Parcel Tracking - core(v1.0.0)](https://github.com/parcel-tracking/core/tree/v1.0.0)
 
 ## Directory Structure
 
@@ -133,10 +154,12 @@ As the `Repository` can be used differently for each service, the abstracted Rep
 
 # API Server(api-server)
 
-> (example project)  
-> https://github.com/parcel-tracking/api-server
-
 The `example project` uses `NestJS`. `NestJS` is a widely used `Node.js` framework that facilitates the composition of object-oriented services through decorators, dependency injection mechanisms, and a module-based structured code.
+
+#### Note.
+
+> Example project code  
+> [Parcel Tracking - api-serive(v1.0.0)](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
 
 ## Directory Structure
 
@@ -182,10 +205,12 @@ The `example project` uses `MySQL` and `Sequelize` as the database. `NestJS` sup
 
 # Web Client(extension-for-whale)
 
-> (example project)  
-> https://github.com/parcel-tracking/extension-for-whale
-
 It is built and distributed as an extension for the Whale browser, but it is not significantly different from a simple general web service.
+
+#### Note.
+
+> Example project code  
+> [Parcel Tracking - extension-for-whale(v1.7.9)](https://github.com/parcel-tracking/extension-for-whale/tree/v1.7.9)
 
 ## Directory Structure
 

@@ -3,6 +3,8 @@
 타입스크립트를 사용하는 서비스에 클린 아키텍처 도입을 위한 샘플 프로젝트입니다.  
 기존의, 같은 도메인을 공유하는 `React`와 `React Native` 서비스 구성의 `React with Clean Architecture` 프로젝트의 확장 버전으로, 다양한 타입스크립트 기반의 서비스들이 같은 도메인을 공유하며 확장해 나갈 수 있도록 구성하였습니다.
 
+#### Note.
+
 > (React with Clean Architecture)  
 > https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0
 
@@ -33,8 +35,21 @@
 ## Example
 
 이 글은 웨일 브라우저의 확장 프로그램으로 서비스 중인 [`택배 배송 조회(Parcel Tracking)`](https://github.com/parcel-tracking)을 `예시 프로젝트`로 사용합니다.  
-위 서비스는 택배사와 운송장 번호를 가지고 해당 택배사의 배송 조회 페이지를 크롤링하여 현재 배송 상태 정보를 보여주는 간단한 서비스입니다. `예시 프로젝트`의 코드를 함께 참고해주세요.  
-(오픈 소스 소프트웨어로 `Github`를 통해 코드를 확인하거나 기여할 수 있습니다.)
+위 서비스는 택배사와 운송장 번호를 가지고 해당 택배사의 배송 조회 페이지를 크롤링하여 현재 배송 상태 정보를 보여주는 간단한 서비스입니다. `예시 프로젝트`의 코드를 함께 참고해주세요.
+
+#### Note.
+
+> 예시 프로젝트는 오픈 소스 소프트웨어로 `Github`를 통해 코드를 확인하거나 기여할 수 있습니다.
+
+#### Note.
+
+> `Parcel Tracking`는 서비스 중이기 때문에 버전에 유의해주세요.  
+> 글 작성 시점의 버전은 아래와 같습니다.
+>
+> - [core v1.0.0](https://github.com/parcel-tracking/core/tree/v1.0.0)
+> - [core-dev v1.0.0](https://github.com/parcel-tracking/core-dev/tree/v1.0.0)
+> - [api-serive v1.0.0](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
+> - [extension-for-whale v1.7.9](https://github.com/parcel-tracking/extension-for-whale/tree/v1.7.9)
 
 ## Configuration
 
@@ -47,10 +62,16 @@
 `예시 프로젝트`에서는 core를 개발하고 테스트하는 `core-dev` 리포지토리와 API 서버에 해당하는 `api-server` 리포지토리 그리고 확장 프로그램의 클라이언트에 해당하는 `extension-for-whale` 리포지토리가 있습니다.  
 이들 리포지토리는 모두 `core` 리포지토리를 서브모듈로 사용합니다.
 
+위와 같이 도메인을 공유하는 모든 서비스는 클린 아키텍처로 구성되며, 앞서 이야기한 `Communitaction Flow`를 따라 동작합니다.
+
 # Core(Domain)
 
-> (예시 프로젝트)  
-> https://github.com/parcel-tracking/core
+도메인 레이어에서는 비즈니스 규칙과 비즈니스 로직을 정의합니다.
+
+#### Note.
+
+> 예시 프로젝트 코드  
+> [Parcel Tracking - core(v1.0.0)](https://github.com/parcel-tracking/core/tree/v1.0.0)
 
 ## Directory Structure
 
@@ -135,10 +156,12 @@ Use Case 레이어는 엔티티로 데이터를 캡슐화하고, 엔티티의 �
 
 # API Server(api-server)
 
-> (예시 프로젝트)  
-> https://github.com/parcel-tracking/api-server
-
 `예시 프로젝트`에서는 `NestJS`를 사용하였습니다. `NestJS`는 많이 사용되고 있는 `Node.js` 프레임워크이며, 데코레이터와 의존성 주입 매커니즘, 모듈 기반의 구조화된 코드를 통해 객체 지향 서비스를 구성하는 데 용이합니다.
+
+#### Note.
+
+> 예시 프로젝트 코드  
+> [Parcel Tracking - api-serive(v1.0.0)](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
 
 ## Directory Structure
 
@@ -184,10 +207,12 @@ Use Case 레이어는 엔티티로 데이터를 캡슐화하고, 엔티티의 �
 
 # Web Client(extension-for-whale)
 
-> (예시 프로젝트)  
-> https://github.com/parcel-tracking/extension-for-whale
-
 웨일 브라우저의 확장프로그램으로 빌드되어 배포하지만, 간단한 일반적인 웹 서비스와 크게 다르지 않습니다.
+
+#### Note.
+
+> 예시 프로젝트 코드  
+> [Parcel Tracking - extension-for-whale(v1.7.9)](https://github.com/parcel-tracking/extension-for-whale/tree/v1.7.9)
 
 ## Directory Structure
 
@@ -275,7 +300,7 @@ $ npm install
 
 #### Note.
 
-> `예시 프로젝트(Parcel Tracking)`는 운영중인 서비스이기 때문에, 작성된 내용과 다르게 업데이트 될 수 있어서 현재 문서 작성 시점의 버전 브랜치로 클론하였습니다.
+> `예시 프로젝트(Parcel Tracking)`는 서비스 중이기 때문에, 현재 글 작성 버전의 브랜치로 클론 합니다.
 
 ## Settings
 
@@ -311,4 +336,4 @@ DB_DIALECT=mysql
 
 # Thank You!
 
-많은 도움과 관심 주셔서 감사합니다. 🙇‍♂️
+모든 지원과 관심에 감사드립니다. 🙇‍♂️
