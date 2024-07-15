@@ -49,7 +49,7 @@
 > - [core v1.0.0](https://github.com/parcel-tracking/core/tree/v1.0.0)
 > - [core-dev v1.0.0](https://github.com/parcel-tracking/core-dev/tree/v1.0.0)
 > - [api-serive v1.0.0](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
-> - [extension-for-whale v1.7.9](https://github.com/parcel-tracking/extension-for-whale/tree/v1.7.9)
+> - [extension-for-whale v1.8.1](https://github.com/parcel-tracking/extension-for-whale/tree/v1.8.1)
 
 ## Configuration
 
@@ -102,13 +102,13 @@
 
 ```ts
 interface ICarrier {
-  readonly id: string;
-  readonly no: number; // (레거시 프로퍼티)
-  readonly name: string;
-  readonly displayName: string;
-  readonly isCrawlable: boolean; // 크롤링 가능 여부
-  readonly isPopupEnabled: boolean; // 새창 조회 가능 여부
-  readonly popupURL: string; // 새창 조회 URL
+  readonly id: string
+  readonly no: number // (레거시 프로퍼티)
+  readonly name: string
+  readonly displayName: string
+  readonly isCrawlable: boolean // 크롤링 가능 여부
+  readonly isPopupEnabled: boolean // 새창 조회 가능 여부
+  readonly popupURL: string // 새창 조회 URL
 }
 ```
 
@@ -116,17 +116,17 @@ interface ICarrier {
 
 ```ts
 interface ITracker {
-  readonly id: string;
-  carrierId: string;
-  label: string;
-  trackingNumber: string;
-  memos: string[];
-  updateLabel(newLabel: string): void;
-  updateTrackingNumber(newTrackingNumber: string): void;
-  updateCarrierId(newCarrierId: string): void;
-  addMemo(): void;
-  updateMemo(index: number, newMemo: string): void;
-  deleteMemo(index: number): void;
+  readonly id: string
+  carrierId: string
+  label: string
+  trackingNumber: string
+  memos: string[]
+  updateLabel(newLabel: string): void
+  updateTrackingNumber(newTrackingNumber: string): void
+  updateCarrierId(newCarrierId: string): void
+  addMemo(): void
+  updateMemo(index: number, newMemo: string): void
+  deleteMemo(index: number): void
 }
 ```
 
@@ -212,7 +212,7 @@ Use Case 레이어는 엔티티로 데이터를 캡슐화하고, 엔티티의 �
 #### Note.
 
 > 예시 프로젝트 코드  
-> [Parcel Tracking - extension-for-whale(v1.7.9)](https://github.com/parcel-tracking/extension-for-whale/tree/v1.7.9)
+> [Parcel Tracking - extension-for-whale(v1.8.1)](https://github.com/parcel-tracking/extension-for-whale/tree/v1.8.1)
 
 ## Directory Structure
 
@@ -287,7 +287,7 @@ $ npm install
 ### extension-for-whale
 
 ```
-$ git clone --branch v1.7.9 --single-branch https://github.com/parcel-tracking/extension-for-whale.git
+$ git clone --branch v1.8.1 --single-branch https://github.com/parcel-tracking/extension-for-whale.git
 ```
 
 ```

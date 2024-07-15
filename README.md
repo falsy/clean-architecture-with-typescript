@@ -48,7 +48,7 @@ This document uses the [`Parcel Tracking`](https://github.com/parcel-tracking) s
 > - [core v1.0.0](https://github.com/parcel-tracking/core/tree/v1.0.0)
 > - [core-dev v1.0.0](https://github.com/parcel-tracking/core-dev/tree/v1.0.0)
 > - [api-serive v1.0.0](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
-> - [extension-for-whale v1.7.9](https://github.com/parcel-tracking/extension-for-whale/tree/v1.7.9)
+> - [extension-for-whale v1.8.1](https://github.com/parcel-tracking/extension-for-whale/tree/v1.8.1)
 
 ## Configuration
 
@@ -101,13 +101,13 @@ Based on the above service definitions, we define the entities.
 
 ```ts
 interface ICarrier {
-  readonly id: string;
-  readonly no: number; // (Legacy properties)
-  readonly name: string;
-  readonly displayName: string;
-  readonly isCrawlable: boolean;
-  readonly isPopupEnabled: boolean;
-  readonly popupURL: string;
+  readonly id: string
+  readonly no: number // (Legacy properties)
+  readonly name: string
+  readonly displayName: string
+  readonly isCrawlable: boolean
+  readonly isPopupEnabled: boolean
+  readonly popupURL: string
 }
 ```
 
@@ -115,17 +115,17 @@ interface ICarrier {
 
 ```ts
 interface ITracker {
-  readonly id: string;
-  carrierId: string;
-  label: string;
-  trackingNumber: string;
-  memos: string[];
-  updateLabel(newLabel: string): void;
-  updateTrackingNumber(newTrackingNumber: string): void;
-  updateCarrierId(newCarrierId: string): void;
-  addMemo(): void;
-  updateMemo(index: number, newMemo: string): void;
-  deleteMemo(index: number): void;
+  readonly id: string
+  carrierId: string
+  label: string
+  trackingNumber: string
+  memos: string[]
+  updateLabel(newLabel: string): void
+  updateTrackingNumber(newTrackingNumber: string): void
+  updateCarrierId(newCarrierId: string): void
+  addMemo(): void
+  updateMemo(index: number, newMemo: string): void
+  deleteMemo(index: number): void
 }
 ```
 
@@ -210,7 +210,7 @@ It is built and distributed as an extension for the Whale browser, but it is not
 #### Note.
 
 > Example project code  
-> [Parcel Tracking - extension-for-whale(v1.7.9)](https://github.com/parcel-tracking/extension-for-whale/tree/v1.7.9)
+> [Parcel Tracking - extension-for-whale(v1.8.1)](https://github.com/parcel-tracking/extension-for-whale/tree/v1.8.1)
 
 ## Directory Structure
 
@@ -284,7 +284,7 @@ $ npm install
 ### extension-for-whale
 
 ```
-$ git clone --branch v1.7.9 --single-branch https://github.com/parcel-tracking/extension-for-whale.git
+$ git clone --branch v1.8.1 --single-branch https://github.com/parcel-tracking/extension-for-whale.git
 ```
 
 ```
