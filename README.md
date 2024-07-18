@@ -328,7 +328,7 @@ We are always looking for new ideas and suggestions to improve and expand this p
 
 # License
 
-[WTFPL License](http://www.wtfpl.net/about/)
+For more details, see the LICENSE file.
 
 # Thank You!
 
