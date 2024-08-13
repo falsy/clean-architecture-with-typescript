@@ -38,10 +38,6 @@ This document uses the [`Parcel Tracking`](https://github.com/parcel-tracking) s
 
 #### Note.
 
-> You can check the code or contribute through `GitHub` as it is open-source software.
-
-#### Note.
-
 > `Parcel Tracking` is an ongoing service, so please be mindful of the version.  
 > The version at the time of writing is as follows.
 >
