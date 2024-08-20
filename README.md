@@ -5,8 +5,17 @@ It is an extended version of the `React with Clean Architecture` project, which 
 
 #### Note.
 
-> (React with Clean Architecture)  
-> https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0
+> This document is a work in progress as I study OOP, DDD, Clean Architecture, and related topics. Since my knowledge is still growing, there may be parts that I have misunderstood or explained incorrectly.
+> If you find any issues or have suggestions for improvement, please feel free to submit them through issues or pull requests, and I will incorporate them. ☺️
+
+> \+ My English is not perfect, so please bear with me.
+
+#### Note.
+
+> For a domain-driven, clean architecture-based React application setup, rather than implementing clean architecture across the entire service, please refer to the project below.
+
+> (Domain-driven React Architecture)  
+> https://github.com/falsy/domain-driven-react-architecture
 
 ## Languages
 
@@ -317,10 +326,6 @@ DB_DIALECT=mysql
 ```
 
 The data of the currently used DB in the service can be downloaded [`here`](/_sql/parcel-tracking.sql).
-
-# Contributions
-
-We are always looking for new ideas and suggestions to improve and expand this project. If you have any improvements or new ideas, please contribute at any time! You can submit a `Pull request` or open an `Issue` on the GitHub repository. Your help and collaboration greatly contribute to the further development of this project.
 
 # License
 

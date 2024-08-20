@@ -5,8 +5,14 @@
 
 #### Note.
 
-> (React with Clean Architecture)  
-> https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0
+> 이 문서는 제가 OOP, DDD, 클린 아키텍처 및 관련 주제를 공부하면서 진행 중인 작업입니다. 아직 지식이 부족하기 때문에 제가 오해하거나 잘못 설명한 부분이 있을 수 있습니다. 문제점을 발견하거나 개선을 위한 제안 사항이 있으면 이슈 또는 풀 리퀘스트를 통해 제출해 주세요. ☺️
+
+#### Note.
+
+> 서비스에 전반에 클린 아키텍처를 구현하기보다 도메인 주도의 클린 아키텍처 기반 React 애플리케이션 설정을 위해서는 아래 프로젝트를 참고해 주세요.
+
+> (Domain-driven React Architecture)  
+> https://github.com/falsy/domain-driven-react-architecture
 
 ## Languages
 
@@ -320,11 +326,6 @@ DB_DIALECT=mysql
 ```
 
 현재 서비스에 사용하는 DB의 데이터는 [`여기`](/_sql/parcel-tracking.sql)에서 다운로드 받아 사용할 수 있습니다.
-
-# Contributions
-
-이 프로젝트를 개선하고 확장하기 위해 항상 새로운 아이디어와 제안을 기다리고 있습니다. 만약 개선할 부분이 있거나 새로운 아이디어가 있다면 언제든지 기여해 주세요! `풀 리퀘스트`를 제출하거나 깃허브 리포지토리에 `이슈`를 열어 주시면 됩니다.  
-여러분의 도움과 협력이 이 프로젝트를 더욱 발전시키는 데 큰 힘이 됩니다.
 
 # 라이센스
 
