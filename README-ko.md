@@ -327,7 +327,7 @@ DB_DIALECT=mysql
 
 현재 서비스에 사용하는 DB의 데이터는 [`여기`](/_sql/parcel-tracking.sql)에서 다운로드 받아 사용할 수 있습니다.
 
-# 라이센스
+# License
 
 자세한 내용은 LICENSE 파일을 참조하세요.
 
