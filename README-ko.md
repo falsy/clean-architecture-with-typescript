@@ -41,17 +41,14 @@
 ## Example
 
 이 글은 웨일 브라우저의 확장 프로그램으로 서비스 중인 [`택배 배송 조회(Parcel Tracking)`](https://github.com/parcel-tracking)을 `예시 프로젝트`로 사용합니다.  
-위 서비스는 택배사와 운송장 번호를 가지고 해당 택배사의 배송 조회 페이지를 크롤링하여 현재 배송 상태 정보를 보여주는 간단한 서비스입니다. `예시 프로젝트`의 코드를 함께 참고해주세요.
+위 서비스는 택배사와 운송장 번호를 가지고 해당 택배사의 배송 조회 페이지를 크롤링하여 현재 배송 상태 정보를 보여주는 간단한 서비스입니다. 예시 프로젝트의 코드를 함께 참고해주세요.
 
 #### Note.
 
-> `Parcel Tracking`는 서비스 중이기 때문에 버전에 유의해주세요.  
-> 글 작성 시점의 버전은 아래와 같습니다.
->
-> - [core v1.0.0](https://github.com/parcel-tracking/core/tree/v1.0.0)
-> - [core-dev v1.0.0](https://github.com/parcel-tracking/core-dev/tree/v1.0.0)
-> - [api-serive v1.0.0](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
-> - [extension-for-whale v1.8.1](https://github.com/parcel-tracking/extension-for-whale/tree/v1.8.1)
+> - [core](https://github.com/parcel-tracking/core)
+> - [core-dev](https://github.com/parcel-tracking/core-dev)
+> - [api-serive](https://github.com/parcel-tracking/api-server)
+> - [extension-for-whale](https://github.com/parcel-tracking/extension-for-whale)
 
 ## Configuration
 
@@ -73,7 +70,7 @@
 #### Note.
 
 > 예시 프로젝트 코드  
-> [Parcel Tracking - core(v1.0.0)](https://github.com/parcel-tracking/core/tree/v1.0.0)
+> [Parcel Tracking - Core](https://github.com/parcel-tracking/core)
 
 ## Directory Structure
 
@@ -108,9 +105,9 @@ interface ICarrier {
   readonly no: number // (레거시 프로퍼티)
   readonly name: string
   readonly displayName: string
-  readonly isCrawlable: boolean // 크롤링 가능 여부
-  readonly isPopupEnabled: boolean // 새창 조회 가능 여부
-  readonly popupURL: string // 새창 조회 URL
+  readonly isCrawlable: boolean
+  readonly isPopupEnabled: boolean
+  readonly popupURL: string
 }
 ```
 
@@ -156,14 +153,14 @@ interface ITracker {
 
 > `예시 프로젝트`의 TrackerUseCase에서 tracker의 고유한 ID 값을 위해 `generateUUID`라는 메서드를 사용하고 있습니다. 이는 Domain 영역에서는 외부 모듈을 사용하지 않고 순수하게 타입스크립트만으로 구성하고자 하였으며, 추가되는 tracker가 중요한 값이 아니라고 판단했기 때문입니다. 하지만 일반적으로 UUID 값이 필요하다면 `crypto` 또는 `uuid` 라이브러리를 캡슐화 한 후 의존성 주입하여 사용하는 것이 더 좋을 것 같습니다.
 
-# API Server(api-server)
+# API Server
 
 `예시 프로젝트`에서는 `NestJS`를 사용하였습니다. `NestJS`는 많이 사용되고 있는 `Node.js` 프레임워크이며, 데코레이터와 의존성 주입 매커니즘, 모듈 기반의 구조화된 코드를 통해 객체 지향 서비스를 구성하는 데 용이합니다.
 
 #### Note.
 
 > 예시 프로젝트 코드  
-> [Parcel Tracking - api-serive(v1.0.0)](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
+> [Parcel Tracking - API Server](https://github.com/parcel-tracking/api-server)
 
 ## Directory Structure
 
@@ -207,14 +204,14 @@ interface ITracker {
 
 예시 프로젝트에서는 데이터베이스로 `MySQL`과 `Sequelize`를 사용하였습니다. 그리고 `NestJS`에서는 위와 같은 환경을 간편하게 사용할 수 있도록 지원하고 있어서 DB와 관련된 로직은 `adapter` 레이어의 `Repository`에서 구현하지 않고 `frameworks` 레이어의 `Repository`에서 NestJS의 의존성 주입을 통해 구현하였습니다.
 
-# Web Client(extension-for-whale)
+# Web Client
 
 웨일 브라우저의 확장프로그램으로 빌드되어 배포하지만, 간단한 일반적인 웹 서비스와 크게 다르지 않습니다.
 
 #### Note.
 
 > 예시 프로젝트 코드  
-> [Parcel Tracking - extension-for-whale(v1.8.1)](https://github.com/parcel-tracking/extension-for-whale/tree/v1.8.1)
+> [Parcel Tracking - Web Client](https://github.com/parcel-tracking/extension-for-whale)
 
 ## Directory Structure
 
@@ -252,9 +249,58 @@ interface ITracker {
 ## Framework
 
 예시 프로젝트에서는 `React`와 `Webpack`을 사용하여 개발하였습니다.  
-`di` 디렉토리에서 의존성을 주입한 후에 `Controllers`에서 정의한 메서드들을 활용하여 서비스를 구성합니다.
+`api-server`와 마찬가지로 클라이언트를 구성하는 프레임워크는 `frameworks` 레이어 안에서 `DI(Dependency injection)`을 통한 데이터에만 의존하도록 설계되어 있기 때문에 아키텍처는 프레임워크에 의존하지 않으며, 변경이나 교체에 유연하게 대처할 수 있습니다.
 
-`api-server`와 마찬가지로 클라이언트를 구성하는 프레임워크는 `frameworks` 레이어 안에서 `DI`을 통한 데이터에만 의존하도록 설계되어 있기 때문에 아키텍처는 프레임워크에 의존하지 않으며, 변경이나 교체에 유연하게 대처할 수 있습니다.
+`api-server`에서는사용한 Nestjs 프레임워크에서 `DI`를 지원하지만 클라이언트에는 따로 지원하지 않기 때문에 React의 Context API와 Provider를 사용해서 `DI`를 구현하였습니다.
+
+```ts
+// /src/frameworks/di/DependencyProvider.tsx
+...
+
+export const DependencyContext = createContext<Dependencies | null>(null)
+
+export default function DependencyProvider({
+  children
+}: {
+  children: ReactNode
+}) {
+  const httpClient = globalThis.fetch.bind(globalThis)
+  const browserStorage = (window as any).whale.storage.local
+  const infrastructures = infrastructuresFn(httpClient, browserStorage)
+  const repositories = repositoriesFn(
+    infrastructures.clientHTTP,
+    infrastructures.browserStorage
+  )
+  const useCases = useCasesFn(repositories)
+  const controllers = controllersFn(useCases)
+
+  const dependencies = {
+    controllers
+  }
+
+  return (
+    <DependencyContext.Provider value={dependencies}>
+      {children}
+    </DependencyContext.Provider>
+  )
+}
+```
+
+그리고 Hook을 통해서 `DI`한 controllers를 사용하여 서비스를 구성합니다.
+
+```ts
+// /src/frameworks/hooks/useDependencies.tsx
+import { useContext } from "react"
+import { DependencyContext } from "../di/DependencyProvider"
+
+export default function useDependencies() {
+  const dependencies = useContext(DependencyContext)
+  if (!dependencies) {
+    throw new Error("Dependencies not found in context")
+  }
+  return dependencies
+}
+```
 
 # Run Project
 
@@ -266,7 +312,7 @@ interface ITracker {
 
 Nestjs, Sequelize, MySQL
 
-### extension-for-whale
+### web-client
 
 Webpack, React, Emotion
 
@@ -275,7 +321,7 @@ Webpack, React, Emotion
 ### api-server
 
 ```
-$ git clone --branch v1.0.0 --single-branch https://github.com/parcel-tracking/api-server.git
+$ git clone https://github.com/parcel-tracking/api-server.git
 ```
 
 ```
@@ -286,10 +332,10 @@ $ cd api-server
 $ npm install
 ```
 
-### extension-for-whale
+### web-client
 
 ```
-$ git clone --branch v1.8.1 --single-branch https://github.com/parcel-tracking/extension-for-whale.git
+$ git clone https://github.com/parcel-tracking/extension-for-whale.git
 ```
 
 ```
@@ -300,13 +346,9 @@ $ cd extension-for-whale
 $ npm install
 ```
 
-#### Note.
-
-> `예시 프로젝트(Parcel Tracking)`는 서비스 중이기 때문에, 현재 글 작성 버전의 브랜치로 클론 합니다.
-
 ## Settings
 
-`api-server`는 로컬에서 동작하기 위해 DB(`MySQL`)설정이 추가로 필요합니다.  
+`api-server`는 로컬에서 동작하기 위해 DB(`MySQL`)설정과 환경 변수 설정이 필요합니다.
 `api-server`의 `root` 디렉토리에 아래와 같이 `.env` 파일을 추가로 만든 후 아래와 같은 형식으로 값을 추가합니다.
 
 ```
@@ -327,9 +369,27 @@ DB_DIALECT=mysql
 
 현재 서비스에 사용하는 DB의 데이터는 [`여기`](/_sql/parcel-tracking.sql)에서 다운로드 받아 사용할 수 있습니다.
 
-# License
+## Run
 
-자세한 내용은 LICENSE 파일을 참조하세요.
+### api-server
+
+```
+$ cd api-server
+```
+
+```
+$ npm start
+```
+
+### web-client
+
+```
+$ cd extension-for-whale
+```
+
+```
+$ npm start
+```
 
 # Thank You!
 

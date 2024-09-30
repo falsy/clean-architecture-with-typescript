@@ -5,8 +5,7 @@ It is an extended version of the `React with Clean Architecture` project, which 
 
 #### Note.
 
-> This document is a work in progress as I study OOP, DDD, Clean Architecture, and related topics. Since my knowledge is still growing, there may be parts that I have misunderstood or explained incorrectly.
-> If you find any issues or have suggestions for improvement, please feel free to submit them through issues or pull requests, and I will incorporate them. ☺️
+> This document is a work in progress as I study OOP, DDD, Clean Architecture, and related topics. Since my knowledge is still growing, there may be parts that I have misunderstood or explained incorrectly. If you find any issues or have suggestions for improvement, please feel free to submit them through issues or pull requests, and I will incorporate them. ☺️
 
 > \+ My English is not perfect, so please bear with me.
 
@@ -47,13 +46,10 @@ This document uses the [`Parcel Tracking`](https://github.com/parcel-tracking) s
 
 #### Note.
 
-> `Parcel Tracking` is an ongoing service, so please be mindful of the version.  
-> The version at the time of writing is as follows.
->
-> - [core v1.0.0](https://github.com/parcel-tracking/core/tree/v1.0.0)
-> - [core-dev v1.0.0](https://github.com/parcel-tracking/core-dev/tree/v1.0.0)
-> - [api-serive v1.0.0](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
-> - [extension-for-whale v1.8.1](https://github.com/parcel-tracking/extension-for-whale/tree/v1.8.1)
+> - [core](https://github.com/parcel-tracking/core)
+> - [core-dev](https://github.com/parcel-tracking/core-dev)
+> - [api-serive](https://github.com/parcel-tracking/api-server)
+> - [extension-for-whale](https://github.com/parcel-tracking/extension-for-whale)
 
 ## Configuration
 
@@ -75,7 +71,7 @@ In the domain layer, business rules and business logic are defined.
 #### Note.
 
 > Example project code  
-> [Parcel Tracking - core(v1.0.0)](https://github.com/parcel-tracking/core/tree/v1.0.0)
+> [Parcel Tracking - Core](https://github.com/parcel-tracking/core)
 
 ## Directory Structure
 
@@ -157,14 +153,14 @@ As the `Repository` can be used differently for each service, the abstracted Rep
 
 > In the TrackerUseCase of the `example project`, the `generateUUID` method is used to generate a unique ID for the tracker. This was done to avoid using external modules in the Domain area and purely composed of TypeScript, as the added tracker is not a critical value. However, generally, if a UUID is required, it is better to encapsulate libraries like `crypto` or `uuid` and use Dependency Injection.
 
-# API Server(api-server)
+# API Server
 
 The `example project` uses `NestJS`. `NestJS` is a widely used `Node.js` framework that facilitates the composition of object-oriented services through decorators, dependency injection mechanisms, and a module-based structured code.
 
 #### Note.
 
 > Example project code  
-> [Parcel Tracking - api-serive(v1.0.0)](https://github.com/parcel-tracking/api-server/tree/v1.0.0)
+> [Parcel Tracking - API Server](https://github.com/parcel-tracking/api-server)
 
 ## Directory Structure
 
@@ -208,14 +204,14 @@ In `Infrastructures`, the functionality of the `fetch API` is abstracted to defi
 
 The `example project` uses `MySQL` and `Sequelize` as the database. `NestJS` supports such an environment easily, so the DB-related logic is implemented in the `Repository` of the `frameworks` layer through NestJS's dependency injection, not in the `adapter` layer's `Repository`.
 
-# Web Client(extension-for-whale)
+# Web Client
 
 It is built and distributed as an extension for the Whale browser, but it is not significantly different from a simple general web service.
 
 #### Note.
 
 > Example project code  
-> [Parcel Tracking - extension-for-whale(v1.8.1)](https://github.com/parcel-tracking/extension-for-whale/tree/v1.8.1)
+> [Parcel Tracking - Web Client](https://github.com/parcel-tracking/extension-for-whale)
 
 ## Directory Structure
 
@@ -251,10 +247,59 @@ In the web service, `ClientHTTP`, providing HTTP communication functions, and `W
 
 ## Framework
 
-The example project was developed using `React` and `Webpack`.  
-After injecting dependencies in the `di` directory, the service is composed using the methods defined in `Controllers`.
+In the example project, development was done using `React` and `Webpack`.
+Similar to the `api-server`, the client-side `framework` is designed within the frameworks layer to depend solely on data through `DI(Dependency injection)`, ensuring that the architecture is not tied to any specific framework and can be easily adapted to changes or replacements.
 
-Similar to the `api-server`, the framework composing the client is designed to rely only on the data through `DI` within the `frameworks` layer. Therefore, the architecture does not depend on the framework and can flexibly handle changes or replacements.
+While the NestJS framework used in the `api-server` supports `DI`, the client does not have built-in support for it. Therefore, `DI` was implemented using React’s Context API and Provider.
+
+```ts
+// /src/frameworks/di/DependencyProvider.tsx
+...
+
+export const DependencyContext = createContext<Dependencies | null>(null)
+
+export default function DependencyProvider({
+  children
+}: {
+  children: ReactNode
+}) {
+  const httpClient = globalThis.fetch.bind(globalThis)
+  const browserStorage = (window as any).whale.storage.local
+  const infrastructures = infrastructuresFn(httpClient, browserStorage)
+  const repositories = repositoriesFn(
+    infrastructures.clientHTTP,
+    infrastructures.browserStorage
+  )
+  const useCases = useCasesFn(repositories)
+  const controllers = controllersFn(useCases)
+
+  const dependencies = {
+    controllers
+  }
+
+  return (
+    <DependencyContext.Provider value={dependencies}>
+      {children}
+    </DependencyContext.Provider>
+  )
+}
+```
+
+And services are composed by using controllers injected via `DI` through Hooks.
+
+```ts
+// /src/frameworks/hooks/useDependencies.tsx
+import { useContext } from "react"
+import { DependencyContext } from "../di/DependencyProvider"
+
+export default function useDependencies() {
+  const dependencies = useContext(DependencyContext)
+  if (!dependencies) {
+    throw new Error("Dependencies not found in context")
+  }
+  return dependencies
+}
+```
 
 # Run Project
 
@@ -266,7 +311,7 @@ The `example project(Parcel Tracking)` can be downloaded and run locally.
 
 Nestjs, Sequelize, MySQL
 
-### extension-for-whale
+### web-client
 
 Webpack, React, Emotion
 
@@ -275,7 +320,7 @@ Webpack, React, Emotion
 ### api-server
 
 ```
-$ git clone --branch v1.0.0 --single-branch https://github.com/parcel-tracking/api-server.git
+$ git clone https://github.com/parcel-tracking/api-server.git
 ```
 
 ```
@@ -286,10 +331,10 @@ $ cd api-server
 $ npm install
 ```
 
-### extension-for-whale
+### web-client
 
 ```
-$ git clone --branch v1.8.1 --single-branch https://github.com/parcel-tracking/extension-for-whale.git
+$ git clone https://github.com/parcel-tracking/extension-for-whale.git
 ```
 
 ```
@@ -300,14 +345,9 @@ $ cd extension-for-whale
 $ npm install
 ```
 
-#### Note.
-
-> Since the `example project(Parcel Tracking)` is a live service, it may be updated differently from the described content, so it was cloned with the version branch at the time of document writing.
-
 ## Settings
 
-To run the `api-server` locally, additional DB (`MySQL`) settings are required.  
-Create an additional `.env` file in the `root` directory of the `api-server` and add values as follows.
+To run the `api-server` locally, you need to set up the database(`MySQL`) and environment variables. In the root directory of the `api-server`, create an additional .env file and add values in the format shown below.
 
 ```
 $ cd api-server
@@ -327,9 +367,27 @@ DB_DIALECT=mysql
 
 The data of the currently used DB in the service can be downloaded [`here`](/_sql/parcel-tracking.sql).
 
-# License
+## Run
 
-For more details, see the LICENSE file.
+### api-server
+
+```
+$ cd api-server
+```
+
+```
+$ npm start
+```
+
+### web-client
+
+```
+$ cd extension-for-whale
+```
+
+```
+$ npm start
+```
 
 # Thank You!
 
