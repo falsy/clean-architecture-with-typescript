@@ -1,7 +1,6 @@
 # Clean Architecture with TypeScript
 
-This is a sample project for introducing Clean Architecture into services using TypeScript.  
-It is an extended version of the `React with Clean Architecture` project, which configures `React` and `React Native` services sharing the same domain. This setup allows for the expansion of various TypeScript-based services while sharing the same domain.
+This is a sample project for adopting Clean Architecture in a TypeScript-based service. It is an extended version of a previous project([v2](https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0)), which used a monorepo to structure `React(Web)` and `React Native(Mobile)` services sharing the same domain. This setup allows various TypeScript-based services to share the same domain and expand seamlessly
 
 #### Note.
 
@@ -11,7 +10,7 @@ It is an extended version of the `React with Clean Architecture` project, which 
 
 #### Note.
 
-> For a domain-driven, clean architecture-based React application setup, rather than implementing clean architecture across the entire service, please refer to the project below.  
+> For adopting Clean Architecture specifically in a React project, rather than the entire service structure, please refer to the project below.  
 > https://github.com/falsy/react-width-clean-architecture
 
 ## Languages

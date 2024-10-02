@@ -1,7 +1,7 @@
 # Clean Architecture with TypeScript
 
 타입스크립트를 사용하는 서비스에 클린 아키텍처 도입을 위한 샘플 프로젝트입니다.  
-기존의, 같은 도메인을 공유하는 `React`와 `React Native` 서비스 구성의 `React with Clean Architecture` 프로젝트의 확장 버전으로, 다양한 타입스크립트 기반의 서비스들이 같은 도메인을 공유하며 확장해 나갈 수 있도록 구성하였습니다.
+기존의, 모노레포를 사용하여 같은 도메인을 공유하는 `React(Web)`와 `React Native(Mobile)` 서비스 구성 프로젝트([v2](https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0))의 확장된 버전으로, 다양한 타입스크립트 기반의 서비스들이 같은 도메인을 공유하며 확장해 나갈 수 있도록 구성하였습니다.
 
 #### Note.
 
@@ -9,7 +9,7 @@
 
 #### Note.
 
-> 서비스에 전반에 클린 아키텍처를 구현하기보다 도메인 주도의 클린 아키텍처 기반 React 애플리케이션 설정을 위해서는 아래 프로젝트를 참고해 주세요.  
+> 전체 서비스 구성의 클린 아키텍처 도입이 아닌, React 프로젝트에 클린 아키텍처 도입은 아래의 프로젝트를 참고해주세요.  
 > https://github.com/falsy/react-width-clean-architecture
 
 ## Languages
