@@ -9,10 +9,8 @@
 
 #### Note.
 
-> 서비스에 전반에 클린 아키텍처를 구현하기보다 도메인 주도의 클린 아키텍처 기반 React 애플리케이션 설정을 위해서는 아래 프로젝트를 참고해 주세요.
-
-> (Domain-driven React Architecture)  
-> https://github.com/falsy/domain-driven-react-architecture
+> 서비스에 전반에 클린 아키텍처를 구현하기보다 도메인 주도의 클린 아키텍처 기반 React 애플리케이션 설정을 위해서는 아래 프로젝트를 참고해 주세요.  
+> https://github.com/falsy/react-width-clean-architecture
 
 ## Languages
 

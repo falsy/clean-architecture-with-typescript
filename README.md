@@ -11,10 +11,8 @@ It is an extended version of the `React with Clean Architecture` project, which 
 
 #### Note.
 
-> For a domain-driven, clean architecture-based React application setup, rather than implementing clean architecture across the entire service, please refer to the project below.
-
-> (Domain-driven React Architecture)  
-> https://github.com/falsy/domain-driven-react-architecture
+> For a domain-driven, clean architecture-based React application setup, rather than implementing clean architecture across the entire service, please refer to the project below.  
+> https://github.com/falsy/react-width-clean-architecture
 
 ## Languages
 
