@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "esModuleInterop": true,
+    "rootDir": ".",
+    "types": ["jest"]
+  },
+  "include": ["src/**/*", "src/__test__/**/*"]
+}

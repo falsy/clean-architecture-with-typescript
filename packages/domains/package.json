@@ -1,0 +1,8 @@
+{
+  "name": "domains",
+  "packageManager": "yarn@4.2.2",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  }
+}
