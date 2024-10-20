@@ -17,4 +17,5 @@ const App = () => {
     </React.StrictMode>
   )
 }
+
 root.render(<App />)

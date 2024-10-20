@@ -12,46 +12,28 @@ export default class BrowserStorage implements IBrowserStorage {
 
   getItem(key: string): Promise<string | null> {
     return new Promise(async (resolve) => {
-      // dev
-      if (!(window as any).whale) {
-        resolve(window.localStorage.getItem(key))
-        return
-      }
-      this.browserStorage.get([key], (data) => {
-        resolve(data)
-      })
+      resolve(window.localStorage.getItem(key))
     })
   }
 
   setItem(key: string, value: string): Promise<boolean> {
     return new Promise((resolve) => {
-      // dev
-      if (!(window as any).whale) {
-        window.localStorage.setItem(key, value)
-        resolve(true)
-        return
-      }
-      const data = {}
-      data[key] = value
-      this.browserStorage.set(data, () => {
-        resolve(true)
-      })
+      window.localStorage.setItem(key, value)
+      resolve(true)
     })
   }
 
   removeItem(key: string): Promise<boolean> {
     return new Promise((resolve) => {
-      this.browserStorage.remove(key, () => {
-        resolve(true)
-      })
+      window.localStorage.removeItem(key)
+      resolve(true)
     })
   }
 
   clear(): Promise<boolean> {
     return new Promise((resolve) => {
-      this.browserStorage.clear(() => {
-        resolve(true)
-      })
+      window.localStorage.clear()
+      resolve(true)
     })
   }
 }

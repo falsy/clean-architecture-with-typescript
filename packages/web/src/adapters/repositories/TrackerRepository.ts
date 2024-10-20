@@ -37,8 +37,7 @@ export default class TrackerRepository implements ITrackerRepository {
 
   async getTrackers(): Promise<ITrackerDTO[]> {
     try {
-      const data = await this.browserStorage.getItem(TRACKER_LIST)
-      const trackerList = data[TRACKER_LIST]
+      const trackerList = await this.browserStorage.getItem(TRACKER_LIST)
 
       if (typeof trackerList !== "string") {
         return []
@@ -122,7 +121,6 @@ export default class TrackerRepository implements ITrackerRepository {
   async clearTrackers(): Promise<boolean> {
     try {
       const data = await this.browserStorage.removeItem(TRACKER_LIST)
-
       return data
     } catch (error) {
       console.error(error)

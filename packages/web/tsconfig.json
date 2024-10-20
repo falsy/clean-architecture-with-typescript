@@ -12,7 +12,7 @@
     "jsxImportSource": "@emotion/react",
     "baseUrl": "./",
     "rootDir": "./",
-    "types": ["jest"]
+    "types": ["@testing-library/jest-dom", "jest"]
   },
   "include": ["./src/**/*", "setupTests.ts"],
   "exclude": ["node_modules", "dist"]
