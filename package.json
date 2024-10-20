@@ -11,6 +11,13 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "clean": "rimraf packages/*/dist",
+    "test:web": "yarn workspace web run test",
+    "test:domain": "yarn workspace domain run test",
+    "start:web": "yarn workspace web run start",
+    "start:api": "yarn workspace api-server run start"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.13",
     "@typescript-eslint/eslint-plugin": "^8.10.0",

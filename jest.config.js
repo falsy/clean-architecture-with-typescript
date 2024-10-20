@@ -3,6 +3,5 @@ module.exports = {
   moduleFileExtensions: ["js", "json", "ts"],
   testRegex: ".*\\.spec\\.ts$",
   collectCoverageFrom: ["**/*.ts"],
-  testEnvironment: "node",
-  roots: ["<rootDir>/packages"]
+  testEnvironment: "node"
 }

@@ -2,7 +2,6 @@
   "name": "api-server",
   "packageManager": "yarn@4.2.2",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "build": "nest build",
     "start": "NODE_ENV=development nest start",
