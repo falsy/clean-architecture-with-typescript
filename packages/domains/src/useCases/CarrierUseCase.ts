@@ -1,61 +1,38 @@
-import CarrierDTO from "../dtos/CarrierDTO";
-import LayerDTO from "../dtos/LayerDTO";
-import ICarrierDTO from "../dtos/interfaces/ICarrierDTO";
-import ILayerDTO from "../dtos/interfaces/ILayerDTO";
-import ICarrierRepository from "../repositories/interfaces/ICarrierRepository";
-import Carrier from "../entities/Carrier";
-import ICarrier from "../entities/interfaces/ICarrier";
-import ICarrierUseCase from "./interfaces/ICarrierUseCase";
+import CarrierDTO from "../dtos/CarrierDTO"
+import ICarrierDTO from "../dtos/interfaces/ICarrierDTO"
+import ICarrierRepository from "../repositories/interfaces/ICarrierRepository"
+import Carrier from "../entities/Carrier"
+import ICarrier from "../entities/interfaces/ICarrier"
+import ICarrierUseCase from "./interfaces/ICarrierUseCase"
 
 export default class CarrierUseCase implements ICarrierUseCase {
-  private carrierRepository: ICarrierRepository;
+  private carrierRepository: ICarrierRepository
 
   constructor(carrierRepository: ICarrierRepository) {
-    this.carrierRepository = carrierRepository;
+    this.carrierRepository = carrierRepository
   }
 
-  async getCarriers(): Promise<ILayerDTO<ICarrierDTO[]>> {
-    const { isError, message, data } =
-      await this.carrierRepository.getCarriers();
-
-    if (isError) {
-      return new LayerDTO({
-        isError,
-        message,
-      });
-    }
+  async getCarriers(): Promise<ICarrierDTO[]> {
+    const data = await this.carrierRepository.getCarriers()
 
     const carriers = data.map((carrierDTO: ICarrierDTO) => {
-      return this.convertToEntity(carrierDTO);
-    });
+      return this.convertToEntity(carrierDTO)
+    })
 
     const carrierDTOs = carriers.map((carrier: ICarrier) => {
-      return this.convertToDTO(carrier);
-    });
+      return this.convertToDTO(carrier)
+    })
 
-    return new LayerDTO({
-      data: carrierDTOs,
-    });
+    return carrierDTOs
   }
 
-  async getCarrier(carrierId: string): Promise<ILayerDTO<ICarrierDTO>> {
-    const { isError, message, data } = await this.carrierRepository.getCarrier(
-      carrierId
-    );
+  async getCarrier(carrierId: string): Promise<ICarrierDTO> {
+    const data = await this.carrierRepository.getCarrier(carrierId)
 
-    if (isError) {
-      return new LayerDTO({
-        isError,
-        message,
-      });
-    }
+    const carriers = this.convertToEntity(data)
+    const carrierDTOs = this.convertToDTO(carriers)
 
-    const carriers = this.convertToEntity(data);
-    const carrierDTOs = this.convertToDTO(carriers);
-
-    return new LayerDTO({
-      data: carrierDTOs,
-    });
+    return carrierDTOs
   }
 
   protected convertToEntity(carrierDTO: ICarrierDTO): ICarrier {
@@ -66,8 +43,8 @@ export default class CarrierUseCase implements ICarrierUseCase {
       displayName: carrierDTO.displayName,
       isCrawlable: carrierDTO.isCrawlable,
       isPopupEnabled: carrierDTO.isPopupEnabled,
-      popupURL: carrierDTO.popupURL,
-    });
+      popupURL: carrierDTO.popupURL
+    })
   }
 
   protected convertToDTO(carrier: ICarrier): ICarrierDTO {
@@ -78,7 +55,7 @@ export default class CarrierUseCase implements ICarrierUseCase {
       displayName: carrier.displayName,
       isCrawlable: carrier.isCrawlable,
       isPopupEnabled: carrier.isPopupEnabled,
-      popupURL: carrier.popupURL,
-    });
+      popupURL: carrier.popupURL
+    })
   }
 }
