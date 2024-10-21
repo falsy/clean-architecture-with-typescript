@@ -1,7 +1,9 @@
-import IDeliveryLocationVO from "../vos/interfaces/IDeliveryLocationVO"
-import IDeliveryProgressVO from "../vos/interfaces/IDeliveryProgressVO"
-import IDeliveryStateVO from "../vos/interfaces/IDeliveryStateVO"
-import IDeliveryDTO from "./interfaces/IDeliveryDTO"
+import {
+  IDeliveryDTO,
+  IDeliveryLocationVO,
+  IDeliveryProgressVO,
+  IDeliveryStateVO
+} from "domains"
 
 export default class DeliveryDTO implements IDeliveryDTO {
   readonly from: IDeliveryLocationVO

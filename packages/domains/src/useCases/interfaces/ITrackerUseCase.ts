@@ -1,5 +1,6 @@
 import IDeliveryDTO from "../../dtos/interfaces/IDeliveryDTO"
 import ITrackerDTO from "../../dtos/interfaces/ITrackerDTO"
+import { ITrackerParams } from "../../entities/interfaces/ITracker"
 
 export default interface ITrackerUseCase {
   getDelivery(carrierId: string, trackingNumber: string): Promise<IDeliveryDTO>
@@ -7,17 +8,20 @@ export default interface ITrackerUseCase {
   getTrackers(): Promise<ITrackerDTO[]>
   deleteTracker(trackerId: string): Promise<boolean>
   clearTrackers(): Promise<boolean>
-  updateCarrierId(tracker: ITrackerDTO, newCarrierId: string): Promise<boolean>
-  updateLabel(tracker: ITrackerDTO, newLabel: string): Promise<boolean>
+  updateCarrierId(
+    trackerParams: ITrackerParams,
+    newCarrierId: string
+  ): Promise<boolean>
+  updateLabel(trackerParams: ITrackerParams, newLabel: string): Promise<boolean>
   updateTrackingNumber(
-    tracker: ITrackerDTO,
+    trackerParams: ITrackerParams,
     newTrackingNumber: string
   ): Promise<boolean>
-  addMemo(tracker: ITrackerDTO): Promise<boolean>
+  addMemo(trackerParams: ITrackerParams): Promise<boolean>
   updateMemo(
-    tracker: ITrackerDTO,
+    trackerParams: ITrackerParams,
     index: number,
     newMemo: string
   ): Promise<boolean>
-  deleteMemo(tracker: ITrackerDTO, index: number): Promise<boolean>
+  deleteMemo(trackerParams: ITrackerParams, index: number): Promise<boolean>
 }

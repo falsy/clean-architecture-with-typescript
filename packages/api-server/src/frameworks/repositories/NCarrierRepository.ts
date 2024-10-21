@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common"
 import { InjectModel } from "@nestjs/sequelize"
-import { CarrierDTO, ICarrierDTO } from "domains"
+import { ICarrierDTO } from "domains"
+import CarrierDTO from "../../adapters/dtos/CarrierDTO"
 import CarrierRepository from "../../adapters/repositories/CarrierRepository"
 import CarrierModel from "../models/CarrierModel"
 

@@ -1,5 +1,5 @@
-import CarrierDTO from "../../dtos/CarrierDTO"
-import ICarrierDTO from "../../dtos/interfaces/ICarrierDTO"
+import { ICarrierDTO } from "domains"
+import CarrierDTO from "../../adapters/dtos/CarrierDTO"
 
 describe("CarrierDTO", () => {
   let carrierDTO: ICarrierDTO

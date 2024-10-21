@@ -1,10 +1,6 @@
 import * as cheerio from "cheerio"
-import {
-  IDeliveryDTO,
-  DeliveryDTO,
-  DeliveryLocationVO,
-  DeliveryProgressVO
-} from "domains"
+import { IDeliveryDTO, DeliveryLocationVO, DeliveryProgressVO } from "domains"
+import DeliveryDTO from "../../adapters/dtos/DeliveryDTO"
 import DeliveryStateGenerator from "../helpers/DeliveryStateGenerator"
 import IServerHTTP from "../../adapters/infrastructures/interfaces/IServerHTTP"
 import StringHelper from "../helpers/StringHelper"

@@ -1,4 +1,4 @@
-import ITrackerDTO from "./interfaces/ITrackerDTO"
+import { ITrackerDTO } from "domains"
 
 export default class TrackerDTO implements ITrackerDTO {
   readonly id: string

@@ -12,7 +12,7 @@ export default class CarrierRepository implements ICarrierRepository {
   async getCarriers(): Promise<ICarrier[]> {
     try {
       const res = await this.clientHTTP.get(`${API_URL}/carriers`)
-      const { data } = await res.json()
+      const data = await res.json()
       return data
     } catch (error) {
       console.error(error)
@@ -22,7 +22,7 @@ export default class CarrierRepository implements ICarrierRepository {
   async getCarrier(carrierId: string): Promise<ICarrier> {
     try {
       const res = await this.clientHTTP.get(`${API_URL}/carrier/${carrierId}`)
-      const { data } = await res.json()
+      const data = await res.json()
       return data
     } catch (error) {
       console.error(error)

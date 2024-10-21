@@ -1,4 +1,4 @@
-import ICarrierDTO from "./interfaces/ICarrierDTO"
+import { ICarrierDTO } from "domains"
 
 export default class CarrierDTO implements ICarrierDTO {
   readonly id: string

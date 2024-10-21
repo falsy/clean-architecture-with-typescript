@@ -1,11 +1,13 @@
-import DeliveryDTO from "../../dtos/DeliveryDTO"
-import IDeliveryDTO from "../../dtos/interfaces/IDeliveryDTO"
-import DeliveryLocationVO from "../../vos/DeliveryLocationVO"
-import DeliveryProgressVO from "../../vos/DeliveryProgressVO"
-import DeliveryStateVO from "../../vos/DeliveryStateVO"
-import IDeliveryLocationVO from "../../vos/interfaces/IDeliveryLocationVO"
-import IDeliveryProgressVO from "../../vos/interfaces/IDeliveryProgressVO"
-import IDeliveryStateVO from "../../vos/interfaces/IDeliveryStateVO"
+import {
+  IDeliveryDTO,
+  IDeliveryLocationVO,
+  IDeliveryProgressVO,
+  IDeliveryStateVO,
+  DeliveryLocationVO,
+  DeliveryProgressVO,
+  DeliveryStateVO
+} from "domains"
+import DeliveryDTO from "../../adapters/dtos/DeliveryDTO"
 
 describe("DeliveryDTO", () => {
   let from: IDeliveryLocationVO

@@ -17,14 +17,7 @@ import {
   DeliveryProgressVO,
   DeliveryStateVO
 } from "./vos"
-import {
-  ICarrierDTO,
-  IDeliveryDTO,
-  ITrackerDTO,
-  CarrierDTO,
-  DeliveryDTO,
-  TrackerDTO
-} from "./dtos"
+import { ICarrierDTO, IDeliveryDTO, ITrackerDTO } from "./dtos/interfaces"
 
 export {
   ICarrier,
@@ -45,8 +38,5 @@ export {
   DeliveryStateVO,
   ICarrierDTO,
   IDeliveryDTO,
-  ITrackerDTO,
-  CarrierDTO,
-  DeliveryDTO,
-  TrackerDTO
+  ITrackerDTO
 }

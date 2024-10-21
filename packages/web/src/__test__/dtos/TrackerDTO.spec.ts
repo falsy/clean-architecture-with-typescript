@@ -1,5 +1,5 @@
-import TrackerDTO from "../../dtos/TrackerDTO"
-import ITrackerDTO from "../../dtos/interfaces/ITrackerDTO"
+import { ITrackerDTO } from "domains"
+import TrackerDTO from "../../adapters/dtos/TrackerDTO"
 
 describe("TrackerDTO", () => {
   let trackerDTO: ITrackerDTO

@@ -28,7 +28,7 @@ export default class TrackerRepository implements ITrackerRepository {
       const res = await this.clientHTTP.get(
         `${API_URL}/tracker/${carrierId}/${trackingNumber}`
       )
-      const { data } = await res.json()
+      const data = await res.json()
       return data
     } catch (error) {
       console.error(error)

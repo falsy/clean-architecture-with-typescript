@@ -1,11 +1,7 @@
 import * as cheerio from "cheerio"
 import { Cookie } from "tough-cookie"
-import {
-  IDeliveryDTO,
-  DeliveryDTO,
-  DeliveryLocationVO,
-  DeliveryProgressVO
-} from "domains"
+import { IDeliveryDTO, DeliveryLocationVO, DeliveryProgressVO } from "domains"
+import DeliveryDTO from "../../adapters/dtos/DeliveryDTO"
 import DeliveryStateGenerator from "../helpers/DeliveryStateGenerator"
 import IServerHTTP from "../../adapters/infrastructures/interfaces/IServerHTTP"
 import IScraping from "../interfaces/IScraping"

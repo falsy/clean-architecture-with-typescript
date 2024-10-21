@@ -1,10 +1,9 @@
-import TrackerDTO from "../dtos/TrackerDTO"
+import Tracker from "../entities/Tracker"
+import ITracker, { ITrackerParams } from "../entities/interfaces/ITracker"
 import IDeliveryDTO from "../dtos/interfaces/IDeliveryDTO"
 import ITrackerDTO from "../dtos/interfaces/ITrackerDTO"
 import ICarrierRepository from "../repositories/interfaces/ICarrierRepository"
 import ITrackerRepository from "../repositories/interfaces/ITrackerRepository"
-import Tracker from "../entities/Tracker"
-import ITracker from "../entities/interfaces/ITracker"
 import ITrackerUseCase from "./interfaces/ITrackerUseCase"
 
 export default class TrackerUseCase implements ITrackerUseCase {
@@ -24,8 +23,12 @@ export default class TrackerUseCase implements ITrackerUseCase {
     trackingNumber: string
   ): Promise<IDeliveryDTO> {
     const data = await this.carrierRepository.getCarrier(carrierId)
+    const delivery = await this.trackerRepository.getDelivery(
+      data,
+      trackingNumber
+    )
 
-    return this.trackerRepository.getDelivery(data, trackingNumber)
+    return delivery
   }
 
   async addTracker(): Promise<boolean> {
@@ -36,18 +39,13 @@ export default class TrackerUseCase implements ITrackerUseCase {
     return this.trackerRepository.addTracker(tracker)
   }
 
-  async getTrackers(): Promise<ITrackerDTO[]> {
+  async getTrackers(): Promise<ITracker[]> {
     const data = await this.trackerRepository.getTrackers()
-
     const trackers = data.map((trackerDTO: ITrackerDTO) => {
-      return this.convertToEntity(trackerDTO)
+      return new Tracker(trackerDTO)
     })
 
-    const trackerDTOs = trackers.map((tracker: ITracker) => {
-      return this.convertToDTO(tracker)
-    })
-
-    return trackerDTOs
+    return trackers
   }
 
   async deleteTracker(trackerId: string): Promise<boolean> {
@@ -59,60 +57,61 @@ export default class TrackerUseCase implements ITrackerUseCase {
   }
 
   async updateCarrierId(
-    tracker: ITrackerDTO,
+    trackerParams: ITrackerParams,
     newCarrierId: string
   ): Promise<boolean> {
-    const trackerEntity = this.convertToEntity(tracker)
+    const trackerEntity = new Tracker(trackerParams)
     trackerEntity.updateCarrierId(newCarrierId)
-    const trackerDTO = this.convertToDTO(trackerEntity)
-    return this.trackerRepository.updateTracker(trackerDTO)
+
+    return this.trackerRepository.updateTracker(trackerEntity)
   }
 
-  async updateLabel(tracker: ITrackerDTO, newLabel: string): Promise<boolean> {
-    const trackerEntity = this.convertToEntity(tracker)
+  async updateLabel(
+    trackerParams: ITrackerParams,
+    newLabel: string
+  ): Promise<boolean> {
+    const trackerEntity = new Tracker(trackerParams)
     trackerEntity.updateLabel(newLabel)
-    const trackerDTO = this.convertToDTO(trackerEntity)
 
-    return this.trackerRepository.updateTracker(trackerDTO)
+    return this.trackerRepository.updateTracker(trackerEntity)
   }
 
   async updateTrackingNumber(
-    tracker: ITrackerDTO,
+    trackerParams: ITrackerParams,
     newTrackingNumber: string
   ): Promise<boolean> {
-    const trackerEntity = this.convertToEntity(tracker)
+    const trackerEntity = new Tracker(trackerParams)
     trackerEntity.updateTrackingNumber(newTrackingNumber)
-    const trackerDTO = this.convertToDTO(trackerEntity)
 
-    return this.trackerRepository.updateTracker(trackerDTO)
+    return this.trackerRepository.updateTracker(trackerEntity)
   }
 
-  async addMemo(tracker: ITrackerDTO): Promise<boolean> {
-    const trackerEntity = this.convertToEntity(tracker)
+  async addMemo(trackerParams: ITrackerParams): Promise<boolean> {
+    const trackerEntity = new Tracker(trackerParams)
     trackerEntity.addMemo()
-    const trackerDTO = this.convertToDTO(trackerEntity)
 
-    return this.trackerRepository.updateTracker(trackerDTO)
+    return this.trackerRepository.updateTracker(trackerEntity)
   }
 
   async updateMemo(
-    tracker: ITrackerDTO,
+    trackerParams: ITrackerParams,
     index: number,
     newMemo: string
   ): Promise<boolean> {
-    const trackerEntity = this.convertToEntity(tracker)
+    const trackerEntity = new Tracker(trackerParams)
     trackerEntity.updateMemo(index, newMemo)
-    const trackerDTO = this.convertToDTO(trackerEntity)
 
-    return this.trackerRepository.updateTracker(trackerDTO)
+    return this.trackerRepository.updateTracker(trackerEntity)
   }
 
-  async deleteMemo(tracker: ITrackerDTO, index: number): Promise<boolean> {
-    const trackerEntity = this.convertToEntity(tracker)
+  async deleteMemo(
+    trackerParams: ITrackerParams,
+    index: number
+  ): Promise<boolean> {
+    const trackerEntity = new Tracker(trackerParams)
     trackerEntity.deleteMemo(index)
-    const trackerDTO = this.convertToDTO(trackerEntity)
 
-    return this.trackerRepository.updateTracker(trackerDTO)
+    return this.trackerRepository.updateTracker(trackerEntity)
   }
 
   protected generateUUID(): string {
@@ -122,26 +121,6 @@ export default class TrackerUseCase implements ITrackerUseCase {
       const r = (Date.now() + Math.random() * 16) % 16 | 0
       const v = c === "x" ? r : (r & 0x3) | 0x8
       return v.toString(16)
-    })
-  }
-
-  protected convertToEntity(trackerDTO: ITrackerDTO): ITracker {
-    return new Tracker({
-      id: trackerDTO.id,
-      carrierId: trackerDTO.carrierId,
-      label: trackerDTO.label,
-      trackingNumber: trackerDTO.trackingNumber,
-      memos: trackerDTO.memos
-    })
-  }
-
-  protected convertToDTO(tracker: ITracker): ITrackerDTO {
-    return new TrackerDTO({
-      id: tracker.id,
-      carrierId: tracker.carrierId,
-      label: tracker.label,
-      trackingNumber: tracker.trackingNumber,
-      memos: tracker.memos
     })
   }
 }
