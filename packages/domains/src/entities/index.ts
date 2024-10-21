@@ -1,6 +1,6 @@
-import ICarrier from "./interfaces/ICarrier"
-import ITracker from "./interfaces/ITracker"
-import Carrier from "./Carrier"
-import Tracker from "./Tracker"
+import IComment from "./interfaces/IComment"
+import Comment from "./Comment"
+import ICategory from "./interfaces/ICategory"
+import Category from "./Category"
 
-export { ICarrier, ITracker, Carrier, Tracker }
+export { IComment, Comment, ICategory, Category }

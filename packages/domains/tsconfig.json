@@ -9,5 +9,5 @@
     "types": ["jest"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "src/__test__"]
+  "exclude": ["dist"]
 }

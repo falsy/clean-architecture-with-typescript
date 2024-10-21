@@ -4,7 +4,7 @@
   "version": "1.0.1",
   "scripts": {
     "test": "jest",
-    "rollup": "rm -rf dist && rollup -c --bundleConfigAsCjs"
+    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
