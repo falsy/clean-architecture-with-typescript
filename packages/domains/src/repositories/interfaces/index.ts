@@ -1,4 +1,5 @@
-import ICarrierRepository from "./ICarrierRepository"
-import ITrackerRepository from "./ITrackerRepository"
+import ICommentRepository from "./ICommentRepository"
+import IPostRepository from "./IPostRepository"
+import IUserRepository from "./IUserRepository"
 
-export { ICarrierRepository, ITrackerRepository }
+export { ICommentRepository, IPostRepository, IUserRepository }

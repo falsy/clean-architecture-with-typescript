@@ -4,10 +4,9 @@ export default interface IComment {
   readonly id: string
   readonly postId: string
   readonly author: IUserInfoVO
-  content: string
+  readonly content: string
   readonly createdAt: Date
   readonly updatedAt: Date
-  updateContent(content: string): void
 }
 
 export interface ICommentParams {

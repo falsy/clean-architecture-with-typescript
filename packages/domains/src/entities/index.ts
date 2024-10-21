@@ -1,6 +1,6 @@
-import IComment from "./interfaces/IComment"
+import IComment, { ICommentParams } from "./interfaces/IComment"
 import Comment from "./Comment"
-import ICategory from "./interfaces/ICategory"
-import Category from "./Category"
+import IUser, { IUserParams } from "./interfaces/IUser"
+import User from "./User"
 
-export { IComment, Comment, ICategory, Category }
+export { IComment, ICommentParams, Comment, IUser, IUserParams, User }

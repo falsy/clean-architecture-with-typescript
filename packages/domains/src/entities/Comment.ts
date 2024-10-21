@@ -5,7 +5,7 @@ export default class Comment implements IComment {
   readonly id: string
   readonly postId: string
   readonly author: IUserInfoVO
-  content: string
+  readonly content: string
   readonly createdAt: Date
   readonly updatedAt: Date
 
@@ -16,9 +16,5 @@ export default class Comment implements IComment {
     this.content = parmas.content
     this.createdAt = parmas.createdAt
     this.updatedAt = parmas.updatedAt
-  }
-
-  updateContent(content: string) {
-    this.content = content
   }
 }

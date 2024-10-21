@@ -1,5 +1,4 @@
-import IPost from "./interfaces/IPost"
-import { IPostParams } from "./interfaces/IPost"
+import IPost, { IPostParams, IRequestPostParams } from "./interfaces/IPost"
 import Post from "./Post"
 
-export { IPost, IPostParams, Post }
+export { IPost, IPostParams, IRequestPostParams, Post }

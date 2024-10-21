@@ -1,42 +1,48 @@
-import { ICarrier, ITracker, Carrier, Tracker } from "./entities"
+import { IUserInfoVO, IUserInfoVOParams, UserInfoVO } from "./vos"
 import {
-  ICarrierUseCase,
-  ITrackerUseCase,
-  CarrierUseCase,
-  TrackerUseCase
-} from "./useCases"
+  IComment,
+  ICommentParams,
+  Comment,
+  IUser,
+  IUserParams,
+  User
+} from "./entities"
+import { IPost, IPostParams, IRequestPostParams, Post } from "./aggregates"
+import { IPostDTO, ICommentDTO, IUserDTO } from "./dtos/interfaces"
 import {
-  ICarrierRepository,
-  ITrackerRepository
+  ICommentRepository,
+  IPostRepository,
+  IUserRepository
 } from "./repositories/interfaces"
 import {
-  IDeliveryLocationVO,
-  IDeliveryProgressVO,
-  IDeliveryStateVO,
-  DeliveryLocationVO,
-  DeliveryProgressVO,
-  DeliveryStateVO
-} from "./vos"
-import { ICarrierDTO, IDeliveryDTO, ITrackerDTO } from "./dtos/interfaces"
+  IPostUseCase,
+  PostUseCase,
+  IUserUseCase,
+  UserUseCase
+} from "./useCases"
 
 export {
-  ICarrier,
-  ITracker,
-  Carrier,
-  Tracker,
-  ICarrierUseCase,
-  ITrackerUseCase,
-  CarrierUseCase,
-  TrackerUseCase,
-  ICarrierRepository,
-  ITrackerRepository,
-  IDeliveryLocationVO,
-  IDeliveryProgressVO,
-  IDeliveryStateVO,
-  DeliveryLocationVO,
-  DeliveryProgressVO,
-  DeliveryStateVO,
-  ICarrierDTO,
-  IDeliveryDTO,
-  ITrackerDTO
+  IUserInfoVO,
+  IUserInfoVOParams,
+  UserInfoVO,
+  IComment,
+  ICommentParams,
+  Comment,
+  IUser,
+  IUserParams,
+  User,
+  IPost,
+  IPostParams,
+  IRequestPostParams,
+  Post,
+  IPostDTO,
+  ICommentDTO,
+  IUserDTO,
+  ICommentRepository,
+  IPostRepository,
+  IUserRepository,
+  IPostUseCase,
+  PostUseCase,
+  IUserUseCase,
+  UserUseCase
 }

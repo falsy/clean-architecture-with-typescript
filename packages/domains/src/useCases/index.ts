@@ -1,6 +1,6 @@
-import ICarrierUseCase from "./interfaces/ICarrierUseCase"
-import ITrackerUseCase from "./interfaces/ITrackerUseCase"
-import CarrierUseCase from "./CarrierUseCase"
-import TrackerUseCase from "./TrackerUseCase"
+import IPostUseCase from "./interfaces/IPostUseCase"
+import PostUseCase from "./PostUseCase"
+import IUserUseCase from "./interfaces/IUserUseCase"
+import UserUseCase from "./UserUseCase"
 
-export { ICarrierUseCase, ITrackerUseCase, CarrierUseCase, TrackerUseCase }
+export { IPostUseCase, PostUseCase, IUserUseCase, UserUseCase }
