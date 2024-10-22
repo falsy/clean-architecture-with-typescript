@@ -8,8 +8,8 @@ export default class Post implements IPost {
   readonly content: string
   readonly author: IUserInfoVO
   readonly comments: IComment[]
-  readonly createdAt: string
-  readonly updatedAt: string
+  readonly createdAt: Date
+  readonly updatedAt: Date
 
   constructor(params: IPostParams) {
     this.id = params.id
