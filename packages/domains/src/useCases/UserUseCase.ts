@@ -9,8 +9,8 @@ export default class UserUseCase implements IUserUseCase {
     this.userRepository = userRepository
   }
 
-  async getUserInfo(): Promise<IUser> {
-    const userInfo = await this.userRepository.getUserInfo()
+  async getUser(): Promise<IUser> {
+    const userInfo = await this.userRepository.getUser()
 
     return new User({
       id: userInfo.id,

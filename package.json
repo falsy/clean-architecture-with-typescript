@@ -15,7 +15,9 @@
     "clean": "rimraf packages/*/dist",
     "lint": "eslint packages/*/src --ext .ts",
     "build:domains": "yarn workspace domains run build",
-    "test:domains": "yarn workspace domains run test"
+    "test:domains": "yarn workspace domains run test",
+    "build:adapters": "yarn workspace adapters run build",
+    "test:adapters": "yarn workspace adapters run test"
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",
