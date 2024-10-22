@@ -1,12 +1,12 @@
 import { IUserDTO, IUserRepository } from "domains"
-import { ClientHTTP } from "../infrastructures"
+import { IClientHTTP } from "../infrastructures"
 import { UserDTO } from "../dtos"
 
 export default class UserRepository implements IUserRepository {
-  private client: ClientHTTP
+  private client: IClientHTTP
 
-  constructor() {
-    this.client = new ClientHTTP("http://localhost:2000")
+  constructor(client: IClientHTTP) {
+    this.client = client
   }
 
   async getUser(): Promise<IUserDTO> {

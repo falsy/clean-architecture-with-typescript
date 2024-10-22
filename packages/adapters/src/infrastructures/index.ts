@@ -1,3 +1,3 @@
-import ClientHTTP from "./ClientHTTP"
+import { IClientHTTP } from "./interfaces/IClientHTTP"
 
-export { ClientHTTP }
+export { IClientHTTP }

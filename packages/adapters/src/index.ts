@@ -1,4 +1,4 @@
-import { ClientHTTP } from "./infrastructures"
+import { IClientHTTP } from "./infrastructures"
 import { CommentDTO, PostDTO, UserDTO } from "./dtos"
 import {
   CommentRepository,
@@ -13,7 +13,7 @@ import {
 } from "./presenters"
 
 export {
-  ClientHTTP,
+  IClientHTTP,
   CommentDTO,
   PostDTO,
   UserDTO,

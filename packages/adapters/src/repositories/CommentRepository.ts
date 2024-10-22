@@ -1,12 +1,12 @@
 import { ICommentDTO, ICommentRepository } from "domains"
-import { ClientHTTP } from "../infrastructures"
+import { IClientHTTP } from "../infrastructures"
 import { CommentDTO } from "../dtos"
 
 export default class CommentRepository implements ICommentRepository {
-  private client: ClientHTTP
+  private client: IClientHTTP
 
-  constructor() {
-    this.client = new ClientHTTP("http://localhost:2000")
+  constructor(client: IClientHTTP) {
+    this.client = client
   }
 
   async getComments(postId: string): Promise<ICommentDTO[]> {

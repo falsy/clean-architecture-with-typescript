@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios"
+import { IClientHTTP } from "adapters/src/infrastructures/interfaces/IClientHTTP"
 
-export default class ClientHTTP {
+export default class ClientHTTP implements IClientHTTP {
   private axiosInstance: AxiosInstance
 
   constructor(baseURL: string, config?: AxiosRequestConfig) {

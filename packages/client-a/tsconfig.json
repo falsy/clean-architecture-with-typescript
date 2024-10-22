@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "outDir": "./dist/",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "target": "es5",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "jsxImportSource": "@emotion/react",
+    "baseUrl": "./",
+    "rootDir": "./",
+    "types": ["@testing-library/jest-dom", "jest"]
+  },
+  "include": ["./src/**/*", "setupTests.ts"],
+  "exclude": ["node_modules", "dist"]
+}

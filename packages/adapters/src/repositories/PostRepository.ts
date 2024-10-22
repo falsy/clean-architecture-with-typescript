@@ -4,14 +4,14 @@ import {
   IRequestPostParams,
   UserInfoVO
 } from "domains"
-import { ClientHTTP } from "../infrastructures"
+import { IClientHTTP } from "../infrastructures"
 import { PostDTO } from "../dtos"
 
 export default class PostRepository implements IPostRepository {
-  private client: ClientHTTP
+  private client: IClientHTTP
 
-  constructor() {
-    this.client = new ClientHTTP("http://localhost:2000")
+  constructor(client: IClientHTTP) {
+    this.client = client
   }
 
   async getPosts(): Promise<IPostDTO[]> {
