@@ -6,14 +6,14 @@ import CommentUseCase from "../useCases/CommentUseCase"
 export default class CommentController {
   constructor(private commentUseCase: CommentUseCase) {}
 
-  @Get("comments")
+  @Get("/posts/:postId/comments")
   getComments(@Param("postId") postId: string): Promise<ICommentDTO[]> {
     return this.commentUseCase.getComments(postId)
   }
 
-  @Post("comments")
+  @Post("/posts/:postId/comments")
   createComment(
-    @Body("postId") postId: string,
+    @Param("postId") postId: string,
     @Body("content") content: string
   ): Promise<boolean> {
     return this.commentUseCase.createComment(postId, content)
