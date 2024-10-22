@@ -1,0 +1,43 @@
+{
+  "name": "clean-architecture-with-typescript",
+  "private": true,
+  "version": "3.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/falsy/clean-architecture-with-typescript.git"
+  },
+  "author": "falsy",
+  "license": "The Unlicense",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "eslint packages/*/src --ext .ts",
+    "build:domains": "yarn workspace domains run build",
+    "build:adapters": "yarn workspace adapters run build",
+    "build:server": "yarn workspace api-server run build",
+    "build:a": "yarn workspace client-a run build",
+    "build:b": "yarn workspace client-b run build",
+    "start:server": "yarn workspace api-server run start",
+    "start:a": "yarn workspace client-a run start",
+    "start:b": "yarn workspace client-b run start",
+    "test:domains": "yarn workspace domains run test",
+    "test:adapters": "yarn workspace adapters run test",
+    "test:server": "yarn workspace api-server run test",
+    "test:a": "yarn workspace client-a run test",
+    "test:b": "yarn workspace client-b run test"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.13",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.10.0",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.3",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  },
+  "packageManager": "yarn@4.2.2"
+}

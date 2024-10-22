@@ -1,17 +1,14 @@
 # Clean Architecture with TypeScript
 
-This is a sample project for adopting Clean Architecture in a TypeScript-based service. It is an extended version of a previous project([v2](https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0)), which used a monorepo to structure `React(Web)` and `React Native(Mobile)` services sharing the same domain. This setup allows various TypeScript-based services to share the same domain and expand seamlessly
+Clean Architecture, along with `Domain-driven Design(DDD)` and `Micro Service Architecture(MSA)`, is widely used in many projects. In this project, we introduce how to structure various web client services that share the same domain using a monorepo and Clean Architecture, making it easier to maintain and scale the client services.
+
+However, if the project is a small-scale one dealing with a simple UI or involves only a single client service where the API server is closely tailored to the client, adopting Clean Architecture may increase code volume and complexity, making maintenance more difficult. This is something to be mindful of.
+
+The sample project is structured as a monorepo using Yarn's built-in `workspace` functionality. The Clean Architecture's Domain and Adapter layers are organized into separate packages, and each service is also set up as a package. The services either directly use, extend, or override elements from the Domain and Adapter layers to build the final client services.
 
 #### Note.
-
-> This document is a work in progress as I study OOP, DDD, Clean Architecture, and related topics. Since my knowledge is still growing, there may be parts that I have misunderstood or explained incorrectly. If you find any issues or have suggestions for improvement, please feel free to submit them through issues or pull requests, and I will incorporate them. ☺️
 
 > \+ My English is not perfect, so please bear with me.
-
-#### Note.
-
-> For adopting Clean Architecture specifically in a React project, rather than the entire service structure, please refer to the project below.  
-> https://github.com/falsy/react-width-clean-architecture
 
 ## Languages
 
@@ -37,353 +34,159 @@ As with many architectures, the primary goal of Clean Architecture is to separat
 
 The flow of Clean Architecture can be briefly illustrated in the diagram above.
 
-## Example
+# Monorepo
 
-This document uses the [`Parcel Tracking`](https://github.com/parcel-tracking) service, provided as an extension for the Whale browser, as an `example project`. This service is a simple application that crawls the delivery status information from the delivery company's tracking page using the delivery company and tracking number. Please refer to the example project's code.
+![Alt Monorepo](/_images/packages.png#gh-light-mode-only)
+![Alt Monorepo](/_images/packages-dark.png#gh-dark-mode-only)
 
-#### Note.
+In the monorepo structure, the Domains layer, Adapters layer, and Service layer are clearly separated into individual packages with well-defined dependencies. At the root level, basic configurations for TypeScript, ESLint, and Jest are provided, which can be extended and used in the lower-level packages.
 
-> - [core](https://github.com/parcel-tracking/core)
-> - [core-dev](https://github.com/parcel-tracking/core-dev)
-> - [api-serive](https://github.com/parcel-tracking/api-server)
-> - [extension-for-whale](https://github.com/parcel-tracking/extension-for-whale)
-
-## Configuration
-
-Various services sharing the same domain were organized using `Git` submodules.  
-The `core` repository of the domain area is composed, and the remaining services are configured using this `core` repository as a submodule.
-
-![Alt Configuration](/_images/configuration.png#gh-light-mode-only)
-![Alt Configuration](/_images/configuration-dark.png#gh-dark-mode-only)
-
-In the `example project`, there are three repositories: `core-dev` for developing and testing the core, `api-server` for the API server, and `extension-for-whale` for the extension client's code.  
-All these repositories use the `core` repository as a submodule.
-
-All services that share the domain, as mentioned above, are structured with a clean architecture and operate according to the previously discussed `Communication Flow`.
-
-# Core(Domain)
-
-In the domain layer, business rules and business logic are defined.
-
-#### Note.
-
-> Example project code  
-> [Parcel Tracking - Core](https://github.com/parcel-tracking/core)
-
-## Directory Structure
+# Directory Structure
 
 ```
-/core
+/packages
 ├─ domains
-│  ├─ entities
-│  └─ usecases
-├─ dtos
-├─ vos
-└─ (repositories/interfaces)
+│  └─ src
+│     ├─ aggregates
+│     ├─ entities
+│     ├─ useCases
+│     ├─ vos
+│     ├─ repositories
+│     │  └─ interface
+│     └─ dtos
+│        └─ interface
+├─ adapters
+│  └─ src
+│     ├─ presenters
+│     ├─ repositories
+│     ├─ dtos
+│     └─ infrastructures
+│        └─ interface
+├─ client-a
+│  └─ src
+│     └─ ...
+├─ client-b
+│  └─ src
+│     └─ ...
+└─ api-server
+   └─ src
+      └─ ...
 ```
 
-## Business Logic
+# Domains
 
-First, let's define the services of the example project 'Parcel Tracking':
+The Domain layer defines the business rules and logic.
 
-- Users can view a list of delivery companies available for tracking.
-- Users can input and edit the delivery company, tracking number, and label.
-- Users can check current delivery status information through the delivery company and tracking number.
-- Users can view the list of entered delivery companies, tracking numbers, and labels.
+In the case of the sample project, it is a part of a simple forum service where users can view a list of posts, write posts, and leave comments. The Domain layer is built using Rollup, packaging Entities, Use Cases, and Value Objects into a single package. Various services within the project utilize this package to build their functionality.
 
-## Entity
+## Entities
 
-Based on the above service definitions, we define the entities.
+Entities are one of the core concepts in domain modeling, representing objects that maintain a unique identity and contain both state and behavior. An Entity is not just a data holder but is responsible for controlling and managing its data. It encapsulates important business rules and logic within the domain.
 
-- **Carrier** - An object containing information about the delivery company.
+In the sample project, there are three entities: Post, Comment, and User.
 
-```ts
-interface ICarrier {
-  readonly id: string
-  readonly no: number // (Legacy properties)
-  readonly name: string
-  readonly displayName: string
-  readonly isCrawlable: boolean
-  readonly isPopupEnabled: boolean
-  readonly popupURL: string
-}
-```
+## Aggregates
 
-- **Tracker** - An object containing the user's delivery tracking information.
+![Aggregate](/_images/aggregate.png#gh-light-mode-only)
+![Aggregate](/_images/aggregate-dark.png#gh-dark-mode-only)
 
-```ts
-interface ITracker {
-  readonly id: string
-  carrierId: string
-  label: string
-  trackingNumber: string
-  memos: string[]
-  updateLabel(newLabel: string): void
-  updateTrackingNumber(newTrackingNumber: string): void
-  updateCarrierId(newCarrierId: string): void
-  addMemo(): void
-  updateMemo(index: number, newMemo: string): void
-  deleteMemo(index: number): void
-}
-```
+An Aggregate is a consistency boundary that can include multiple entities and value objects. It encapsulates internal state and controls external access. All modifications must go through the Aggregate Root, which helps manage the complexity of relationships within the model and maintain consistency when services expand or transactions become more complex.
 
-## Use Case
+In the sample project, Post serves as an Aggregate, with the Comment entity having a dependent relationship on it. Therefore, adding or modifying a comment must be done through the Post entity. Additionally, while the Post entity requires information about the author (the User who wrote the post), the User is an independent entity. To maintain a loose relationship, only the User’s id and name are included as a Value Object within Post.
 
-The `Use Case` layer encapsulates data into entities, coordinates the interactions between the defined rules of entities and other layers, and implements business logic using request parameters passed by `Controllers` or methods of `Repositories`.
+## Use Cases
+
+Use Cases define the interactions between users and the service, leveraging domain objects such as Entities, Aggregates, and Value Objects to deliver business functionality to users. From a system architecture perspective, Use Cases help separate application logic from business rules. Rather than directly controlling business logic, Use Cases facilitate interaction with the domain objects, allowing them to enforce business rules and logic.
+
+In the sample project, Use Cases include simple interactions such as retrieving a summarized list of posts, and adding, deleting, or modifying posts and comments.
 
 ## Inversion of Control
 
 ![Alt Inversion Of Control](/_images/inversion-of-control.png#gh-light-mode-only)
 ![Alt Inversion Of Control](/_images/inversion-of-control-dark.png#gh-dark-mode-only)
 
-As the `Repository` belongs to the `Adapter` layer, the `Use Case` should not know about the `Repository`. Therefore, in the Use Case, the Repository is abstracted into an interface and operates through `Dependency Injection`.
+Since the Repository belongs to the Adapter layer, the higher-level Use Case should not directly depend on it. Therefore, in the Use Case, an abstract interface for the Repository is implemented, which is later handled through `Dependency Injection(DI)`.
 
-## Repository interfaces
+# Adapters
 
-The `core` is shared among various services using the same domain. However, as mentioned above, the Use Case needs to know the abstracted Repository, which may vary according to the service.
+Like the Domain, the Adapter is also structured as a single package within the monorepo and built using Rollup. In the Adapter, common Presenters, Repositories, and Infrastructures are set up so that they can be extended and used in service packages later.
 
-In the `example project`, the addTracker method in the TrackerUseCase adds a Tracker using the Repository, which uses the Web API LocalStorage to store values. This is used only in the web client (`extension-for-whale`) and not in other services (`api-server`).
+## Infrastructures
 
-As the `Repository` can be used differently for each service, the abstracted Repository methods in the core are all used as optional properties(`?`).
+The Infrastructure layer manages external connections such as communication with external servers via HTTP or interactions with browser APIs like LocalStorage, which are commonly used in web services.
 
-#### Note.
+## Repositories
 
-> In the TrackerUseCase of the `example project`, the `generateUUID` method is used to generate a unique ID for the tracker. This was done to avoid using external modules in the Domain area and purely composed of TypeScript, as the added tracker is not a critical value. However, generally, if a UUID is required, it is better to encapsulate libraries like `crypto` or `uuid` and use Dependency Injection.
+In a typical backend, the Repository layer handles CRUD operations related to databases, such as storing, retrieving, modifying, and deleting data. It abstracts database interactions so that the business logic does not need to be aware of the underlying data store.
 
-# API Server
+Similarly, in the sample project, the Repository layer performs POST, GET, PUT, and DELETE operations for HTTP communication with the API server. It abstracts these interactions so the business logic is not concerned with where the data originates. Data retrieved from external servers is encapsulated as DTOs (Data Transfer Objects) to ensure stability when used internally within the client.
 
-The `example project` uses `NestJS`. `NestJS` is a widely used `Node.js` framework that facilitates the composition of object-oriented services through decorators, dependency injection mechanisms, and a module-based structured code.
+## Presenters
 
-#### Note.
+The Presenter layer handles requests from the UI, forwarding them to the server. It also converts entity data into View Models used in the UI, responding appropriately based on user requests.
 
-> Example project code  
-> [Parcel Tracking - API Server](https://github.com/parcel-tracking/api-server)
+# Services
 
-## Directory Structure
+The sample project consists of three simple services: client-a, client-b, and api-server.
 
-```
-/api-server
-└─ src
-   ├─ core(domains) #submodule
-   ├─ adapters
-   │  ├─ controllers
-   │  ├─ repositories
-   │  ├─ infrastructures
-   │  └─ utilities
-   └─ frameworks
-      ├─ controllers
-      ├─ usecases
-      ├─ repositories
-      ├─ models
-      └─ moduls
-```
+## Client-A
 
-The directory structure is composed of core(domains), imported as a submodule using Git, as well as adapters and frameworks, similar to the layers of Clean Architecture.
+client-a is a simple service built using the elements from the Domains and Adapters layers. It is developed with React and Webpack, and uses React’s Context and Hooks to implement Dependency Injection.
 
-## Decorator
+## Client-B
 
-The architecture of Clean Architecture should not depend on the framework. That is, even if the framework is changed, it should be possible to apply it with minimal changes. However, since `NestJS` uses `Decorators` to compose services, each layer inevitably depends on them.
+client-b demonstrates the extensibility of the services in this project. Instead of using HTTP communication with the API server to manage Post and Comment data, it is designed to use LocalStorage.
 
-![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection.png#gh-light-mode-only)
-![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection-dark.png#gh-dark-mode-only)
+The overall service structure is the same as client-a, but in client-b, a new Repository is created following the Repository interface defined in the Domains layer. This new Repository is injected and used, allowing the service to be easily implemented.
 
-Therefore, the operations are implemented in the `adapters` layer, which does not depend on NestJS, and the `frameworks` layer inherits from the parent (`controllers`, `usecases`, ...) to add `decorators`, override methods, and call the parent's implementation using `super`.
+## API Server
 
-## Infrastructure
+This is a simple API server built using NestJS. It uses the Entities from the Domains layer, but since the project primarily focuses on the client-side Use Cases, the API server implements its own Presenters, Use Cases, and Repository layers, all of which are injected through DI.
 
-In `Infrastructures`, the functionality of the `fetch API` is abstracted to define the `ServerHTTP` class. This class subsequently performs HTTP communication by injecting `fetch`.
+> Although the main goal of this project is to design client services that share the same domain, making them easy to maintain and scale, the API server is included to demonstrate the flexibility of the architecture.
 
-#### Note.
+# Run
 
-> Since the fetch API was released in Node.js version 18, if using a previous version, the `ServerHTTP` should be composed using the built-in http module or an additional library in Node.js.
+You can build or run each package in the sample project using the commands registered at the root.
 
-## Database
-
-The `example project` uses `MySQL` and `Sequelize` as the database. `NestJS` supports such an environment easily, so the DB-related logic is implemented in the `Repository` of the `frameworks` layer through NestJS's dependency injection, not in the `adapter` layer's `Repository`.
-
-# Web Client
-
-It is built and distributed as an extension for the Whale browser, but it is not significantly different from a simple general web service.
-
-#### Note.
-
-> Example project code  
-> [Parcel Tracking - Web Client](https://github.com/parcel-tracking/extension-for-whale)
-
-## Directory Structure
+## Install
 
 ```
-/extension-for-whale
-└─ src
-   ├─ core(domains) #submodule
-   ├─ constants
-   ├─ adapters
-   │  ├─ controllers
-   │  ├─ repositories
-   │  └─ infrastructures
-   └─ frameworks
-      ├─ di
-      └─ components
+$ yarn install
 ```
 
-The basic directory structure is similar to the `api-server`.  
-Adding another service later can be configured similarly without significant differences.
+## Build
 
-## Infrastructure
+### domains
 
-In the web service, `ClientHTTP`, providing HTTP communication functions, and `WebLocalStorage`, providing the browser's storage function, are defined in Infrastructures and injected into Repositories. These ultimately operate by injecting `fetch` and `localStorage`, respectively.
-
-![Alt Web API](/_images/web-api.png#gh-light-mode-only)
-![Alt Web API](/_images/web-api-dark.png#gh-dark-mode-only)
-
-#### Note.
-
-> The structure in the image above is implemented identically in the api-server.
-
-`Fetch` and `WebStorage` are Web APIs that can be accessed globally, but since these are changeable detailed implementations, they are encapsulated into classes and positioned according to their roles to facilitate future changes or maintenance.
-
-## Framework
-
-In the example project, development was done using `React` and `Webpack`.
-Similar to the `api-server`, the client-side `framework` is designed within the frameworks layer to depend solely on data through `DI(Dependency injection)`, ensuring that the architecture is not tied to any specific framework and can be easily adapted to changes or replacements.
-
-While the NestJS framework used in the `api-server` supports `DI`, the client does not have built-in support for it. Therefore, `DI` was implemented using React’s Context API and Provider.
-
-```ts
-// /src/frameworks/di/DependencyProvider.tsx
-...
-
-export const DependencyContext = createContext<Dependencies | null>(null)
-
-export default function DependencyProvider({
-  children
-}: {
-  children: ReactNode
-}) {
-  const httpClient = globalThis.fetch.bind(globalThis)
-  const browserStorage = (window as any).whale.storage.local
-  const infrastructures = infrastructuresFn(httpClient, browserStorage)
-  const repositories = repositoriesFn(
-    infrastructures.clientHTTP,
-    infrastructures.browserStorage
-  )
-  const useCases = useCasesFn(repositories)
-  const controllers = controllersFn(useCases)
-
-  const dependencies = {
-    controllers
-  }
-
-  return (
-    <DependencyContext.Provider value={dependencies}>
-      {children}
-    </DependencyContext.Provider>
-  )
-}
+```
+$ yarn build:domains
 ```
 
-And services are composed by using controllers injected via `DI` through Hooks.
+### adapters
 
-```ts
-// /src/frameworks/hooks/useDependencies.tsx
-import { useContext } from "react"
-import { DependencyContext } from "../di/DependencyProvider"
-
-export default function useDependencies() {
-  const dependencies = useContext(DependencyContext)
-  if (!dependencies) {
-    throw new Error("Dependencies not found in context")
-  }
-  return dependencies
-}
+```
+$ yarn build:adapters
 ```
 
-# Run Project
-
-The `example project(Parcel Tracking)` can be downloaded and run locally.
-
-## Use Stack
-
-### api-server
-
-Nestjs, Sequelize, MySQL
-
-### web-client
-
-Webpack, React, Emotion
-
-## install
+## Start
 
 ### api-server
 
 ```
-$ git clone https://github.com/parcel-tracking/api-server.git
+$ yarn start:server
 ```
 
-```
-$ cd api-server
-```
+### client-a
 
 ```
-$ npm install
+$ yarn start:a
 ```
 
-### web-client
+### client-b
 
 ```
-$ git clone https://github.com/parcel-tracking/extension-for-whale.git
-```
-
-```
-$ cd extension-for-whale
-```
-
-```
-$ npm install
-```
-
-## Settings
-
-To run the `api-server` locally, you need to set up the database(`MySQL`) and environment variables. In the root directory of the `api-server`, create an additional .env file and add values in the format shown below.
-
-```
-$ cd api-server
-```
-
-```
-$ vi .env
-```
-
-```
-DB_USERNAME=root
-DB_PASSWORD=password
-DB_NAME=database-name
-DB_HOST=localhost
-DB_DIALECT=mysql
-```
-
-The data of the currently used DB in the service can be downloaded [`here`](/_sql/parcel-tracking.sql).
-
-## Run
-
-### api-server
-
-```
-$ cd api-server
-```
-
-```
-$ npm start
-```
-
-### web-client
-
-```
-$ cd extension-for-whale
-```
-
-```
-$ npm start
+$ yarn start:b
 ```
 
 # Thank You!
