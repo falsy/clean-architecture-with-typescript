@@ -1,16 +1,10 @@
 # Clean Architecture with TypeScript
 
-타입스크립트를 사용하는 서비스에 클린 아키텍처 도입을 위한 샘플 프로젝트입니다.  
-기존의, 모노레포를 사용하여 같은 도메인을 공유하는 `React(Web)`와 `React Native(Mobile)` 서비스 구성 프로젝트([v2](https://github.com/falsy/clean-architecture-with-typescript/tree/v2.0.0))의 확장된 버전으로, 다양한 타입스크립트 기반의 서비스들이 같은 도메인을 공유하며 확장해 나갈 수 있도록 구성하였습니다.
+클린 아키텍처는 `DDD(Domain-driven Design)`와 `MSA(Micro Service Architecture)`와 함께 많은 프로젝트에서 활용되고 있습니다. 이 프로젝트에서는 TypeScript를 사용하여 동일한 도메인을 공유하는 다양한 웹 클라이언트 서비스를 모노레포와 클린 아키텍처로 구성함으로써, 서비스 유지 보수와 확장을 용이하게 하는 방법을 소개합니다.
 
-#### Note.
+만약, 프로젝트가 단순한 UI를 다루는 작은 규모의 프로젝트이거나 또는 하나의 클라이언트 서비스이면서 API 서버가 클라이언트와 맞춤으로 대응되는 환경이라면 오히려 클린 아키텍처의 도입이 코드량과 복잡성이 증가하여 서비스의 유지 보수가 어려워질 수 있기 때문에 유의해야 합니다.
 
-> 이 문서는 제가 OOP, DDD, 클린 아키텍처 및 관련 주제를 공부하면서 진행 중인 작업입니다. 아직 지식이 부족하기 때문에 제가 오해하거나 잘못 설명한 부분이 있을 수 있습니다. 문제점을 발견하시거나 개선을 위한 제안 사항이 있으시면 이슈 또는 풀 리퀘스트 해 주세요. ☺️
-
-#### Note.
-
-> 전체 서비스 구성의 클린 아키텍처 도입이 아닌, React 프로젝트에 클린 아키텍처 도입은 아래의 프로젝트를 참고해주세요.  
-> https://github.com/falsy/react-width-clean-architecture
+샘플 프로젝트는 Yarn에서 기본으로 제공하는 `Workspace`를 사용하여 모노레포를 구성하고, 패키지로 클린 아키텍처의 Domains 레이어와 Adapters 레이어를 구성하였고 각각의 서비스 역시 패키지로 구성하며 각 서비스는 Domains 레이어와 Adapters 레이어의 요소를 그대로 사용하거나 또는 상속 받아서 확장, 오버라이드한 후 이를 가지고 서비스를 구성합니다.
 
 ## Languages
 
@@ -36,357 +30,160 @@
 
 클린 아키텍처의 흐름을 간단하게 다이어그램으로 표현하면 위와 같습니다.
 
-## Example
+# Monorepo
 
-이 글은 웨일 브라우저의 확장 프로그램으로 서비스 중인 [`택배 배송 조회(Parcel Tracking)`](https://github.com/parcel-tracking)을 `예시 프로젝트`로 사용합니다.  
-위 서비스는 택배사와 운송장 번호를 가지고 해당 택배사의 배송 조회 페이지를 크롤링하여 현재 배송 상태 정보를 보여주는 간단한 서비스입니다. 예시 프로젝트의 코드를 함께 참고해주세요.
+![Alt Monorepo](/_images/packages.png#gh-light-mode-only)
+![Alt Monorepo](/_images/packages-dark.png#gh-dark-mode-only)
 
-#### Note.
+모노레포는 Domains 레이어와 Adapters 레이어 그리고 서비스 레이어를 각각 패키지로 의존성을 명확하게 구분하였습니다.
+그리고 루트에서는 TypeScript, ESLint, Jest의 기본 설정으로 하위 패키지에서는 확장하여 사용할 수 있습니다.
 
-> - [core](https://github.com/parcel-tracking/core)
-> - [core-dev](https://github.com/parcel-tracking/core-dev)
-> - [api-serive](https://github.com/parcel-tracking/api-server)
-> - [extension-for-whale](https://github.com/parcel-tracking/extension-for-whale)
+# Directory Structure
 
-## Configuration
+```
+/packages
+├─ domains
+│  └─ src
+│     ├─ aggregates
+│     ├─ entities
+│     ├─ useCases
+│     ├─ vos
+│     ├─ repositories
+│     │  └─ interface
+│     └─ dtos
+│        └─ interface
+├─ adapters
+│  └─ src
+│     ├─ presenters
+│     ├─ repositories
+│     ├─ dtos
+│     └─ infrastructures
+│        └─ interface
+├─ client-a
+│  └─ src
+│     └─ ...
+├─ client-b
+│  └─ src
+│     └─ ...
+└─ api-server
+   └─ src
+      └─ ...
+```
 
-다양한 서비스에서 같은 도메인을 공유하는 방법으로 `Git`의 서브모듈을 사용하여 프로젝트를 구성하였습니다.  
-도메인 영역의 `core` 리포지토리를 구성하고, 해당 `core` 리포지토리를 서브모듈로 활용하여 나머지 서비스를 구성합니다.
-
-![Alt Configuration](/_images/configuration.png#gh-light-mode-only)
-![Alt Configuration](/_images/configuration-dark.png#gh-dark-mode-only)
-
-`예시 프로젝트`에서는 core를 개발하고 테스트하는 `core-dev` 리포지토리와 API 서버에 해당하는 `api-server` 리포지토리 그리고 확장 프로그램의 클라이언트에 해당하는 `extension-for-whale` 리포지토리가 있습니다.  
-이들 리포지토리는 모두 `core` 리포지토리를 서브모듈로 사용합니다.
-
-위와 같이 도메인을 공유하는 모든 서비스는 클린 아키텍처로 구성되며, 앞서 이야기한 `Communitaction Flow`를 따라 동작합니다.
-
-# Core(Domain)
+# Domains
 
 도메인 레이어에서는 비즈니스 규칙과 비즈니스 로직을 정의합니다.
 
-#### Note.
+샘플 프로젝트의 경우에는 간단한 포럼 서비스의 일부분으로 사용자가 글 목록을 보거나 글과 댓글을 작성할 수 있는 서비스입니다. 모노레포로 구성된 하나의 패키지로 Entity와 Use Case 그리고 Value Object 등의 값들을 Rollup을 사용하여 빌드하며 프로젝트의 다양한 서비스는 이를 사용하여 서비스를 구성합니다.
 
-> 예시 프로젝트 코드  
-> [Parcel Tracking - Core](https://github.com/parcel-tracking/core)
+## Entities
 
-## Directory Structure
+Entity는 도메인 모델링의 핵심 개념 중 하나로, 고유한 식별자(Identity)를 통해 동일성을 유지하면서 상태와 행동을 가지는 객체입니다. Entity는 단순히 데이터를 보관하는 구조체가 아니라, 자신의 데이터를 직접 제어하고 관리하는 역할을 하며, 도메인 내에서 중요한 비즈니스 규칙과 로직을 표현합니다.
 
-```
-/core
-├─ domains
-│  ├─ entities
-│  └─ usecases
-├─ dtos
-├─ vos
-└─ (repositories/interfaces)
-```
+샘플 프로젝트에서는 Post, Comment, User 라는 3개의 엔티티로 구성되어 있습니다.
 
-## Business Logic
+## Aggregates
 
-우선, 예시 프로젝트인 `택배 배송 조회(Parcel Tracking)`의 서비스를 정의해보면 아래와 같습니다.
+![Aggregate](/_images/aggregate.png#gh-light-mode-only)
+![Aggregate](/_images/aggregate-dark.png#gh-dark-mode-only)
 
-- 사용자는 배송을 조회할 수 있는 택배 회사의 리스트를 볼 수 있습니다.
-- 사용자는 택배 회사와 운송장 번호 그리고 라벨을 입력 및 수정할 수 있습니다.
-- 사용자는 입력한 택배 회사와 운송장 번호로 현재의 배송 상태 정보를 조회할 수 있습니다.
-- 사용자는 입력했던 택배 회사와 운송장 번호 그리고 라벨 리스트를 볼 수 있습니다.
+Aggregate는 여러 엔티티와 값 객체를 포함할 수 있는 일관성 경계로, 내부 상태를 캡슐화하여 외부에서의 접근을 제어합니다. 모든 수정은 반드시 Aggregate Root를 통해서만 이루어지며, 이는 모델 내의 관계 복잡성을 관리하고, 서비스 확장 및 트랜잭션 복잡성 증가 시 일관성을 유지하는 데 도움이 됩니다.
 
-## Entity
+샘플 프로젝트에서는 Post가 Aggregate로 사용되었으며 하위에는 종속적인 관계의 Comment 엔티티가 있습니다. 그렇기에 Comment를 추가 및 변경하기 위해서는 Post를 통해서 이루어집니다. 그리고 Post의 속성으로 작성자 즉, 글을 작성한 사용자의 정보가 필요하지만 User는 독립적인 엔티티이기 때문에 얕은 관계를 유지하기 위하여 User의 id 값과 name 정보만을 Value Object로 가지고 있습니다.
 
-위 서비스 정의를 바탕으로 엔티티를 정의합니다.
+## Use Cases
 
-- **Carrier** - 택배 회사에 대한 정보를 담은 객체입니다.
+Use Case는 사용자와 서비스 간의 상호작용을 정의하며, 도메인 객체(Entity, Aggregate, Value Object)를 활용하여 서비스가 사용자에게 제공해야 하는 비즈니스 기능을 명확하게 합니다. 시스템 아키텍처 관점에서 Use Case는 애플리케이션 로직과 비즈니스 규칙을 분리하는 역할을 하며, 직접적으로 비즈니스 로직을 제어하기보다는 도메인 객체가 가진 비즈니스 규칙과 로직을 활용할 수 있도록 돕습니다.
 
-```ts
-interface ICarrier {
-  readonly id: string
-  readonly no: number // (레거시 프로퍼티)
-  readonly name: string
-  readonly displayName: string
-  readonly isCrawlable: boolean
-  readonly isPopupEnabled: boolean
-  readonly popupURL: string
-}
-```
-
-- **Tracker** - 사용자의 택배 조회 정보를 담은 객체입니다.
-
-```ts
-interface ITracker {
-  readonly id: string
-  carrierId: string
-  label: string
-  trackingNumber: string
-  memos: string[]
-  updateLabel(newLabel: string): void
-  updateTrackingNumber(newTrackingNumber: string): void
-  updateCarrierId(newCarrierId: string): void
-  addMemo(): void
-  updateMemo(index: number, newMemo: string): void
-  deleteMemo(index: number): void
-}
-```
-
-## Use Case
-
-`Use Case` 레이어는 엔티티로 데이터를 캡슐화하고, 엔티티의 정의된 규칙 및 다른 레이어 간의 상호작용을 조정하는 역할을 합니다.  
-또한 `Controller`에서 전달받은 요청 파라미터나 `Repository`의 메소드를 활용하여 비즈니스 로직을 구현합니다.
+샘플 프로젝트에서는 간단하게 전체 요약 글 리스트를 가져오거나 글과 댓글을 추가, 삭제, 변경과 같은 간단한 상호 작용으로 구성되어 있습니다.
 
 ## Inversion of Control
 
 ![Alt Inversion Of Control](/_images/inversion-of-control.png#gh-light-mode-only)
 ![Alt Inversion Of Control](/_images/inversion-of-control-dark.png#gh-dark-mode-only)
 
-`Repository`의 경우 `Adapter` 레이어에 해당하기 때문에 `Use Case`에서는 `Repository`에 대해서 알아서는 안됩니다. 그렇기 때문에 `Use Case`에서는 `Repository`를 추상화한 인터페이스를 가지고 구현하며, 이는 이후에 `Dependency Injection`를 통해 동작합니다.
+Repository의 경우 Adapter 레이어에 해당하기 때문에 Use Case에서는 Repository에 대해서 알아서는 안됩니다. 그렇기 때문에 Use Case에서는 Repository를 추상화한 인터페이스를 가지고 구현하며, 이는 이후에 `의존성 주입(DI: Dependency Injection`를 통해 동작합니다.
 
-## Repository interfaces
+# Adapters
 
-`core`는 같은 도메인을 공유하여 다양한 서비스에서 사용됩니다. 하지만 위에서 이야기 했듯이 Use Case에서는 추상화된 Repository를 알고 있어야 하는데, Repository는 서비스에 따라 다르게 사용될 수 있습니다.
+Domain과 마찬가지로 모노레포로 하나의 패키지로 구성하고 Rollup으로 빌드하여 사용합니다. Apapter에서는 일반적인 경우의 Presenter와 Repository 그리고 Infrastructure를 구성하여 이후 서비스 패키지에서 이를 상속 받아 확장하여 사용할 수 있도록 합니다.
 
-`예시 프로젝트`를 참고하면, TrackerUseCase에서 Tracker를 추가하는 addTracker 메서드는 Repository에서 Web API인 `LocalStorage`를 사용하여 값을 저장합니다. 이는 웹 클라이언트(`extension-for-whale`)에서만 사용되고 다른 서비스(`api-server`)에서는 사용되지 않습니다.
+## Infrastructures
 
-위와 같이 `Repository`는 서비스마다 다르게 사용될 수 있기 때문에 `core`에서의 추상화된 `Repository`의 메서드는 모두 옵셔널 속성(`?`)으로 사용합니다.
+Infrastructure 레이어에서는 웹 서비스에서 일반적으로 많이 사용하는 HTTP를 사용한 외부 서버와의 통신이나 또는 LocalStorage와 같은 브라우저의 Web API와 같은 애플리케이션 외부와의 연결을 관리합니다.
 
-#### Note.
+## Repositories
 
-> `예시 프로젝트`의 TrackerUseCase에서 tracker의 고유한 ID 값을 위해 `generateUUID`라는 메서드를 사용하고 있습니다. 이는 Domain 영역에서는 외부 모듈을 사용하지 않고 순수하게 타입스크립트만으로 구성하고자 하였으며, 추가되는 tracker가 중요한 값이 아니라고 판단했기 때문입니다. 하지만 일반적으로 UUID 값이 필요하다면 `crypto` 또는 `uuid` 라이브러리를 캡슐화 한 후 의존성 주입하여 사용하는 것이 더 좋을 것 같습니다.
+일반적으로 백엔드에서 Repository 레이어는 데이터베이스와 관련된 `CRUD` 작업을 수행하며 데이터의 저장, 조회, 수정, 삭제와 같은 기본적인 데이터 조작을 처리합니다. 그리고 그러한 데이터베이스와의 상호작용을 추상화하여 비즈니스 로직에서 데이터 저장소에 대해 알 필요가 없도록 합니다.
 
-# API Server
+같은 원리로 샘플 프로젝트에서 Repository 레이어는 API 서버와의 HTTP 통신에 관련된 POST, GET, PUT, DELETE 작업을 수행하며 그 상호작용을 추상화하여 비즈니스 로직에서는 데이터의 출처에 대해서 알 필요가 없도록 합니다. 그리고 외부 서버로부터 받은 데이터는 `DTO`로 캡슐화하여 이 데이터가 클라이언트 내부에서 사용될 때의 안정성을 보장합니다.
 
-`예시 프로젝트`에서는 `NestJS`를 사용하였습니다. `NestJS`는 많이 사용되고 있는 `Node.js` 프레임워크이며, 데코레이터와 의존성 주입 매커니즘, 모듈 기반의 구조화된 코드를 통해 객체 지향 서비스를 구성하는 데 용이합니다.
+## Presenters
 
-#### Note.
+Presenters 레이어에서는 UI에서 필요로하는 메서드를 가지고 사용자의 요청을 서버로 전달하는 역할을 하며, 요청에 따라 엔티티 데이터를 UI에서 사용되는 View Model로 값을 변환하여 응답하는 역할을 하기도 합니다.
 
-> 예시 프로젝트 코드  
-> [Parcel Tracking - API Server](https://github.com/parcel-tracking/api-server)
+# Services
 
-## Directory Structure
+샘플 프로젝트는 client-a, client-b, api-server 이렇게 3개의 아주 간단한 서비스로 구성되어 있습니다.
 
-```
-/api-server
-└─ src
-   ├─ core(domains) #submodule
-   ├─ adapters
-   │  ├─ controllers
-   │  ├─ repositories
-   │  ├─ infrastructures
-   │  └─ utilities
-   └─ frameworks
-      ├─ controllers
-      ├─ usecases
-      ├─ repositories
-      ├─ models
-      └─ moduls
-```
+## Client-A
 
-디렉토리 구조는 클린 아키텍처의 레이어 구성과 유사하게, 서브모듈로 가져온 `core(domains)`와 `adapters`, `frameworks`로 구성하였습니다.
+client-a는 `Domains`와 `Adapters` 레이어의 요소들을 사용하여 구성한 간단한 서비스로 React와 Webpack을 사용하였고 최종적으로 React의 Context와 Hook을 사용하여 DI를 구성하여 개발하였습니다.
 
-## Decorator
+## Client-B
 
-클린 아키텍처의 아키텍처는 프레임워크에 의존하지 않아야 합니다. 즉, 프레임워크를 변경하더라고 최소한의 변경으로 적용이 가능하도록 구성해야 합니다. 하지만 NestJS는 `Decorator`를 사용하여 서비스를 구성하기 때문에 각 레이어에 의존성이 불가피합니다.
+client-b는 이 프로젝트의 서비스의 확장성을 표현하기 위한 서비스로, 기존의 Post와 Comment 데이터를 API 서버와의 HTTP 통신을 통한 구성 대신 Local Storage를 사용한 구성으로 설계된 서비스입니다.
 
-![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection.png#gh-light-mode-only)
-![Alt Nestjs Dependency Injection](/_images/nestjs-dependency-injection-dark.png#gh-dark-mode-only)
+전체적인 서비스 구성은 client-a와 동일하지만, client-b에서는 `Domains`에서 정의한 `Repository`의 인터페이스를 따르는 새로운 Repository를 구성하고 이를 DI하여 사용함으로써 간단하게 서비스를 구현합니다.
 
-그렇기 때문에 NestJS에 의존하지 않는 `adapters` 레이어에서 동작을 구현하고 `frameworks` 레이어에서는 부모(`controllers`, `usecases`, ...)를 상속 받아서 `Decorator`를 추가하고, 메서드를 오버라이드한 후 `super`를 사용해서 부모의 구현을 호출하도록 하였습니다.
+## API Server
 
-## Infrastructure
+NestJS를 사용한 간단한 API Server입니다. API Server는 `Domains` 영역의 Entity를 사용하여 구성하지만, 이 프로젝트는 기본적으로 클라이언트 서비스의 Use Case를 기본으로 하기 때문에 API Server에서는 Presenters, Use Case, Repository 레이어 모두를 새롭게 구현하고 이를 DI하여 사용합니다.
 
-`Infrastructures`에서는 fetch API의 기능을 추상화하여 `ServerHTTP` 클래스를 정의하였습니다. 이 클래스는 이후에 `fetch`를 주입 받아 HTTP 통신을 수행합니다.
+> 이 프로젝트는 동일한 도메인을 사용하는 다양한 클라이언트 서비스에 대하여 유지 보수와 확장에 용이한 설계가 주요 목적이기 때문에, API Server는 현재의 프로젝트 구성에 어울린다고 생각하지 않지만 자유도 높은 확장성을 표현하기 위하여 함께 포함하였습니다.
 
-#### Note.
+# Run
 
-> fetch API는 Node.js 18 버전에서 릴리즈 되었기 때문에 이전 버전을 사용한다면 Node.js에 기본적으로 탑재되어 있는 http 모듈이나 추가적으로 라이브러리를 사용하여 `ServerHTTP`를 구성해야 합니다.
+샘플 프로젝트는 루트에 등록된 커맨드를 활용하여 각 패키지를 빌드 또는 실행할 수 있습니다.
 
-## Database
-
-예시 프로젝트에서는 데이터베이스로 `MySQL`과 `Sequelize`를 사용하였습니다. 그리고 `NestJS`에서는 위와 같은 환경을 간편하게 사용할 수 있도록 지원하고 있어서 DB와 관련된 로직은 `adapter` 레이어의 `Repository`에서 구현하지 않고 `frameworks` 레이어의 `Repository`에서 NestJS의 의존성 주입을 통해 구현하였습니다.
-
-# Web Client
-
-웨일 브라우저의 확장프로그램으로 빌드되어 배포하지만, 간단한 일반적인 웹 서비스와 크게 다르지 않습니다.
-
-#### Note.
-
-> 예시 프로젝트 코드  
-> [Parcel Tracking - Web Client](https://github.com/parcel-tracking/extension-for-whale)
-
-## Directory Structure
+## Install
 
 ```
-/extension-for-whale
-└─ src
-   ├─ core(domains) #submodule
-   ├─ constants
-   ├─ adapters
-   │  ├─ controllers
-   │  ├─ repositories
-   │  └─ infrastructures
-   └─ frameworks
-      ├─ di
-      └─ components
+$ yarn install
 ```
 
-기본적인 디렉토리 구조는 `api-server`와 비슷합니다.  
-이후에 다른 서비스를 추가하더라고 위 구조와 크게 다르지 않게 구성할 수 있습니다.
+## Build
 
-## Infrastructure
+### domains
 
-웹 서비스에서는 HTTP 통신에 대한 기능을 제공하는 `ClientHTTP`와 브라우저의 저장소 기능을 제공하는 `WebLocalStorage`를 `Infrastructures`에 정의하여 `Repositories`에 주입하여 사용하고 있습니다.  
-이는 최종적으로 각각 `fetch`와 `localStorage`를 주입 받아 동작하게 됩니다.
-
-![Alt Web API](/_images/web-api.png#gh-light-mode-only)
-![Alt Web API](/_images/web-api-dark.png#gh-dark-mode-only)
-
-#### Note.
-
-> 위 이미지의 구조는 api-server에서도 동일하게 구현되어 있습니다.
-
-`Fetch`와 `WebStorage`는 Web API로 전역에서 접근할 수 있지만, 이는 변할 수 있는 세부 구현 사항이기 때문에 각각 클래스로 캡슐화하고 그 역할에 맞게 위치시켜 이후 변경이나 유지보수에 용이하게 합니다.
-
-## Framework
-
-예시 프로젝트에서는 `React`와 `Webpack`을 사용하여 개발하였습니다.  
-`api-server`와 마찬가지로 클라이언트를 구성하는 프레임워크는 `frameworks` 레이어 안에서 `DI(Dependency injection)`을 통한 데이터에만 의존하도록 설계되어 있기 때문에 아키텍처는 프레임워크에 의존하지 않으며, 변경이나 교체에 유연하게 대처할 수 있습니다.
-
-`api-server`에서는사용한 Nestjs 프레임워크에서 `DI`를 지원하지만 클라이언트에는 따로 지원하지 않기 때문에 React의 Context API와 Provider를 사용해서 `DI`를 구현하였습니다.
-
-```ts
-// /src/frameworks/di/DependencyProvider.tsx
-...
-
-export const DependencyContext = createContext<Dependencies | null>(null)
-
-export default function DependencyProvider({
-  children
-}: {
-  children: ReactNode
-}) {
-  const httpClient = globalThis.fetch.bind(globalThis)
-  const browserStorage = (window as any).whale.storage.local
-  const infrastructures = infrastructuresFn(httpClient, browserStorage)
-  const repositories = repositoriesFn(
-    infrastructures.clientHTTP,
-    infrastructures.browserStorage
-  )
-  const useCases = useCasesFn(repositories)
-  const controllers = controllersFn(useCases)
-
-  const dependencies = {
-    controllers
-  }
-
-  return (
-    <DependencyContext.Provider value={dependencies}>
-      {children}
-    </DependencyContext.Provider>
-  )
-}
+```
+$ yarn build:domains
 ```
 
-그리고 Hook을 통해서 `DI`한 controllers를 사용하여 서비스를 구성합니다.
+### adapters
 
-```ts
-// /src/frameworks/hooks/useDependencies.tsx
-import { useContext } from "react"
-import { DependencyContext } from "../di/DependencyProvider"
-
-export default function useDependencies() {
-  const dependencies = useContext(DependencyContext)
-  if (!dependencies) {
-    throw new Error("Dependencies not found in context")
-  }
-  return dependencies
-}
+```
+$ yarn build:adapters
 ```
 
-# Run Project
-
-`예시 프로젝트(Parcel Tracking)`는 직접 다운로드하여 로컬에서 실행해 볼 수 있습니다.
-
-## Use Stack
-
-### api-server
-
-Nestjs, Sequelize, MySQL
-
-### web-client
-
-Webpack, React, Emotion
-
-## install
+## Start
 
 ### api-server
 
 ```
-$ git clone https://github.com/parcel-tracking/api-server.git
+$ yarn start:server
 ```
 
-```
-$ cd api-server
-```
+### client-a
 
 ```
-$ npm install
+$ yarn start:a
 ```
 
-### web-client
+### client-b
 
 ```
-$ git clone https://github.com/parcel-tracking/extension-for-whale.git
-```
-
-```
-$ cd extension-for-whale
-```
-
-```
-$ npm install
-```
-
-## Settings
-
-`api-server`는 로컬에서 동작하기 위해 DB(`MySQL`)설정과 환경 변수 설정이 필요합니다.
-`api-server`의 `root` 디렉토리에 아래와 같이 `.env` 파일을 추가로 만든 후 아래와 같은 형식으로 값을 추가합니다.
-
-```
-$ cd api-server
-```
-
-```
-$ vi .env
-```
-
-```
-DB_USERNAME=root
-DB_PASSWORD=password
-DB_NAME=database-name
-DB_HOST=localhost
-DB_DIALECT=mysql
-```
-
-현재 서비스에 사용하는 DB의 데이터는 [`여기`](/_sql/parcel-tracking.sql)에서 다운로드 받아 사용할 수 있습니다.
-
-## Run
-
-### api-server
-
-```
-$ cd api-server
-```
-
-```
-$ npm start
-```
-
-### web-client
-
-```
-$ cd extension-for-whale
-```
-
-```
-$ npm start
+$ yarn start:b
 ```
 
 # Thank You!

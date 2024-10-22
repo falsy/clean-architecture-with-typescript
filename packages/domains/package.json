@@ -3,8 +3,8 @@
   "packageManager": "yarn@4.2.2",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest",
-    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs"
+    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs",
+    "test": "jest"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
