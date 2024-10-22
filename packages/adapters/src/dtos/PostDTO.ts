@@ -2,11 +2,11 @@ import { IPostDTO, IUserInfoVO } from "domains"
 
 export default class PostDTO implements IPostDTO {
   readonly id: string
-  readonly title: string
-  readonly content: string
+  title: string
+  content: string
   readonly author: IUserInfoVO
   readonly createdAt: Date
-  readonly updatedAt: Date
+  updatedAt: Date
 
   constructor(post: IPostDTO) {
     this.id = post.id

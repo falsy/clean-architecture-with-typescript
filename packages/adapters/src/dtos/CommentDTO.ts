@@ -3,10 +3,10 @@ import { ICommentDTO, IUserInfoVO } from "domains"
 export default class CommentDTO implements ICommentDTO {
   readonly id: string
   readonly postId: string
-  readonly content: string
+  content: string
   readonly author: IUserInfoVO
   readonly createdAt: Date
-  readonly updatedAt: Date
+  updatedAt: Date
 
   constructor(params: ICommentDTO) {
     this.id = params.id
