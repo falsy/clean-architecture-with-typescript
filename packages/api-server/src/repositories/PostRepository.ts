@@ -32,7 +32,7 @@ export default class PostRepository implements IPostRepository {
     return new Promise((resolve) => {
       this.posts.push(
         new PostDTO({
-          id: (this.posts.length + 1).toString(),
+          id: String(Date.now()),
           title: params.title,
           content: params.content,
           author: new UserInfoVO({

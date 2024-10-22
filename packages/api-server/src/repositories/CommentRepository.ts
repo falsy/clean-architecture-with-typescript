@@ -16,7 +16,7 @@ export default class CommentRepository implements ICommentRepository {
     return new Promise((resolve) => {
       this.comments.push(
         new CommentDTO({
-          id: (this.comments.length + 1).toString(),
+          id: String(Date.now()),
           postId,
           content,
           author: new UserInfoVO({
