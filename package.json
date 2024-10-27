@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "lint": "eslint packages/*/src --ext .ts",
+    "build": "yarn build:domains && yarn build:adapters && yarn build:server && yarn build:a && yarn build:b",
     "build:domains": "yarn workspace domains run build",
     "build:adapters": "yarn workspace adapters run build",
     "build:server": "yarn workspace api-server run build",
@@ -21,6 +22,7 @@
     "start:server": "yarn workspace api-server run start",
     "start:a": "yarn workspace client-a run start",
     "start:b": "yarn workspace client-b run start",
+    "test": "yarn test:domains && yarn test:adapters && yarn test:server && yarn test:a && yarn test:b",
     "test:domains": "yarn workspace domains run test",
     "test:adapters": "yarn workspace adapters run test",
     "test:server": "yarn workspace api-server run test",

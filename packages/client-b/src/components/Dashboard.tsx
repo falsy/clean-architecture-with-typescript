@@ -62,16 +62,18 @@ export default function Dashboard() {
       <section>
         <h2>Create Posts</h2>
         <div>
-          <p>title</p>
+          <label htmlFor="title">title</label>
           <input
+            id="title"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div>
-          <p>content</p>
+          <label htmlFor="content">content</label>
           <input
+            id="content"
             type="text"
             value={content}
             onChange={(e) => setContent(e.target.value)}

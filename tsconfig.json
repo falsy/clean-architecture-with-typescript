@@ -1,3 +1,9 @@
 {
-  "compilerOptions": {}
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "domains": ["packages/domains/src/dist/index"],
+      "adapters": ["packages/adapters/src/dist/index"]
+    }
+  }
 }

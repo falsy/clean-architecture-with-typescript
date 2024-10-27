@@ -2,3 +2,5 @@
 .env
 node_modules
 dist
+tsconfig.tsbuildinfo
+tsconfig.build.tsbuildinfo
