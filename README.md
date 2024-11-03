@@ -17,8 +17,8 @@ The sample project is structured as a monorepo using Yarn's built-in `workspace`
 
 # Clean Architecture
 
-![Alt Clean architecture](/_images/clean-architecture.png#gh-light-mode-only)
-![Alt Clean architecture](/_images/clean-architecture-dark.png#gh-dark-mode-only)
+![Alt Clean architecture](.github/images/clean-architecture.png#gh-light-mode-only)
+![Alt Clean architecture](.github/images/clean-architecture-dark.png#gh-dark-mode-only)
 
 As with many architectures, the primary goal of Clean Architecture is to separate concerns. It divides layers according to each concern, designs around the domain rather than detailed implementations, and ensures the inner layers do not depend on external elements like frameworks, databases, or UIs.
 
@@ -29,15 +29,15 @@ As with many architectures, the primary goal of Clean Architecture is to separat
 
 ## Communitaction Flow
 
-![Alt Communitaction Flow](/_images/communication-flow.png#gh-light-mode-only)
-![Alt Communitaction Flow](/_images/communication-flow-dark.png#gh-dark-mode-only)
+![Alt Communitaction Flow](.github/images/communication-flow.png#gh-light-mode-only)
+![Alt Communitaction Flow](.github/images/communication-flow-dark.png#gh-dark-mode-only)
 
 The flow of Clean Architecture can be briefly illustrated in the diagram above.
 
 # Monorepo
 
-![Alt Monorepo](/_images/packages.png#gh-light-mode-only)
-![Alt Monorepo](/_images/packages-dark.png#gh-dark-mode-only)
+![Alt Monorepo](.github/images/packages.png#gh-light-mode-only)
+![Alt Monorepo](.github/images/packages-dark.png#gh-dark-mode-only)
 
 In the monorepo structure, the Domains layer, Adapters layer, and Service layer are clearly separated into individual packages with well-defined dependencies. At the root level, basic configurations for TypeScript, ESLint, and Jest are provided, which can be extended and used in the lower-level packages.
 
@@ -87,8 +87,8 @@ In the sample project, there are three entities: Post, Comment, and User.
 
 ## Aggregates
 
-![Aggregate](/_images/aggregate.png#gh-light-mode-only)
-![Aggregate](/_images/aggregate-dark.png#gh-dark-mode-only)
+![Aggregate](.github/images/aggregate.png#gh-light-mode-only)
+![Aggregate](.github/images/aggregate-dark.png#gh-dark-mode-only)
 
 An Aggregate is a consistency boundary that can include multiple entities and value objects. It encapsulates internal state and controls external access. All modifications must go through the Aggregate Root, which helps manage the complexity of relationships within the model and maintain consistency when services expand or transactions become more complex.
 
@@ -102,8 +102,8 @@ In the sample project, Use Cases include simple interactions such as retrieving 
 
 ## Inversion of Control
 
-![Alt Inversion Of Control](/_images/inversion-of-control.png#gh-light-mode-only)
-![Alt Inversion Of Control](/_images/inversion-of-control-dark.png#gh-dark-mode-only)
+![Alt Inversion Of Control](.github/images/inversion-of-control.png#gh-light-mode-only)
+![Alt Inversion Of Control](.github/images/inversion-of-control-dark.png#gh-dark-mode-only)
 
 Since the Repository belongs to the Adapter layer, the higher-level Use Case should not directly depend on it. Therefore, in the Use Case, an abstract interface for the Repository is implemented, which is later handled through `Dependency Injection(DI)`.
 
