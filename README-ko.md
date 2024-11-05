@@ -2,7 +2,7 @@
 
 클린 아키텍처는 `DDD(Domain-driven Design)`와 `MSA(Micro Service Architecture)`와 함께 많은 프로젝트에서 활용되고 있습니다. 이 프로젝트에서는 TypeScript를 사용하여 동일한 도메인을 공유하는 다양한 웹 클라이언트 서비스를 모노레포와 클린 아키텍처로 구성함으로써, 서비스 유지 보수와 확장을 용이하게 하는 방법을 소개합니다.
 
-만약, 프로젝트가 단순한 UI를 다루는 작은 규모의 프로젝트이거나 또는 하나의 클라이언트 서비스이면서 API 서버가 클라이언트와 맞춤으로 대응되는 환경이라면 오히려 클린 아키텍처의 도입이 코드량과 복잡성이 증가하여 서비스의 유지 보수가 어려워질 수 있기 때문에 유의해야 합니다.
+만약, 프로젝트가 단순한 UI를 다루는 작은 규모의 프로젝트이거나 하나의 클라이언트 서비스이면서 API 서버가 클라이언트와 맞춤으로 대응되는 환경이라면, 상황에 따라서 클린 아키텍처의 도입으로 코드량과 복잡성이 증가하여 오히려 서비스의 유지 보수성이 나빠질 수 있음을 유의해야 합니다.
 
 샘플 프로젝트는 Yarn에서 기본으로 제공하는 `Workspace`를 사용하여 모노레포를 구성하고, 패키지로 클린 아키텍처의 Domains 레이어와 Adapters 레이어를 구성하였고 각각의 서비스 역시 패키지로 구성하며 각 서비스는 Domains 레이어와 Adapters 레이어의 요소를 그대로 사용하거나 또는 상속 받아서 확장, 오버라이드한 후 이를 가지고 서비스를 구성합니다.
 
@@ -13,8 +13,8 @@
 
 # Clean Architecture
 
-![Alt Clean architecture](/_images/clean-architecture.png#gh-light-mode-only)
-![Alt Clean architecture](/_images/clean-architecture-dark.png#gh-dark-mode-only)
+![Alt Clean architecture](.github/images/clean-architecture.png#gh-light-mode-only)
+![Alt Clean architecture](.github/images/clean-architecture-dark.png#gh-dark-mode-only)
 
 다양한 아키텍처들이 그러하듯 클린 아키텍처가 갖는 기본 목적은 관심사를 분리하는 것입니다. 각의 관심사에 따라 계층을 나누고 세부 구현이 아닌 도메인 중심으로 설계하며, 내부 영역이 프레임워크나 데이터베이스, UI 등의 외부 요소에 의존하지 않도록 합니다.
 
@@ -25,15 +25,15 @@
 
 ## Communitaction Flow
 
-![Alt Communitaction Flow](/_images/communication-flow.png#gh-light-mode-only)
-![Alt Communitaction Flow](/_images/communication-flow-dark.png#gh-dark-mode-only)
+![Alt Communitaction Flow](.github/images/communication-flow.png#gh-light-mode-only)
+![Alt Communitaction Flow](.github/images/communication-flow-dark.png#gh-dark-mode-only)
 
 클린 아키텍처의 흐름을 간단하게 다이어그램으로 표현하면 위와 같습니다.
 
 # Monorepo
 
-![Alt Monorepo](/_images/packages.png#gh-light-mode-only)
-![Alt Monorepo](/_images/packages-dark.png#gh-dark-mode-only)
+![Alt Monorepo](.github/images/packages.png#gh-light-mode-only)
+![Alt Monorepo](.github/images/packages-dark.png#gh-dark-mode-only)
 
 모노레포는 Domains 레이어와 Adapters 레이어 그리고 서비스 레이어를 각각 패키지로 의존성을 명확하게 구분하였습니다.
 그리고 루트에서는 TypeScript, ESLint, Jest의 기본 설정으로 하위 패키지에서는 확장하여 사용할 수 있습니다.
@@ -84,8 +84,8 @@ Entity는 도메인 모델링의 핵심 개념 중 하나로, 고유한 식별�
 
 ## Aggregates
 
-![Aggregate](/_images/aggregate.png#gh-light-mode-only)
-![Aggregate](/_images/aggregate-dark.png#gh-dark-mode-only)
+![Aggregate](.github/images/aggregate.png#gh-light-mode-only)
+![Aggregate](.github/images/aggregate-dark.png#gh-dark-mode-only)
 
 Aggregate는 여러 엔티티와 값 객체를 포함할 수 있는 일관성 경계로, 내부 상태를 캡슐화하여 외부에서의 접근을 제어합니다. 모든 수정은 반드시 Aggregate Root를 통해서만 이루어지며, 이는 모델 내의 관계 복잡성을 관리하고, 서비스 확장 및 트랜잭션 복잡성 증가 시 일관성을 유지하는 데 도움이 됩니다.
 
@@ -99,8 +99,8 @@ Use Case는 사용자와 서비스 간의 상호작용을 정의하며, 도메�
 
 ## Inversion of Control
 
-![Alt Inversion Of Control](/_images/inversion-of-control.png#gh-light-mode-only)
-![Alt Inversion Of Control](/_images/inversion-of-control-dark.png#gh-dark-mode-only)
+![Alt Inversion Of Control](.github/images/inversion-of-control.png#gh-light-mode-only)
+![Alt Inversion Of Control](.github/images/inversion-of-control-dark.png#gh-dark-mode-only)
 
 Repository의 경우 Adapter 레이어에 해당하기 때문에 Use Case에서는 Repository에 대해서 알아서는 안됩니다. 그렇기 때문에 Use Case에서는 Repository를 추상화한 인터페이스를 가지고 구현하며, 이는 이후에 `의존성 주입(DI: Dependency Injection`를 통해 동작합니다.
 
