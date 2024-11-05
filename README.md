@@ -135,15 +135,15 @@ client-a is a simple service built using the elements from the Domains and Adapt
 
 ## Client-B
 
-client-b demonstrates the extensibility of the services in this project. Instead of using HTTP communication with the API server to manage Post and Comment data, it is designed to use LocalStorage.
+Client-B is an additional client service designed to demonstrate the scalability of the service. Unlike the existing client, which configures Post and Comment data through HTTP communication with the API server, Client-B uses Local Storage for data management.
 
-The overall service structure is the same as client-a, but in client-b, a new Repository is created following the Repository interface defined in the Domains layer. This new Repository is injected and used, allowing the service to be easily implemented.
+While its overall structure is the same as Client-A, Client-B implements a new Repository that adheres to the interface defined in `Domains`. By injecting this Repository through DI, Client-B showcases how easily a new service can be implemented.
 
 ## API Server
 
-This is a simple API server built using NestJS. It uses the Entities from the Domains layer, but since the project primarily focuses on the client-side Use Cases, the API server implements its own Presenters, Use Cases, and Repository layers, all of which are injected through DI.
+This is a simple API server built using NestJS. It uses the Entities from the Domains layer, but since the project primarily focuses on the client-side Use Cases, the API server implements its own Presenter, Use Case, and Repository layers, all of which are injected through DI.
 
-> Although the main goal of this project is to design client services that share the same domain, making them easy to maintain and scale, the API server is included to demonstrate the flexibility of the architecture.
+> The primary goal of this project is to create a design that facilitates maintenance and scalability across various client services using the same domain. Although the inclusion of an API Server package may not perfectly align with the current project's focus, it has been incorporated to demonstrate a high degree of flexibility in scalability.
 
 # Run
 

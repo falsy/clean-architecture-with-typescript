@@ -132,15 +132,15 @@ client-a는 `Domains`와 `Adapters` 레이어의 요소들을 사용하여 구�
 
 ## Client-B
 
-client-b는 이 프로젝트의 서비스의 확장성을 표현하기 위한 서비스로, 기존의 Post와 Comment 데이터를 API 서버와의 HTTP 통신을 통한 구성 대신 Local Storage를 사용한 구성으로 설계된 서비스입니다.
+client-b는 서비스의 확장성을 표현하기 위한 또 하나의 클라이언트 서비스로, 기존의 Post와 Comment 데이터를 API 서버와의 HTTP 통신을 통한 구성 대신 Local Storage를 사용한 구성으로 설계된 클라이언트 서비스입니다.
 
-전체적인 서비스 구성은 client-a와 동일하지만, client-b에서는 `Domains`에서 정의한 `Repository`의 인터페이스를 따르는 새로운 Repository를 구성하고 이를 DI하여 사용함으로써 간단하게 서비스를 구현합니다.
+전체적인 구성은 client-a와 동일하지만, client-b에서는 `Domains`에서 정의한 Repository의 인터페이스를 따르는 새로운 Repository를 구성하고 이를 DI하여 사용함으로써 간단하게 새로운 서비스를 구현할 수 있음을 나타냅니다.
 
 ## API Server
 
-NestJS를 사용한 간단한 API Server입니다. API Server는 `Domains` 영역의 Entity를 사용하여 구성하지만, 이 프로젝트는 기본적으로 클라이언트 서비스의 Use Case를 기본으로 하기 때문에 API Server에서는 Presenters, Use Case, Repository 레이어 모두를 새롭게 구현하고 이를 DI하여 사용합니다.
+NestJS를 사용한 간단한 API Server입니다. API Server는 `Domains` 영역의 Entity를 사용하여 구성하지만, 이 프로젝트는 기본적으로 클라이언트 서비스의 Use Case를 기본으로 하기 때문에 API Server에서는 Presenter, Use Case, Repository 레이어 모두를 새롭게 구현하고 이를 DI하여 사용하였습니다.
 
-> 이 프로젝트는 동일한 도메인을 사용하는 다양한 클라이언트 서비스에 대하여 유지 보수와 확장에 용이한 설계가 주요 목적이기 때문에, API Server는 현재의 프로젝트 구성에 어울린다고 생각하지 않지만 자유도 높은 확장성을 표현하기 위하여 함께 포함하였습니다.
+> 이 프로젝트는 동일한 도메인을 사용하는 다양한 클라이언트 서비스에 대하여 유지 보수와 확장에 용이한 설계가 주요 목적이기 때문에, API Server 패키지 구성는 현재의 프로젝트에 어울린다고 생각하지 않지만 자유도 높은 확장성을 표현하기 위하여 함께 포함하였습니다.
 
 # Run
 
