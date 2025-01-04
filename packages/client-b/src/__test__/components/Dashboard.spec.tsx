@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
-import { IPost } from "domains"
+import IPost from "domains/aggregates/interfaces/IPost"
 import Dashboard from "../../components/Dashboard"
 import useDependencies from "../../hooks/useDependencies"
 

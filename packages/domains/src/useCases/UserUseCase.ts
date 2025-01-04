@@ -1,5 +1,6 @@
-import { IUser, User } from "../entities"
-import { IUserRepository } from "../repositories/interfaces"
+import IUser from "domains/entities/interfaces/IUser"
+import User from "domains/entities/User"
+import IUserRepository from "domains/repositories/interfaces/IUserRepository"
 import IUserUseCase from "./interfaces/IUserUseCase"
 
 export default class UserUseCase implements IUserUseCase {

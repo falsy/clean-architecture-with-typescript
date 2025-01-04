@@ -65,10 +65,7 @@ In the monorepo structure, the Domains layer, Adapters layer, and Service layer 
 ├─ client-a
 │  └─ src
 │     └─ ...
-├─ client-b
-│  └─ src
-│     └─ ...
-└─ api-server
+└─ client-b
    └─ src
       └─ ...
 ```
@@ -127,7 +124,7 @@ The Presenter layer handles requests from the UI, forwarding them to the server.
 
 # Services
 
-The sample project consists of three simple services: client-a, client-b, and api-server.
+The sample project consists of two simple services: client-a and client-b.
 
 ## Client-A
 
@@ -139,12 +136,6 @@ Client-B is an additional client service designed to demonstrate the scalability
 
 While its overall structure is the same as Client-A, Client-B implements a new Repository that adheres to the interface defined in `Domains`. By injecting this Repository through DI, Client-B showcases how easily a new service can be implemented.
 
-## API Server
-
-This is a simple API server built using NestJS. It uses the Entities from the Domains layer, but since the project primarily focuses on the client-side Use Cases, the API server implements its own Presenter, Use Case, and Repository layers, all of which are injected through DI.
-
-> The primary goal of this project is to create a design that facilitates maintenance and scalability across various client services using the same domain. Although the inclusion of an API Server package may not perfectly align with the current project's focus, it has been incorporated to demonstrate a high degree of flexibility in scalability.
-
 # Run
 
 You can build or run each package in the sample project using the commands registered at the root.
@@ -155,27 +146,7 @@ You can build or run each package in the sample project using the commands regis
 $ yarn install
 ```
 
-## Build
-
-### domains
-
-```
-$ yarn build:domains
-```
-
-### adapters
-
-```
-$ yarn build:adapters
-```
-
 ## Start
-
-### api-server
-
-```
-$ yarn start:server
-```
 
 ### client-a
 

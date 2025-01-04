@@ -1,11 +1,9 @@
-import {
-  IPostDTO,
-  IPostRepository,
-  IRequestPostParams,
-  UserInfoVO
-} from "domains"
-import { IClientHTTP } from "../infrastructures"
-import { PostDTO } from "../dtos"
+import IPostRepository from "domains/repositories/interfaces/IPostRepository"
+import { IRequestPostParams } from "domains/aggregates/interfaces/IPost"
+import UserInfoVO from "domains/vos/UserInfoVO"
+import IPostDTO from "domains/dtos/interfaces/IPostDTO"
+import { IClientHTTP } from "../infrastructures/interfaces/IClientHTTP"
+import PostDTO from "../dtos/PostDTO"
 
 export default class PostRepository implements IPostRepository {
   private client: IClientHTTP
@@ -16,7 +14,7 @@ export default class PostRepository implements IPostRepository {
 
   async getPosts(): Promise<IPostDTO[]> {
     try {
-      const { data } = await this.client.get<IPostDTO[]>("/posts")
+      const { data } = await this.client.get<IPostDTO[]>("/api/posts")
       return data.map((post) => {
         return new PostDTO({
           id: post.id,
@@ -34,7 +32,7 @@ export default class PostRepository implements IPostRepository {
 
   async getPost(postId: string): Promise<IPostDTO> {
     try {
-      const { data } = await this.client.get<IPostDTO>(`/posts/${postId}`)
+      const { data } = await this.client.get<IPostDTO>(`/api/posts/${postId}`)
 
       return new PostDTO({
         id: data.id,
@@ -51,7 +49,7 @@ export default class PostRepository implements IPostRepository {
 
   async createPost(params: IRequestPostParams): Promise<boolean> {
     try {
-      const { data } = await this.client.post<boolean>("/posts", params)
+      const { data } = await this.client.post<boolean>("/api/posts", params)
 
       return data
     } catch (e) {
@@ -62,7 +60,7 @@ export default class PostRepository implements IPostRepository {
   async editPost(postId: string, params: IRequestPostParams): Promise<boolean> {
     try {
       const { data } = await this.client.put<boolean>(
-        `/posts/${postId}`,
+        `/api/posts/${postId}`,
         params
       )
 
@@ -74,7 +72,7 @@ export default class PostRepository implements IPostRepository {
 
   async deletePost(postId: string): Promise<boolean> {
     try {
-      const { data } = await this.client.delete<boolean>(`/posts/${postId}`)
+      const { data } = await this.client.delete<boolean>(`/api/posts/${postId}`)
 
       return data
     } catch (e) {

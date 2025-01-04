@@ -1,4 +1,4 @@
-import { ICommentDTO } from "../../dtos/interfaces"
+import ICommentDTO from "domains/dtos/interfaces/ICommentDTO"
 
 export default interface ICommentRepository {
   getComments(postId: string): Promise<ICommentDTO[]>

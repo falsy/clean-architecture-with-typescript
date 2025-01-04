@@ -1,5 +1,5 @@
-import { IComment } from "../../entities"
-import { IUserInfoVO } from "../../vos"
+import IComment from "domains/entities/interfaces/IComment"
+import IUserInfoVO from "domains/vos/interfaces/IUserInfoVO"
 
 export default interface IPost {
   readonly id: string

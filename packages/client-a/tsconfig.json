@@ -10,8 +10,6 @@
     "allowJs": true,
     "moduleResolution": "node",
     "jsxImportSource": "@emotion/react",
-    "baseUrl": "./",
-    "rootDir": "./",
     "types": ["@testing-library/jest-dom", "jest"]
   },
   "include": ["./src/**/*", "setupTests.ts"],

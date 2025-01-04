@@ -1,14 +1,5 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "esModuleInterop": true,
-    "rootDir": ".",
-    "declaration": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist/esm",
-    "types": ["jest"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["dist"]
+  "compilerOptions": {},
+  "include": ["src"]
 }

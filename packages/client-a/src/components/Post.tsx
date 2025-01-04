@@ -1,6 +1,6 @@
-import { IPost } from "domains"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import IPost from "domains/aggregates/interfaces/IPost"
 import useDependencies from "../hooks/useDependencies"
 
 export default function Post() {

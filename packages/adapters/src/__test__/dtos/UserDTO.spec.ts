@@ -1,5 +1,5 @@
-import { IUserDTO } from "domains"
-import { UserDTO } from "../../dtos"
+import IUserDTO from "domains/dtos/interfaces/IUserDTO"
+import UserDTO from "../../dtos/UserDTO"
 
 describe("UserDTO", () => {
   it("should set all properties correctly", () => {

@@ -1,4 +1,4 @@
-import { IUserDTO } from "domains"
+import IUserDTO from "domains/dtos/interfaces/IUserDTO"
 
 export default class UserDTO implements IUserDTO {
   readonly id: string

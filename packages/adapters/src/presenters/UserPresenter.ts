@@ -1,5 +1,5 @@
-import { IUserUseCase } from "domains"
-import { IUserPresenter } from "./index"
+import IUserPresenter from "./interfaces/IUserPresenter"
+import IUserUseCase from "domains/useCases/interfaces/IUserUseCase"
 
 export default class UserPresenter implements IUserPresenter {
   private userUseCase: IUserUseCase

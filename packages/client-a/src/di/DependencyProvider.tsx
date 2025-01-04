@@ -14,7 +14,7 @@ export default function DependencyProvider({
 }: {
   children: ReactNode
 }) {
-  const repositories = repositoriesFn("http://localhost:2000")
+  const repositories = repositoriesFn("http://localhost:3000")
   const useCases = useCasesFn(repositories)
   const presenters = presentersFn(useCases)
 

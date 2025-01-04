@@ -1,10 +1,11 @@
+import IPost, { IRequestPostParams } from "domains/aggregates/interfaces/IPost"
+import Post from "domains/aggregates/Post"
+import Comment from "domains/entities/Comment"
+import UserInfoVO from "domains/vos/UserInfoVO"
+import IPostDTO from "domains/dtos/interfaces/IPostDTO"
 import ICommentRepository from "../repositories/interfaces/ICommentRepository"
 import IPostRepository from "../repositories/interfaces/IPostRepository"
 import IPostUseCase from "./interfaces/IPostUseCase"
-import { IPost, IRequestPostParams, Post } from "../aggregates"
-import { IPostDTO } from "../dtos/interfaces"
-import { Comment } from "../entities"
-import { UserInfoVO } from "../vos"
 
 export default class PostUseCase implements IPostUseCase {
   private postRepository: IPostRepository

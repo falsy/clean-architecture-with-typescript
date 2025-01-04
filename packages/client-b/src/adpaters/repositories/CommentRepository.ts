@@ -1,5 +1,7 @@
-import { CommentDTO } from "adapters"
-import { ICommentDTO, ICommentRepository, UserInfoVO } from "domains"
+import ICommentRepository from "domains/repositories/interfaces/ICommentRepository"
+import ICommentDTO from "domains/dtos/interfaces/ICommentDTO"
+import UserInfoVO from "domains/vos/UserInfoVO"
+import CommentDTO from "adapters/dtos/CommentDTO"
 
 export default class CommentRepository implements ICommentRepository {
   async getComments(postId: string): Promise<ICommentDTO[]> {
