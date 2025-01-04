@@ -1,4 +1,4 @@
-import { UserRepository } from "adapters"
+import UserRepository from "adapters/repositories/UserRepository"
 import IRepositories from "./interfaces/IRepositories"
 import ClientHTTP from "./ClientHTTP"
 import CommentRepository from "../adpaters/repositories/CommentRepository"

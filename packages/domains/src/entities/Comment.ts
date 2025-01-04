@@ -1,4 +1,4 @@
-import { IUserInfoVO } from "../vos"
+import IUserInfoVO from "domains/vos/interfaces/IUserInfoVO"
 import IComment, { ICommentParams } from "./interfaces/IComment"
 
 export default class Comment implements IComment {

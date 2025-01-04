@@ -1,7 +1,7 @@
 {
   "name": "clean-architecture-with-typescript",
   "private": true,
-  "version": "4.0.0",
+  "version": "4.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/falsy/clean-architecture-with-typescript.git"
@@ -13,19 +13,13 @@
   ],
   "scripts": {
     "lint": "eslint packages/*/src --ext .ts",
-    "build": "yarn build:domains && yarn build:adapters && yarn build:server && yarn build:a && yarn build:b",
-    "build:domains": "yarn workspace domains run build",
-    "build:adapters": "yarn workspace adapters run build",
-    "build:server": "yarn workspace api-server run build",
     "build:a": "yarn workspace client-a run build",
     "build:b": "yarn workspace client-b run build",
-    "start:server": "yarn workspace api-server run start",
     "start:a": "yarn workspace client-a run start",
     "start:b": "yarn workspace client-b run start",
-    "test": "yarn test:domains && yarn test:adapters && yarn test:server && yarn test:a && yarn test:b",
+    "test": "yarn test:domains && yarn test:adapters && yarn test:a && yarn test:b",
     "test:domains": "yarn workspace domains run test",
     "test:adapters": "yarn workspace adapters run test",
-    "test:server": "yarn workspace api-server run test",
     "test:a": "yarn workspace client-a run test",
     "test:b": "yarn workspace client-b run test"
   },

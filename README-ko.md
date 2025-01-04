@@ -62,10 +62,7 @@
 ├─ client-a
 │  └─ src
 │     └─ ...
-├─ client-b
-│  └─ src
-│     └─ ...
-└─ api-server
+└─ client-b
    └─ src
       └─ ...
 ```
@@ -124,7 +121,7 @@ Presenters 레이어에서는 UI에서 필요로하는 메서드를 가지고 �
 
 # Services
 
-샘플 프로젝트는 client-a, client-b, api-server 이렇게 3개의 아주 간단한 서비스로 구성되어 있습니다.
+샘플 프로젝트는 client-a, client-b, 이렇게 2개의 아주 간단한 서비스로 구성되어 있습니다.
 
 ## Client-A
 
@@ -136,12 +133,6 @@ client-b는 서비스의 확장성을 표현하기 위한 또 하나의 클라�
 
 전체적인 구성은 client-a와 동일하지만, client-b에서는 `Domains`에서 정의한 Repository의 인터페이스를 따르는 새로운 Repository를 구성하고 이를 DI하여 사용함으로써 간단하게 새로운 서비스를 구현할 수 있음을 나타냅니다.
 
-## API Server
-
-NestJS를 사용한 간단한 API Server입니다. API Server는 `Domains` 영역의 Entity를 사용하여 구성하지만, 이 프로젝트는 기본적으로 클라이언트 서비스의 Use Case를 기본으로 하기 때문에 API Server에서는 Presenter, Use Case, Repository 레이어 모두를 새롭게 구현하고 이를 DI하여 사용하였습니다.
-
-> 이 프로젝트는 동일한 도메인을 사용하는 다양한 클라이언트 서비스에 대하여 유지 보수와 확장에 용이한 설계가 주요 목적이기 때문에, API Server 패키지 구성는 현재의 프로젝트에 어울린다고 생각하지 않지만 자유도 높은 확장성을 표현하기 위하여 함께 포함하였습니다.
-
 # Run
 
 샘플 프로젝트는 루트에 등록된 커맨드를 활용하여 각 패키지를 빌드 또는 실행할 수 있습니다.
@@ -152,27 +143,7 @@ NestJS를 사용한 간단한 API Server입니다. API Server는 `Domains` 영�
 $ yarn install
 ```
 
-## Build
-
-### domains
-
-```
-$ yarn build:domains
-```
-
-### adapters
-
-```
-$ yarn build:adapters
-```
-
 ## Start
-
-### api-server
-
-```
-$ yarn start:server
-```
 
 ### client-a
 

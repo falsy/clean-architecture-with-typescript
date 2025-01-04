@@ -1,4 +1,5 @@
-import { PostUseCase, UserUseCase } from "domains"
+import PostUseCase from "domains/useCases/PostUseCase"
+import UserUseCase from "domains/useCases/UserUseCase"
 import IRepositories from "./interfaces/IRepositories"
 import IUseCases from "./interfaces/IUseCases"
 

@@ -1,4 +1,4 @@
-import { IUserInfoVO } from "../../vos"
+import IUserInfoVO from "domains/vos/interfaces/IUserInfoVO"
 
 export default interface ICommentDTO {
   readonly id: string

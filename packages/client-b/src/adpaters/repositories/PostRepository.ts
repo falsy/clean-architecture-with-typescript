@@ -1,10 +1,8 @@
-import {
-  IPostDTO,
-  IPostRepository,
-  IRequestPostParams,
-  UserInfoVO
-} from "domains"
-import { PostDTO } from "adapters"
+import IPostDTO from "domains/dtos/interfaces/IPostDTO"
+import IPostRepository from "domains/repositories/interfaces/IPostRepository"
+import { IRequestPostParams } from "domains/aggregates/interfaces/IPost"
+import UserInfoVO from "domains/vos/UserInfoVO"
+import PostDTO from "adapters/dtos/PostDTO"
 
 export default class PostRepository implements IPostRepository {
   async getPosts(): Promise<IPostDTO[]> {

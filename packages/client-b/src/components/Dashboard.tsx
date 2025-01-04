@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { IPost } from "domains"
+import IPost from "domains/aggregates/interfaces/IPost"
 import useDependencies from "../hooks/useDependencies"
 
 export default function Dashboard() {

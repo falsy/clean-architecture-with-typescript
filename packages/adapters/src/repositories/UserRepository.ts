@@ -1,6 +1,7 @@
-import { IUserDTO, IUserRepository } from "domains"
-import { IClientHTTP } from "../infrastructures"
-import { UserDTO } from "../dtos"
+import IUserRepository from "domains/repositories/interfaces/IUserRepository"
+import IUserDTO from "domains/dtos/interfaces/IUserDTO"
+import { IClientHTTP } from "../infrastructures/interfaces/IClientHTTP"
+import UserDTO from "../dtos/UserDTO"
 
 export default class UserRepository implements IUserRepository {
   private client: IClientHTTP
@@ -11,7 +12,7 @@ export default class UserRepository implements IUserRepository {
 
   async getUser(): Promise<IUserDTO> {
     try {
-      const { data } = await this.client.get<IUserDTO>("/users")
+      const { data } = await this.client.get<IUserDTO>("/api/users")
 
       return new UserDTO(data)
     } catch (e) {

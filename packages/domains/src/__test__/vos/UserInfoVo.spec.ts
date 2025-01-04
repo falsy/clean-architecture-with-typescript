@@ -1,4 +1,5 @@
-import { IUserInfoVOParams, UserInfoVO } from "../../vos"
+import { IUserInfoVOParams } from "domains/vos/interfaces/IUserInfoVO"
+import UserInfoVO from "domains/vos/UserInfoVO"
 
 describe("UserInfoVO", () => {
   it("should set userId and userName correctly", () => {

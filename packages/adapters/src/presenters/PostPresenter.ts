@@ -1,5 +1,6 @@
-import { IPost, IPostUseCase, IRequestPostParams } from "domains"
-import { IPostPresenter } from "./index"
+import IPost, { IRequestPostParams } from "domains/aggregates/interfaces/IPost"
+import IPostUseCase from "domains/useCases/interfaces/IPostUseCase"
+import IPostPresenter from "./interfaces/IPostPresenter"
 
 export default class PostPresenter implements IPostPresenter {
   private postUseCase: IPostUseCase

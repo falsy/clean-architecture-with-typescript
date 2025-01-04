@@ -1,6 +1,6 @@
-import { IComment } from "../entities"
-import { IUserInfoVO } from "../vos"
-import { IPostParams, IPost } from "./index"
+import IComment from "domains/entities/interfaces/IComment"
+import IUserInfoVO from "domains/vos/interfaces/IUserInfoVO"
+import IPost, { IPostParams } from "./interfaces/IPost"
 
 export default class Post implements IPost {
   readonly id: string

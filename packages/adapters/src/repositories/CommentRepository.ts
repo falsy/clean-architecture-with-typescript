@@ -1,6 +1,7 @@
-import { ICommentDTO, ICommentRepository } from "domains"
-import { IClientHTTP } from "../infrastructures"
-import { CommentDTO } from "../dtos"
+import ICommentRepository from "domains/repositories/interfaces/ICommentRepository"
+import ICommentDTO from "domains/dtos/interfaces/ICommentDTO"
+import { IClientHTTP } from "../infrastructures/interfaces/IClientHTTP"
+import CommentDTO from "../dtos/CommentDTO"
 
 export default class CommentRepository implements ICommentRepository {
   private client: IClientHTTP
@@ -12,7 +13,7 @@ export default class CommentRepository implements ICommentRepository {
   async getComments(postId: string): Promise<ICommentDTO[]> {
     try {
       const { data } = await this.client.get<ICommentDTO[]>(
-        `/posts/${postId}/comments`
+        `/api/posts/${postId}/comments`
       )
 
       return data.map((comment) => {
@@ -26,7 +27,7 @@ export default class CommentRepository implements ICommentRepository {
   async createComment(postId: string, content: string): Promise<boolean> {
     try {
       const { data } = await this.client.post<boolean>(
-        `/posts/${postId}/comments`,
+        `/api/posts/${postId}/comments`,
         {
           content
         }
@@ -41,7 +42,7 @@ export default class CommentRepository implements ICommentRepository {
   async editComment(commentId: string, content: string): Promise<boolean> {
     try {
       const { data } = await this.client.put<boolean>(
-        `/comments/${commentId}`,
+        `/api/comments/${commentId}`,
         {
           content
         }
@@ -56,7 +57,7 @@ export default class CommentRepository implements ICommentRepository {
   async deleteComment(commentId: string): Promise<boolean> {
     try {
       const { data } = await this.client.delete<boolean>(
-        `/comments/${commentId}`
+        `/api/comments/${commentId}`
       )
 
       return data

@@ -1,4 +1,5 @@
-import { IPostDTO, IUserInfoVO } from "domains"
+import IPostDTO from "domains/dtos/interfaces/IPostDTO"
+import IUserInfoVO from "domains/vos/interfaces/IUserInfoVO"
 
 export default class PostDTO implements IPostDTO {
   readonly id: string

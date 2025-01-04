@@ -1,4 +1,5 @@
-import { ICommentDTO, IUserInfoVO } from "domains"
+import IUserInfoVO from "domains/vos/interfaces/IUserInfoVO"
+import ICommentDTO from "domains/dtos/interfaces/ICommentDTO"
 
 export default class CommentDTO implements ICommentDTO {
   readonly id: string

@@ -1,5 +1,5 @@
-import { IRequestPostParams } from "../../aggregates"
-import { IPostDTO } from "../../dtos/interfaces"
+import { IRequestPostParams } from "domains/aggregates/interfaces/IPost"
+import IPostDTO from "domains/dtos/interfaces/IPostDTO"
 
 export default interface IPostRepository {
   getPosts(): Promise<IPostDTO[]>

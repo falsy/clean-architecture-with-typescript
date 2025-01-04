@@ -1,4 +1,4 @@
-import { IPost, IRequestPostParams } from "../../aggregates"
+import IPost, { IRequestPostParams } from "domains/aggregates/interfaces/IPost"
 
 export default interface IPostUseCase {
   getSummaryPosts(): Promise<IPost[]>
