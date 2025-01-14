@@ -1,6 +1,6 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Dashboard from "./Dashboard"
-import Post from "./Post"
+import { createBrowserRouter, RouterProvider } from "react-router"
+import Dashboard from "./components/Dashboard"
+import Post from "./components/Post"
 
 const router = createBrowserRouter([
   { path: "/", element: <Dashboard /> },

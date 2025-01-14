@@ -1,18 +1,19 @@
-import React from "react"
+import "./global.css"
+import { StrictMode } from "react"
 import ReactDOM from "react-dom/client"
 import DependencyProvider from "./di/DependencyProvider"
-import { Routes } from "./components/Routes"
+import { Routes } from "./Routes"
 
-const container = document.getElementById("wrap")
+const container = document.getElementById("root")
 const root = ReactDOM.createRoot(container as HTMLElement)
 
 const App = () => {
   return (
-    <React.StrictMode>
+    <StrictMode>
       <DependencyProvider>
         <Routes />
       </DependencyProvider>
-    </React.StrictMode>
+    </StrictMode>
   )
 }
 
