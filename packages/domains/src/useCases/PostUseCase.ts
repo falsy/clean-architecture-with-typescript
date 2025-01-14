@@ -19,7 +19,7 @@ export default class PostUseCase implements IPostUseCase {
     this.commentRepository = commentRepository
   }
 
-  async getSummaryPosts(): Promise<IPost[]> {
+  async getPosts(): Promise<IPost[]> {
     const posts = await this.postRepository.getPosts()
 
     return posts.map((post: IPostDTO) => {
@@ -35,7 +35,7 @@ export default class PostUseCase implements IPostUseCase {
     })
   }
 
-  async getDetailPost(postId: string): Promise<IPost> {
+  async getPost(postId: string): Promise<IPost> {
     const [post, comments] = await Promise.all([
       this.postRepository.getPost(postId),
       this.commentRepository.getComments(postId)
@@ -56,20 +56,6 @@ export default class PostUseCase implements IPostUseCase {
           updatedAt: comment.updatedAt
         })
       }),
-      createdAt: post.createdAt,
-      updatedAt: post.updatedAt
-    })
-  }
-
-  async getPostSummary(postId: string): Promise<IPost> {
-    const post = await this.postRepository.getPost(postId)
-
-    return new Post({
-      id: post.id,
-      title: post.title,
-      content: post.content,
-      author: new UserInfoVO(post.author),
-      comments: [],
       createdAt: post.createdAt,
       updatedAt: post.updatedAt
     })

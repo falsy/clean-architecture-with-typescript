@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import IPost from "domains/aggregates/interfaces/IPost"
-import Dashboard from "../../components/Dashboard"
+import Dashboard from "../../_components/Dashboard"
 import useDependencies from "../../hooks/useDependencies"
 
 jest.mock("../../hooks/useDependencies")

@@ -1,9 +1,8 @@
 import IPost, { IRequestPostParams } from "domains/aggregates/interfaces/IPost"
 
 export default interface IPostPresenter {
-  getSummaryPosts(): Promise<IPost[]>
-  getDetailPost(postId: string): Promise<IPost>
-  getPostSummary(postId: string): Promise<IPost>
+  getPosts(): Promise<IPost[]>
+  getPost(postId: string): Promise<IPost>
   createPost(params: IRequestPostParams): Promise<boolean>
   editPost(postId: string, params: IRequestPostParams): Promise<boolean>
   deletePost(postId: string): Promise<boolean>
