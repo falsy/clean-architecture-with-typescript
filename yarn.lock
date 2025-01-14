@@ -3174,7 +3174,6 @@ __metadata:
     domains: "workspace:*"
     express: "npm:^4.21.2"
     jotai: "npm:^2.11.0"
-    next: "npm:^15.1.3"
     postcss: "npm:^8.4.49"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
@@ -3191,12 +3190,15 @@ __metadata:
     "@types/react": "npm:^19.0.2"
     "@types/react-dom": "npm:^19.0.2"
     adapters: "workspace:*"
+    autoprefixer: "npm:^10.4.20"
+    clsx: "npm:^2.1.1"
     domains: "workspace:*"
-    jest-environment-jsdom: "npm:^29.7.0"
     jotai: "npm:^2.11.0"
     next: "npm:^15.1.3"
+    postcss: "npm:^8.4.49"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
+    tailwindcss: "npm:^3.4.17"
   languageName: unknown
   linkType: soft
 
