@@ -5,13 +5,23 @@
     "outDir": "./dist/",
     "module": "ESNext",
     "esModuleInterop": true,
-    "target": "es5",
-    "jsx": "react-jsx",
+    "target": "ES2017",
+    "jsx": "preserve",
     "allowJs": true,
     "moduleResolution": "node",
-    "jsxImportSource": "@emotion/react",
-    "types": ["@testing-library/jest-dom", "jest"]
+    "types": ["@testing-library/jest-dom", "jest"],
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["./src/**/*", "setupTests.ts"],
+  "include": ["src", ".next/types/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

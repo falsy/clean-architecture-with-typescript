@@ -1,7 +1,7 @@
 {
   "name": "clean-architecture-with-typescript",
   "private": true,
-  "version": "4.2.0",
+  "version": "4.3.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/falsy/clean-architecture-with-typescript.git"
@@ -19,16 +19,29 @@
     "test:adapters": "yarn workspace adapters run test",
     "test:a": "yarn workspace client-a run test",
     "test:b": "yarn workspace client-b run test",
+    "cypress:a": "yarn workspace client-a run cypress",
+    "cypress:b": "yarn workspace client-b run cypress",
     "lint": "eslint packages/*/src --ext .ts"
   },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.13",
     "@typescript-eslint/eslint-plugin": "^8.10.0",
     "@typescript-eslint/parser": "^8.10.0",
+    "cypress": "^13.17.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.3.3",
     "ts-jest": "^29.2.5",
     "typescript": "^5.6.3"

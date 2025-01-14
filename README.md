@@ -1,10 +1,10 @@
 # Clean Architecture with TypeScript
 
-Clean Architecture, along with `Domain-driven Design(DDD)` and `Micro Service Architecture(MSA)`, is widely used in many projects. In this project, we introduce how to structure various web client services that share the same domain using a monorepo and Clean Architecture, making it easier to maintain and scale the client services.
+Clean Architecture is widely used in many projects alongside `DDD (Domain-driven Design)` and `MSA (Microservice Architecture)`. This project is an idea-driven initiative that leverages TypeScript, a monorepo setup, and Clean Architecture to effectively scale and maintain various web client services that share the same domain.
 
-However, if the project is a small-scale one dealing with a simple UI or involves only a single client service where the API server is closely tailored to the client, adopting Clean Architecture may increase code volume and complexity, making maintenance more difficult. This is something to be mindful of.
+However, if the project is a small-scale application that primarily focuses on simple UI, or if the API server is tightly coupled with the client, adopting Clean Architecture might negatively impact maintainability due to increased code complexity and boilerplate code.
 
-The sample project is structured as a monorepo using Yarn's built-in `workspace` functionality. The Clean Architecture's Domain and Adapter layers are organized into separate packages, and each service is also set up as a package. The services either directly use, extend, or override elements from the Domain and Adapter layers to build the final client services.
+In this sample project, a monorepo is structured using `Workspaces` provided by Yarn. The monorepo consists of the Domains and Adapters layers as separate packages, while each service is also packaged individually. These services directly utilize, extend, or inherit elements from the Domains and Adapters layers to build their respective implementations.
 
 #### Note.
 
@@ -70,6 +70,12 @@ In the monorepo structure, the Domains layer, Adapters layer, and Service layer 
       └─ ...
 ```
 
+## Tree Shaking
+
+In this sample project, service packages use shared packages (`Domains`, `Adapters`, `and other potential packages`) through a `Source-to-Source` approach, rather than referencing pre-built outputs. This approach ensures that the service’s module bundler can effectively eliminate unused code during the final build. Therefore, all shared packages must be written using `ES Modules`.
+
+> Most module bundlers natively support tree shaking for code written in ES Modules.
+
 # Domains
 
 The Domain layer defines the business rules and logic.
@@ -124,17 +130,80 @@ The Presenter layer handles requests from the UI, forwarding them to the server.
 
 # Services
 
-The sample project consists of two simple services: client-a and client-b.
+The sample project's client services consist of two simple services: client-a and client-b. Both services are built based on the same domain-driven architecture, and their UI components are designed following the principles of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/).
 
 ## Client-A
 
-client-a is a simple service built using the elements from the Domains and Adapters layers. It is developed with React and Webpack, and uses React’s Context and Hooks to implement Dependency Injection.
+### Use Stack
+
+```
+Vite, React, Jotai, Tailwind CSS, Jest, RTL, Cypress
+```
+
+client-a directly utilizes elements from the `Domains` and `Adapters` layers and implements methods for each domain using React hooks and the global state management library [Jotai](https://jotai.org/). These methods act as the Presenters layer in the final service.
+
+> Previously, the Adapters package explicitly included a Presenters directory to represent a framework-agnostic Presenters layer. However, in services like this sample project that use React, we extend the Presenters layer by injecting dependencies into the final Presenters objects and utilizing React hooks to achieve a composition that aligns with the framework.
+
+### Dependency Injection
+
+```tsx
+import { API_URL } from "../constants"
+import repositoriesFn from "./repositories"
+import useCasesFn from "./useCases"
+import presentersFn from "./presenters"
+
+export default function di() {
+  const repositories = repositoriesFn(API_URL)
+  const useCases = useCasesFn(repositories)
+  const presenters = presentersFn(useCases)
+
+  return presenters
+}
+```
+
+### Presenters
+
+```tsx
+import { useCallback, useMemo, useTransition } from "react"
+import { atom, useAtom } from "jotai"
+import IPost from "domains/aggregates/interfaces/IPost"
+import Post from "domains/aggregates/Post"
+import presenters from "../di"
+
+const PostsAtoms = atom<IPost[]>([])
+
+export default function usePosts() {
+  const di = useMemo(() => presenters(), [])
+
+  const [posts, setPosts] = useAtom<IPost[]>(PostsAtoms)
+  const [isPending, startTransition] = useTransition()
+
+  const getPosts = useCallback(async () => {
+    startTransition(async () => {
+      const resPosts = await di.post.getPosts()
+      setPosts(resPosts)
+    })
+  }, [di.post, setPosts])
+
+  ...
+}
+```
 
 ## Client-B
 
-Client-B is an additional client service designed to demonstrate the scalability of the service. Unlike the existing client, which configures Post and Comment data through HTTP communication with the API server, Client-B uses Local Storage for data management.
+### Use Stack
 
-While its overall structure is the same as Client-A, Client-B implements a new Repository that adheres to the interface defined in `Domains`. By injecting this Repository through DI, Client-B showcases how easily a new service can be implemented.
+```
+Next.js, Jotai, Tailwind CSS, Jest, RTL, Cypress
+```
+
+The client-b service is an extension of client-a, utilizing the same domain model to demonstrate service scalability. While it shares similarities with client-a, the key difference is that client-b is built on Next.js. Unlike client-a, which manipulates data through HTTP communication with an API server, client-b is designed to operate without HTTP communication, relying instead on local storage.
+
+Therefore, unlike client-a, client-b implements new repositories by concretely defining the repository interfaces from `Domains` and injecting these dependencies to create a new service that extends the existing functionality in a straightforward manner.
+
+## Design System
+
+When services use the same framework, as in this sample project, the advantages of a monorepo setup can be leveraged by creating a separate package for shared UI components. This increases component reusability, making it easier to expand and maintain services more efficiently.
 
 # Run
 
@@ -142,21 +211,17 @@ You can build or run each package in the sample project using the commands regis
 
 ## Install
 
-```
+```sh
 $ yarn install
 ```
 
 ## Start
 
-### client-a
-
-```
+```sh
+# client-a
 $ yarn start:a
-```
 
-### client-b
-
-```
+# client-b
 $ yarn start:b
 ```
 

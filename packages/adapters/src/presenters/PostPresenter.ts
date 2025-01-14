@@ -9,16 +9,12 @@ export default class PostPresenter implements IPostPresenter {
     this.postUseCase = postUseCase
   }
 
-  getSummaryPosts(): Promise<IPost[]> {
-    return this.postUseCase.getSummaryPosts()
+  getPosts(): Promise<IPost[]> {
+    return this.postUseCase.getPosts()
   }
 
-  getDetailPost(postId: string): Promise<IPost> {
-    return this.postUseCase.getDetailPost(postId)
-  }
-
-  getPostSummary(postId: string): Promise<IPost> {
-    return this.postUseCase.getPostSummary(postId)
+  getPost(postId: string): Promise<IPost> {
+    return this.postUseCase.getPost(postId)
   }
 
   createPost(params: IRequestPostParams): Promise<boolean> {
