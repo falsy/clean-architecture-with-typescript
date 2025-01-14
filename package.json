@@ -19,7 +19,13 @@
     "test:adapters": "yarn workspace adapters run test",
     "test:a": "yarn workspace client-a run test",
     "test:b": "yarn workspace client-b run test",
+    "cypress:a": "yarn workspace client-a run cypress",
+    "cypress:b": "yarn workspace client-b run cypress",
     "lint": "eslint packages/*/src --ext .ts"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",

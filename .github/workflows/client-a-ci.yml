@@ -29,3 +29,17 @@ jobs:
 
       - name: Run tests
         run: yarn test:a
+
+      - name: Start client
+        run: yarn start &
+
+      - name: Wait for client
+        run: npx wait-on http://localhost:4000
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+
+      - name: Stop all background tasks
+        run: kill $(jobs -p) || true

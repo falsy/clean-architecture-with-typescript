@@ -11,6 +11,6 @@
     "allowJs": true,
     "moduleResolution": "node"
   },
-  "include": ["src", "setupTests.ts"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

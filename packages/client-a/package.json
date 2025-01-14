@@ -4,7 +4,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "adapters": "workspace:*",
