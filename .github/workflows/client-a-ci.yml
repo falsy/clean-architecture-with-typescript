@@ -31,7 +31,7 @@ jobs:
         run: yarn test:a
 
       - name: Start client
-        run: yarn start &
+        run: yarn start:a &
 
       - name: Wait for client
         run: npx wait-on http://localhost:4000

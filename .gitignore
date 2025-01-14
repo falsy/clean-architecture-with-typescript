@@ -1,6 +1,16 @@
+# Mac
 .DS_Store
-.env
+
+#!.yarn/cache
+.pnp.*
 node_modules
+
+# Env
+.env
+
+# Build
 dist
-tsconfig.tsbuildinfo
-tsconfig.build.tsbuildinfo
+
+# Next.js
+.next
+
