@@ -39,6 +39,7 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v4
         with:
+          project: packages/client-b
           browser: chrome
 
       - name: Stop all background tasks
