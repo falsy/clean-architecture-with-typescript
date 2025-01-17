@@ -1,6 +1,6 @@
 # Clean Architecture with TypeScript
 
-Clean Architecture is widely used in many projects alongside `DDD (Domain-driven Design)` and `MSA (Microservice Architecture)`. This project is an idea-driven initiative that leverages TypeScript, a monorepo setup, and Clean Architecture to effectively scale and maintain various web client services that share the same domain.
+Clean Architecture is widely used in many projects alongside `DDD(Domain-driven Design)` and `MSA(Microservice Architecture)`. This project is an idea-driven initiative that leverages TypeScript, a monorepo setup, and Clean Architecture to effectively scale and maintain various web client services that share the same domain.
 
 However, if the project is a small-scale application that primarily focuses on simple UI, or if the API server is tightly coupled with the client, adopting Clean Architecture might negatively impact maintainability due to increased code complexity and boilerplate code.
 
@@ -78,9 +78,9 @@ In this sample project, service packages use shared packages (`Domains`, `Adapte
 
 # Domains
 
-The Domain layer defines the business rules and logic.
+The domain layer defines business rules and business logic.
 
-In the case of the sample project, it is a part of a simple forum service where users can view a list of posts, write posts, and leave comments. The Domain layer is built using Rollup, packaging Entities, Use Cases, and Value Objects into a single package. Various services within the project utilize this package to build their functionality.
+In the sample project, it represents a simple forum service where users can view a list of posts or create posts and comments. It is structured as a single package within a monorepo, containing definitions for Entities, Use Cases, and Value Objects. Various service packages utilize these definitions to build their respective functionalities.
 
 ## Entities
 
@@ -88,7 +88,20 @@ Entities are one of the core concepts in domain modeling, representing objects t
 
 In the sample project, there are three entities: Post, Comment, and User.
 
-## Aggregates
+## Domain-driven Design(DDD)
+
+Clean Architecture shares a common goal with DDD in pursuing domain-centric design. While Clean Architecture focuses on structural flexibility, maintainability, technological independence, and testability of software, DDD emphasizes solving complex business problems.
+
+However, Clean Architecture adopts some of DDD’s philosophy and principles, making it compatible with DDD and providing a framework to effectively implement DDD concepts. For example, Clean Architecture can leverage DDD concepts such as `Ubiquitous Language` and `Aggregate Root`.
+
+### Ubiquitous Language
+
+![Ubiquitous Language](.github/images/ubiquitous.png#gh-light-mode-only)
+![Ubiquitous Language](.github/images/ubiquitous-dark.png#gh-dark-mode-only)
+
+Ubiquitous Language refers to a shared language used by all team members to maintain consistent communication throughout a project. This language should be shared by everyone involved, including project leaders, domain experts, developers, UI/UX designers, business analysts, and QA engineers. It should not only be used in documentation and discussions during collaboration but also be reflected in the software model and code.
+
+### Aggregate Root
 
 ![Aggregate](.github/images/aggregate.png#gh-light-mode-only)
 ![Aggregate](.github/images/aggregate-dark.png#gh-dark-mode-only)
@@ -112,7 +125,7 @@ Since the Repository belongs to the Adapter layer, the higher-level Use Case sho
 
 # Adapters
 
-Like the Domain, the Adapter is also structured as a single package within the monorepo and built using Rollup. In the Adapter, common Presenters, Repositories, and Infrastructures are set up so that they can be extended and used in service packages later.
+Similar to the domain layer, the adapters are also organized as a single package within the monorepo. The adapter layer typically includes Presenters, Repositories, and Infrastructure components. These are used in service packages through dependency injection (DI) and can be extended by inheriting and customizing them as needed.
 
 ## Infrastructures
 

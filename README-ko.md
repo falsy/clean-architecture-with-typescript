@@ -77,7 +77,7 @@
 
 도메인 레이어에서는 비즈니스 규칙과 비즈니스 로직을 정의합니다.
 
-샘플 프로젝트의 경우에는 간단한 포럼 서비스의 일부분으로 사용자가 글 목록을 보거나 글과 댓글을 작성할 수 있는 서비스입니다. 모노레포로 구성된 하나의 패키지로 Entity와 Use Case 그리고 Value Object 등의 값들을 Rollup을 사용하여 빌드하며 프로젝트의 다양한 서비스는 이를 사용하여 서비스를 구성합니다.
+샘플 프로젝트의 경우에는 간단한 포럼 서비스의 일부분으로 사용자가 글 목록을 보거나 글과 댓글을 작성할 수 있는 서비스입니다. 모노레포로 구성된 하나의 패키지로 Entity와 Use Case 그리고 Value Object 등의 정의하고, 다양한 서비스 패키지는 이를 사용하여 서비스를 구성합니다.
 
 ## Entities
 
@@ -85,7 +85,20 @@ Entity는 도메인 모델링의 핵심 개념 중 하나로, 고유한 식별�
 
 샘플 프로젝트에서는 Post, Comment, User 라는 3개의 엔티티로 구성되어 있습니다.
 
-## Aggregates
+## Domain-driven Design(DDD)
+
+클린 아키텍처는 DDD와 공통적으로 도메인 중심의 설계를 지향합니다. 클린 아키텍처는 소프트웨어의 구조적 유연성과 애플리케이션의 유지 보수, 그리고 기술의 독립성와 테스트 용이성에 중점을 두고 있으며 DDD는 비즈니스 문제 해결에 초점을 맞추고 있습니다.
+
+하지만 클린 아키텍처는 DDD의 철학과 원칙을 일부 차용하고 있으며 DDD와 호환되며, DDD를 효과적으로 적용할 수 있습니다. 그리고 그 예로 클린 아키텍처는 DDD의 개념인 `Ubiquitous Language`와 `Aggregate Root`를 활용할 수 있습니다.
+
+### Ubiquitous Language
+
+![Ubiquitous Language](.github/images/ubiquitous.png#gh-light-mode-only)
+![Ubiquitous Language](.github/images/ubiquitous-dark.png#gh-dark-mode-only)
+
+유비쿼터스 언어는 프로젝트 전반에 걸쳐 의사소통의 일관성을 유지하기 위해 모든 팀원이 사용하는 공유 언어를 말합니다. 이 언어는 프로젝트 리더, 도메인 전문가, 개발자, UI/UX 디자이너, 비즈니스 분석가, QA 엔지니어 등을 포함한 모든 프로젝트 구성원이 공유해야 합니다. 그리고 이 언어는 협업 중 문서화나 대화에 사용될 뿐만 아니라 소프트웨어 모델과 코드에도 반영되어야 합니다.
+
+### Aggregate Root
 
 ![Aggregate](.github/images/aggregate.png#gh-light-mode-only)
 ![Aggregate](.github/images/aggregate-dark.png#gh-dark-mode-only)
@@ -109,7 +122,7 @@ Repository의 경우 Adapter 레이어에 해당하기 때문에 Use Case에서�
 
 # Adapters
 
-Domain과 마찬가지로 모노레포로 하나의 패키지로 구성하고 Rollup으로 빌드하여 사용합니다. Apapter에서는 일반적인 경우의 Presenter와 Repository 그리고 Infrastructure를 구성하여 이후 서비스 패키지에서 이를 상속 받아 확장하여 사용할 수 있도록 합니다.
+Domains 계층과 유사하게 Adatpers 계층도 모노레포 내에서 단일 패키지로 구성하여 사용합니다. Apapter에서는 일반적으로 Presenters, Repositories 및 Infrastructure 구성 요소가 포함됩니다. 이러한 구성 요소는 의존성 주입(DI)을 통해 서비스 패키지에서 사용되며 필요에 따라 상속하고 사용자 정의하여 확장할 수 있습니다.
 
 ## Infrastructures
 
