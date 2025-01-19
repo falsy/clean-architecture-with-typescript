@@ -4,8 +4,8 @@ import repositoriesFn from "./repositories"
 import useCasesFn from "./useCases"
 import presentersFn from "./presenters"
 
-export default function di() {
-  const repositories = repositoriesFn(API_URL)
+export default function di(apiUrl = API_URL) {
+  const repositories = repositoriesFn(apiUrl)
   const useCases = useCasesFn(repositories)
   const presenters = presentersFn(useCases)
 

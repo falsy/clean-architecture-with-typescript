@@ -3,7 +3,7 @@ export default function HeaderMenu() {
     <nav>
       <ul className="flex gap-3 text-sm">
         <li>
-          &quot;Hello! <span className="text-blue-300">Developer</span>&quot;
+          Hello! <span className="text-blue-300">Developers</span>
         </li>
       </ul>
     </nav>
