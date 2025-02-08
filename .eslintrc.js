@@ -21,12 +21,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react-hooks/recommended"
   ],
-  plugins: [
-    "@typescript-eslint/eslint-plugin",
-    "prettier",
-    "react",
-    "react-hooks"
-  ],
+  plugins: [],
   rules: {
     "@typescript-eslint/no-require-imports": "off",
     "react/react-in-jsx-scope": "off"
