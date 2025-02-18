@@ -27,25 +27,28 @@ export default class PostVM implements IPostVM {
 
   updateTitle(title: string): void {
     this.title = title
-    this.key = this.generateKey(this.id)
+    this.updatedAt = new Date()
+    this.key = this.generateKey(this.id, this.updatedAt)
   }
 
   updateContent(content: string): void {
     this.content = content
-    this.key = this.generateKey(this.id)
+    this.updatedAt = new Date()
+    this.key = this.generateKey(this.id, this.updatedAt)
   }
 
   applyUpdatedAt(date: Date): void {
     this.updatedAt = date
-    this.key = this.generateKey(this.id)
+    this.key = this.generateKey(this.id, this.updatedAt)
   }
 
   deleteComment(commentId: string): void {
     this.comments = this.comments.filter((comment) => comment.id !== commentId)
-    this.key = this.generateKey(this.id)
+    this.updatedAt = new Date()
+    this.key = this.generateKey(this.id, this.updatedAt)
   }
 
-  private generateKey(id: string, updatedAt: Date = new Date()): string {
+  private generateKey(id: string, updatedAt: Date): string {
     const base = `${id}-${updatedAt.getTime()}`
     return CryptoJS.MD5(base).toString()
   }

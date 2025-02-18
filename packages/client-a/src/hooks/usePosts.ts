@@ -67,13 +67,6 @@ export default function usePosts() {
             return post
           })
         })
-        if (post && post.id === postId) {
-          setOptimisticPost((prevPost) => {
-            prevPost.updateTitle(title)
-            prevPost.updateContent(content)
-            return prevPost
-          })
-        }
 
         const updateAt = await di.post.updatePost(postId, { title, content })
         if (updateAt !== "") {
@@ -85,16 +78,10 @@ export default function usePosts() {
               return post
             })
           })
-          if (post && post.id === postId) {
-            setPost((prevPost) => {
-              prevPost.applyUpdatedAt(new Date(updateAt))
-              return prevPost
-            })
-          }
         }
       })
     },
-    [di.post, post, setOptimisticPost, setOptimisticPosts, setPosts]
+    [di.post, setOptimisticPosts, setPosts]
   )
 
   const deletePost = useCallback(
