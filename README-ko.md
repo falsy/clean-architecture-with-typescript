@@ -59,13 +59,11 @@
 │     ├─ dtos
 │     └─ infrastructures
 │        └─ interface
-├─ client-a(built with React)
+├─ client-a
 │  └─ src
-│     ├─ di
 │     └─ ...
-└─ client-b(built with Next.js)
+└─ client-b
    └─ src
-      ├─ di
       └─ ...
 ```
 
@@ -152,7 +150,7 @@ Presenters 레이어에서는 UI에서 필요로하는 메서드를 가지고 �
 Vite, React, Jotai, Tailwind CSS, Jest, RTL, Cypress
 ```
 
-Client-A는 `Domains`와 `Adapters` 레이어의 요소들을 그대로 사용해서 최종적으로 `DI`된 상위 레이어의 객체를 React의 Hooks와 전역 상태 라이브러리인 [Jotai](https://jotai.org/)를 활용하여 각 도메인의 메서드를 구현하고 이는 Presenters 레이어의 역할을 수행합니다.
+client-a는 `Domains`와 `Adapters` 레이어의 요소들을 그대로 사용해서 최종적으로 `DI`된 상위 레이어의 객체를 React의 Hooks와 전역 상태 라이브러리인 [Jotai](https://jotai.org/)를 활용하여 각 도메인의 메서드를 구현하고 이는 Presenters 레이어의 역할을 수행합니다.
 
 > 기존에 Adapters 패키지에서 Presenters 디렉토리로 명시적으로 Presenters 레이어를 나누었지만 이는 프레임워크에 의존하지 않은 범용적인 Presenters이며, 위 샘플 프로젝트처럼 React를 사용하는 서비스에서는 그에 부합하는 구성을 위해서 최종적으로 의존성을 주입한 Presenters 객체와 React Hooks을 활용하여 Presenters 영역을 확장 구성하였습니다.
 
@@ -176,117 +174,30 @@ export default function di() {
 ### Presenters
 
 ```tsx
-import { useCallback, useMemo, useOptimistic, useState, useTransition } from "react"
+import { useCallback, useMemo, useTransition } from "react"
 import { atom, useAtom } from "jotai"
+import IPost from "domains/aggregates/interfaces/IPost"
+import Post from "domains/aggregates/Post"
 import presenters from "../di"
-import PostVM from "../vms/PostVM"
-import IPostVM from "../vms/interfaces/IPostVM"
 
-const PostsAtoms = atom<IPostVM[]>([])
+const PostsAtoms = atom<IPost[]>([])
 
 export default function usePosts() {
   const di = useMemo(() => presenters(), [])
 
-  const [post, setPost] = useState<IPostVM>(null)
-  const [posts, setPosts] = useAtom<IPostVM[]>(PostsAtoms)
-  const [optimisticPost, setOptimisticPost] = useOptimistic(post)
-  const [optimisticPosts, setOptimisticPosts] = useOptimistic(posts)
+  const [posts, setPosts] = useAtom<IPost[]>(PostsAtoms)
   const [isPending, startTransition] = useTransition()
 
   const getPosts = useCallback(async () => {
     startTransition(async () => {
       const resPosts = await di.post.getPosts()
-      const postVMs = resPosts.map((post) => new PostVM(post))
-      setPosts(postVMs)
+      setPosts(resPosts)
     })
   }, [di.post, setPosts])
 
   ...
 }
 ```
-
-### View Models
-
-Client-A에서는 프로젝트 레이어에서 React의 UI 상태 관리에 적합하도록 View Model을 구성하여 사용하였습니다.
-
-```ts
-import CryptoJS from "crypto-js"
-import IUserInfoVO from "domains/vos/interfaces/IUserInfoVO"
-import ICommentVM, { ICommentVMParams } from "./interfaces/ICommentVM"
-
-export default class CommentVM implements ICommentVM {
-  readonly id: string
-  key: string
-  readonly postId: string
-  readonly author: IUserInfoVO
-  content: string
-  readonly createdAt: Date
-  updatedAt: Date
-
-  constructor(parmas: ICommentVMParams) {
-    this.id = parmas.id
-    this.postId = parmas.postId
-    this.author = parmas.author
-    this.content = parmas.content
-    this.createdAt = parmas.createdAt
-    this.updatedAt = parmas.updatedAt
-    this.key = this.generateKey(this.id, this.updatedAt)
-  }
-
-  updateContent(content: string): void {
-    this.content = content
-    this.updatedAt = new Date()
-    this.key = this.generateKey(this.id, this.updatedAt)
-  }
-
-  applyUpdatedAt(date: Date): void {
-    this.updatedAt = date
-    this.key = this.generateKey(this.id, this.updatedAt)
-  }
-
-  private generateKey(id: string, updatedAt: Date): string {
-    const base = `${id}-${updatedAt.getTime()}`
-    return CryptoJS.MD5(base).toString()
-  }
-}
-```
-
-View Model에서는 위와 같이 값 변경에 따른 메서드를 제공하며(ex. updateContent) 모든 변경에는 updatedAt 값이 함께 변경하고, updatedAt 값과 ID 값을 활용하여 고유한 `Key` 값을 만들어 사용함으로써 React가 View의 변경을 감지하고 리렌더링 할 수 있도록 하였습니다.
-
-```tsx
-...
-
-export default function usePosts() {
-  ...
-
-  const deleteComment = useCallback(
-    async (commentId: string) => {
-      startTransition(async () => {
-        setOptimisticPost((prevPost) => {
-          prevPost.deleteComment(commentId)
-          return prevPost
-        })
-
-        try {
-          const isSucess = await di.post.deleteComment(commentId)
-          if (isSucess) {
-            const resPost = await di.post.getPost(optimisticPost.id)
-            const postVM = new PostVM(resPost)
-            setPost(postVM)
-          }
-        } catch (e) {
-          console.error(e)
-        }
-      })
-    },
-    [di.post, optimisticPost, setOptimisticPost, setPost]
-  )
-
-  ...
-}
-```
-
-Presenter 레이어의 Hooks에서도 위와 같이 Comment의 삭제 요청에 대한 간단한 예시로, VM에서 제공하는 메서드를 활용하여 낙관적 업데이트를 구현하고 요청이 성공하면 위 변경이 적용된 새로운 데이터를 요청하여 동기화 하도록 하였습니다.
 
 ## Client-B
 
@@ -296,11 +207,9 @@ Presenter 레이어의 Hooks에서도 위와 같이 Comment의 삭제 요청에 
 Next.js, Jotai, Tailwind CSS, Jest, RTL, Cypress
 ```
 
-Client-B는 Client-A와 동일한 도메인을 활용한, 서비스 확장을 표현하는 서비스로 Client-A 서비스와 유사하지만 Client-A 서비스와 다르게 Next.js를 기반으로 하며 기존의 Client-A 서비스는 API 서버와의 HTTP 통신을 통해 데이터를 조작하지만 Client-b는 HTTP 통신 없이 로컬 저장소(Local Storage)를 기반으로 설계하였습니다.
+client-b 서비스는 client-a 서비스와 동일한 도메인을 활용한, 서비스 확장을 표현하는 서비스로 client-a 서비스와 유사하지만 client-a 서비스와 다르게 Next.js를 기반으로 기존의 client-a 서비스는 API 서버와의 HTTP 통신을 통해 데이터를 조작하지만 client-b는 HTTP 통신 없이 로컬 저장소(Local Storage)를 기반으로 설계하였습니다.
 
-그렇기 때문에 Client-A와 다르게 Client-B에서는 `Domains`에서 정의한 Repository의 인터페이스를 구체화한 새로운 Repository를 구성하고 이를 의존성 주입하여 사용함으로써 간단하게 기존의 서비스를 확장한 새로운 서비스를 구현할 수 있습니다.
-
-> Client-B는 구제적인 기능 구현보다는 동일한 도메인을 활용한 다른 클라이언트 서비스 구성에 대한 간단한 예시입니다.
+그렇기 때문에 client-a와 다르게 client-b에서는 `Domains`에서 정의한 Repository의 인터페이스를 구체화한 새로운 Repository를 구성하고 이를 의존성 주입하여 사용함으로써 간단하게 기존의 서비스를 확장한 새로운 서비스를 구현할 수 있습니다.
 
 ## Design System
 

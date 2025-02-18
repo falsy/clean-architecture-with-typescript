@@ -62,19 +62,17 @@ In the monorepo structure, the Domains layer, Adapters layer, and Service layer 
 │     ├─ dtos
 │     └─ infrastructures
 │        └─ interface
-├─ client-a(built with React)
+├─ client-a
 │  └─ src
-│     ├─ di
 │     └─ ...
-└─ client-b(built with Next.js)
+└─ client-b
    └─ src
-      ├─ di
       └─ ...
 ```
 
 ## Tree Shaking
 
-In this sample project, service packages use shared packages (`Domains`, `Adapters`, `and other potential packages`) through a `Source-to-Source` approach, rather than referencing pre-built outputs. This approach ensures that the service's module bundler can effectively eliminate unused code during the final build. Therefore, all shared packages must be written using `ES Modules`.
+In this sample project, service packages use shared packages (`Domains`, `Adapters`, `and other potential packages`) through a `Source-to-Source` approach, rather than referencing pre-built outputs. This approach ensures that the service’s module bundler can effectively eliminate unused code during the final build. Therefore, all shared packages must be written using `ES Modules`.
 
 > Most module bundlers natively support tree shaking for code written in ES Modules.
 
@@ -94,7 +92,7 @@ In the sample project, there are three entities: Post, Comment, and User.
 
 Clean Architecture shares a common goal with DDD in pursuing domain-centric design. While Clean Architecture focuses on structural flexibility, maintainability, technological independence, and testability of software, DDD emphasizes solving complex business problems.
 
-However, Clean Architecture adopts some of DDD's philosophy and principles, making it compatible with DDD and providing a framework to effectively implement DDD concepts. For example, Clean Architecture can leverage DDD concepts such as `Ubiquitous Language` and `Aggregate Root`.
+However, Clean Architecture adopts some of DDD’s philosophy and principles, making it compatible with DDD and providing a framework to effectively implement DDD concepts. For example, Clean Architecture can leverage DDD concepts such as `Ubiquitous Language` and `Aggregate Root`.
 
 ### Ubiquitous Language
 
@@ -110,7 +108,7 @@ Ubiquitous Language refers to a shared language used by all team members to main
 
 An Aggregate is a consistency boundary that can include multiple entities and value objects. It encapsulates internal state and controls external access. All modifications must go through the Aggregate Root, which helps manage the complexity of relationships within the model and maintain consistency when services expand or transactions become more complex.
 
-In the sample project, Post serves as an Aggregate, with the Comment entity having a dependent relationship on it. Therefore, adding or modifying a comment must be done through the Post entity. Additionally, while the Post entity requires information about the author (the User who wrote the post), the User is an independent entity. To maintain a loose relationship, only the User's id and name are included as a Value Object within Post.
+In the sample project, Post serves as an Aggregate, with the Comment entity having a dependent relationship on it. Therefore, adding or modifying a comment must be done through the Post entity. Additionally, while the Post entity requires information about the author (the User who wrote the post), the User is an independent entity. To maintain a loose relationship, only the User’s id and name are included as a Value Object within Post.
 
 ## Use Cases
 
@@ -155,7 +153,7 @@ The sample project's client services consist of two simple services: client-a an
 Vite, React, Jotai, Tailwind CSS, Jest, RTL, Cypress
 ```
 
-Client-A directly utilizes elements from the `Domains` and `Adapters` layers and implements methods for each domain using React hooks and the global state management library [Jotai](https://jotai.org/). These methods act as the Presenters layer in the final service.
+client-a directly utilizes elements from the `Domains` and `Adapters` layers and implements methods for each domain using React hooks and the global state management library [Jotai](https://jotai.org/). These methods act as the Presenters layer in the final service.
 
 > Previously, the Adapters package explicitly included a Presenters directory to represent a framework-agnostic Presenters layer. However, in services like this sample project that use React, we extend the Presenters layer by injecting dependencies into the final Presenters objects and utilizing React hooks to achieve a composition that aligns with the framework.
 
@@ -179,117 +177,30 @@ export default function di() {
 ### Presenters
 
 ```tsx
-import { useCallback, useMemo, useOptimistic, useState, useTransition } from "react"
+import { useCallback, useMemo, useTransition } from "react"
 import { atom, useAtom } from "jotai"
+import IPost from "domains/aggregates/interfaces/IPost"
+import Post from "domains/aggregates/Post"
 import presenters from "../di"
-import PostVM from "../vms/PostVM"
-import IPostVM from "../vms/interfaces/IPostVM"
 
-const PostsAtoms = atom<IPostVM[]>([])
+const PostsAtoms = atom<IPost[]>([])
 
 export default function usePosts() {
   const di = useMemo(() => presenters(), [])
 
-  const [post, setPost] = useState<IPostVM>(null)
-  const [posts, setPosts] = useAtom<IPostVM[]>(PostsAtoms)
-  const [optimisticPost, setOptimisticPost] = useOptimistic(post)
-  const [optimisticPosts, setOptimisticPosts] = useOptimistic(posts)
+  const [posts, setPosts] = useAtom<IPost[]>(PostsAtoms)
   const [isPending, startTransition] = useTransition()
 
   const getPosts = useCallback(async () => {
     startTransition(async () => {
       const resPosts = await di.post.getPosts()
-      const postVMs = resPosts.map((post) => new PostVM(post))
-      setPosts(postVMs)
+      setPosts(resPosts)
     })
   }, [di.post, setPosts])
 
   ...
 }
 ```
-
-### View Models
-
-In Client-A, we structured the View Model in the project layer to effectively manage UI state in React.
-
-```ts
-import CryptoJS from "crypto-js"
-import IUserInfoVO from "domains/vos/interfaces/IUserInfoVO"
-import ICommentVM, { ICommentVMParams } from "./interfaces/ICommentVM"
-
-export default class CommentVM implements ICommentVM {
-  readonly id: string
-  key: string
-  readonly postId: string
-  readonly author: IUserInfoVO
-  content: string
-  readonly createdAt: Date
-  updatedAt: Date
-
-  constructor(parmas: ICommentVMParams) {
-    this.id = parmas.id
-    this.postId = parmas.postId
-    this.author = parmas.author
-    this.content = parmas.content
-    this.createdAt = parmas.createdAt
-    this.updatedAt = parmas.updatedAt
-    this.key = this.generateKey(this.id, this.updatedAt)
-  }
-
-  updateContent(content: string): void {
-    this.content = content
-    this.updatedAt = new Date()
-    this.key = this.generateKey(this.id, this.updatedAt)
-  }
-
-  applyUpdatedAt(date: Date): void {
-    this.updatedAt = date
-    this.key = this.generateKey(this.id, this.updatedAt)
-  }
-
-  private generateKey(id: string, updatedAt: Date): string {
-    const base = `${id}-${updatedAt.getTime()}`
-    return CryptoJS.MD5(base).toString()
-  }
-}
-```
-
-The View Model provides methods to handle value changes (e.g., updateContent). Whenever a value is updated, the updatedAt field is also modified. By using a combination of the updatedAt value and the ID, we generate a unique `key` that allows React to detect changes in the view and trigger re-renders as needed.
-
-```tsx
-...
-
-export default function usePosts() {
-  ...
-
-  const deleteComment = useCallback(
-    async (commentId: string) => {
-      startTransition(async () => {
-        setOptimisticPost((prevPost) => {
-          prevPost.deleteComment(commentId)
-          return prevPost
-        })
-
-        try {
-          const isSucess = await di.post.deleteComment(commentId)
-          if (isSucess) {
-            const resPost = await di.post.getPost(optimisticPost.id)
-            const postVM = new PostVM(resPost)
-            setPost(postVM)
-          }
-        } catch (e) {
-          console.error(e)
-        }
-      })
-    },
-    [di.post, optimisticPost, setOptimisticPost, setPost]
-  )
-
-  ...
-}
-```
-
-In the Presenter layer's hooks, we implemented optimistic updates using the methods provided by the View Model. For instance, when sending a delete request for a comment, we immediately apply the changes locally. After the request succeeds, we fetch the updated data to synchronize the state.
 
 ## Client-B
 
@@ -299,11 +210,9 @@ In the Presenter layer's hooks, we implemented optimistic updates using the meth
 Next.js, Jotai, Tailwind CSS, Jest, RTL, Cypress
 ```
 
-The Client-B service is an extension of Client-A, utilizing the same domain model to demonstrate service scalability. While it shares similarities with Client-A, the key difference is that Client-B is built on Next.js. Unlike Client-A, which manipulates data through HTTP communication with an API server, Client-B is designed to operate without HTTP communication, relying instead on local storage.
+The client-b service is an extension of client-a, utilizing the same domain model to demonstrate service scalability. While it shares similarities with client-a, the key difference is that client-b is built on Next.js. Unlike client-a, which manipulates data through HTTP communication with an API server, client-b is designed to operate without HTTP communication, relying instead on local storage.
 
-Therefore, unlike Client-A, Client-B implements new repositories by concretely defining the repository interfaces from `Domains` and injecting these dependencies to create a new service that extends the existing functionality in a straightforward manner.
-
-> Client-B is a simple demonstration of another client service utilizing the same domain, focusing on the service structure rather than specific feature implementations.
+Therefore, unlike client-a, client-b implements new repositories by concretely defining the repository interfaces from `Domains` and injecting these dependencies to create a new service that extends the existing functionality in a straightforward manner.
 
 ## Design System
 
