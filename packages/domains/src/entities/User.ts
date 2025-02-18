@@ -1,4 +1,4 @@
-import IUser from "./interfaces/IUser"
+import IUser, { IUserParams } from "./interfaces/IUser"
 
 export default class User implements IUser {
   readonly id: string
@@ -7,11 +7,11 @@ export default class User implements IUser {
   readonly createdAt: Date
   readonly updatedAt: Date
 
-  constructor(params: IUser) {
+  constructor(params: IUserParams) {
     this.id = params.id
     this.name = params.name
     this.email = params.email
-    this.createdAt = params.createdAt
-    this.updatedAt = params.updatedAt
+    this.createdAt = new Date(params.createdAt)
+    this.updatedAt = new Date(params.updatedAt)
   }
 }

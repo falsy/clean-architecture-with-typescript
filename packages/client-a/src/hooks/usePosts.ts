@@ -7,17 +7,17 @@ import {
   useTransition
 } from "react"
 import { atom, useAtom } from "jotai"
-import IPost from "domains/aggregates/interfaces/IPost"
-import Post from "domains/aggregates/Post"
 import presenters from "../di"
+import PostVM from "../vms/PostVM"
+import IPostVM from "../vms/interfaces/IPostVM"
 
-const PostsAtoms = atom<IPost[]>([])
+const PostsAtoms = atom<IPostVM[]>([])
 
 export default function usePosts() {
   const di = useMemo(() => presenters(), [])
 
-  const [post, setPost] = useState<IPost>(null)
-  const [posts, setPosts] = useAtom<IPost[]>(PostsAtoms)
+  const [post, setPost] = useState<IPostVM>(null)
+  const [posts, setPosts] = useAtom<IPostVM[]>(PostsAtoms)
   const [optimisticPost, setOptimisticPost] = useOptimistic(post)
   const [optimisticPosts, setOptimisticPosts] = useOptimistic(posts)
   const [isPending, startTransition] = useTransition()
@@ -25,7 +25,8 @@ export default function usePosts() {
   const getPosts = useCallback(async () => {
     startTransition(async () => {
       const resPosts = await di.post.getPosts()
-      setPosts(resPosts)
+      const postVMs = resPosts.map((post) => new PostVM(post))
+      setPosts(postVMs)
     })
   }, [di.post, setPosts])
 
@@ -33,7 +34,8 @@ export default function usePosts() {
     async (postId: string) => {
       startTransition(async () => {
         const resPost = await di.post.getPost(postId)
-        setPost(resPost)
+        const postVM = new PostVM(resPost)
+        setPost(postVM)
       })
     },
     [di.post, setPost]
@@ -45,11 +47,41 @@ export default function usePosts() {
         const isSucess = await di.post.createPost({ title, content })
         if (isSucess) {
           const resPosts = await di.post.getPosts()
-          setPosts(resPosts)
+          const postVMs = resPosts.map((post) => new PostVM(post))
+          setPosts(postVMs)
         }
       })
     },
     [di.post, setPosts]
+  )
+
+  const updatePost = useCallback(
+    async (postId: string, title: string, content: string) => {
+      startTransition(async () => {
+        setOptimisticPosts((prevPosts) => {
+          return prevPosts.map((post) => {
+            if (post.id === postId) {
+              post.updateTitle(title)
+              post.updateContent(content)
+            }
+            return post
+          })
+        })
+
+        const updateAt = await di.post.updatePost(postId, { title, content })
+        if (updateAt !== "") {
+          setPosts((prevPosts) => {
+            return prevPosts.map((post) => {
+              if (post.id === postId) {
+                post.applyUpdatedAt(new Date(updateAt))
+              }
+              return post
+            })
+          })
+        }
+      })
+    },
+    [di.post, setOptimisticPosts, setPosts]
   )
 
   const deletePost = useCallback(
@@ -63,7 +95,8 @@ export default function usePosts() {
           const isSucess = await di.post.deletePost(postId)
           if (isSucess) {
             const resPosts = await di.post.getPosts()
-            setPosts(resPosts)
+            const postVMs = resPosts.map((post) => new PostVM(post))
+            setPosts(postVMs)
           }
         } catch (e) {
           console.error(e)
@@ -79,7 +112,8 @@ export default function usePosts() {
         const isSucess = await di.post.createComment(postId, content)
         if (isSucess) {
           const resPost = await di.post.getPost(postId)
-          setPost(resPost)
+          const postVM = new PostVM(resPost)
+          setPost(postVM)
         }
       })
     },
@@ -90,20 +124,16 @@ export default function usePosts() {
     async (commentId: string) => {
       startTransition(async () => {
         setOptimisticPost((prevPost) => {
-          const newPost = new Post({
-            ...prevPost,
-            comments: prevPost.comments.filter(
-              (comment) => comment.id !== commentId
-            )
-          })
-          return newPost
+          prevPost.deleteComment(commentId)
+          return prevPost
         })
 
         try {
           const isSucess = await di.post.deleteComment(commentId)
           if (isSucess) {
             const resPost = await di.post.getPost(optimisticPost.id)
-            setPost(resPost)
+            const postVM = new PostVM(resPost)
+            setPost(postVM)
           }
         } catch (e) {
           console.error(e)
@@ -120,6 +150,7 @@ export default function usePosts() {
     getPosts,
     getPost,
     createPost,
+    updatePost,
     deletePost,
     createComment,
     deleteComment

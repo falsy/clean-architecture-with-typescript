@@ -14,7 +14,7 @@ export default class Comment implements IComment {
     this.postId = parmas.postId
     this.author = parmas.author
     this.content = parmas.content
-    this.createdAt = parmas.createdAt
-    this.updatedAt = parmas.updatedAt
+    this.createdAt = new Date(parmas.createdAt)
+    this.updatedAt = new Date(parmas.updatedAt)
   }
 }

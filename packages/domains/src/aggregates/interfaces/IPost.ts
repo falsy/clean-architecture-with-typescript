@@ -17,8 +17,8 @@ export interface IPostParams {
   readonly content: string
   readonly author: IUserInfoVO
   readonly comments: IComment[]
-  readonly createdAt: Date
-  readonly updatedAt: Date
+  readonly createdAt: string
+  readonly updatedAt: string
 }
 
 export interface IRequestPostParams {

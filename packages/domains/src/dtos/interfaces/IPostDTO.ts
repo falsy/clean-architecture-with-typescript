@@ -5,6 +5,6 @@ export default interface IPostDTO {
   title: string
   content: string
   readonly author: IUserInfoVO
-  readonly createdAt: Date
-  updatedAt: Date
+  readonly createdAt: string
+  updatedAt: string
 }

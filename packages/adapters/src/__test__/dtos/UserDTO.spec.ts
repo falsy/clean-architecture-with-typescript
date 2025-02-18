@@ -7,8 +7,8 @@ describe("UserDTO", () => {
       id: "12345",
       name: "Falsy",
       email: "falsy@mail.com",
-      createdAt: new Date("2023-01-01T00:00:00Z"),
-      updatedAt: new Date("2023-01-02T00:00:00Z")
+      createdAt: "2023-01-01T00:00:00Z",
+      updatedAt: "2023-01-02T00:00:00Z"
     }
 
     const user = new UserDTO(params)
@@ -16,7 +16,7 @@ describe("UserDTO", () => {
     expect(user.id).toBe("12345")
     expect(user.name).toBe("Falsy")
     expect(user.email).toBe("falsy@mail.com")
-    expect(user.createdAt).toEqual(new Date("2023-01-01T00:00:00Z"))
-    expect(user.updatedAt).toEqual(new Date("2023-01-02T00:00:00Z"))
+    expect(user.createdAt).toEqual("2023-01-01T00:00:00Z")
+    expect(user.updatedAt).toEqual("2023-01-02T00:00:00Z")
   })
 })

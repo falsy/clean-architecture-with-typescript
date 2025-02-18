@@ -21,8 +21,8 @@ export default class PostPresenter implements IPostPresenter {
     return this.postUseCase.createPost(params)
   }
 
-  editPost(postId: string, params: IRequestPostParams): Promise<boolean> {
-    return this.postUseCase.editPost(postId, params)
+  updatePost(postId: string, params: IRequestPostParams): Promise<string> {
+    return this.postUseCase.updatePost(postId, params)
   }
 
   deletePost(postId: string): Promise<boolean> {
@@ -33,8 +33,8 @@ export default class PostPresenter implements IPostPresenter {
     return this.postUseCase.createComment(postId, content)
   }
 
-  editComment(commentId: string, content: string): Promise<boolean> {
-    return this.postUseCase.editComment(commentId, content)
+  updateComment(commentId: string, content: string): Promise<string> {
+    return this.postUseCase.updateComment(commentId, content)
   }
 
   deleteComment(commentId: string): Promise<boolean> {

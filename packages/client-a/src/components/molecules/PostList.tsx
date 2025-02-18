@@ -3,9 +3,11 @@ import PostBox from "./PostBox"
 
 const PostList = ({
   posts,
+  updatePost,
   deletePost
 }: {
   posts: IPost[]
+  updatePost(id: string, title: string, content: string): void
   deletePost(id: string): void
 }) => {
   return (
@@ -17,7 +19,11 @@ const PostList = ({
             key={post.id}
             className="p-4 border border-gray/40 rounded-md text-sm"
           >
-            <PostBox post={post} deletePost={deletePost} />
+            <PostBox
+              post={post}
+              updatePost={updatePost}
+              deletePost={deletePost}
+            />
           </li>
         ))}
       </ul>
