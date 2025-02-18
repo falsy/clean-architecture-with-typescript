@@ -48,10 +48,26 @@ export default defineConfig({
                 userId: "1",
                 userName: "sample"
               },
-              createdAt: new Date(),
-              updatedAt: new Date()
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString()
             })
             res.json(true)
+          }, 200)
+        })
+
+        app.put("/api/posts/:postId", (req, res) => {
+          setTimeout(() => {
+            const index = posts.findIndex(
+              (post) => post.id === req.params.postId
+            )
+            const updatedAt = new Date().toISOString()
+            posts[index] = {
+              ...posts[index],
+              title: req.body.title,
+              content: req.body.content,
+              updatedAt
+            }
+            res.json(updatedAt)
           }, 200)
         })
 
@@ -89,8 +105,8 @@ export default defineConfig({
                 userId: "1",
                 userName: "sample"
               },
-              createdAt: new Date(),
-              updatedAt: new Date()
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString()
             })
             res.json(true)
           }, 200)

@@ -6,8 +6,8 @@ export default class CommentDTO implements ICommentDTO {
   readonly postId: string
   content: string
   readonly author: IUserInfoVO
-  readonly createdAt: Date
-  updatedAt: Date
+  readonly createdAt: string
+  updatedAt: string
 
   constructor(params: ICommentDTO) {
     this.id = params.id

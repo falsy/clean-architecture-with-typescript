@@ -65,8 +65,8 @@ export default class PostUseCase implements IPostUseCase {
     return this.postRepository.createPost(params)
   }
 
-  editPost(postId: string, params: IRequestPostParams): Promise<boolean> {
-    return this.postRepository.editPost(postId, params)
+  updatePost(postId: string, params: IRequestPostParams): Promise<string> {
+    return this.postRepository.updatePost(postId, params)
   }
 
   deletePost(postId: string): Promise<boolean> {
@@ -77,8 +77,8 @@ export default class PostUseCase implements IPostUseCase {
     return this.commentRepository.createComment(postId, content)
   }
 
-  editComment(commentId: string, content: string): Promise<boolean> {
-    return this.commentRepository.editComment(commentId, content)
+  updateComment(commentId: string, content: string): Promise<string> {
+    return this.commentRepository.updateComment(commentId, content)
   }
 
   deleteComment(commentId: string): Promise<boolean> {

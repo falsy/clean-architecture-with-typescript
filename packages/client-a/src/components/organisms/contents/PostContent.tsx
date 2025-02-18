@@ -26,15 +26,17 @@ export default function PostContent() {
   return (
     <Content className="p-4 pl-6 pt-4">
       <h1 className="text-sm text-black/50 mb-4">Post</h1>
-      <div className="relative flex flex-col gap-4 text-sm">
-        <PostDetail post={post} />
-        <CommentList
-          comments={post?.comments}
-          deleteComment={handleClickDeleteComment}
-        />
-        <CommentForm createComment={handleClickCreateComment} />
-        {isPending && <DimmedLoading />}
-      </div>
+      {post && (
+        <div className="relative flex flex-col gap-4 text-sm">
+          <PostDetail post={post} />
+          <CommentList
+            comments={post.comments}
+            deleteComment={handleClickDeleteComment}
+          />
+          <CommentForm createComment={handleClickCreateComment} />
+          {isPending && <DimmedLoading />}
+        </div>
+      )}
     </Content>
   )
 }

@@ -57,9 +57,12 @@ export default class PostRepository implements IPostRepository {
     }
   }
 
-  async editPost(postId: string, params: IRequestPostParams): Promise<boolean> {
+  async updatePost(
+    postId: string,
+    params: IRequestPostParams
+  ): Promise<string> {
     try {
-      const { data } = await this.client.put<boolean>(
+      const { data } = await this.client.put<string>(
         `/api/posts/${postId}`,
         params
       )

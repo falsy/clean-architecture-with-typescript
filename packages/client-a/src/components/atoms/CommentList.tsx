@@ -1,11 +1,11 @@
-import IComment from "domains/entities/interfaces/IComment"
+import ICommentVM from "../../vms/interfaces/ICommentVM"
 import Button from "./Button"
 
 export default function CommentList({
   comments,
   deleteComment
 }: {
-  comments?: IComment[]
+  comments: ICommentVM[]
   deleteComment: (commentId: string) => void
 }) {
   return (
@@ -13,9 +13,9 @@ export default function CommentList({
       <h2 className="text-lg mb-2">Comments</h2>
       <div>
         <ul className="space-y-2">
-          {comments?.map((comment) => (
+          {comments.map((comment) => (
             <li
-              key={comment.id}
+              key={comment.key}
               className="p-4 border border-gray/40 rounded-md text-sm"
             >
               <div className="flex justify-between items-center gap-6 w-full">

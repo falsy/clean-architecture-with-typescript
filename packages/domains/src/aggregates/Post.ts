@@ -17,7 +17,7 @@ export default class Post implements IPost {
     this.content = params.content
     this.author = params.author
     this.comments = params.comments
-    this.createdAt = params.createdAt
-    this.updatedAt = params.updatedAt
+    this.createdAt = new Date(params.createdAt)
+    this.updatedAt = new Date(params.updatedAt)
   }
 }

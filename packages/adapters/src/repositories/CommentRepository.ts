@@ -39,9 +39,9 @@ export default class CommentRepository implements ICommentRepository {
     }
   }
 
-  async editComment(commentId: string, content: string): Promise<boolean> {
+  async updateComment(commentId: string, content: string): Promise<string> {
     try {
-      const { data } = await this.client.put<boolean>(
+      const { data } = await this.client.put<string>(
         `/api/comments/${commentId}`,
         {
           content

@@ -5,6 +5,6 @@ export default interface IPostRepository {
   getPosts(): Promise<IPostDTO[]>
   getPost(postId: string): Promise<IPostDTO>
   createPost(params: IRequestPostParams): Promise<boolean>
-  editPost(postId: string, params: IRequestPostParams): Promise<boolean>
+  updatePost(postId: string, params: IRequestPostParams): Promise<string>
   deletePost(postId: string): Promise<boolean>
 }

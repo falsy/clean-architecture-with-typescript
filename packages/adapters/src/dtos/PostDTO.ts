@@ -6,8 +6,8 @@ export default class PostDTO implements IPostDTO {
   title: string
   content: string
   readonly author: IUserInfoVO
-  readonly createdAt: Date
-  updatedAt: Date
+  readonly createdAt: string
+  updatedAt: string
 
   constructor(post: IPostDTO) {
     this.id = post.id
