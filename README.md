@@ -1,4 +1,4 @@
-# Clean Architecture with TypeScript
+# Clean Architecture for Web
 
 Clean Architecture is widely used in many projects alongside `DDD(Domain-driven Design)` and `MSA(Microservice Architecture)`. This project is an idea-driven initiative that leverages TypeScript, a monorepo setup, and Clean Architecture to effectively scale and maintain various web client services that share the same domain.
 
@@ -40,6 +40,8 @@ The flow of Clean Architecture can be briefly illustrated in the diagram above.
 ![Alt Monorepo](.github/images/packages-dark.png#gh-dark-mode-only)
 
 In the monorepo structure, the Domains layer, Adapters layer, and Service layer are clearly separated into individual packages with well-defined dependencies. At the root level, basic configurations for TypeScript, ESLint, and Jest are provided, which can be extended and used in the lower-level packages.
+
+> If the project is for a single service rather than multiple services sharing the same domain, a monorepo is not necessary. Instead, the Domains and Adapters layers can be structured as directories rather than separate packages, while the service package can be placed in the Frameworks directory. This allows the entire project to be organized into three main sections: Domains, Adapters, and Frameworks, forming the core of the architecture.
 
 # Directory Structure
 

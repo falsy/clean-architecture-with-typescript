@@ -1,4 +1,4 @@
-# Clean Architecture with TypeScript
+# Clean Architecture for Web
 
 클린 아키텍처는 `DDD(Domain-driven Design)`와 `MSA(Micro Service Architecture)`와 함께 많은 프로젝트에서 활용되고 있습니다. 이 프로젝트에서는 TypeScript를 사용하면서 동일한 도메인을 공유하는 다양한 웹 클라이언트 서비스를 모노레포 구성과 클린 아키텍처 설계를 통해서 서비스를 효과적으로 확장하거나 유지 보수를 용이하게 하는 하나의 아이디어 프로젝트입니다.
 
@@ -37,6 +37,8 @@
 
 모노레포는 Domains 레이어와 Adapters 레이어 그리고 서비스 레이어를 각각 패키지로 의존성을 명확하게 구분하였습니다.
 그리고 루트에서는 TypeScript, ESLint, Jest의 기본 설정으로 하위 패키지에서는 확장하여 사용할 수 있습니다.
+
+> 만약, 도메인을 공유하는 여러 서비스가 아닌 단일 서비스를 위한 구성이라면 모노레포를 사용하지 않고 Domains와 Adapters레이어를 각각 패키지에서 디렉토리로, 서비스 패키지는 Frameworks 디렉토리로 구성하여, 전체 프로젝트는 크게 Domians, Adapters, Frameworks로 나누고 이를 중심으로 설계할 수 있습니다.
 
 # Directory Structure
 
@@ -251,7 +253,7 @@ export default class CommentVM implements ICommentVM {
 }
 ```
 
-View Model에서는 위와 같이 값 변경에 따른 메서드를 제공하며(ex. updateContent) 모든 변경에는 updatedAt 값이 함께 변경하고, updatedAt 값과 ID 값을 활용하여 고유한 `Key` 값을 만들어 사용함으로써 React가 View의 변경을 감지하고 리렌더링 할 수 있도록 하였습니다.
+View Model에서는 위와 같이 값 변경에 따른 메서드를 제공하며(e.g., updateContent) 모든 변경에는 updatedAt 값이 함께 변경하고, updatedAt 값과 ID 값을 활용하여 고유한 `Key` 값을 만들어 사용함으로써 React가 View의 변경을 감지하고 리렌더링 할 수 있도록 하였습니다.
 
 ```tsx
 ...
